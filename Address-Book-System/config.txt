@@ -1,0 +1,59 @@
+# #############################################################
+# author: Wei Li
+# date: 2020-06-16
+# Copyright © 2020 Wei Li, All Rights Reserved.
+# GitHub: https://github.com/2694048168/
+# Gitee：https://gitee.com/weili_yzzcq/
+# Blog：https://2694048168.github.io/
+# Blog：https://weili_yzzcq.gitee.io/ 
+# Blog：https://blog.csdn.net/weixin_46782218/
+# #############################################################
+
+# step1 CMakeLists.txt
+# 1、工程配置部分
+# 指定CMake最低版本号要求
+cmake_minimum_required (VERSION 3.5)
+# 项目信息
+project (the_contact_managerment_system)
+# 设置编译版本 如“-std=c++11”、“-std=c++14”、“-std=c++17”、“-std=c++20”
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -std=c++11")
+# 设置编译模式,如“Debug”、“Release”
+set (CMake_BUILD_TYPE "Debug")
+
+# 2、依赖执行部分
+# 设置源代码路径
+set (source_dir "${PROJECT_SOURCE_DIR}/src/")
+# 设置需要编译的源文件
+file (GLOB source_files "${source_dir}/*.cpp")
+# 设置编译的输出目标文件
+add_executable (the_contact_managerment_system ${source_files})
+
+# step2 编译结构目录
+# 创建项目工作空间
+mkdir the_contact_managerment_system
+# 进入项目工作空间
+cd the_contact_managerment_system
+# 创建 CMakelists.txt 文件
+touch CMakelists.txt
+# 编写 CMakelists.txt 内容
+vim CMakelists.txt
+# 创建外部编译目录
+mkdir build
+# 创建源代码文件
+mkdir src
+# 进入源代码目录
+cd src
+# 创建 Main.cpp 文件
+touch Main.cpp
+
+# step3 CodeLite
+# 进入外部编译目录 build
+cd build
+# 为 CodeLite IDE 创建工作空间
+cmake -G "CodeLite - Unix Makefiles" ..
+# 查看生成的项目工作空间文件
+ll
+# 启动 CodeLite IDE 打开项目工作空间文件
+codelite the_contact_managerment_system.workspace &
+
+# step4 继续完成项目的内容，同时完善 CMakelists.txt 文件
