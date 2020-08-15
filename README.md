@@ -1,4 +1,4 @@
-![CPlusPlus Logo](./Logo.jpg)
+![CPlusPlus Logo](./Logo.png)
 
 --------------------------------------------------------------------------------
 # C-LanguageProjectCombat
