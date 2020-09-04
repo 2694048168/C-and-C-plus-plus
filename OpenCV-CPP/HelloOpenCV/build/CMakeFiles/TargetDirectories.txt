@@ -1,0 +1,3 @@
+D:/VSCode/VSCodeWorkSpace/OpenCV-CPP/HelloOpenCV/build/CMakeFiles/HelloOpenCV.dir
+D:/VSCode/VSCodeWorkSpace/OpenCV-CPP/HelloOpenCV/build/CMakeFiles/edit_cache.dir
+D:/VSCode/VSCodeWorkSpace/OpenCV-CPP/HelloOpenCV/build/CMakeFiles/rebuild_cache.dir

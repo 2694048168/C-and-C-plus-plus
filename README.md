@@ -1,35 +1,14 @@
 ![CPlusPlus Logo](./Logo.png)
 
 --------------------------------------------------------------------------------
-# C-LanguageProjectCombat
+## C/CPP-LanguageProject
 
-## 用 C 语言实现的一些项目，C 语言入门级的实战程序
-
-### Student-Management-System
-### 学生信息管理系统
-* 版本1——mian.c源代码和exe执行程序、README.txt文件
-* 版本2——mian.c源代码和exe执行程序、README.txt文件
-* 版本3——mian.cp等整个项目的源代码和exe执行程序、README.txt文件
-
-### Tetris-game
-### 俄罗斯方块游戏
-* main.c源代码
-* exe可执行程序
-* music.mp3音频文件
-* README.txt文件
-
-
-## 用 C++ 语言实现的一些项目，入门级的实战程序
-
-### Address-Book-System
-### 通讯录系统
-* Main.cpp 源代码
-* CMakeList.txt 配置文件
-* config.txt shell操作命令
-
-### Staff-Management-System
-### 职工管理系统
-* Main.cpp 主程序源代码文件
+### OpenCV-CPP
+### OpenCV 2.x API OpenCV for C++
+- OpenCV 学习例子 & CMake
+- 数字图像处理
+- 视频处理
+- 机器学习 & 深度学习
 
 ### PrimerC-plus-plus_exercises
 ### 经典书籍PrimerC++练习答案
@@ -51,6 +30,29 @@
 * chapter6 第六章全部习题以及源代码
 * chapter7 第七章全部习题以及源代码
 
+### Student-Management-System
+### 学生信息管理系统
+* 版本1——mian.c源代码和exe执行程序、README.txt文件
+* 版本2——mian.c源代码和exe执行程序、README.txt文件
+* 版本3——mian.cp等整个项目的源代码和exe执行程序、README.txt文件
+
+### Tetris-game
+### 俄罗斯方块游戏
+* main.c源代码
+* exe可执行程序
+* music.mp3音频文件
+* README.txt文件
+
+
+### Address-Book-System
+### 通讯录系统
+* Main.cpp 源代码
+* CMakeList.txt 配置文件
+* config.txt shell操作命令
+
+### Staff-Management-System
+### 职工管理系统
+* Main.cpp 主程序源代码文件
 
 
 ## About Author
