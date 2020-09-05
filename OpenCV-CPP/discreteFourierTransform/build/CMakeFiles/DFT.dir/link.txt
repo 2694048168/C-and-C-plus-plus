@@ -1,0 +1,3 @@
+D:\CodeLite\cmake-3.17.0-win64-x64\bin\cmake.exe -E rm -f CMakeFiles\DFT.dir/objects.a
+D:\CodeLite\MinGW\bin\ar.exe cr CMakeFiles\DFT.dir/objects.a @CMakeFiles\DFT.dir\objects1.rsp
+D:\CodeLite\MinGW\bin\g++.exe  -Wall -Werror -std=c++17   -Wl,--whole-archive CMakeFiles\DFT.dir/objects.a -Wl,--no-whole-archive  -o bin\DFT.exe -Wl,--out-implib,bin\libDFT.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\DFT.dir\linklibs.rsp

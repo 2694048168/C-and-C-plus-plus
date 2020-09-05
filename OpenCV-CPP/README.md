@@ -1,7 +1,8 @@
 # OpencCV-CPP
 
 ## 使用 OpenCV 2.x API， 用 C++ 完成 OpenCV 例子
-## 使用 OpenCV 1.x API， 用 C 完成 OpenCV 例子
+ 
+**使用 OpenCV 1.x API， 用 C 完成 OpenCV 例子**
 
 ## OpenCV for CPlusPlus
 
@@ -32,6 +33,9 @@
 - HelloOpenCV : 实现图像的读取、显示、和写入
 
 - addingImage : 简单图像线性融合 dst = alpha * src1 + beta * src2
+
+- discreteFourierTransform : 离散傅里叶变换，以及功率图谱
+
 
 
 
