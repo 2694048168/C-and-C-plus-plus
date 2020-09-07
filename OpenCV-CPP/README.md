@@ -36,6 +36,10 @@
 
 - discreteFourierTransform : 离散傅里叶变换，以及功率图谱
 
+- canndyDetector : canndy 算子边缘检测算法
+
+- GeometricTransforms ： 图像几何变换/仿射变换 
+
 
 
 
