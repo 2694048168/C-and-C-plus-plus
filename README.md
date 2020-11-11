@@ -3,6 +3,9 @@
 --------------------------------------------------------------------------------
 ## C/CPP-LanguageProject
 
+### CUDA_CPlusPlus
+- 使用 C/C++ 开发 CUDA 加速 Nvidia GPU 编程
+
 ### OpenCV-CPP
 ### OpenCV 2.x API OpenCV for C++
 - OpenCV 学习例子 & CMake

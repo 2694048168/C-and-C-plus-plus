@@ -1,4 +1,4 @@
-![CPlusPlus Logo](./LOGO.jpg)
+![CPlusPlus Logo](./nvidia-logo.png)
 
 --------------------------------------------------------------------------------
 ## CPlusPlus for CUDA
