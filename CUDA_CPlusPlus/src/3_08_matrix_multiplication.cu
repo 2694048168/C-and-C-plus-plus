@@ -106,8 +106,6 @@ __global__ void gpu_matrix_multiplcation_shared(float *device_a, float *device_b
 
 int main(int argc, char *argv[])
 {
-  
-
   // Define host and device arrays.
   float host_a[size][size], host_b[size][size], host_result[size][size];
   float *device_a, *device_b, *device_result;
