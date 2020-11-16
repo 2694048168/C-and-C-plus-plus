@@ -6,6 +6,8 @@
  * 了解 GPU 硬件设备的各项属性，有利于高效的利用 GPU 资源。
  * 针对特定的硬件设备 GPU，为应用程序开发分配合理的资源。
  * 具体使用的时候，需要查 CUDA 编程手册以及对应 GPU 硬件资源信息。
+ *
+ * D:\Nvidia\Samples\1_Utilities\deviceQuery\deviceQuery.cpp
  */
 int main(int argc, char **argv)
 {
@@ -64,7 +66,7 @@ int main(int argc, char **argv)
   std::cout << "Total amount of global memory: " << (float)device_property.totalGlobalMem / 1048576.0f << " MBytes" << std::endl;
 
   // 具有最多流处理器的设备,如果有多个设备
-  // printf(" (%2d) mutilprocessors", device_property.mutilProcessorCount);
+  printf(" (%2d) mutilprocessors\n", device_property.multiProcessorCount);
   // std::cout << device_property.mutilProcessorCount << "mutilprocessors" << std::endl;
 
   // GPU 时钟速率，以 KHz 为单位进行返回
