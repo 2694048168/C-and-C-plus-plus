@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/data.hpp
+vector
+-
+stdint.h
+../include/stdint.h
+stdio.h
+../include/stdio.h
+
+../include/data_handler.hpp
+fstream
+../include/fstream
+stdint.h
+../include/stdint.h
+data.hpp
+../include/data.hpp
+vector
+-
+string
+-
+map
+-
+unordered_set
+-
+math.h
+-
+
+D:/VSCode/workspace/CPP_for_MachineLearning/mnist/extract_transform_load.cpp
+data_handler.hpp
+D:/VSCode/workspace/CPP_for_MachineLearning/mnist/data_handler.hpp
+

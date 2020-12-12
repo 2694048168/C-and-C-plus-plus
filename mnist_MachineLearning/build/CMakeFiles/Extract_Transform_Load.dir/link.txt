@@ -1,0 +1,3 @@
+D:\cmake\bin\cmake.exe -E rm -f CMakeFiles\Extract_Transform_Load.dir/objects.a
+D:\mingw64\bin\ar.exe cr CMakeFiles\Extract_Transform_Load.dir/objects.a @CMakeFiles\Extract_Transform_Load.dir\objects1.rsp
+D:\mingw64\bin\g++.exe  -std=c++17 -g -Wl,--whole-archive CMakeFiles\Extract_Transform_Load.dir/objects.a -Wl,--no-whole-archive -o Extract_Transform_Load.exe -Wl,--out-implib,libExtract_Transform_Load.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Extract_Transform_Load.dir\linklibs.rsp
