@@ -9,29 +9,15 @@
 ### OpenCV-CPP
 ### OpenCV 2.x API OpenCV for C++
 - OpenCV 学习例子 & CMake
-- 数字图像处理
-- 视频处理
-- 机器学习 & 深度学习
+
+### 21days_CPlusPlus
+### 21 天学通 C++ (第8版)
 
 ### PrimerC-plus-plus_exercises
 ### 经典书籍PrimerC++练习答案
-* src/chapter01 第一章全部习题以及相应的源代码
-* src/chapter02 第二章全部习题以及相应的源代码
-* src/chapter03 第三章全部习题以及相应的源代码
-* src/chapter04 第四章全部习题以及相应的源代码
-* src/chapter05 第五章全部习题以及相应的源代码
-* src/chapter06 第六章全部习题以及相应的源代码
-* src/chapter07 第七章全部习题以及相应的源代码
 
 ### Essential-C++
 ### 经典书籍 Essential C++练习答案
-* chapter1 第一章全部习题以及源代码
-* chapter2 第二章全部习题以及源代码
-* chapter3 第三章全部习题以及源代码
-* chapter4 第四章全部习题以及源代码
-* chapter5 第五章全部习题以及源代码
-* chapter6 第六章全部习题以及源代码
-* chapter7 第七章全部习题以及源代码
 
 ### Student-Management-System
 ### 学生信息管理系统
