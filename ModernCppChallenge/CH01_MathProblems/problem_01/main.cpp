@@ -22,9 +22,9 @@ int main(int argc, char** argv)
   std::cin >> limit;
 
   // the trick to being able to sum up to a larger limit 
-  // unsigned long long sum = 0;
+  unsigned long long sum = 0;
   // unsigned long sum = 0;
-  unsigned int sum = 0;
+  // unsigned int sum = 0;
   for (unsigned int i = 3; i < limit; ++i)
   {
     // modulo operation to check 
