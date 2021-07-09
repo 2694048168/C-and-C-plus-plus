@@ -5,6 +5,7 @@
 
 ### CUDA_CPlusPlus
 - 使用 C/C++ 开发 CUDA 加速 Nvidia GPU 编程
+- Install_Ubuntu.md Linux-Ubuntu Note
 
 --------------------------------------------------------------------------------
 
@@ -70,12 +71,9 @@
 --------------------------------------------------------------------------------
 
 - QQ Mail：2694048168@qq.com
-- QQ：2694048168
 - Weibo：云主宰苍穹
 - GitHub: https://github.com/2694048168/
 - Gitee：https://gitee.com/weili_yzzcq/
-- Blog：https://2694048168.github.io/
-- Blog：https://weili_yzzcq.gitee.io/ 
 - Blog：https://blog.csdn.net/weixin_46782218/
 
 --------------------------------------------------------------------------------
