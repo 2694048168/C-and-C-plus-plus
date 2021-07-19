@@ -8,6 +8,10 @@ sudo passwd
 # 4. 设置终端大小和透明度 100 X 30
 # 5. FTP 文件传输工具 FileZilla
 # https://filezilla-project.org/
+sudo apt update && apt install vsftpd
+sudo gedit /etc/vsftpd.conf
+# 修改 ftp 配置文件，允许写入, 然后重启 OS
+# write_enable=YES
 ```
 
 # tools
