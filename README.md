@@ -8,6 +8,20 @@
 - Install_Ubuntu.md Linux-Ubuntu Note
 
 --------------------------------------------------------------------------------
+### OpencCV_CPP_Linux
+
+### OpenCV for CPlusPlus on Ubuntu Linux dist.
+
+### [Reference Docs](https://docs.opencv.org/)
+
+OpenCV ([Open Source Computer Vision Library](https://opencv.org/)) 是一个开源的计算机视觉算法库，包含数百种计算机视觉算法。
+
+#### What we can learning? (README in OpencCV_CPP_Linux)
+
+- 熟练使用 C++ 进行程序设计，计算机视觉实战
+- 熟练学会 Linux Ubuntu 发版本的常用终端命令以及 shell 脚本
+- 熟练使用计算机视觉 OpenCV 库
+- 熟练使用 CMake 进行编译和链接 C++ 工程项目
 
 ### OpenCV-CPP
 ### OpenCV 2.x API OpenCV for C++
@@ -70,7 +84,7 @@
 
 --------------------------------------------------------------------------------
 
-- QQ Mail：2694048168@qq.com
+- Mail：2694048168@qq.com
 - Weibo：云主宰苍穹
 - GitHub: https://github.com/2694048168/
 - Gitee：https://gitee.com/weili_yzzcq/
