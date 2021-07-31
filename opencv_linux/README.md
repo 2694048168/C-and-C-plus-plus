@@ -46,6 +46,11 @@
 - 用中值滤波器进行图像滤波
 - 用定向滤波器检测边缘
 - 计算图像的拉普拉斯算子
+- 用 Canny 算子检测图像轮廓
+- 用霍夫变换检测直线
+- 点集的直线拟合
+- 提取连续区域
+- 计算区域的形状描述子
 
 ----------------------------
 
@@ -204,6 +209,51 @@ git config http.postBuffer 524288000
 git config -l
 
 # 利用 VSCode 智能插件保证路径不会写错 Path Intellisense
+```
+
+### Shell
+
+```shell
+# 检查当前可用的 shell
+cat /etc/shells
+
+# 查看当前使用的shell
+echo $SHELL
+
+# 安装 zsh shell
+sudo apt install zsh -y
+
+# 查看 shell 版本 切换默认使用 zsh
+zsh --version
+chsh -s $(which zsh)
+chsh -s $(which bash) root
+
+# 安装 oh-my-zsh, 配置 zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# 下载 zsh-syntax-highlighting 语法高亮插件
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
+git clone https://hub.fastgit.org/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
+
+# 下载 zsh-autosuggestions 自动提示插件
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
+git clone https://hub.fastgit.org/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
+
+# 配置 .zshrc文件 更换默认主题为： agnoster
+vim ~/.zshrc
+gedit ~/.zshrc
+
+# 添加内容
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+# 配置生效
+source ~/.zshrc
+
+# xwininfo，记下输出的最后一行
+# -geometry 110x30+246-59
+gnome-terminal --geometry 110x30+246-59 
+
 ```
 
 
