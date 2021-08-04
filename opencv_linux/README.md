@@ -73,15 +73,11 @@ OpenCV ([Open Source Computer Vision Library](https://opencv.org/)) 是一个开
 ### Installation in Linux
 
 ```shell
+# 参考文档：https://docs.opencv.org/4.5.3/d6/d15/tutorial_building_tegra_cuda.html
 # 安装编译工具
-sudo apt update && sudo apt install -y build-essential cmake git wget unzip pkg-config
+sudo apt update && sudo apt install -y build-essential cmake git wget unzip
 # 安装依赖
-sudo apt install -y libgtk2.0-dev
-sudo apt install -y libgtk-3-dev
-sudo apt install -y libcanberra-gtk-module libcanberra-gtk3-module
-sudo apt install -y libavcodec-dev libavformat-dev libjpeg-dev libswscale-dev libtiff5-dev
-sudo apt install -y libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libjasper-dev libdc1394-22-dev
-sudo apt install -y libpng-dev libopenexr-dev libtiff-dev libwebp-dev libtbb2 libtbb-dev libjpeg-dev
+sudo apt install -y libglew-dev libtiff5-dev zlib1g-dev libjpeg-dev libpng12-dev libjasper-dev  libavcodec-dev libavformat-dev libavutil-dev libpostproc-dev libswscale-dev libeigen3-dev libtbb-dev libgtk2.0-dev libgtk-3-dev pkg-config libcanberra-gtk-module libcanberra-gtk3-module
 
 # 修复可能安装出错的依赖
 sudo apt install -f
@@ -162,7 +158,7 @@ sudo make uninstall
 # 安装 OpenCV shell 脚本 build_opencv.sh
 mkdir -p build && cd build
 
-cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules -DOPENCV_ENABLE_NONFREE=ON -DCMAKE_BUILD_TYPE=Release -DINSTALL_PYTHON_EXAMPLES=OFF -DWITH_CUDA=OFF -DWITH_QT=OFF -DWITH_GTK=ON ../opencv-master
+cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules -DOPENCV_ENABLE_NONFREE=ON -DCMAKE_BUILD_TYPE=Release -DINSTALL_PYTHON_EXAMPLES=OFF -DWITH_CUDA=OFF -DWITH_QT=OFF -DWITH_GTK=ON -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_JAVA=OFF -DCMAKE_INSTALL_PREFIX=/usr/local ../opencv-master
 
 cmake --build . -j8
 
@@ -267,7 +263,6 @@ source ~/.zshrc
 gnome-terminal --geometry 110x30+246-59 
 
 ```
-
 
 ----------------------------
 
