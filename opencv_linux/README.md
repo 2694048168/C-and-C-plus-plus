@@ -55,6 +55,13 @@
 - 快速检测特征
 - 尺度不变特征的检测
 - 多尺度 FAST 特征的检测
+- 局部模板匹配
+- 描述并匹配局部强度值模式
+- 用二值描述子匹配关键点
+- 计算图像对的基础矩阵
+- 用 RANSAC 算法匹配图像
+- 计算两幅图像之间的单应矩阵
+- 检测图像中的平面目标
 
 ----------------------------
 
@@ -245,6 +252,7 @@ git clone https://hub.fastgit.org/zsh-users/zsh-syntax-highlighting.git ${ZSH_CU
 git clone https://hub.fastgit.org/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
 
 # 配置 .zshrc文件 更换默认主题为： agnoster
+sudo apt-get install fonts-powerline  # agnoster 主题需要以来字体
 vim ~/.zshrc
 gedit ~/.zshrc
 
