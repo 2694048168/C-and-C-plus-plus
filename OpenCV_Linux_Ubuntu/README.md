@@ -62,6 +62,10 @@
 - 用 RANSAC 算法匹配图像
 - 计算两幅图像之间的单应矩阵
 - 检测图像中的平面目标
+- 相机标定
+- 相机姿态还原
+- 用标定相机实现三维重建
+- 计算立体图像的深度
 
 ----------------------------
 
@@ -81,13 +85,14 @@ OpenCV ([Open Source Computer Vision Library](https://opencv.org/)) 是一个开
 # 下载失败：https://blog.csdn.net/valley2013/article/details/106911688
 # 安装编译工具
 sudo apt update && sudo apt install -y build-essential cmake git wget unzip
+
+# dlib 相比于 OpenCV 的优点之一就是不需要依赖第三方库
 # 安装依赖
 sudo apt install -y libglew-dev libtiff5-dev zlib1g-dev libjpeg-dev libavcodec-dev libavformat-dev libavutil-dev libpostproc-dev libswscale-dev libeigen3-dev libtbb-dev libgtk2.0-dev libgtk-3-dev 
 
 sudo apt install pkg-config libcanberra-gtk-module libcanberra-gtk3-module
 
 sudo apt install libgtk2.O-dev libavcodec-dev libavformat-dev libjpeg.dev libpng-dev libtiff-dev libtiff4.dev libswscale-dev libjasper-dev libcur14-openssl-dev libtbb2 libdc1394-22-dev
-
 
 # 修复可能安装出错的依赖
 sudo apt install -f
@@ -99,6 +104,7 @@ wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/mast
 unzip opencv.zip
 unzip opencv_contrib.zip
 tar -zxvf opencv.tar.gz
+
 
 # 配置并构建源码
 mkdir -p build && cd build
@@ -112,6 +118,14 @@ cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules ../opencv-mas
 
 # 5. 使用 pkg-config 进行配置，使得可以直接使用 g++编译(利用cmake不需要): -DOPENCV_GENERATE_PKGCONFIG=NO
 # -----------------------------------------------
+# 首先为系统添加 OpenCV 库
+sudo gedit /etc/ld.so.conf.d/opencv.conf
+# 添加内容
+/usr/local/lib
+# 使 OpenCV 配置文件生效
+sudo ldconfig
+
+# 然后配置 bash 环境变量(配置系统级别和用户级别都可以)
 # 查看该文件是否存在（OPENCV_GENERATE_PKGCONFIG=YES参数保证此文件存在）
 cat /usr/local/opencv4/lib/pkgconfig/opencv4.pc
 # 把上面的文件添加到PKG_CONFIG_PATH
@@ -121,7 +135,7 @@ sudo vim /etc/profile.d/pkgconfig.sh
 # 激活文件
 source /etc/profile
 # 验证配置，如果不报错则说明正常
-pkg-config --libs opencv4
+pkg-config --cflags --libs opencv4
 # -----------------------------------------------
 
 # 6. 是否需要 Python 版本的库： -DINSTALL_PYTHON_EXAMPLES=OFF
@@ -185,24 +199,39 @@ cmake --build . -j8
 
 
 ```shell
-# CMakeListx.txt CMake构建文件样例
+# CMakeListx.txt CMake 构建文件样例
+# cmake needs this line
 cmake_minimum_required(VERSION 3.10)
 
-project(project_name)
+# Define project name
+project(opencv_example_project)
 
+set(OpenCV_DIR /home/weili/opencv4-install/)
+set(OpenCV_DIR "/usr/local/lib/cmake/opencv4/")
 # CMake 链接第三方库方法，通过 /usr/local/lib/cmake/opencv4/*.cmake 文件
 # 其中包含 OpenCV 第三方库的头文件位置以及库文件，直接查找即可 find_package
-set(OpenCV_DIR "/usr/local/lib/cmake/opencv4/")
+
+# Find OpenCV, you may need to set OpenCV_DIR variable
+# to the absolute path to the directory containing OpenCVConfig.cmake file
+# via the command line or GUI
 find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
 
-# 设置所有待编译的源文件
-file(GLOB SRC_FILE *.cpp)
-message(STATUS ${SRC_FILE})
-add_executable(project_name ${SRC_FILE})
+# If the package has been found, several variables will
+# be set, you can find the full list with descriptions
+# in the OpenCVConfig.cmake file.
+# Print some message showing some of them
+message(STATUS "OpenCV library status:")
+message(STATUS "    config: ${OpenCV_DIR}")
+message(STATUS "    version: ${OpenCV_VERSION}")
+message(STATUS "    libraries: ${OpenCV_LIBS}")
+message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
-# 链接
-target_link_libraries(project_name ${OpenCV_LIBS})
+# Declare the executable target built from your sources
+add_executable(opencv_example example.cpp)
+
+# Link your application with OpenCV libraries
+target_link_libraries(opencv_example PRIVATE ${OpenCV_LIBS})
+
 
 # ----------------------------------
 # 使用 CMake 进行编译和链接
@@ -215,67 +244,8 @@ cmake --build .
 # 运行程序
 ./build/project_name
 ```
-
-### Git
-
-```shell
-git init
-git config --global user.email "weili_yzzcq@163.com"
-git config --global user.name "Wei Li"
-# GitHub上 传文件不能超过1 00M 的解决办法, 修改为 500M
-git config http.postBuffer 524288000
-git config -l
-
-# 利用 VSCode 智能插件保证路径不会写错 Path Intellisense
-```
-
-### Shell
-
-```shell
-# 检查当前可用的 shell
-cat /etc/shells
-
-# 查看当前使用的shell
-echo $SHELL
-
-# 安装 zsh shell
-sudo apt install zsh -y
-
-# 查看 shell 版本 切换默认使用 zsh
-zsh --version
-chsh -s $(which zsh)
-chsh -s $(which bash) root
-
-# 安装 oh-my-zsh, 配置 zsh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# 下载 zsh-syntax-highlighting 语法高亮插件
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
-git clone https://hub.fastgit.org/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
-
-# 下载 zsh-autosuggestions 自动提示插件
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
-git clone https://hub.fastgit.org/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
-
-# 配置 .zshrc文件 更换默认主题为： agnoster
-sudo apt-get install fonts-powerline  # agnoster 主题需要以来字体
-vim ~/.zshrc
-gedit ~/.zshrc
-
-# 添加内容
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-
-# 配置生效
-source ~/.zshrc
-
-# xwininfo，记下输出的最后一行
-# -geometry 110x30+246-59
-gnome-terminal --geometry 110x30+246-59 
-
-```
-
 ----------------------------
+
 
 ## About Author
 

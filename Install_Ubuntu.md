@@ -127,6 +127,54 @@ sudo apt update
 # https://code.visualstudio.com/download
 sudo apt install code_1.58.0-1625728071_amd64.deb
 sudo dpkg -i code_1.58.0-1625728071_amd64.deb
+
+cpp.json 配置智能指令 cpp
+
+{
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Print to conaole":{
+    "prefix": "cpp",    //在新建立的页面中输入C++就会有智能提示，Tab就自动生成好了
+    "body": [
+			  "/**",
+			  " * @File    : ${TM_FILENAME}",
+		      " * @Brief   : $1",
+		      " * @Link    : $2",
+			  " * @Author  : Wei Li",
+			  " * @Date    : ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+			  "*/",
+				"", //空行
+        "#include <iostream>",
+        "", //空行
+        "int main(int argc, char** argv)",   //main()函数
+        "{",
+        "    $0",    //最终光标会在这里等待输入
+        "    return 0;", //结束
+        "}",
+        "",
+    ],
+}
+}
+
+vscode 插件
+c/c++ IntelliSense
+Guides
+Path Intellisense
+Python
+Python Docstring Generate
+CMake Tools
 ```
 
 - PyTorch/TensorFlow
