@@ -99,6 +99,21 @@ sudo apt install -f
 fcitx-configtool
 ```
 
+- ubuntu实时显示内存和CPU占用以及网速的情况
+```shell
+# 添加软件源的命令
+sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor && sudo apt update
+# 如果需要删除该软件源可以使用
+sudo add-apt-repository -r ppa:fossfreedom/indicator-sysmonitor
+
+# 安装 indicator-sysmonitor
+sudo apt install indicator-sysmonitor -y
+
+# 找到并打开 System Monitor Indicator 进行设置开机自启动和显示指定状态栏信息
+# 另一种方法就是使用 美化插件 NetSpeed 扩展
+
+```
+
 - gcc/g++/make
 ```shell
 sudo apt update
