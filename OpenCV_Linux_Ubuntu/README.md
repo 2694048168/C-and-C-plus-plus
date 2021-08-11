@@ -80,6 +80,7 @@
 ### Problem OpenCV3.x VS OpenCV4.x
 - 25_calibrating_camera
 - 29_visual_tracker_video
+- 32_ML_train_SVM
 
 ----------------------------
 
