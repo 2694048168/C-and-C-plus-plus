@@ -226,3 +226,62 @@ pip install tensorflow==2.5.0
 
 pip install tensorflow-cpu==2.5.0
 ```
+
+
+# Manjaro OS install
+
+```shell
+# 选择国内镜像源 - 排名出界面进行选择
+sudo pacman-mirrors -i -c China -m rank
+
+# 更新镜像源索引
+sudo pacman -Syy
+
+# 更新整个系统
+sudo pacman -Syu
+
+# 下面要编辑 pacman.conf，添加 archlinuxcn 源。
+# archlinuxcn 是一个由 Arch Linux 中文社区驱动的非官方用户仓库
+sudo vi /etc/pacman.conf
+# 在文件最后添加
+[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+
+# 更新软件源索引并安装
+sudo pacman -Syy
+sudo pacman -S archlinux-keyring
+
+# 有了 archlinuxcn 源就可以安装输入法了。 
+# 安装时不能直接安装最后一个包，靠依赖安装 fcitx，这样会导致 fcitx 版本缺失。 
+# 须使用下面顺序安装，其中 fcitx-im 使用默认选项，安装每个版本的 fcitx
+sudo pacman -S fcitx
+sudo pacman -S fcitx-im
+sudo pacman -S fcitx-configtool
+sudo pacman -S fcitx-sogoupinyin
+
+# 安装好后编辑用户，使在每个环境下都使用 fcitx。编辑 ~/.xprofile 文件
+vi ~/.xprofile
+# 添加内容
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
+# 设置结束后重启即可在fcitx中找到输入法了
+
+```
+
+
+- 基本开发配置
+
+```shell
+# sudo apt install build-essential
+sudo pacman -Sy base-devel
+
+# install VSCode
+sudo pacman -S code
+
+# install Git
+sudo pacman -S git
+
+```
