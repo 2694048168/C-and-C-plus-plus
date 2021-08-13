@@ -142,10 +142,11 @@ sudo pacman -S archlinux-keyring
 # 有了 archlinuxcn 源就可以安装输入法了。 
 # 安装时不能直接安装最后一个包，靠依赖安装 fcitx，这样会导致 fcitx 版本缺失。 
 # 须使用下面顺序安装，其中 fcitx-im 使用默认选项，安装每个版本的 fcitx
+# 使用 yay 安装最简单，百度一下就知道了
 sudo pacman -S fcitx
 sudo pacman -S fcitx-im
 sudo pacman -S fcitx-configtool
-sudo pacman -S fcitx-sogoupinyin
+sudo pacman -S fcitx-googlepinyin
 
 # 安装好后编辑用户，使在每个环境下都使用 fcitx。编辑 ~/.xprofile 文件
 vi ~/.xprofile
@@ -187,13 +188,79 @@ sudo pacman -S indicator-sysmonitor
 - 基本开发配置
 
 ```shell
-# sudo apt install build-essential
+# 配置 zsh 和 oh-my-zsh
+sudo pacman -Syu zsh
+# 查看 shell 版本 切换默认使用 zsh
+echo $SHELL
+zsh --version
+which zsh
+chsh -s $(which zsh)
+
+# 安装 oh-my-zsh, 配置 zsh
+# https://ohmyz.sh/
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# 下载 zsh-syntax-highlighting 语法高亮插件
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
+git clone https://hub.fastgit.org/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
+
+# 下载 zsh-autosuggestions 自动提示插件
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
+git clone https://hub.fastgit.org/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
+
+# 配置 .zshrc文件 更换默认主题为： ZSH_THEME=alanpeabody
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+nano ~/.zshrc
+# 添加内容
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+# 配置生效
+source ~/.zshrc
+. ~/.zshrc
+
+
+# sudo apt install build-essential (包含一些的基本工具 gcc make g++ 等等)
 sudo pacman -Sy base-devel
 
 # install VSCode
 sudo pacman -S code
 
 # install Git
-sudo pacman -S git
+sudo pacman -S git cmake
+
+# deepin 系的软件
+yay -s deepin-wine-wechat #微信
+yay -S deepin.com.thunderspeed #迅雷
+
+# 开发软件
+sudo pacman -S jdk8-openjdk
+sudo pacman -S cmake
+sudo pacman -S clang
+sudo pacman -S vim
+sudo pacman -S pycharm-professional # Python IDE
+sudo pacman -S goland # Go IDE
+sudo pacman -S visual-studio-code-bin # vscode
+sudo pacman -S code # vscode
+sudo pacman -S qtcreator # 一款QT开发软件
+sudo pacman -S gitkraken # Git 管理工具
+
+# 办公软件
+sudo pacman -S google-chrome
+sudo pacman -S foxitreader # pdf 阅读
+sudo pacman -S wps-office
+yay -S typora # markdown 编辑
+yay -S xmind #思维导图
+
+# 娱乐软件
+sudo pacman -S netease-cloud-music #网易云音乐
+
+# 下载软件
+sudo pacman -S filezilla  # FTP/SFTP
+
+# 终端
+sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A 'Arch Linux'
+sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat
+yay -S tree #以树状图列出目录的内容
 
 ```

@@ -22,6 +22,17 @@ sudo gedit /etc/vsftpd.conf
 # 3. 确定显卡等硬件的驱动安装以及更新
 # 4. 终端 shell 设置 zsh 以及美化
 # 5. Ubutu20.04 美化：https://zhuanlan.zhihu.com/p/176977192
+
+
+# apt 管理工具
+sudo apt update  # 获取最新的软件包列表
+sudo apt install # 安装软件
+sudo apt remove  # 卸载软件
+sudo apt clean   # 清理下载缓存的安装包
+
+# 利用 dpkg 管理 deb 格式
+sudo dpkg -i xxx.deb  # 安装 deb 格式的软件
+sudo dpkg -r xxx      # 卸载 deb 格式安装的软件
 ```
 
 # Terminal Shell
