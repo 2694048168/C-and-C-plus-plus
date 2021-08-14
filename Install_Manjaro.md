@@ -178,9 +178,12 @@ sudo systemctl start vsftpd
 
 - Manjaro 实时显示内存和CPU占用以及网速的情况
 ```shell
+# https://github.com/fossfreedom/indicator-sysmonitor
+
 sudo pacman -S indicator-sysmonitor
 
 # 找到并打开 System Monitor Indicator 进行设置开机自启动和显示指定状态栏信息
+CPU {cpu}  {cputemp}   |  GPU {nvgpu}  {nvgputemp}  |  MEM {mem}  |  SWAP {swap}  |  Net Speed Compact {netcomp}  |  Total Net Speed {totalnet}
 
 ```
 
