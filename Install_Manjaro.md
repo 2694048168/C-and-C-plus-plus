@@ -178,6 +178,9 @@ sudo systemctl start vsftpd
 
 - Manjaro 实时显示内存和CPU占用以及网速的情况
 ```shell
+# Linus-Torvalds-Talk-is-cheap-Show-me-the-code
+# https://quotefancy.com/quote/1445782/Linus-Torvalds-Talk-is-cheap-Show-me-the-code
+
 # https://github.com/fossfreedom/indicator-sysmonitor
 
 sudo pacman -S indicator-sysmonitor
