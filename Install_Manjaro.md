@@ -195,12 +195,28 @@ sudo pacman -S guake
 # 终端 tmux
 # Tmux 是一个终端复用器（terminal multiplexer），非常有用，属于常用的开发工具
 # https://github.com/tmux/tmux/wiki
+# https://learnxinyminutes.com/docs/zh-cn/tmux-cn/
+# https://ovirgo.com/tmux.html
 # 简介：https://www.ruanyifeng.com/blog/2019/10/tmux.html
 sudo pacman -S tmux
 
-Ctrl+b %：划分左右两个窗格。
-Ctrl+b "：划分上下两个窗格。
+# 进入 tmux 终端
+tmux
+
+# 退出 tmux 终端
+Ctrl + d
+
+# 帮助命令的快捷键是 Ctrl+b ?
+# 它的用法是，在 Tmux 窗口中，先按下 Ctrl+b，再按下 ?，就会显示帮助信息。
+# 然后，按下 ESC 键或q键，就可以退出帮助
+
+# 划分左右两个窗格 先按下激活键 Ctrl+b, 再按下 shift+”
+Ctrl+b %
+
+Ctrl+b "：划分上下两个窗格
+
 Ctrl+b <arrow key>：光标切换到其他窗格。<arrow key>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
+
 Ctrl+b ;：光标切换到上一个窗格。
 Ctrl+b o：光标切换到下一个窗格。
 Ctrl+b {：当前窗格与上一个窗格交换位置。
@@ -294,5 +310,40 @@ sudo pacman -S filezilla  # FTP/SFTP
 sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A 'Arch Linux'
 sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat
 yay -S tree #以树状图列出目录的内容
+
+```
+
+- 配置 python 开发环境
+```shell
+which python
+which python3
+python --version
+python3 --version
+
+# 安装 pip 包管理工具
+# python-packageName
+# python2-packaName
+sudo pacman -Syy python-pip
+
+# 设置全局默认pypi国内镜像源地址，只需要一个即可
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
+
+# 创建 python 虚拟环境
+# https://docs.python.org/zh-cn/3/tutorial/venv.html
+# https://docs.python.org/zh-cn/3/library/venv.html#module-venv
+# --------------------------------------------------------------
+# venv 模块支持使用自己的站点目录创建轻量级“虚拟环境”，可选择与系统站点目录隔离。
+# 每个虚拟环境都有自己的 Python 二进制文件（与用于创建此环境的二进制文件的版本相匹配），
+# 并且可以在其站点目录中拥有自己独立的已安装 Python 软件包集。
+# --------------------------------------------------------------
+python3 -m venv ~/virtual_env/pytorch
+
+# 激活环境 bash
+# 这个脚本是为 bash shell编写的。如果使用 csh 或 fish shell，你应该改用 activate.csh 或 activate.fish 脚本。）
+source tutor~/virtual_env/pytorch/bin/activate
+
+# 退出环境
+deactivate
 
 ```

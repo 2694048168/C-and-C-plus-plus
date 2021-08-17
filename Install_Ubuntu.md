@@ -135,11 +135,27 @@ sudo apt install guake
 # 终端 tmux
 # Tmux 是一个终端复用器（terminal multiplexer），非常有用，属于常用的开发工具
 # https://github.com/tmux/tmux/wiki
+# https://learnxinyminutes.com/docs/zh-cn/tmux-cn/
+# https://ovirgo.com/tmux.html
 # 简介：https://www.ruanyifeng.com/blog/2019/10/tmux.html
 sudo apt install tmux
 
-Ctrl+b %：划分左右两个窗格。
-Ctrl+b "：划分上下两个窗格。
+
+# 进入 tmux 终端
+tmux
+
+# 退出 tmux 终端
+Ctrl + d
+
+# 帮助命令的快捷键是 Ctrl+b ?
+# 它的用法是，在 Tmux 窗口中，先按下 Ctrl+b，再按下 ?，就会显示帮助信息。
+# 然后，按下 ESC 键或q键，就可以退出帮助
+
+# 划分左右两个窗格 先按下激活键 Ctrl+b, 再按下 shift+”
+Ctrl+b %
+
+Ctrl+b "：划分上下两个窗格
+
 Ctrl+b <arrow key>：光标切换到其他窗格。<arrow key>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
 Ctrl+b ;：光标切换到上一个窗格。
 Ctrl+b o：光标切换到下一个窗格。
