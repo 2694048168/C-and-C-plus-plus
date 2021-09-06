@@ -235,6 +235,16 @@ pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 # 3. 利用 pycharm 进行源代码的调试
 # 从 pycharm 的终端进行, 可以直接定位到虚拟环境中, pip 管理具体环境中的包
 
+# ----------------------------------
+# 安装 向日葵 进行远程控制
+# 1. 下载选择 图形版本 ，命令行版本不支持发起远程控制(只能被控制)
+# https://sunlogin.oray.com/download
+
+# 2. 使用 sudo 进行安装
+sudo dpkg -i sunloginclient-11.0.0.36662-amd64.deb
+
+# 3. 菜单栏启动即可使用
+
 ```
 
 - gcc/g++/make
