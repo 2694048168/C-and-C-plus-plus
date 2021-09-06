@@ -170,6 +170,71 @@ Ctrl+b Ctrl+<arrow key>：按箭头方向调整窗格大小。
 Ctrl+b q：显示窗格编号。
 
 
+## 配置 conda 和 pycharm 
+
+```shell
+# 1. download Miniconda for Linux
+# https://docs.conda.io/en/latest/miniconda.html#linux-installers
+
+# 2. 添加脚本的执行权限
+chmod a+x Miniconda3-latest-Linux-x86_64.sh
+
+# 3. 运行安装脚本
+./Miniconda3-latest-Linux-x86_64.sh
+# 4. 接受协议，确定安装路径，conda init 选择 no
+
+# 5. 添加 conda 到环境变量中
+# vi ~/.zshrc
+gedit ~/.zshrc
+export PATH=/home/weili/miniconda3/bin:$PATH  # 把 anaconda 安装的 bin 目录写入配置文件
+
+# 6. 生效环境配置，测试 conda
+source ~/.zshrc
+conda --version
+pip --version
+python3 --version
+which python3
+which pip
+which conda
+
+# ----------------------------------
+# 1. download pycharm-community
+# https://www.jetbrains.com/zh-cn/pycharm/download/#section=linux
+
+# 2. 解压 tar 包
+tar -zxvf pycharm-community-2021.2.1.tar.gz
+
+# 3. 重命名加压包后的文件夹名称
+mv pycharm-community-2021.2.1 pycharm-community
+
+# 4. 进入安装路径的 bin 执行启动脚本
+cd pycharm-community/bin
+./pycharm.sh
+
+# 5. 启动界面的左下角找到 setting 的图标
+# 选择 create Desttop Entry，创建桌面快捷入口和菜单入口，方便启动
+
+# ----------------------------------
+# 1. 利用 conda 进行虚拟环境的隔离
+# 创建虚拟环境
+conda create -n SR_pytorch_1_8_2 python=python3.8
+# 查看已有的环境名称
+conda info -e
+# 进入虚拟环境
+conda activate SR_pytorch_1_8_2
+# 退出环境
+conda deactivate or source deactivate
+# 删除环境
+conda remove --name SR_pytorch_1_8_2 --all
+
+# 2. 利用 pip 进行 python 软件包的管理
+# 配置 pip 软件镜像源, 永久设置全局 pypi 镜像源命令
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+
+# 3. 利用 pycharm 进行源代码的调试
+# 从 pycharm 的终端进行, 可以直接定位到虚拟环境中, pip 管理具体环境中的包
+
 ```
 
 - gcc/g++/make
