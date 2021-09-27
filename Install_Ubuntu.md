@@ -127,6 +127,10 @@ vim file
 
 # https://vimawesome.com/
 # https://github.com/junegunn/vim-plug
+
+# 利用 vscode 远程连接 ssh 完成代码的编辑和编译
+# vscode 插件 Remote-SSH
+ssh weili@192.168.128.128
 ```
 
 # tools
