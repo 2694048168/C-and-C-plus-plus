@@ -313,6 +313,35 @@ yay -S tree #以树状图列出目录的内容
 
 ```
 
+# Vim or NeoVim
+
+```shell
+# 0. vim 四种模式：普通模式；输入模式；命令模式；可视模式
+# 1. 普通模式：用于浏览文件，执行复制、粘贴、删除之类的操作
+# 2. 输入模式：用于编辑或者改变文件内容
+# 3. 命令模式：用于控制文件的保存，退出等操作
+# 4. 可视模式：用于可视化选择文件内容
+
+# 普通模式下
+# 5. 光标移动 hjkl
+# 6. num+hjkl, 表示光标移动行数，列数
+# 7. w 跳转下一个单词的开头
+# 8. b 跳转前一个单词的开头
+# 9. gg，跳转文件最上方
+# 10. G，跳转文件最下方
+# 11. ctrl+u，向上翻页
+# 12. ctrl+d，向下翻页
+# 13. y(yank)，表示复制，结合操作，yaw(Yank All Words)复制整个单词, y4j(复制当前向下4行内容)
+# 14. d(delete)，表示删除，结合操作，daw(Yank All Words)删除整个单词, d4j(删除当前向下4行内容)
+# 15. u(undo)，表示撤销
+# 16. c(change)，表示改变文件内容方式进行输入模式，caw(change all words)删除整个单词并进入输入模式，cc删除当前行并进入输入模式，c4j 删除当前向下4行并进入输入模式
+
+sudo apt install vim
+vim file
+
+# https://vimawesome.com/
+# https://github.com/junegunn/vim-plug
+```
 
 ## 配置 conda 和 pycharm 
 
@@ -361,7 +390,7 @@ cd pycharm-community/bin
 # ----------------------------------
 # 1. 利用 conda 进行虚拟环境的隔离
 # 创建虚拟环境
-conda create -n SR_pytorch_1_8_2 python=python3.8
+conda create -n SR_pytorch_1_8_2 python=3.8
 # 查看已有的环境名称
 conda info -e
 # 进入虚拟环境
