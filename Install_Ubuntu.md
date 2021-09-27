@@ -5,6 +5,12 @@
 sudo apt update
 # 3. 添加 root 密码
 sudo passwd
+# ssh 服务器
+sudo apt update
+sudo apt install openssh-server
+sudo systemctl status ssh
+# 防火墙？
+sudo ufw allow ssh
 # 4. 设置终端大小和透明度 100 X 30
 # 5. FTP 文件传输工具 FileZilla
 # https://filezilla-project.org/
