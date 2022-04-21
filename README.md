@@ -40,6 +40,7 @@ OpenCV ([Open Source Computer Vision Library](https://opencv.org/)) 是一个开
 
 ### Essential-C++
 ### 经典书籍 Essential C++练习答案
+### Effective C++
 
 --------------------------------------------------------------------------------
 
