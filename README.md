@@ -6,6 +6,7 @@
 ### CUDA_CPlusPlus
 - 使用 C/C++ 开发 CUDA 加速 Nvidia GPU 编程
 - Install_Ubuntu.md Linux-Ubuntu Note
+- CMakeReadme.md
 
 --------------------------------------------------------------------------------
 ### OpencCV_CPP_Linux
