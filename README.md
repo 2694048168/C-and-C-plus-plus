@@ -9,6 +9,7 @@
 
 ### OpenGL with C++
 - OpenGL_Cherno
+- OpenGL_Learning
 
 ### CMake with C++
 - CMakeExamples
