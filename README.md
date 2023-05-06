@@ -2,6 +2,18 @@
 
 > C/C++ language learning and some examples; OpenCV with C++; CMake with C++; CUDA with C++; OpenGL with C++; Vulkan with Modern C++. 
 
+### Quick Start
+
+```shell
+# step 1: clone the repo. and into the folder 'CppImageProcessing'
+git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
+
+# 查看每一个文件夹下的 'README.md' 文件说明
+# if you want to download specical folder, please using 'gitzip' tool to enter
+# the folder path, such as 'https://github.com/2694048168/C-and-C-plus-plus/tree/master/CppImageProcessing'.
+# [gitzip](http://kinolien.github.io/gitzip/)
+```
+
 ### Organization of Repo.
 ```
 . C-and-C-plus-plus

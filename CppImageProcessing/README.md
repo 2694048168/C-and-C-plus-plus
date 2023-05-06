@@ -12,8 +12,8 @@
 
 ```shell
 # step 1: clone the repo. and into the folder 'CppImageProcessing'
-git clone --recursive https://github.com/2694048168/CppImageProcessing.git
-cd CppImageProcessing
+git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
+cd C-and-C-plus-plus/CppImageProcessing
 
 # install C++ package manager 'vcpkg'
 # step 2: modify the 'vspkg' install path in the top 'CMakeLists.txt' file.
