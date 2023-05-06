@@ -1,7 +1,43 @@
 ![CPlusPlus Logo](./Logo.png)
 
-> C/C++ language learning and some examples; OpenCV with C++; CMake with C++; CUDA with C++; OpenGL with C++. 
+> C/C++ language learning and some examples; OpenCV with C++; CMake with C++; CUDA with C++; OpenGL with C++; Vulkan with Modern C++. 
 
+### Organization of Repo.
+```
+. C-and-C-plus-plus
+|—— CppImageProcessing
+|   |—— cuda_opencv
+|   |—— images
+|   |—— CMakeLists.txt
+|   |—— vcpkg.json
+|   |—— README.md
+|—— CUDA_Programming
+|   |—— 01_kernelFunction
+|   |—— CMakeLists.txt
+|   |—— README.md
+|—— OpenGL_Cherno
+|   |—— 00_opengl
+|   |—— external
+|   |—— |—— GLFW
+|   |—— |—— GLEW
+|   |—— rendering_pipeline.png
+|   |—— CMakeLists.txt
+|   |—— README.md
+|—— OpenGL_Learning
+|   |—— 00_hello_opengl
+|   |—— resources
+|   |—— thirdparty
+|   |—— |—— GLFW
+|   |—— |—— GLDA
+|   |—— |—— GLM
+|   |—— |—— STB
+|   |—— CMakeLists.txt
+|   |—— README.md
+|—— CMakeReadme.md
+|—— cmake_workflow.png
+|—— Logo.png
+|—— README.md
+```
 
 ### CUDA with C++
 - CUDA_CPlusPlus
@@ -16,6 +52,7 @@
 - CMakeReadme.md
 
 ### OpencCV with C++
+- CppImageProcessing
 - OpenCV_Linux_Ubuntu
 - OpenCV-CPP
 
