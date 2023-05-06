@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  
+  "dependencies": [
+    "opencv4",
+    {
+      "name": "opencv4",
+      "features": [
+        "cuda"
+      ]
+    },
+    {
+      "name": "opencv4",
+      "features": [
+        "contrib"
+      ]
+    }
+  ]
+}
