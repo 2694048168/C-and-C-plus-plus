@@ -17,6 +17,13 @@ git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
 ### Organization of Repo.
 ```
 . C-and-C-plus-plus
+|—— CppSeries
+|   |—— week01
+|   |—— |—— CMakeLists.txt
+|   |—— week02
+|   |—— |—— CMakeLists.txt
+|   |—— CMakeLists.txt
+|   |—— README.md
 |—— CppImageProcessing
 |   |—— cuda_opencv
 |   |—— images
