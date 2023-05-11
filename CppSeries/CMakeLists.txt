@@ -25,3 +25,4 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # ----------------------------------------------------
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/week01/)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/week02/)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/week03/)

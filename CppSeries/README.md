@@ -11,6 +11,10 @@ cd C-and-C-plus-plus/CppSeries
 # cmake build(compile and link)
 cmake -B build -G Ninja
 cmake --build build
+
+# or g++/clang++ for single source cpp file
+g++ hello.cpp -std=c++17 -o main
+clang++ hello.cpp -std=c++17 -o main
 ```
 
 
@@ -32,6 +36,22 @@ cmake --build build
 |   |—— const_variable.cpp
 |   |—— exercises.cpp
 |   |—— CMakeLists.txt
+|—— week03
+|   |—— if_condition.cpp
+|   |—— while_loop.cpp
+|   |—— for_loop.cpp
+|   |—— goto_statement.cpp
+|   |—— switch_statement.cpp
+|   |—— CMakeLists.txt
+|—— week04
+|—— build
+|—— bin
 |—— CMakeLists.txt
 |—— README.md
 ```
+
+### Context of Repo.
+- week01: Getting Started
+- week02: Data Types and Arithmetic Operators
+- week03: Branching and Looping Statements
+- week04: Data Structures
