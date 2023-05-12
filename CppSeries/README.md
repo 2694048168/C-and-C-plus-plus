@@ -29,21 +29,35 @@ clang++ hello.cpp -std=c++17 -o main
 |   |—— main.cpp
 |   |—— exercises.cpp
 |   |—— CMakeLists.txt
-|—— week02
-|   |—— variables.cpp
-|   |—— overflow.cpp
-|   |—— float.cpp
-|   |—— const_variable.cpp
-|   |—— exercises.cpp
-|   |—— CMakeLists.txt
-|—— week03
-|   |—— if_condition.cpp
-|   |—— while_loop.cpp
-|   |—— for_loop.cpp
-|   |—— goto_statement.cpp
-|   |—— switch_statement.cpp
-|   |—— CMakeLists.txt
 |—— week04
+|   |—— array.cpp
+|   |—— stdstring.cpp
+|   |—— struct.cpp
+|   |—— union.cpp
+|   |—— enum.cpp
+|   |—— src
+|   |—— |—— main.cpp
+|   |—— |—— factorial.cpp
+|   |—— |—— printhello.cpp
+|   |—— |—— function.hpp
+|   |—— CMakeLists.txt
+|—— week05
+|   |—— pointers.cpp
+|   |—— pointer_array.cpp
+|   |—— pointer_arithmetic.cpp
+|   |—— stack_heap.cpp
+|   |—— CMakeLists.txt
+|—— week06
+|   |—— src
+|   |—— |—— main.cpp
+|   |—— |—— math
+|   |—— |—— |—— mymath.hpp
+|   |—— |—— |—— mymath.cpp
+|   |—— basic_function.cpp
+|   |—— inline_function.cpp
+|   |—— param_pointer.cpp
+|   |—— param_reference.cpp
+|   |—— CMakeLists.txt
 |—— build
 |—— bin
 |—— CMakeLists.txt
@@ -55,3 +69,9 @@ clang++ hello.cpp -std=c++17 -o main
 - week02: Data Types and Arithmetic Operators
 - week03: Branching and Looping Statements
 - week04: Data Structures
+- week05: Pointers and Dynamic Memory Management
+- week06: Basics of Functions
+- week07: Advances in Functions
+- week08: Speedup Your Program
+- week09: Basics of Classes
+- week10: Advances in Classes
