@@ -15,6 +15,10 @@ cmake --build build
 # or g++/clang++ for single source cpp file
 g++ hello.cpp -std=c++17 -o main
 clang++ hello.cpp -std=c++17 -o main
+
+# in the 'CppSeries/week10/opencv_mat' folder,
+# you should build(compile and link) individually with CMake,
+# the more detail information seen in 'README.md' file in this folder.
 ```
 
 
