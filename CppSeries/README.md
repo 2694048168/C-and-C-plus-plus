@@ -62,6 +62,11 @@ clang++ hello.cpp -std=c++17 -o main
 |   |—— param_pointer.cpp
 |   |—— param_reference.cpp
 |   |—— CMakeLists.txt
+|—— week08
+|   |—— main.cpp
+|   |—— matoperation.cpp
+|   |—— matoperation.hpp
+|   |—— CMakeLists.txt
 |—— build
 |—— bin
 |—— CMakeLists.txt
@@ -79,3 +84,8 @@ clang++ hello.cpp -std=c++17 -o main
 - week08: Speedup Your Program
 - week09: Basics of Classes
 - week10: Advances in Classes
+- week11: Dynamic Memory Management in Classes
+- week12: Class Inheritance and virtual function(polymorphic)
+- week13: Class Templates and std Library
+- week14: Error Handling
+- week15: Nested Classes and RTTI
