@@ -18,10 +18,10 @@
 /**
  * @brief main function and the entry of program.
  */
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
     /* Step 1. the basic input stream in C++.
-    --------------------------------------------- */ 
+    --------------------------------------------- */
     int arg_1;
     int arg_2;
 
@@ -36,10 +36,10 @@ int main(int argc, char const *argv[])
     /* Step 2. the runtime error in C++, such as the segmentation fault
      because of the invalid memory accsss
      (reading or writing some unpermitted memory regions).
-    ------------------------------------------------------ */ 
-    int *ptr = nullptr;
-    int seed_random = 42;
-    ptr = &seed_random;
+    ------------------------------------------------------ */
+    int *ptr         = nullptr;
+    int  seed_random = 42;
+    ptr              = &seed_random;
     // ptr[0] = 42; /* invalid access */
 
     std::cout << "ptr pointer access: " << ptr[0] << std::endl;
@@ -47,7 +47,6 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-
 
 /** Build(compile and link) commands via command-line.
  * 
