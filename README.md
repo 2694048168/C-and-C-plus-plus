@@ -17,6 +17,13 @@ git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
 ### Organization of Repo.
 ```
 . C-and-C-plus-plus
+|—— CMakeTutorial
+|   |—— ExeExample
+|   |—— StaticLibExample
+|   |—— DynamicLibExample
+|   |—— NestCMakeExample
+|   |—— GraphvizCMake
+|   |—— README.md
 |—— CppSeries
 |   |—— week01
 |   |—— |—— CMakeLists.txt
@@ -196,6 +203,12 @@ mingw32-make --version
 </details>
 
 ### CMake with C++
+- CMakeTutorial
+<details>
+<summary> <span style="color:PeachPuff">the modern CMake tutorial for C++ build, examples about Executable Binary Programm, Static librarys and dynamic librarys, example about the Nest-style CMake and the graphviz releationship. We must to pay attention to the difference in loading dynamic libraries between Windows and Linux systems, that is, the symbol table import ways of dynamic libraries.</span> </summary>
+
+<details>
+
 - CMakeExamples
 - CMakeReadme.md
 
