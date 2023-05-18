@@ -207,7 +207,7 @@ mingw32-make --version
 <details>
 <summary> <span style="color:PeachPuff">the modern CMake tutorial for C++ build, examples about Executable Binary Programm, Static librarys and dynamic librarys, example about the Nest-style CMake and the graphviz releationship. We must to pay attention to the difference in loading dynamic libraries between Windows and Linux systems, that is, the symbol table import ways of dynamic libraries.</span> </summary>
 
-<details>
+</details>
 
 - CMakeExamples
 - CMakeReadme.md
