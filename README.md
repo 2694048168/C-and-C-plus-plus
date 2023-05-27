@@ -24,6 +24,8 @@ git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
 |   |—— NestCMakeExample
 |   |—— GraphvizCMake
 |   |—— README.md
+|—— ModernGuideCpp17
+|   |—— README.md
 |—— CppSeries
 |   |—— week01
 |   |—— |—— CMakeLists.txt

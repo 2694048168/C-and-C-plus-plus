@@ -1,3 +1,5 @@
+> TODO list, we can quickly check in [VSCode](https://code.visualstudio.com/) with extension [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree).
+
 ### qucik start
 
 **the compilers for C++**

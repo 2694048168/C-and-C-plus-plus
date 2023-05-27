@@ -27,6 +27,7 @@
 #include <iostream>
 #include <iterator>
 #include <string_view>
+#include <vector>
 
 /**
  * @brief : print the array element on console for <T> type.
@@ -53,6 +54,36 @@ bool print_array(const T *num_array, const std::size_t arr_size)
     std::cout << "\n" << std::endl;
 
     return true;
+}
+
+// An interval has a start time and end time
+struct Interval
+{
+    int start{0};
+    int end{0};
+};
+
+// Compares two intervals according to starting times.
+bool compare_interval(Interval time_1, Interval time_2)
+{
+    return (time_1.start < time_2.start);
+}
+
+// we pass an object of this class as third arg to sort function...
+template<typename T>
+class Compartor
+{
+public:
+    bool operator()(T x1, T x2)
+    {
+        return x1 < x2;
+    }
+};
+
+template<typename T>
+bool func_compartor(T x1, T x2)
+{
+    return x1 < x2;
 }
 
 /**
@@ -123,6 +154,47 @@ int main(int argc, const char **argv)
 
     std::sort(s.begin(), s.end(), [](int a, int b) { return a > b; });
     print("sorted with a lambda expression");
+
+    // ------------------------------------------
+    std::cout << "-------------------------------" << std::endl;
+    std::vector<Interval> arr_time{
+        {6, 8},
+        {1, 9},
+        {2, 4},
+        {4, 7}
+    };
+
+    auto print_time = [&arr_time](const char *msg)
+    {
+        std::cout << msg;
+        for (const auto &elem : arr_time)
+        {
+            std::cout << "[" << elem.start << "," << elem.end << "] ";
+        }
+        std::cout << "\n";
+    };
+    print_time("the elements of container: ");
+
+    // sort the intervals in increasing order of start time
+    std::sort(arr_time.begin(), arr_time.end(), compare_interval);
+    print_time("the elements of container: ");
+
+    // ------------------------------------------
+    std::cout << "-------------------------------" << std::endl;
+    int a[] = {1, 5, 8, 9, 6, 7, 3, 4, 2, 0};
+
+    int asize = sizeof(a) / sizeof(int);
+
+    std::cout << "The array before sorting is : ";
+    print_array(a, asize);
+
+    std::sort(a, a + asize, Compartor<int>());
+    std::cout << "The array after sorting(Comparator Class) : ";
+    print_array(a, asize);
+
+    std::sort(a, a + asize, func_compartor<int>);
+    std::cout << "The array after sorting(func_compartor function) : ";
+    print_array(a, asize);
 
     return 0;
 }
