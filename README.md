@@ -273,6 +273,12 @@ cd bin
 - OpenCV-CPP
 
 ### C/C++ Language Learning
+- ModernGuideCpp17
+<details>
+<summary> <span style="color:PeachPuff">the Modern C++ features and use examples for C++11, C++17 and C++23.</span> </summary>
+
+</details>
+
 - CppSeries
 <details>
 <summary> <span style="color:PeachPuff">the modern C++ tutorial with CMake and Ninja build-tool and Clang++ compiler in VSCode from Shiqi Yu Prof. and the tutorial video on Bilibili</span> </summary>
