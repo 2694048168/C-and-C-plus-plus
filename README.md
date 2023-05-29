@@ -17,6 +17,14 @@ git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
 ### Organization of Repo.
 ```
 . C-and-C-plus-plus
+|—— CMakeClangVcpkg
+|   |—— vcpkg.json
+|   |—— CMakePreset.json
+|   |—— CMakeLists.txt
+|   |—— .vscode
+|   |—— |—— launch.json
+|   |—— |—— tasks.json
+|   |—— README.md
 |—— CMakeTutorial
 |   |—— ExeExample
 |   |—— StaticLibExample
@@ -205,6 +213,12 @@ mingw32-make --version
 </details>
 
 ### CMake with C++
+- CMakeClangVcpkg
+<details>
+<summary> <span style="color:PeachPuff">the modern for C++ with the modern toolchains, include CMake, vcpkg, Ninja, Clang and Git in VSCode.</span> </summary>
+
+</details>
+
 - CMakeTutorial
 <details>
 <summary> <span style="color:PeachPuff">the modern CMake tutorial for C++ build, examples about Executable Binary Programm, Static librarys and dynamic librarys, example about the Nest-style CMake and the graphviz releationship. We must to pay attention to the difference in loading dynamic libraries between Windows and Linux systems, that is, the symbol table import ways of dynamic libraries.</span> </summary>
