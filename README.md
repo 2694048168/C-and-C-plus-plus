@@ -17,6 +17,8 @@ git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
 ### Organization of Repo.
 ```
 . C-and-C-plus-plus
+|—— MultithreadingModernCpp
+|   |—— README.md
 |—— CMakeClangVcpkg
 |   |—— vcpkg.json
 |   |—— CMakePreset.json
@@ -289,6 +291,12 @@ cd bin
 - OpenCV-CPP
 
 ### C/C++ Language Learning
+- MultithreadingModernCpp
+<details>
+<summary> <span style="color:PeachPuff">the multi-threading in Modern C++, including the thread | mutex | lock | conditional variable | atomic operator, etc.</span> </summary>
+
+</details>
+
 - ModernGuideCpp17
 <details>
 <summary> <span style="color:PeachPuff">the Modern C++ features and use examples for C++11, C++17 and C++23.</span> </summary>
