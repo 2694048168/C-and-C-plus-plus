@@ -6,15 +6,15 @@ Features:
 
 - [x] Compiler supports g++, clang++ and MSVC(cl)
 - [x] clang-format support
-- [] CMake support
+- [ ] CMake support
 - [x] Creating threads
 - [x] Using function pointers, functors, and lambda functions
 - [x] Futures, promises, and async tasks
 - [x] Mutex and Locks
 - [x] Conditional Variables
-- [] memory order and progaram order
-- [] atomic operator
-- [] [google benchmark](https://github.com/google/benchmark)
+- [ ] memory order and progaram order
+- [ ] atomic operator
+- [ ] [google benchmark](https://github.com/google/benchmark)
 
 ### the order of files to learning
 
