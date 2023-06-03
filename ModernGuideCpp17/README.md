@@ -36,4 +36,6 @@ g++ mian.cpp -std=c++23
 clang++ mian.cpp -std=c++17 # main
 clang++ mian.cpp -std=c++20
 clang++ mian.cpp -std=c++2b # for ISO C++23
+
+cl mian.cpp /std:c++17 /EHsc # main
 ```
