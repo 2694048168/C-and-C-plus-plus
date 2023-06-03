@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake configure via clang",
+            "type": "shell",
+            // "command": "cmake --preset default"
+            "command": "cmake -B build -G Ninja"
+        },
+
+        {
+            "label": "cmake build via clang",
+            "type": "shell",
+            // "command": "cmake --build --preset default"
+            "command": "cmake --build build --config Release"
+        },
+
+        {
+            "label": "cmake clean via clang",
+            "type": "shell",
+            // "command": "cmake --build build/default --target clean"
+            "command": "cmake --build build --target clean"
+        }
+    ]
+}
