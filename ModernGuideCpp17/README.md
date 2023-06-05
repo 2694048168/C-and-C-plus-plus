@@ -1,12 +1,12 @@
 > TODO list, we can quickly check in [VSCode](https://code.visualstudio.com/) with extension [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree).
 
-### qucik start
+### quick start
 
 **the compilers for C++**
 - [LLVM Clang download](https://releases.llvm.org/)
 - [GCC download](https://gcc.gnu.org/releases.html)
 - [MinGW download](https://winlibs.com/)
-- [VS2022 cl downlaod](https://visualstudio.microsoft.com/zh-hans/vs/)
+- [VS2022 cl download](https://visualstudio.microsoft.com/zh-hans/vs/)
 
 
 ```shell
@@ -28,14 +28,14 @@ cl
 
 > **you must to know the build process for C++, include the compile and link. More detail information at [here](https://2694048168.github.io/blog/#/PaperMD/cpp_env_test)**
 
-```shll
-g++ mian.cpp -std=c++17 # main
-g++ mian.cpp -std=c++20
-g++ mian.cpp -std=c++23
+```shell
+g++ main.cpp -std=c++17 # main
+g++ main.cpp -std=c++20
+g++ main.cpp -std=c++23
 
-clang++ mian.cpp -std=c++17 # main
-clang++ mian.cpp -std=c++20
-clang++ mian.cpp -std=c++2b # for ISO C++23
+clang++ main.cpp -std=c++17 # main
+clang++ main.cpp -std=c++20
+clang++ main.cpp -std=c++2b # for ISO C++23
 
-cl mian.cpp /std:c++17 /EHsc # main
+cl main.cpp /std:c++17 /EHsc # main
 ```
