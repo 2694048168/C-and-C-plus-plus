@@ -2,7 +2,10 @@
 .git/
 
 # vscode 配置文件
-.vscode/
+.vscode/settings.json
+*/**/.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
 
 # Jupyter文件
 .ipynb_checkpoints/
