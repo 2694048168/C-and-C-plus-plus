@@ -2,6 +2,27 @@
 
 > C/C++ language learning and some examples; OpenCV with C++; CMake with C++; CUDA with C++; OpenGL with C++; Vulkan with Modern C++; the Modern C++ guide and features and Multi Threading in Modern C++. 
 
+> [Wei Li Blog](https://2694048168.github.io/blog/)
+
+**features**
+- [x] Modern C++
+- [x] Support CMake
+- [x] Support GCC/Clang/MSVC
+- [x] Support CUDA
+- [x] Support OpenGL
+- [x] Support OpenCV
+
+
+**overview**
+- [quick start](#quick-start)
+- [C/C++ Language Learning](#cc-language-learning)
+- [Organization of Repo.](#organization-of-repo)
+- [CUDA with C++](#cuda-with-c)
+- [OpenGL with C++](#opengl-with-c)
+- [CMake with C++](#cmake-with-c)
+- [OpenCV with C++](#openccv-with-c)
+
+
 ### Quick Start
 
 ```shell
@@ -291,6 +312,12 @@ cd bin
 - OpenCV-CPP
 
 ### C/C++ Language Learning
+- CppConcurrencyAction
+<details>
+<summary> <span style="color:PeachPuff">现代 C++ 多线程编程和并发编程实战</span> </summary>
+
+</details>
+
 - MultithreadingModernCpp
 <details>
 <summary> <span style="color:PeachPuff">the multi-threading in Modern C++, including the thread | mutex | lock | conditional variable | atomic operator, etc.</span> </summary>
@@ -409,5 +436,3 @@ clang++ hello.cpp -std=c++17 -o main
 - Staff-Management-System
 - Student-Management-System
 - Tetris-game
-
-> [Wei Li Blog](https://2694048168.github.io/blog/)
