@@ -8,6 +8,7 @@
 - [x] Modern C++
 - [x] Support CMake
 - [x] Support GCC/Clang/MSVC
+- [x] Support VSCode
 - [x] Support CUDA
 - [x] Support OpenGL
 - [x] Support OpenCV
@@ -312,6 +313,12 @@ cd bin
 - OpenCV-CPP
 
 ### C/C++ Language Learning
+- C++PrimerPlus6thExercise
+<details>
+<summary> <span style="color:PeachPuff">C++ Primer Plus 第6版中文版 编程练习答案</span> </summary>
+
+</details>
+
 - CppConcurrencyAction
 <details>
 <summary> <span style="color:PeachPuff">现代 C++ 多线程编程和并发编程实战</span> </summary>
