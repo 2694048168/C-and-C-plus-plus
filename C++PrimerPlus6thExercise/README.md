@@ -37,5 +37,38 @@ g++ 2_7_4_age_conversion.cpp -std=c++17
 clang++ 2_7_4_age_conversion.cpp -std=c++17
 ./a.exe
 
+# 5. solution:
+touch 2_7_5_temperature_conversion.cpp
+g++ 2_7_5_temperature_conversion.cpp -std=c++17
+clang++ 2_7_5_temperature_conversion.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 2_7_6_light_years.cpp
+g++ 2_7_6_light_years.cpp -std=c++17
+clang++ 2_7_6_light_years.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 2_7_7_hour_minute.cpp
+g++ 2_7_7_hour_minute.cpp -std=c++17
+clang++ 2_7_7_hour_minute.cpp -std=c++17
+./a.exe
+```
+
+#### 3.7 编程练习
+
+```shell
+# 1. solution:
+touch 3_7_1_height_unit.cpp
+g++ 3_7_1_height_unit.cpp -std=c++17
+clang++ 3_7_1_height_unit.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 3_7_1_height_unit.cpp
+g++ 3_7_1_height_unit.cpp -std=c++17
+clang++ 3_7_1_height_unit.cpp -std=c++17
+./a.exe
 
 ```

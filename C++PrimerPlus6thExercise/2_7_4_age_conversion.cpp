@@ -22,6 +22,8 @@ int main(int argc, const char **argv)
 {
     std::cout << "Please enter your age: " << std::endl;
     unsigned int age = 0;
+
+    // TODO 程序的健壮性, 如何保证用户的输入合法, 不合法的情况下异常如何处理
     std::cin >> age;
 
     age = age * 12;
