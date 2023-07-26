@@ -66,9 +66,39 @@ clang++ 3_7_1_height_unit.cpp -std=c++17
 ./a.exe
 
 # 2. solution:
-touch 3_7_1_height_unit.cpp
-g++ 3_7_1_height_unit.cpp -std=c++17
-clang++ 3_7_1_height_unit.cpp -std=c++17
+touch 3_7_2_body_mass_index.cpp
+g++ 3_7_2_body_mass_index.cpp -std=c++17
+clang++ 3_7_2_body_mass_index.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 3_7_3_latitude_conversion.cpp
+g++ 3_7_3_latitude_conversion.cpp -std=c++17
+clang++ 3_7_3_latitude_conversion.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 3_7_4_time_conversion.cpp
+g++ 3_7_4_time_conversion.cpp -std=c++17
+clang++ 3_7_4_time_conversion.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 3_7_5_population_percentage.cpp
+g++ 3_7_5_population_percentage.cpp -std=c++17
+clang++ 3_7_5_population_percentages.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 3_7_6_driving_distance.cpp
+g++ 3_7_6_driving_distance.cpp -std=c++17
+clang++ 3_7_6_driving_distance.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 3_7_7_driving_conversion.cpp
+g++ 3_7_7_driving_conversion.cpp -std=c++17
+clang++ 3_7_7_driving_conversion.cpp -std=c++17
 ./a.exe
 
 ```
