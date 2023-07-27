@@ -102,3 +102,44 @@ clang++ 3_7_7_driving_conversion.cpp -std=c++17
 ./a.exe
 
 ```
+
+#### 4.13 编程练习
+
+```shell
+# 1. solution:
+touch 4_13_1_show_information.cpp
+g++ 4_13_1_show_information.cpp -std=c++17
+clang++ 4_13_1_show_information.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 4_13_2_string_char.cpp
+g++ 4_13_2_string_char.cpp -std=c++17
+clang++ 4_13_2_string_char.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 4_13_3_person_information.cpp
+g++ 4_13_3_person_information.cpp -std=c++17
+clang++ 4_13_3_person_information.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 4_13_4_person_information.cpp
+g++ 4_13_4_person_information.cpp -std=c++17
+clang++ 4_13_4_person_information.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 4_13_5_structure_info.cpp
+g++ 4_13_5_structure_info.cpp -std=c++17
+clang++ 4_13_5_structure_info.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 4_13_6_structure_array.cpp
+g++ 4_13_6_structure_array.cpp -std=c++17
+clang++ 4_13_6_structure_array.cpp -std=c++17
+./a.exe
+
+```
