@@ -157,4 +157,22 @@ g++ 4_13_7_pizza_analysis_service.cpp -std=c++17
 clang++ 4_13_7_pizza_analysis_service.cpp -std=c++17
 ./a.exe
 
+# 8. solution:
+touch 4_13_8_pizza_analysis_service.cpp
+g++ 4_13_8_pizza_analysis_service.cpp -std=c++17
+clang++ 4_13_8_pizza_analysis_service.cpp -std=c++17
+./a.exe
+
+# 9. solution:
+touch 4_13_9_structure_array.cpp
+g++ 4_13_9_structure_array.cpp -std=c++17
+clang++ 4_13_9_structure_array.cpp -std=c++17
+./a.exe
+
+# 10. solution:
+touch 4_13_10_sprint_result.cpp
+g++ 4_13_10_sprint_result.cpp -std=c++17
+clang++ 4_13_10_sprint_result.cpp -std=c++17
+./a.exe
+
 ```
