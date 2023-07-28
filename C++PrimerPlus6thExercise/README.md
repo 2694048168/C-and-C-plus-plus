@@ -13,6 +13,9 @@ cd C-and-C-plus-plus/C++PrimerPlus6thExercise
 #### 2.7 编程练习
 
 ```shell
+mkdir chapter02
+cd chapter02
+
 # 1. solution:
 touch 2_7_1_show_name_address.cpp
 g++ 2_7_1_show_name_address.cpp -std=c++17
@@ -59,6 +62,9 @@ clang++ 2_7_7_hour_minute.cpp -std=c++17
 #### 3.7 编程练习
 
 ```shell
+mkdir chapter03
+cd chapter03
+
 # 1. solution:
 touch 3_7_1_height_unit.cpp
 g++ 3_7_1_height_unit.cpp -std=c++17
@@ -106,6 +112,9 @@ clang++ 3_7_7_driving_conversion.cpp -std=c++17
 #### 4.13 编程练习
 
 ```shell
+mkdir chapter04
+cd chapter04
+
 # 1. solution:
 touch 4_13_1_show_information.cpp
 g++ 4_13_1_show_information.cpp -std=c++17
@@ -140,6 +149,12 @@ clang++ 4_13_5_structure_info.cpp -std=c++17
 touch 4_13_6_structure_array.cpp
 g++ 4_13_6_structure_array.cpp -std=c++17
 clang++ 4_13_6_structure_array.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 4_13_7_pizza_analysis_service.cpp
+g++ 4_13_7_pizza_analysis_service.cpp -std=c++17
+clang++ 4_13_7_pizza_analysis_service.cpp -std=c++17
 ./a.exe
 
 ```
