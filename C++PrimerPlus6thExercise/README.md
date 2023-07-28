@@ -176,3 +176,17 @@ clang++ 4_13_10_sprint_result.cpp -std=c++17
 ./a.exe
 
 ```
+
+#### 5.9 编程练习
+
+```shell
+mkdir chapter05
+cd chapter05
+
+# 1. solution:
+touch 5_9_1_loop_sum.cpp
+g++ 5_9_1_loop_sum.cpp -std=c++17
+clang++ 5_9_1_loop_sum.cpp -std=c++17
+./a.exe
+
+```
