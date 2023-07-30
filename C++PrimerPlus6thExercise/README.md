@@ -1,4 +1,4 @@
-### C++ Primer Plus 第6版中文版 编程练习答案
+### C++ Primer Plus 第6版中文版 编程练习解析
 
 #### Quick start
 
@@ -187,6 +187,60 @@ cd chapter05
 touch 5_9_1_loop_sum.cpp
 g++ 5_9_1_loop_sum.cpp -std=c++17
 clang++ 5_9_1_loop_sum.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 5_9_2_for_factorials.cpp
+g++ 5_9_2_for_factorials.cpp -std=c++17
+clang++ 5_9_2_for_factorials.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 5_9_3_accumulative_sum.cpp
+g++ 5_9_3_accumulative_sum.cpp -std=c++17
+clang++ 5_9_3_accumulative_sum.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 5_9_4_investment_value.cpp
+g++ 5_9_4_investment_value.cpp -std=c++17
+clang++ 5_9_4_investment_value.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 5_9_5_total_sales.cpp
+g++ 5_9_5_total_sales.cpp -std=c++17
+clang++ 5_9_5_total_sales.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 5_9_6_total_sales.cpp
+g++ 5_9_6_total_sales.cpp -std=c++17
+clang++ 5_9_6_total_sales.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 5_9_7_car_info.cpp
+g++ 5_9_7_car_info.cpp -std=c++17
+clang++ 5_9_7_car_info.cpp -std=c++17
+./a.exe
+
+# 8. solution:
+touch 5_9_8_char_processing.cpp
+g++ 5_9_8_char_processing.cpp -std=c++17
+clang++ 5_9_8_char_processing.cpp -std=c++17
+./a.exe
+
+# 9. solution:
+touch 5_9_9_string_processing.cpp
+g++ 5_9_9_string_processing.cpp -std=c++17
+clang++ 5_9_9_string_processing.cpp -std=c++17
+./a.exe
+
+# 10. solution:
+touch 5_9_10_nesting_loop.cpp
+g++ 5_9_10_nesting_loop.cpp -std=c++17
+clang++ 5_9_10_nesting_loop.cpp -std=c++17
 ./a.exe
 
 ```
