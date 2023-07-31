@@ -8,6 +8,11 @@ git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
 
 cd C-and-C-plus-plus/C++PrimerPlus6thExercise
 # install the C++ complier, such GCC, Clang, cl(MSVC) from Microsoft
+
+# goto the folder for chapter of book and compile&run the source code
+cd chapter02
+clang++ 2_7_1_show_name_address.cpp -std=c++17
+./a.exe
 ```
 
 #### 2.7 编程练习
@@ -241,6 +246,49 @@ clang++ 5_9_9_string_processing.cpp -std=c++17
 touch 5_9_10_nesting_loop.cpp
 g++ 5_9_10_nesting_loop.cpp -std=c++17
 clang++ 5_9_10_nesting_loop.cpp -std=c++17
+./a.exe
+
+```
+
+#### 6.11 编程练习
+
+```shell
+mkdir chapter06 && cd chapter06
+
+# 1. solution:
+touch 6_11_1_uppercase_lowercase.cpp
+g++ 6_11_1_uppercase_lowercase.cpp -std=c++17
+clang++ 6_11_1_uppercase_lowercase.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 6_11_2_donation_statistics.cpp
+g++ 6_11_2_donation_statistics.cpp -std=c++17
+clang++ 6_11_2_donation_statistics.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 6_11_3_menu_system.cpp
+g++ 6_11_3_menu_system.cpp -std=c++17
+clang++ 6_11_3_menu_system.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 6_11_4_programmers_info.cpp
+g++ 6_11_4_programmers_info.cpp -std=c++17
+clang++ 6_11_4_programmers_info.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 6_11_5_tax_code.cpp
+g++ 6_11_5_tax_code.cpp -std=c++17
+clang++ 6_11_5_tax_code.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 6_11_6_track_contributions.cpp
+g++ 6_11_6_track_contributions.cpp -std=c++17
+clang++ 6_11_6_track_contributions.cpp -std=c++17
 ./a.exe
 
 ```
