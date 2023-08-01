@@ -291,4 +291,32 @@ g++ 6_11_6_track_contributions.cpp -std=c++17
 clang++ 6_11_6_track_contributions.cpp -std=c++17
 ./a.exe
 
+# 7. solution:
+touch 6_11_7_alpha_classification.cpp
+g++ 6_11_7_alpha_classification.cpp -std=c++17
+clang++ 6_11_7_alpha_classification.cpp -std=c++17
+./a.exe
+
+# 8. solution:
+touch 6_11_8_read_file.cpp
+echo "wei li c plus plus" >> test.txt
+g++ 6_11_8_read_file.cpp -std=c++17
+clang++ 6_11_8_read_file.cpp -std=c++17
+./a.exe
+
+# 9. solution:
+touch 6_11_9_track_contributions.cpp
+echo "4
+Sam Stone
+2000
+Freida Fls
+100500
+Tammy Tub
+5000
+Rich Raptor
+55000" >> Patrons.txt
+g++ 6_11_9_track_contributions.cpp -std=c++17
+clang++ 6_11_9_track_contributions.cpp -std=c++17
+./a.exe
+
 ```
