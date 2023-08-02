@@ -320,3 +320,40 @@ clang++ 6_11_9_track_contributions.cpp -std=c++17
 ./a.exe
 
 ```
+
+#### 7.13 编程练习
+
+```shell
+mkdir chapter07 && cd chapter07
+
+# 1. solution:
+touch 7_13_1_harmonic_mean.cpp
+g++ 7_13_1_harmonic_mean.cpp -std=c++17
+clang++ 7_13_1_harmonic_mean.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 7_13_2_golf_score.cpp
+g++ 7_13_2_golf_score.cpp -std=c++17
+clang++ 7_13_2_golf_score.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 7_13_3_parameter_pass.cpp
+g++ 7_13_3_parameter_pass.cpp -std=c++17
+clang++ 7_13_3_parameter_pass.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 7_13_4_simple_lottery.cpp
+g++ 7_13_4_simple_lottery.cpp -std=c++17
+clang++ 7_13_4_simple_lottery.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 7_13_5_recursive_function.cpp
+g++ 7_13_5_recursive_function.cpp -std=c++17
+clang++ 7_13_5_recursive_function.cpp -std=c++17
+./a.exe
+
+```
