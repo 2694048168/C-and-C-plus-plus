@@ -356,4 +356,33 @@ g++ 7_13_5_recursive_function.cpp -std=c++17
 clang++ 7_13_5_recursive_function.cpp -std=c++17
 ./a.exe
 
+# 6. solution:
+touch 7_13_6_array_operator.cpp
+g++ 7_13_6_array_operator.cpp -std=c++17
+clang++ 7_13_6_array_operator.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 7_13_7_array_function.cpp
+g++ 7_13_7_array_function.cpp -std=c++17
+clang++ 7_13_7_array_function.cpp -std=c++17
+./a.exe
+
+# 8. solution:
+touch 7_13_8_array_function.cpp
+g++ 7_13_8_array_function.cpp -std=c++17
+clang++ 7_13_8_array_function.cpp -std=c++17
+./a.exe
+
+# 9. solution:
+touch 7_13_9_array_structure.cpp
+g++ 7_13_9_array_structure.cpp -std=c++17
+clang++ 7_13_9_array_structure.cpp -std=c++17
+./a.exe
+
+# 10. solution:
+touch 7_13_10_callback_function.cpp
+g++ 7_13_10_callback_function.cpp -std=c++17
+clang++ 7_13_10_callback_function.cpp -std=c++17
+./a.exe
 ```
