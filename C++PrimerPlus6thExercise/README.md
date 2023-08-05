@@ -386,3 +386,52 @@ g++ 7_13_10_callback_function.cpp -std=c++17
 clang++ 7_13_10_callback_function.cpp -std=c++17
 ./a.exe
 ```
+
+#### 8.8 编程练习
+
+```shell
+mkdir chapter08 && cd chapter08
+
+# 1. solution:
+touch 8_8_1_function_call.cpp
+g++ 8_8_1_function_call.cpp -std=c++17
+clang++ 8_8_1_function_call.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 8_8_2_function_pass.cpp
+g++ 8_8_2_function_pass.cpp -std=c++17
+clang++ 8_8_2_function_pass.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 8_8_3_string_processing.cpp
+g++ 8_8_3_string_processing.cpp -std=c++17
+clang++ 8_8_3_string_processing.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 8_8_4_string_structure.cpp
+g++ 8_8_4_string_structure.cpp -std=c++17
+clang++ 8_8_4_string_structure.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 8_8_5_template_function.cpp
+g++ 8_8_5_template_function.cpp -std=c++17
+clang++ 8_8_5_template_function.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 8_8_6_template_specialization.cpp
+g++ 8_8_6_template_specialization.cpp -std=c++17
+clang++ 8_8_6_template_specialization.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 8_8_7_template.cpp
+g++ 8_8_7_template.cpp -std=c++17
+clang++ 8_8_7_template.cpp -std=c++17
+./a.exe
+
+```
