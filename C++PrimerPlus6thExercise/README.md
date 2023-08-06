@@ -477,3 +477,64 @@ cmake --build build
 ./build/solution4.exe
 
 ```
+
+#### 10.10 编程练习
+
+```shell
+mkdir chapter10 && cd chapter10
+
+# 1. solution:
+touch 10_10_1_class_object.cpp
+g++ 10_10_1_class_object.cpp -std=c++17
+clang++ 10_10_1_class_object.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 10_10_2_constructor.cpp
+touch 10_10_2_person.hpp
+touch 10_10_2_person.cpp
+g++ 10_10_2_constructor.cpp 10_10_2_person.cpp -std=c++17
+clang++ 10_10_2_constructor.cpp 10_10_2_person.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 10_10_3_golf_class.cpp
+g++ 10_10_3_golf_class.cpp -std=c++17
+clang++ 10_10_3_golf_class.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 10_10_4_main.cpp
+touch 10_10_4_sale_class.hpp
+touch 10_10_4_sale_class.cpp
+g++ 10_10_4_main.cpp 10_10_4_sale_class.cpp -std=c++17
+clang++ 10_10_4_main.cpp 10_10_4_sale_class.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 10_10_5_stack.cpp
+g++ 10_10_5_stack.cpp -std=c++17
+clang++ 10_10_5_stack.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 10_10_6_2d_move.cpp
+g++ 10_10_6_2d_move.cpp -std=c++17
+clang++ 10_10_6_2d_move.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 10_10_7_class.cpp
+g++ 10_10_7_class.cpp -std=c++17
+clang++ 10_10_7_class.cpp -std=c++17
+./a.exe
+
+# 8. solution:
+touch 10_10_8_main_adt.cpp
+touch 10_10_8_list_adt.hpp
+touch 10_10_8_list_adt.cpp
+g++ 10_10_8_main_adt.cpp 10_10_8_list_adt.cpp -std=c++17
+clang++ 10_10_8_main_adt.cpp 10_10_8_list_adt.cpp -std=c++17
+./a.exe
+
+```
