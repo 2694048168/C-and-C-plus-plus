@@ -435,3 +435,45 @@ clang++ 8_8_7_template.cpp -std=c++17
 ./a.exe
 
 ```
+
+#### 9.6 编程练习
+
+```shell
+mkdir chapter09 && cd chapter09
+
+# 1. solution:
+touch 9_6_1_main.cpp
+touch 9_6_1_golf.hpp
+touch 9_6_1_golf.cpp
+g++ 9_6_1_main.cpp 9_6_1_golf.cpp -std=c++17
+clang++ 9_6_1_main.cpp 9_6_1_golf.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 9_6_2_character_count.cpp
+g++ 9_6_2_character_count.cpp -std=c++17
+clang++ 9_6_2_character_count.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 9_6_3_memory_model.cpp
+g++ 9_6_3_memory_model.cpp -std=c++17
+clang++ 9_6_3_memory_model.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 9_6_4_main.cpp
+touch 9_6_4_namespace.cpp
+touch 9_6_4_namespace.hpp
+g++ 9_6_4_main.cpp 9_6_4_namespace.cpp -std=c++17
+clang++ 9_6_4_main.cpp 9_6_4_namespace.cpp -std=c++17
+./a.exe
+
+# CMake 管理工程文件和C++编译和链接
+touch CMakeLists.txt
+cmake -S . -B build -G Ninja
+cmake --build build
+./build/solution1.exe
+./build/solution4.exe
+
+```

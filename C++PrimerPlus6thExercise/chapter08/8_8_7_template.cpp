@@ -29,6 +29,13 @@ struct debts
     double amount;
 };
 
+/**
+ * @brief 编写C++程序, 利用模板函数的重载功能
+ * 
+ * @param argc 
+ * @param argv 
+ * @return int 
+ */
 int main(int argc, const char **argv)
 {
     int things[6] = {13, 31, 103, 301, 310, 130};

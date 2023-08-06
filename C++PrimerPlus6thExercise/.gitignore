@@ -3,3 +3,6 @@
 
 ./**/*.exe
 ./**/*.txt
+
+build/
+**/build/
