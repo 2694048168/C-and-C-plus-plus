@@ -538,3 +538,66 @@ clang++ 10_10_8_main_adt.cpp 10_10_8_list_adt.cpp -std=c++17
 ./a.exe
 
 ```
+
+#### 11.9 编程练习
+
+```shell
+mkdir chapter11 && cd chapter11
+
+touch read_write_file.cpp
+
+# 1. solution:
+touch 11_9_1_random_walk.cpp
+touch 11_9_1_my_vector.hpp
+touch 11_9_1_my_vector.cpp
+g++ 11_9_1_random_walk.cpp 11_9_1_my_vector.cpp -std=c++17
+clang++ 11_9_1_random_walk.cpp 11_9_1_my_vector.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+touch 11_9_2_random_walk.cpp
+touch 11_9_2_my_vector_modify.hpp
+touch 11_9_2_my_vector_modify.cpp
+g++ 11_9_2_random_walk.cpp 11_9_2_my_vector_modify.cpp -std=c++17
+clang++ 11_9_2_random_walk.cpp 11_9_2_my_vector_modify.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 11_9_3_random_walk_report.cpp
+g++ 11_9_3_random_walk_report.cpp 11_9_1_my_vector.cpp -std=c++17
+clang++ 11_9_3_random_walk_report.cpp 11_9_1_my_vector.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 11_9_4_main_time.cpp
+touch 11_9_4_time_class.hpp
+touch 11_9_4_time_class.cpp
+g++ 11_9_4_main_time.cpp 11_9_4_time_class.cpp -std=c++17
+clang++ 11_9_4_main_time.cpp 11_9_4_time_class.cpp -std=c++17
+./a.exe
+
+# 5. solution:
+touch 11_9_5_main_stone.cpp
+touch 11_9_5_stone_weight.hpp
+touch 11_9_5_stone_weight.cpp
+g++ 11_9_5_main_stone.cpp 11_9_5_stone_weight.cpp -std=c++17
+clang++ 11_9_5_main_stone.cpp 11_9_5_stone_weight.cpp -std=c++17
+./a.exe
+
+# 6. solution:
+touch 11_9_6_main.cpp
+touch 11_9_6_stone_weight_overload.hpp
+touch 11_9_6_stone_weight_overload.cpp
+g++ 11_9_6_main.cpp 11_9_6_stone_weight_overload.cpp -std=c++17
+clang++ 11_9_6_main.cpp 11_9_6_stone_weight_overload.cpp -std=c++17
+./a.exe
+
+# 7. solution:
+touch 11_9_7_main_complex.cpp
+touch 11_9_7_my_complex.hpp
+touch 11_9_7_my_complex.cpp
+g++ 11_9_7_main_complex.cpp 11_9_7_my_complex.cpp -std=c++17
+clang++ 11_9_7_main_complex.cpp 11_9_7_my_complex.cpp -std=c++17
+./a.exe
+
+```

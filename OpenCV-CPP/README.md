@@ -6,6 +6,14 @@
 ## 使用 OpenCV 2.x API， 用 C++ 完成 OpenCV 例子
  
 **使用 OpenCV 1.x API， 用 C 完成 OpenCV 例子**
+- OpenCV source code and samples
+- 图像拼接(stitching.cpp)
+- 边缘检测(edge.cpp)
+- 人脸检测(face_detect.cpp)
+- AKAZE特征匹配(matchmethod_orb_akaze_brisk.cpp)
+- 光流估计(dis_opticalflow.cpp)
+- SURF特征匹配(surf_keypoint_match.cpp)
+- 视频解码和二维码检测(video_dmtx.cpp)
 
 ## OpenCV for CPlusPlus
 
@@ -44,9 +52,6 @@
 - GeometricTransforms ： 图像几何变换/仿射变换 
 
 
-
-
-
 ## About Author
 
 ### 掌中星辰转日月，手心苍穹天外天。
@@ -55,11 +60,8 @@
 ### Stay Hungry, Stay Foolish.
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——Steve Jobs
 
-- QQ Mail：2694048168@qq.com
-- QQ：2694048168
 - Weibo：云主宰苍穹
 - GitHub: https://github.com/2694048168/
 - Gitee：https://gitee.com/weili_yzzcq/
 - Blog：https://2694048168.github.io/
-- Blog：https://weili_yzzcq.gitee.io/ 
 - Blog：https://blog.csdn.net/weixin_46782218/
