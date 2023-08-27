@@ -1,5 +1,19 @@
 ### C++ Primer Plus 第6版中文版 编程练习解析
 
+### Overview
+- [Quick start](#quick-start)
+- [开始学习C++ 2.7 编程练习](#27-编程练习)
+- [处理数据 3.7 编程练习](#37-编程练习)
+- [复合类型 4.13 编程练习](#413-编程练习)
+- [循环和关系表达式 5.9 编程练习](#59-编程练习)
+- [分支语句与逻辑运算符 6.11 编程练习](#611-编程练习)
+- [函数-C++的编程模块 7.13 编程练习](#713-编程练习)
+- [函数探幽 8.8 编程练习](#88-编程练习)
+- [内存模型和名称空间 9.6 编程练习](#96-编程练习)
+- [对象和类 10.10 编程练习](#1010-编程练习)
+- [使用类 11.9 编程练习](#119-编程练习)
+- [类和动态内存分配 12.10 编程练习](#1210-编程练习)
+
 #### Quick start
 
 ```shell
@@ -599,5 +613,62 @@ touch 11_9_7_my_complex.cpp
 g++ 11_9_7_main_complex.cpp 11_9_7_my_complex.cpp -std=c++17
 clang++ 11_9_7_main_complex.cpp 11_9_7_my_complex.cpp -std=c++17
 ./a.exe
+
+```
+
+#### 12.10 编程练习
+
+```shell
+mkdir chapter12 && cd chapter12
+
+# 1. solution:
+touch 12_10_1_cow_class.cpp
+g++ 12_10_1_cow_class.cpp -std=c++17
+clang++ 12_10_1_cow_class.cpp -std=c++17
+./a.exe
+
+# 2. solution:
+# TODO bugging
+touch 12_10_2_test_string.cpp
+touch 12_10_2_my_string.hpp
+touch 12_10_2_my_string.cpp
+g++ 12_10_2_test_string.cpp 12_10_2_my_string.cpp -std=c++17
+clang++ 12_10_2_test_string.cpp 12_10_2_my_string.cpp -std=c++17
+./a.exe
+
+# 3. solution:
+touch 12_10_3_main.cpp
+touch 12_10_3_stock.hpp
+touch 12_10_3_stock.cpp
+g++ 12_10_3_main.cpp 12_10_3_stock.cpp -std=c++17
+clang++ 12_10_3_main.cpp 12_10_3_stock.cpp -std=c++17
+./a.exe
+
+# 4. solution:
+touch 12_10_4_main.cpp
+touch 12_10_4_stack.hpp
+touch 12_10_4_stack.cpp
+g++ 12_10_4_main.cpp 12_10_4_stack.cpp -std=c++17
+clang++ 12_10_4_main.cpp 12_10_4_stack.cpp -std=c++17
+./a.exe
+
+# 5. solution:TODO
+# 6. solution:TODO
+
+```
+
+#### 13.11 编程练习
+
+```shell
+mkdir chapter13 && cd chapter13
+
+# 1. solution:
+touch 13_11_1_main.cpp
+touch 13_11_1_base_class.hpp
+touch 13_11_1_base_class.cpp
+g++ 13_11_1_main.cpp -std=c++17
+clang++ 13_11_1_main.cpp -std=c++17
+./a.exe
+
 
 ```
