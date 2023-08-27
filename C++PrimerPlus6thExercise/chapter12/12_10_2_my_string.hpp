@@ -16,56 +16,95 @@
 
 class String
 {
-public:
-    char *str; // pointer to string
 private:
-    int   len; // length of string
+    char *str;
+    int   len;
 
-    static int       num_strings;  /* number of objects, 引用计数策略(delete memory) */
-    static const int CIN_LIM = 80; // cin input limit
+    static int       num_strings;
+    static const int CINLIM = 80;
 
 public:
-    // constructors and other methods
-    String(const char *s);  // constructor
-    String();               // default constructor
-    String(const String &); // copy constructor
-    ~String();              // destructor
+    String(const char *s);
+    String();
+    String(const String &);
+    ~String();
 
     int length() const
     {
         return len;
     }
 
-    void set_len(unsigned length)
-    {
-        len = length;
-    }
-
-    void     string_upper();
-    void     string_lower();
-    unsigned count_char(char);
-
-    // overloaded operator methods
+    int         has(const char);
+    void        stringlow();
+    void        stringup();
     String     &operator=(const String &);
     String     &operator=(const char *);
     char       &operator[](int i);
     const char &operator[](int i) const;
-
-    // overloaded operator friends
-    friend bool operator<(const String &st, const String &st2);
+    friend bool operator<(const String &st1, const String &st2);
     friend bool operator>(const String &st1, const String &st2);
-    friend bool operator==(const String &st, const String &st2);
+    friend bool operator==(const String &st1, const String &st2);
 
     friend std::ostream &operator<<(std::ostream &os, const String &st);
     friend std::istream &operator>>(std::istream &is, String &st);
 
-    // overloaded =, + operators
-    String        &operator+(const String &);
-    String        &operator+(const char *);
-    friend String &operator+(const char *str2, const String &str1);
+    friend String operator+(const String &st1, const String &st2);
+    friend String operator+(const char *, const String &);
+    friend String operator+(const String &, const char *);
+    static int    HowMany();
 
-    // static function
-    static int HowMany();
+    // =========================================================================
+
+    // public:
+    //     char *str; // pointer to string
+    // private:
+    //     int   len; // length of string
+
+    //     static int       num_strings;  /* number of objects, 引用计数策略(delete memory) */
+    //     static const int CIN_LIM = 80; // cin input limit
+
+    // public:
+    //     // constructors and other methods
+    //     String(const char *s);  // constructor
+    //     String();               // default constructor
+    //     String(const String &); // copy constructor
+    //     ~String();              // destructor
+
+    //     int length() const
+    //     {
+    //         return len;
+    //     }
+
+    //     void set_len(unsigned length)
+    //     {
+    //         len = length;
+    //     }
+
+    //     void     string_upper();
+    //     void     string_lower();
+    //     unsigned count_char(char);
+
+    //     // overloaded operator methods
+    //     String     &operator=(const String &);
+    //     String     &operator=(const char *);
+    //     char       &operator[](int i);
+    //     const char &operator[](int i) const;
+
+    //     // overloaded operator friends
+    //     friend bool operator<(const String &st, const String &st2);
+    //     friend bool operator>(const String &st1, const String &st2);
+    //     friend bool operator==(const String &st, const String &st2);
+
+    //     friend std::ostream &operator<<(std::ostream &os, const String &st);
+    //     friend std::istream &operator>>(std::istream &is, String &st);
+
+    //     // overloaded =, + operators
+    //     String        &operator+(const String &);
+    //     String        &operator+(const char *);
+    //     friend String &operator+(const char *str2, const String &str1);
+
+    //     // static function
+    //     static int HowMany();
 };
 
 #endif // !__MY_STRING_HPP__

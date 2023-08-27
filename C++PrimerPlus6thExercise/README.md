@@ -628,7 +628,6 @@ clang++ 12_10_1_cow_class.cpp -std=c++17
 ./a.exe
 
 # 2. solution:
-# TODO bugging
 touch 12_10_2_test_string.cpp
 touch 12_10_2_my_string.hpp
 touch 12_10_2_my_string.cpp
@@ -663,11 +662,12 @@ clang++ 12_10_4_main.cpp 12_10_4_stack.cpp -std=c++17
 mkdir chapter13 && cd chapter13
 
 # 1. solution:
+# std::strcpy ---> strcpy_s
 touch 13_11_1_main.cpp
-touch 13_11_1_base_class.hpp
-touch 13_11_1_base_class.cpp
-g++ 13_11_1_main.cpp -std=c++17
-clang++ 13_11_1_main.cpp -std=c++17
+touch 13_11_1_base.hpp
+touch 13_11_1_classic.cpp
+g++ 13_11_1_main.cpp 13_11_1_classic.cpp -std=c++17
+clang++ 13_11_1_main.cpp 13_11_1_classic.cpp -std=c++17
 ./a.exe
 
 

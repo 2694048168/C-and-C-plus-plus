@@ -23,33 +23,27 @@ const int MaxLen = 81;
  */
 int main(int argc, const char **argv)
 {
-    // TODO 有 bugging 未解决
     String s1(" and I am a C++ student.");
     String s2 = "Please enter your name: ";
     String s3;
-
-    std::cout << s2;         // overloaded << operator
-    std::cin >> s3;          // overloaded >> operator
-
-    s2 = "My name is " + s3; // overloaded =, + operators
+    std::cout << s2;
+    std::cin >> s3;
+    s2 = "My name is  " + s3;
     std::cout << s2 << ".\n";
     s2 = s2 + s1;
-
-    s2.string_upper(); // converts string to uppercase
-    std::cout << "The string\n" << s2 << "\ncontains " << s2.count_char('A') << " 'A' characters in it.\n";
-    s1 = "red"; // String(const char *),
-
-    // then String & operator=(const String&)
+    s2.stringup();
+    std::cout << "The string\n" << s2 << "\ncontains " << s2.has('A') << " 'A' characters in it.\n";
+    s1            = "red";
     String rgb[3] = {String(s1), String("green"), String("blue")};
-    std::cout << "Enter the name of a primary color for mixing light: ";
+    std::cout << "Enter the name of a primary coler for mixing light: ";
     String ans;
     bool   success = false;
     while (std::cin >> ans)
     {
-        ans.string_lower(); // converts string to lowercase
+        ans.stringlow();
         for (int i = 0; i < 3; i++)
         {
-            if (ans == rgb[i]) // overloaded == operator
+            if (ans == rgb[i])
             {
                 std::cout << "That's right!\n";
                 success = true;
@@ -61,8 +55,49 @@ int main(int argc, const char **argv)
         else
             std::cout << "Try again!\n";
     }
-
     std::cout << "Bye\n";
+
+    // =========================================================================
+
+    // String s1(" and I am a C++ student.");
+    // String s2 = "Please enter your name: ";
+    // String s3;
+
+    // std::cout << s2; // overloaded << operator
+    // std::cin >> s3;  // overloaded >> operator
+
+    // s2 = "My name is " + s3; // overloaded =, + operators
+    // std::cout << s2 << ".\n";
+    // s2 = s2 + s1;
+
+    // s2.string_upper(); // converts string to uppercase
+    // std::cout << "The string\n" << s2 << "\ncontains " << s2.count_char('A') << " 'A' characters in it.\n";
+    // s1 = "red"; // String(const char *),
+
+    // // then String & operator=(const String&)
+    // String rgb[3] = {String(s1), String("green"), String("blue")};
+    // std::cout << "Enter the name of a primary color for mixing light: ";
+    // String ans;
+    // bool   success = false;
+    // while (std::cin >> ans)
+    // {
+    //     ans.string_lower(); // converts string to lowercase
+    //     for (int i = 0; i < 3; i++)
+    //     {
+    //         if (ans == rgb[i]) // overloaded == operator
+    //         {
+    //             std::cout << "That's right!\n";
+    //             success = true;
+    //             break;
+    //         }
+    //     }
+    //     if (success)
+    //         break;
+    //     else
+    //         std::cout << "Try again!\n";
+    // }
+
+    // std::cout << "Bye\n";
 
     // ---------------------------------------------------
     // String name;
