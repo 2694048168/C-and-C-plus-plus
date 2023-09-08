@@ -670,5 +670,57 @@ g++ 13_11_1_main.cpp 13_11_1_classic.cpp -std=c++17
 clang++ 13_11_1_main.cpp 13_11_1_classic.cpp -std=c++17
 ./a.exe
 
+# 2. solution:TODO
+# 3. solution:TODO
+# 4. solution:TODO
+```
+
+#### 14.7 编程练习
+
+```shell
+mkdir chapter14 && cd chapter14
+
+# 1. solution:TODO
+# 2. solution:TODO
+# 3. solution:TODO
+# 5. solution:TODO
+
+```
+
+#### 15.8 编程练习
+
+```shell
+mkdir chapter15 && cd chapter15
+
+# 1. solution:TODO
+# 2. solution:TODO
+# 3. solution:TODO
+
+```
+
+#### 16.10 编程练习
+
+```shell
+mkdir chapter16 && cd chapter16
+
+# 1. solution:
+touch 16_10_1_palindrome.cpp
+g++ 16_10_1_palindrome.cpp -std=c++17
+clang++ 16_10_1_palindrome.cpp -std=c++17
+.\a.exe
+
+# 2. solution:
+touch 16_10_2_palindrome.cpp
+g++ 16_10_2_palindrome.cpp -std=c++17
+clang++ 16_10_2_palindrome.cpp -std=c++17
+.\a.exe
+
+# 3. solution:
+touch test.txt
+touch 16_10_3_hangman.cpp
+g++ 16_10_3_hangman.cpp -std=c++17
+clang++ 16_10_3_hangman.cpp -std=c++17
+.\a.exe
+
 
 ```

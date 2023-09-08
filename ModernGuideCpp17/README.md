@@ -39,3 +39,13 @@ clang++ main.cpp -std=c++2b # for ISO C++23
 
 cl main.cpp /std:c++17 /EHsc # main
 ```
+
+### smart pointer
+
+```shell
+# 智能指针和 RAII 技术, 对象所需资源在其生命周期内始终保持有效, 同时不需要显式释放资源
+mkdir smart_pointer && cd smart_pointer
+touch main.cpp
+touch CMakeLists.txt
+mkdir utility
+```
