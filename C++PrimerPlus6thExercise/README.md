@@ -722,5 +722,71 @@ g++ 16_10_3_hangman.cpp -std=c++17
 clang++ 16_10_3_hangman.cpp -std=c++17
 .\a.exe
 
+# 4. solution:
+touch 16_10_4_reduce.cpp
+g++ 16_10_4_reduce.cpp -std=c++17
+clang++ 16_10_4_reduce.cpp -std=c++17
+.\a.exe
+
+# 5. solution:
+touch 16_10_5_reduce.cpp
+g++ 16_10_5_reduce.cpp -std=c++17
+clang++ 16_10_5_reduce.cpp -std=c++17
+.\a.exe
+
+# 6. solution:
+# 7. solution:
+# 8. solution:
+# 9. solution:
+# 10. solution:
+
+```
+
+#### 17.8 编程练习
+
+```shell
+mkdir chapter17 && cd chapter17
+
+# 1. solution:
+touch 17_8_1_input_stream.cpp
+g++ 17_8_1_input_stream.cpp -std=c++17
+clang++ 17_8_1_input_stream.cpp -std=c++17
+.\a.exe
+
+# 2. solution:
+touch 17_8_2_output_stream.cpp
+g++ 17_8_2_output_stream.cpp -std=c++17
+clang++ 17_8_2_output_stream.cpp -std=c++17
+.\a.exe test.txt
+
+# 3. solution:
+touch 17_8_3_copy_command.cpp
+g++ 17_8_3_copy_command.cpp -std=c++17
+clang++ 17_8_3_copy_command.cpp -std=c++17
+
+echo hello CPlusPlus world >> src.txt
+echo hello-CPlusPlus-world >> src.txt
+.\a.exe src.txt dst.txt
+
+# 4. solution:
+touch 17_8_4_read_write.cpp
+g++ 17_8_4_read_write.cpp -std=c++17
+clang++ 17_8_4_read_write.cpp -std=c++17
+
+# 向两个文件提前写入内容用于测试
+echo eggs kites donuts
+balloons hammers
+stones >> sourcefile1.txt
+
+echo zero lassitude
+finance drama >> sourcefile2.txt
+
+.\a.exe
+
+# 5. solution:
+touch 17_8_5_file_operating.cpp
+g++ 17_8_5_file_operating.cpp -std=c++17
+clang++ 17_8_5_file_operating.cpp -std=c++17
+.\a.exe
 
 ```
