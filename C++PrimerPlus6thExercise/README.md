@@ -789,4 +789,41 @@ g++ 17_8_5_file_operating.cpp -std=c++17
 clang++ 17_8_5_file_operating.cpp -std=c++17
 .\a.exe
 
+# 6. solution:
+# 7. solution:
+
+```
+
+#### 18.12 编程练习
+
+```shell
+mkdir chapter18 && cd chapter18
+
+# 1. solution:
+touch 18_12_1_average_temple.cpp
+g++ 18_12_1_average_temple.cpp -std=c++17
+clang++ 18_12_1_average_temple.cpp -std=c++17
+.\a.exe
+
+# TODO
+# the copy constructor and the copy assignment operator
+# the move constructor and the move assignment operator
+# 2. solution:
+touch 18_12_2_move_semantics.cpp
+g++ 18_12_2_move_semantics.cpp -std=c++17
+clang++ 18_12_2_move_semantics.cpp -std=c++17
+.\a.exe
+
+# 3. solution:
+touch 18_12_3_variadic_template.cpp
+g++ 18_12_3_variadic_template.cpp -std=c++17
+clang++ 18_12_3_variadic_template.cpp -std=c++17
+.\a.exe
+
+# 4. solution:
+touch 18_12_4_lambda_expression.cpp
+g++ 18_12_4_lambda_expression.cpp -std=c++17
+clang++ 18_12_4_lambda_expression.cpp -std=c++17
+.\a.exe
+
 ```
