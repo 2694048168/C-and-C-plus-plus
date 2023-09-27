@@ -1,13 +1,45 @@
+## C++ Core Guidelines Explained and Modern C Plus Plus
+
+> the Best Practices for Modern C++, the Compile & Linking & Loading & Library.
+
 > TODO list, we can quickly check in [VSCode](https://code.visualstudio.com/) with extension [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree).
 
+**Overview**
+- [feature](#features)
+- [quick start](#quick-start)
+- [smart pointer](#smart-pointer)
+- [compile and linking](#compile--linking--loading--library)
+
+### **Features**
+- [x] MSVC & GCC & Clang compiler support
+- [x] Modern C++ standard for C++11 & C++17
+- [x] C++ CMake package management or VS build and VSCode
+- [x] Build C++ phase include compile + linking + loading library
+- [x] Smart pointer in Modern C++
+- [x] Ownership and Move Semantic in Modern C++
+- [x] Multiple threading in Modern C++
+- [x] Callback function or methods in Modern C++
+- [x] FileSystem library in Modern C++17
+- [x] Virtual function and polymorphic in Modern C++17
+
 ### quick start
+
+```shell
+# git clone this repo. into local path
+git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
+cd C-and-C-plus-plus/ModernGuideCpp17
+
+# install the Clang(LLVM) and CMake and VSCode
+code .
+
+cmake or g++ or clang++
+```
 
 **the compilers for C++**
 - [LLVM Clang download](https://releases.llvm.org/)
 - [GCC download](https://gcc.gnu.org/releases.html)
 - [MinGW download](https://winlibs.com/)
 - [VS2022 cl download](https://visualstudio.microsoft.com/zh-hans/vs/)
-
 
 ```shell
 gcc --version
@@ -49,3 +81,47 @@ touch main.cpp
 touch CMakeLists.txt
 mkdir utility
 ```
+
+### Compile & Linking & Loading & Library
+
+```C
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    printf("hello world\n");
+    return 0;
+}
+```
+
+- 程序为什么要被编译器编译了之后才可以运行?
+- 编译器在把C语言程序转换成可以执行的机器码的过程中做了什么，怎么做的?
+- 最后编译出来的可执行文件里面是什么?除了机器码还有什么?它们怎么存放的，怎么组织的?
+- #include <stdio.h>是什么意思?把stdio.h包含进来意味着什么?C语言库又是什么?它怎么实现的?
+- 不同的编译器(MSVC, GCC or Clang)和不同的硬件平台(x86、SPARC、MIPS、ARM),以及不同的操作系统（Windows、Linux、UNIX、Solaris)，最终编译出来的结果一样吗?为什么?
+- Hello World程序是怎么运行起来的?操作系统是怎么装载它的?它从哪儿开始执行，到哪儿结束? main函数之前发生了什么? main函数结束以后又发生了什么?
+- 如果没有操作系统，Hello World可以运行吗?如果要在一台没有操作系统的机器上运行Hello World需要什么?应该怎么实现?
+- printf 是怎么实现的?它为什么可以有不定数量的参数?为什么它能够在终端上输出字符串?
+- Hello World 程序在运行时，它在内存中是什么样子的？
+
+
+```C++
+#include <iostream>
+
+int main(int argc, const char **argv)
+{
+    std::cout << "hello Cpp world\n";
+
+    return 0;
+}
+```
+
+- 程序为什么要被编译器编译了之后才可以运行?
+- 编译器在把C++语言程序转换成可以执行的机器码的过程中做了什么，怎么做的?
+- 最后编译出来的可执行文件里面是什么?除了机器码还有什么?它们怎么存放的，怎么组织的?
+- #include <iostream>是什么意思?把iostream头文件包含进来意味着什么?C++语言库又是什么?它怎么实现的?
+- 不同的编译器(MSVC, GCC or Clang)和不同的硬件平台(x86、SPARC、MIPS、ARM),以及不同的操作系统（Windows、Linux、UNIX、Solaris)，最终编译出来的结果一样吗?为什么?
+- Hello World程序是怎么运行起来的?操作系统是怎么装载它的?它从哪儿开始执行，到哪儿结束? main函数之前发生了什么? main函数结束以后又发生了什么?
+- 如果没有操作系统，Hello World可以运行吗?如果要在一台没有操作系统的机器上运行Hello World需要什么?应该怎么实现?
+- std::cout 是怎么实现的?数据流是什么?为什么它能够在终端上输出字符串?
+- Hello World 程序在运行时，它在内存中是什么样子的？
