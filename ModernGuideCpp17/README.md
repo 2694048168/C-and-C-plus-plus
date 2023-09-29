@@ -4,6 +4,8 @@
 
 > TODO list, we can quickly check in [VSCode](https://code.visualstudio.com/) with extension [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree).
 
+> What I cannot create, I do not understand. Know how to solve every problem that has been solved. Quote from Richard Feynman
+
 **Overview**
 - [feature](#features)
 - [quick start](#quick-start)
@@ -20,7 +22,8 @@
 - [x] Multiple threading in Modern C++
 - [x] Callback function or methods in Modern C++
 - [x] FileSystem library in Modern C++17
-- [x] Virtual function and polymorphic in Modern C++17
+- [x] Virtual function and polymorphic in Modern C++
+- [x] [Standard Predefined Macros](https://gcc.gnu.org/onlinedocs/cpp/Standard-Predefined-Macros.html) in C/C++
 
 ### quick start
 
