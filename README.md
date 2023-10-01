@@ -1,6 +1,6 @@
 ![CPlusPlus Logo](./Logo.png)
 
-> C/C++ language learning and some examples; OpenCV with C++; CMake with C++; CUDA with C++; OpenGL with C++; Vulkan with Modern C++; the Modern C++ guide and features and Multi Threading in Modern C++. 
+> C/C++ language learning and some examples; OpenCV with C++; CMake with C++; CUDA with C++; OpenGL with C++; Vulkan with Modern C++; the Modern C++ guide and features and Multi Threading in Modern C++; the QT and GUI with C++. 
 
 > [Wei Li Blog](https://2694048168.github.io/blog/)
 
@@ -12,6 +12,8 @@
 - [x] Support CUDA
 - [x] Support OpenGL
 - [x] Support OpenCV
+- [ ] Support Vulkan
+- [x] Support QT
 
 
 **overview**
