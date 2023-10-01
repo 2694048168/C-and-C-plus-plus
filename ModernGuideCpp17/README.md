@@ -10,6 +10,7 @@
 - [feature](#features)
 - [quick start](#quick-start)
 - [smart pointer](#smart-pointer)
+- [compile linking](#compile-and-linking)
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
@@ -83,6 +84,177 @@ mkdir smart_pointer && cd smart_pointer
 touch main.cpp
 touch CMakeLists.txt
 mkdir utility
+```
+
+### Compile and Linking
+
+```shell
+# C++ 的编译，链接的整个构建过程，Makefile or CMake
+mkdir compile_linking && cd compile_linking
+touch README.md
+touch main.cpp
+
+```
+
+#### 编译工具
+- GCC tool: gcc or g++
+- Clang tool: clang or clang++
+- Microsoft Visual C++ tool: cl
+
+#### commands
+
+```shell
+touch main.cpp
+
+# 1. compile phase
+# gcc -c main.cpp -o main.o
+g++ -c main.cpp -o main.o
+
+# 2. linking phase
+gcc main.o -o main -lstdc++
+# gcc and g++ 的差异, g++ 不需要提供标准的C++库进行链接
+g++ main.o -o main
+
+# or compile and linking together
+gcc main.cpp -o main -lstdc++
+g++ main.cpp -o main
+
+```
+
+```shell
+# c++ 编译过程: 预处理 --> 编译 --> 汇编 --> 链接
+g++ -E main.cpp -o main.i
+g++ -S main.i -o main.s
+g++ -c main.s -o main.o
+g++ main.o -o main
+
+```
+
+#### error
+
+```shell
+# so that error: compile error and linking error
+touch add.cpp
+touch add.hpp
+
+g++ -c add.cpp -o add.o
+# compile unit
+g++ -c main.cpp -o main.o
+g++ add.o main.o -o main
+
+# or one command
+g++ add.cpp main.cpp -o main
+
+# why need header file,
+# compile phase TYPE check, but not check type in linking
+# the header file search path, 
+# "add.h" 相对当前路径进行搜索; <add.h> 相对设置的头文件路径进行搜索, 默认有头文件搜索路径
+# g++ add.cpp main.cpp -o main
+g++ -I. add.cpp main.cpp -o main
+
+```
+
+#### multi-file
+
+```shell
+touch sub.hpp sub.cpp
+
+# one command
+# g++ sub.cpp add.cpp main.cpp -o main
+g++ -I. sub.cpp add.cpp main.cpp -o main
+
+# or compile and linking
+g++ -I. -c sub.cpp -o sub.o
+g++ -I. -c add.cpp -o add.o
+g++ -I. -c main.cpp -o main.o
+g++ sub.o add.o main.o -o main
+
+```
+
+#### CMake and Makefile
+- C++ big project and many files to organize to build(compile and linking)
+- save build time for big C++ project
+
+```shell
+# install make and cmake tool
+make --version
+mingw32-make --version
+
+touch Makefile
+# make target # default the first target
+mingw32-make target
+mingw32-make clean
+
+```
+
+```shell
+# install cmake tool
+touch CMakeLists.txt
+
+# cmake build
+cmake -S . -B build
+
+cmake --build build --config Debug
+./build/Debug/main
+
+cmake --build build --config Release
+./build/Release/main
+
+# CMake 可以支持生成多种构建方式
+cmake -G
+rm -r build
+cmake -S . -B build -G Ninja
+
+```
+
+```makefile
+CFLAGS := -g -o2 -Wall -Werror -Wno-unused -ldl -std=c++17
+
+target: sub_o add_o main_o main
+
+main:
+	g++ $(CFLAGS) sub.o add.o main.o -o main
+
+sub_o:
+	g++ $(CFLAGS) -I. -c sub.cpp -o sub.o
+	
+add_o:
+	g++ $(CFLAGS) -I. -c add.cpp -o add.o
+
+main_o:
+	g++ $(CFLAGS) -I. -c main.cpp -o main.o
+
+clean:
+	rm -rf *.o main
+
+```
+
+```cmake
+cmake_minimum_required(VERSION 3.20)
+
+project(main
+    VERSION "0.1.1"
+    DESCRIPTION "the first CMake example"
+    LANGUAGES CXX
+)
+
+# cmake --build build --config Release
+set(CMAKE_BUILD_TYPE "Debug") # "Release" | "Debug"
+if(CMAKE_BUILD_TYPE)
+    message(STATUS "The build type is ${CMAKE_BUILD_TYPE}")
+endif()
+
+message(STATUS "==== the project source dir: ${PROJECT_SOURCE_DIR}")
+include_directories("./")
+
+add_executable(main)
+target_sources(main
+    PRIVATE
+        "add.cpp"
+        "sub.cpp"
+        "main.cpp"
+)
+
 ```
 
 ### Compile & Linking & Loading & Library
