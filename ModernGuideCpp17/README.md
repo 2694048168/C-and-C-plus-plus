@@ -11,6 +11,7 @@
 - [quick start](#quick-start)
 - [smart pointer](#smart-pointer)
 - [compile linking](#compile-and-linking)
+- [quick CMake](#quick-cmake)
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
@@ -254,6 +255,79 @@ target_sources(main
         "sub.cpp"
         "main.cpp"
 )
+
+```
+
+### quick CMake
+
+```shell
+touch CMakeLists.txt
+touch main.cpp
+
+# cmake -S . -B build
+cmake -S . -B build -G Ninja
+# cmake -S . -B build -G "Unix Makefiles"
+# cmake -S . -B build -G "Visual Studio 17 2022"
+# cmake -S . -B build -G "Visual Studio 17 2019"
+# cmake -S . -B build -G "MinGW Makefiles"
+# cmake -S . -B build -G "MSYS Makefiles"
+
+cmake --build build
+
+./build/main
+./build/test
+
+```
+
+```CMake
+cmake_minimum_required(VERSION 3.20)
+
+project(quick_cmake)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(CMAKE_C_COMPILER clang) # clang | gcc | MSVC(cl)
+set(CMAKE_CXX_COMPILER g++) # clang++ | g++ | | MSVC(cl)
+
+# -std=c11 std=c14 std=c17 std=c20
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# 只启用 ISO C++ 标准的编译器标志, 而不使用特定编译器的扩展
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# -std=c99 std=c11 std=c18
+# set(CMAKE_C_STANDARD 18)
+# set(CMAKE_C_STANDARD_REQUIRED ON)
+# 只启用 ISO C 标准的编译器标志, 而不使用特定编译器的扩展
+# set(CMAKE_C_EXTENSIONS OFF)
+
+# 给后续的目标加上编译选项, 根据编译器而定, 这里设置的是 GCC compiler
+add_compile_options(-g -Wunused)
+
+# 添加头文件搜索路径
+include_directories("./sub/" "./add/" "math/")
+
+# 获取 src 目录下的所有.cpp 文件，并将其保存到变量中
+file(GLOB_RECURSE SOURCES "sub/*.cpp" "add/*.cpp")
+
+set(MUL_SOURCES "./math/mul.cpp")
+# 指定从某些源文件创建库文件（静态库、动态库）
+# add_library(mul STATIC ${MUL_SOURCES})
+add_library(mul SHARED ${MUL_SOURCES})
+
+# link_directories(./)
+# link_libraries(mul)
+
+add_executable(main ${SOURCES} main.cpp)
+add_executable(test ${SOURCES} test.cpp)
+
+# 给指定的目标加上编译选项
+target_compile_options(main PUBLIC -Wall -Werror)
+
+target_link_directories(main PUBLIC ./)
+target_link_libraries(main mul)
+
+# 根据功能模块构建编译, 指定到模块的 CMakeLists.txt
+# add_subdirectory()
 
 ```
 
