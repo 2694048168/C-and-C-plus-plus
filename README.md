@@ -13,7 +13,7 @@
 - [x] Support OpenGL
 - [x] Support OpenCV
 - [ ] Support Vulkan
-- [x] Support QT
+- [x] Support QT with OpenCV and OpenGL
 
 
 **overview**
