@@ -49,15 +49,19 @@ cmake or g++ or clang++
 ```shell
 gcc --version
 # gcc.exe (MinGW-W64 x86_64-ucrt-posix-seh) 12.3.0
+# gcc.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders) 13.1.0
 
 g++ --version
 # g++.exe (MinGW-W64 x86_64-ucrt-posix-seh) 12.3.0
+# g++.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders) 13.1.0
 
 clang --version
 # clang version 16.0.0
+# clang version 17.0.1
 
 clang++
 # clang version 16.0.0
+# clang version 17.0.1
 
 cl
 # 用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.35.32217.1 版(VS2022)
