@@ -3,6 +3,9 @@
 > Talk is cheap, show me the code.
 
 ### features
+0. Concurrency and Thread
+    - [x] CSP Concurrency Model
+    - [x] thread-safe queue
 1. Hello, world of concurrency in C++, This chapter covers
     - [x] What is meant by concurrency and multithreading
     - [x] Why you might want to use concurrency and multithreading in your applications
