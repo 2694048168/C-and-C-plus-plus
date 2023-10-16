@@ -6,6 +6,7 @@
 0. Concurrency and Thread
     - [x] CSP Concurrency Model
     - [x] thread-safe queue
+    - [x] thread pool and thread & task
 1. Hello, world of concurrency in C++, This chapter covers
     - [x] What is meant by concurrency and multithreading
     - [x] Why you might want to use concurrency and multithreading in your applications

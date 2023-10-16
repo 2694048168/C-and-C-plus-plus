@@ -10,6 +10,7 @@
 - [feature](#features)
 - [quick start](#quick-start)
 - [smart pointer](#smart-pointer)
+- [features in Modern C++](#features-in-modern-cpp)
 - [compile linking](#compile-and-linking)
 - [quick CMake](#quick-cmake)
 - [compile and linking](#compile--linking--loading--library)
@@ -90,6 +91,13 @@ touch main.cpp
 touch CMakeLists.txt
 mkdir utility
 ```
+
+### features in Modern Cpp
+- String literal, C++11 中添加了定义原始字符串的字面量
+- NULL in C and nullptr in modern C++11
+- const and constexpr in modern C++11 常量表达式和常量常量表达式函数
+- auto keyword 自动类型推导
+
 
 ### Compile and Linking
 
