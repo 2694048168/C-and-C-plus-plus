@@ -97,6 +97,14 @@ mkdir utility
 - NULL in C and nullptr in modern C++11
 - const and constexpr in modern C++11 常量表达式和常量常量表达式函数
 - auto keyword 自动类型推导
+- final and override keyword
+- C++11 Support 类型转换函数,数值类型和字符串类型之间的转换
+- assert and static_assert in C++11
+- noexcept 表示其修饰的函数不会抛出异常, or directly call 'std::terminate()' 函数来终止程序的运行
+- chrono library in Modern C++11, 日期和时间相关的库
+- thread library in Modern C++11, C++ 语言层面提供的线程库
+- 多线程同步(Synchronous): mutex + condition_variable + atomic and atomic OP
+- 多线程异步(Asynchronous): std::future + std::promise + std::packaged_task + std::async
 
 
 ### Compile and Linking
