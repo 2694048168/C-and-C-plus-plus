@@ -1,0 +1,182 @@
+/**
+ * @file 09_MCTPL.cpp
+ * @author Wei Li (weili_yzzcq@163.com)
+ * @brief 
+ * @version 0.1
+ * @date 2023-10-18
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
+#include "MCTPL.hpp"
+
+#include <chrono>
+#include <iostream>
+#include <thread>
+
+void first(int id)
+{
+    std::cout << "hello from " << id << ", function\n";
+}
+
+void agent(int id, int par)
+{
+    std::cout << "hello from " << id << ", function with parameter " << par << '\n';
+}
+
+struct Third
+{
+    Third(int v)
+    {
+        this->v = v;
+        std::cout << "Third ctor " << this->v << '\n';
+    }
+
+    Third(Third &&c)
+    {
+        this->v = c.v;
+        std::cout << "Third move ctor\n";
+    }
+
+    Third(const Third &c)
+    {
+        this->v = c.v;
+        std::cout << "Third copy ctor\n";
+    }
+
+    ~Third()
+    {
+        std::cout << "Third dtor\n";
+    }
+
+    int v;
+};
+
+void print_string(int id, const std::string &s)
+{
+    std::cout << "mmm function " << id << ' ' << s << '\n';
+}
+
+void test_struct(int id, Third &t)
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    std::cout << "hello from " << id << ", function with parameter Third " << t.v << '\n';
+}
+
+// Modern C++ Thread Pool Library, MCTPL
+// -----------------------------
+int main(int argc, char **argv)
+{
+    // const unsigned    NUM_CORE = std::thread::hardware_concurrency();
+    // MCTPL::ThreadPool pool(NUM_CORE);
+    // pool.resize(2*NUM_CORE)
+
+    // two threads in the pool
+    MCTPL::ThreadPool pool(2);
+
+    std::future<void> qw = pool.push(std::ref(first)); /* function */
+
+    pool.push(first);    /* function */
+    pool.push(agent, 7); /* function */
+
+    {
+        struct Second
+        {
+            Second(const std::string &s)
+            {
+                std::cout << "Second ctor\n";
+                this->s = s;
+            }
+
+            Second(Second &&c)
+            {
+                std::cout << "Second move ctor\n";
+                s = std::move(c.s);
+            }
+
+            Second(const Second &c)
+            {
+                std::cout << "Second copy ctor\n";
+                this->s = c.s;
+            };
+
+            ~Second()
+            {
+                std::cout << "Second dtor\n";
+            }
+
+            void operator()(int id) const
+            {
+                std::cout << "hello from " << id << ' ' << this->s << '\n';
+            }
+
+        private:
+            std::string s;
+        } second(", functor");
+
+        pool.push(std::ref(second)); /* functor, reference */
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        pool.push(const_cast<const Second &>(second)); /* functor, copy ctor */
+        pool.push(std::move(second));                  /* functor, move ctor */
+        pool.push(second);                             /* functor, move ctor */
+        pool.push(Second(", functor"));                /* functor, move ctor */
+    }
+
+    {
+        Third t(100);
+
+        pool.push(test_struct, std::ref(t));  /* function. reference */
+        pool.push(test_struct, t);            /* function. copy ctor, move ctor */
+        pool.push(test_struct, std::move(t)); /* function. move ctor, move ctor */
+    }
+
+    pool.push(test_struct, Third(200)); /* function */
+
+    std::string s = ", lambda expression";
+    pool.push([s](int id) { // lambda
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        std::cout << "hello from " << id << ' ' << s << '\n';
+    });
+
+    pool.push([s](int id) { // lambda
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        std::cout << "hello from " << id << ' ' << s << '\n';
+    });
+
+    pool.push(print_string, "worked");
+
+    auto f = pool.pop();
+    if (f)
+    {
+        std::cout << "poped function from the pool ";
+        f(0);
+    }
+    // change the number of treads in the pool
+
+    pool.resize(1);
+
+    std::string s2 = "result";
+
+    auto f1 = pool.push([s2](int) { return s2; });
+    // other code here
+    //...
+    std::cout << "returned " << f1.get() << '\n';
+
+    auto f2 = pool.push([](int) { throw std::exception(); });
+    // other code here
+    //...
+    try
+    {
+        f2.get();
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "caught exception\n";
+    }
+
+    // get thread 0
+    auto &th = pool.get_thread(0);
+
+    return 0;
+}
