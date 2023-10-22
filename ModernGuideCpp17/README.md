@@ -105,6 +105,10 @@ mkdir utility
 - thread library in Modern C++11, C++ 语言层面提供的线程库
 - 多线程同步(Synchronous): mutex + condition_variable + atomic and atomic OP
 - 多线程异步(Asynchronous): std::future + std::promise + std::packaged_task + std::async
+- Special member function of a Class
+- Friendship and inheritance for Class
+- Polymorphism and (pure) virtual function in OOP
+- Preprocessor directives in Modern C++ usefully
 
 
 ### Compile and Linking
