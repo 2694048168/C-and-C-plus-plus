@@ -7,21 +7,36 @@
 ### Tools
 **CMake and GCC**
 ```shell
-$ cmake --version
-cmake version 3.20.2
+cmake --version
+# cmake version 3.20.2
+# cmake version 3.27.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 
-$ g++ --version
-g++.exe (MinGW-W64 x86_64-posix-seh, built by Brecht Sanders) 10.3.0
-Copyright (C) 2020 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+g++ --version
+# g++.exe (MinGW-W64 x86_64-posix-seh, built by Brecht Sanders) 10.3.0
+# Copyright (C) 2020 Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.  There is NO
+# warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+g++ --version
+# g++.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders) 13.1.0
+
+clang++ --version
+# clang version 17.0.1
 
 ```
 
 ### Chapter 1
 数学问题，包含一系列的数学练习，为下一章更具挑战性的问题热身。
+
+- problem 01: Sum of naturals divisible by 3 and 5
+- problem 02: Greatest common divisor
+- problem 03: Least common multiple
+- problem 04: Largest prime smaller than given number
+- problem 05: Sexy prime pairs
+- problem 06: Abundant numbers
+- problem 07: Amicable numbers
 
 ### Chapter 2
 语言特性，练习操作符重载、移动语义、用户定义的文本和模板编程方面（如可变函数、折叠表达式和类型特征）提出问题。
