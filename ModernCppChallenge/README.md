@@ -37,6 +37,10 @@ clang++ --version
 - problem 05: Sexy prime pairs
 - problem 06: Abundant numbers
 - problem 07: Amicable numbers
+- problem 08: Armstrong numbers
+- problem 09: Prime factors of a number
+- problem 10: Gray code
+- problem 11: Converting numerical values to Roman
 
 ### Chapter 2
 语言特性，练习操作符重载、移动语义、用户定义的文本和模板编程方面（如可变函数、折叠表达式和类型特征）提出问题。
