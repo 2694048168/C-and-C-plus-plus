@@ -60,6 +60,8 @@ git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
 |   |—— README.md
 |—— ModernGuideCpp17
 |   |—— README.md
+|—— ModernCppChallenge
+|   |—— README.md
 |—— CppSeries
 |   |—— week01
 |   |—— |—— CMakeLists.txt
@@ -315,6 +317,7 @@ cd bin
 - OpenCV-CPP
 
 ### C/C++ Language Learning
+- ModernCppChallenge
 - C++PrimerPlus6thExercise
 <details>
 <summary> <span style="color:PeachPuff">C++ Primer Plus 第6版中文版 编程练习答案</span> </summary>
