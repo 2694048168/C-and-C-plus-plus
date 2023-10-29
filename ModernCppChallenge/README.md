@@ -49,6 +49,14 @@ clang++ --version
 语言特性，练习操作符重载、移动语义、用户定义的文本和模板编程方面（如可变函数、折叠表达式和类型特征）提出问题。
 
 - problem 15: IPv4 data type
+- problem 16: Enumerating IPv4 addresses in a range
+- problem 17: Creating a 2D array with basic operations
+- problem 18: Minimum function with any number of arguments
+- problem 19: Adding a range of values to a container
+- problem 20: Container any, all, none
+- problem 21: System handle wrapper
+- problem 22: Literals of various temperature scales
+
 
 ### Chapter 3
 字符串和正则表达式在字符串操作方面的问题，例如在字符串和其他数据类型之间转换、拆分和连接字符串，以及处理正则表达式。
