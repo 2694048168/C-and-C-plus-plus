@@ -6,6 +6,7 @@
 - [Quick Start](#quick-start)
 - [Useful Links](#useful-links)
 - [Organization of Project](#organization-of-project)
+- [OpenCV and QT image convert](#opencv-and-qt-image-convert)
 
 
 ### Quick Start
@@ -57,4 +58,16 @@ cd bin
 |—— lib
 |—— images
 |—— README.md
+```
+
+### OpenCV and QT image convert
+
+```shell
+# Convert between cv::mat and QImage correctly
+
+# the cv::Mat convert to QImage of QT
+# the QImage of QT convert to cv::Mat image of OpenCV
+
+# These functions do not handles all of the image types between QImage and cv::Mat
+
 ```
