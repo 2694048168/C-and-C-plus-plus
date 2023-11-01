@@ -27,7 +27,7 @@ clang++ --version
 
 ```
 
-### Chapter 1
+### Chapter 1 Math Problems
 数学问题，包含一系列的数学练习，为下一章更具挑战性的问题热身。
 
 - problem 01: Sum of naturals divisible by 3 and 5
@@ -45,7 +45,7 @@ clang++ --version
 - problem 14: Validating ISBNs
 
 
-### Chapter 2
+### Chapter 2 Language Features
 语言特性，练习操作符重载、移动语义、用户定义的文本和模板编程方面（如可变函数、折叠表达式和类型特征）提出问题。
 
 - problem 15: IPv4 data type
@@ -58,8 +58,13 @@ clang++ --version
 - problem 22: Literals of various temperature scales
 
 
-### Chapter 3
+### Chapter 3 Strings and Regular Expressions
 字符串和正则表达式在字符串操作方面的问题，例如在字符串和其他数据类型之间转换、拆分和连接字符串，以及处理正则表达式。
+
+- problem 23: Binary to string conversion
+- problem 24: String to binary conversion
+- problem 25: Capitalizing an article title
+- problem 26: Joining strings together separated by a delimiter
 
 ### Chapter 4
 流和文件系统，使用C++ 17文件系统库，覆盖输出流操作，并使用文件和目录进行工作。
