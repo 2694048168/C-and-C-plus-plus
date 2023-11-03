@@ -65,6 +65,8 @@ clang++ --version
 - problem 24: String to binary conversion
 - problem 25: Capitalizing an article title
 - problem 26: Joining strings together separated by a delimiter
+- problem 27: Splitting a string into tokens with a list of possible delimiters
+- problem 28: Longest palindromic substring
 
 ### Chapter 4
 流和文件系统，使用C++ 17文件系统库，覆盖输出流操作，并使用文件和目录进行工作。
