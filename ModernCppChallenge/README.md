@@ -67,6 +67,9 @@ clang++ --version
 - problem 26: Joining strings together separated by a delimiter
 - problem 27: Splitting a string into tokens with a list of possible delimiters
 - problem 28: Longest palindromic substring
+- problem 29: License plate validation
+- problem 30: Extracting URL parts
+- problem 31: Transforming dates in strings
 
 ### Chapter 4
 流和文件系统，使用C++ 17文件系统库，覆盖输出流操作，并使用文件和目录进行工作。
