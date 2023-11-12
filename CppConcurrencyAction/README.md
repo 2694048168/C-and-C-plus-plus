@@ -4,6 +4,7 @@
 
 ### features
 0. Concurrency and Thread
+    - [x] Concurrency Model
     - [x] CSP Concurrency Model
     - [x] thread-safe queue
     - [x] thread pool and thread & task
