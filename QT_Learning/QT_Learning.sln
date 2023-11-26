@@ -40,6 +40,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QThreadPool2", "QThreadPool
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QThreadPool3", "QThreadPool3\QThreadPool3.vcxproj", "{CED33AA0-E9C4-43C3-96D8-18BCE477DA35}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtJson", "QtJson\QtJson.vcxproj", "{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -176,6 +178,14 @@ Global
 		{CED33AA0-E9C4-43C3-96D8-18BCE477DA35}.Release|x64.Build.0 = Release|x64
 		{CED33AA0-E9C4-43C3-96D8-18BCE477DA35}.Release|x86.ActiveCfg = Release|x64
 		{CED33AA0-E9C4-43C3-96D8-18BCE477DA35}.Release|x86.Build.0 = Release|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Debug|x64.ActiveCfg = Debug|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Debug|x64.Build.0 = Debug|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Debug|x86.ActiveCfg = Debug|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Debug|x86.Build.0 = Debug|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Release|x64.ActiveCfg = Release|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Release|x64.Build.0 = Release|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Release|x86.ActiveCfg = Release|x64
+		{6ECE88F1-93C3-4C1A-A4BE-B66F2003FA51}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
