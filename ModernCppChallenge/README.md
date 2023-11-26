@@ -21,7 +21,7 @@ g++ --version
 
 g++ --version
 # g++.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders) 13.1.0
-
+# g++.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders) 13.2.0
 clang++ --version
 # clang version 17.0.1
 
@@ -74,8 +74,19 @@ clang++ --version
 ### Chapter 4
 流和文件系统，使用C++ 17文件系统库，覆盖输出流操作，并使用文件和目录进行工作。
 
+- problem 32: Pascal's triangle
+- problem 33: Tabular printing of a list of processes
+- problem 34: Removing empty lines from a text file
+- problem 35: Computing the size of a directory
+- problem 36: Deleting files older than a given date
+- problem 37: Finding files in a directory that match a regular expression
+- problem 38: Temporary log files
+
 ### Chapter 5
 日期和时间，C++ 20扩展到Cealo库，其中有几个日历和时区问题，可以用新的标准添加项来进行解决。
+
+- problem 39: Measuring function execution time
+- problem 40: Number of days between two dates
 
 ### Chapter 6
 算法和数据结构，包含了各种问题，需要利用现有的标准算法；需要实现自己的通用算法或数据结构的地方，比如循环缓冲区和优先级队列。本章以两个相当有趣的问题结束，道金斯的黄鼠狼程序和康威的生命游戏程序，可以学习进化算法和云胞自动机。
