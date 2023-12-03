@@ -17,6 +17,7 @@
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
+- [x] Memory Leak check tool for C++ Valgrind(Linux platforms)
 - [x] Global Variable in C++ Programming
 - [x] MSVC & GCC & Clang compiler support
 - [x] Modern C++ standard for C++11 & C++17
