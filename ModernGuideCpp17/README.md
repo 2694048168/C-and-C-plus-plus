@@ -17,6 +17,7 @@
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
+- [x] Global Variable in C++ Programming
 - [x] MSVC & GCC & Clang compiler support
 - [x] Modern C++ standard for C++11 & C++17
 - [x] C++ CMake package management or VS build and VSCode
