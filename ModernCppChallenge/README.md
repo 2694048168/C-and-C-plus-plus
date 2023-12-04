@@ -87,6 +87,10 @@ clang++ --version
 
 - problem 39: Measuring function execution time
 - problem 40: Number of days between two dates
+- problem 41: Day of the week
+- problem 42: Day and week of the year
+- problem 43: Meeting time for multiple time zones
+- problem 44: Monthly calendar
 
 ### Chapter 6
 算法和数据结构，包含了各种问题，需要利用现有的标准算法；需要实现自己的通用算法或数据结构的地方，比如循环缓冲区和优先级队列。本章以两个相当有趣的问题结束，道金斯的黄鼠狼程序和康威的生命游戏程序，可以学习进化算法和云胞自动机。
