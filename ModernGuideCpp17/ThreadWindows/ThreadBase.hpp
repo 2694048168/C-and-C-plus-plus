@@ -36,6 +36,9 @@ public:
     //设置线程CPU亲和力
     void SetAffinityMask(DWORD_PTR mask);
 
+    //设置线程优先级 相对优先级
+    void SetPriority(int nPriority);
+
     //激活线程
     void ResumeThread();
 

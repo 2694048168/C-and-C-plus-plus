@@ -90,6 +90,12 @@ void ThreadBase::SetAffinityMask(DWORD_PTR mask)
     ::SetThreadAffinityMask(m_Handle, mask);
 }
 
+//设置线程优先级 相对优先级
+void ThreadBase::SetPriority(int nPriority)
+{
+    ::SetThreadPriority(m_Handle, nPriority);
+}
+
 //激活线程
 void ThreadBase::ResumeThread()
 {

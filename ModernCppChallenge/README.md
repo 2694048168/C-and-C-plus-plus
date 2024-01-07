@@ -96,9 +96,26 @@ clang++ --version
 算法和数据结构，包含了各种问题，需要利用现有的标准算法；需要实现自己的通用算法或数据结构的地方，比如循环缓冲区和优先级队列。本章以两个相当有趣的问题结束，道金斯的黄鼠狼程序和康威的生命游戏程序，可以学习进化算法和云胞自动机。
 
 - problem 45: Priority queue
+- problem 46: Circular buffer
+- problem 47: Double buffer
+- problem 48: The most frequent element in a range
+- problem 49: Text histogram
+- problem 50: Filtering a list of phone numbers
+- problem 51: Transforming a list of phone numbers
+- problem 52: Generating all the permutations of a string
+- problem 53: Average rating of movies
+- problem 54: Pairwise algorithm
+- problem 55: Zip algorithm
+- problem 56: Select algorithm
+- problem 57: Sort algorithm
+- problem 58: The shortest path between nodes
+- problem 59: The Weasel program
+- problem 60: The Game of Life
 
 ### Chapter 7
 并发，使用线程和异步函数来实现通用并行算法的地方，同时也解决了一些涉及并发的实际问题。
+
+- problem 61: Parallel transform algorithm
 
 ### Chapter 8
 设计模式，提出了一系列适合用设计模式来解决的问题，如decorator、composite、chain of responsibility、template method等。
