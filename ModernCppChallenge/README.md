@@ -71,7 +71,7 @@ clang++ --version
 - problem 30: Extracting URL parts
 - problem 31: Transforming dates in strings
 
-### Chapter 4
+### Chapter 4 Streams and Filesystems
 流和文件系统，使用C++ 17文件系统库，覆盖输出流操作，并使用文件和目录进行工作。
 
 - problem 32: Pascal's triangle
@@ -82,7 +82,7 @@ clang++ --version
 - problem 37: Finding files in a directory that match a regular expression
 - problem 38: Temporary log files
 
-### Chapter 5
+### Chapter 5 Date and Time
 日期和时间，C++ 20扩展到Cealo库，其中有几个日历和时区问题，可以用新的标准添加项来进行解决。
 
 - problem 39: Measuring function execution time
@@ -92,7 +92,7 @@ clang++ --version
 - problem 43: Meeting time for multiple time zones
 - problem 44: Monthly calendar
 
-### Chapter 6
+### Chapter 6 Algorithms and Data Structures
 算法和数据结构，包含了各种问题，需要利用现有的标准算法；需要实现自己的通用算法或数据结构的地方，比如循环缓冲区和优先级队列。本章以两个相当有趣的问题结束，道金斯的黄鼠狼程序和康威的生命游戏程序，可以学习进化算法和云胞自动机。
 
 - problem 45: Priority queue
@@ -112,24 +112,32 @@ clang++ --version
 - problem 59: The Weasel program
 - problem 60: The Game of Life
 
-### Chapter 7
+### Chapter 7 Concurrency
 并发，使用线程和异步函数来实现通用并行算法的地方，同时也解决了一些涉及并发的实际问题。
 
 - problem 61: Parallel transform algorithm
+- problem 62: Parallel min and max element algorithms using threads
+- problem 63: Parallel min and max element algorithms using asynchronous functions
+- problem 64: Parallel sort algorithm
+- problem 65: Thread-safe logging to the console
+- problem 66: Customer service system
 
-### Chapter 8
+### Chapter 8 Design Patterns
 设计模式，提出了一系列适合用设计模式来解决的问题，如decorator、composite、chain of responsibility、template method等。
 
-### Chapter 9
+- problem 67: Validating passwords
+
+
+### Chapter 9 Data Serialization
 数据序列化，包括最常见的序列化数据格式，JSON和XML，创建PDF文件，所有这些都使用第三方、开源和跨平台库。
 
-### Chapter 10
+### Chapter 10 Archives, Images, and Databases
 存档、图像和数据库，解决使用zip存档的问题，为实际问题（如类似验证码的系统和条形码）创建PNG文件，以及在应用程序中嵌入和使用SQLite数据库。
 
-### Chapter 11
+### Chapter 11 Cryptography
 密码学，主要覆盖了加密++库的用户进行数据加密和签名。要求实现自己的Base64编码和解码实用程序。
 
-### Chapter 12
+### Chapter 12 Networking and Services
 在网络和服务方面，必须实现自己的ClientServer应用程序，在TCP/IP上进行通信，需要使用各种REST服务，如比特币汇率或文本翻译API。
 
 ----------------------------------------------
