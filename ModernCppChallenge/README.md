@@ -126,7 +126,11 @@ clang++ --version
 设计模式，提出了一系列适合用设计模式来解决的问题，如decorator、composite、chain of responsibility、template method等。
 
 - problem 67: Validating passwords
-
+- problem 68: Generating random passwords
+- problem 69: Generating social security numbers
+- problem 70: Approval system
+- problem 71: Observable vector container
+- problem 72: Computing order price with discounts
 
 ### Chapter 9 Data Serialization
 数据序列化，包括最常见的序列化数据格式，JSON和XML，创建PDF文件，所有这些都使用第三方、开源和跨平台库。
