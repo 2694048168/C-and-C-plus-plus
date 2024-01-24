@@ -135,6 +135,13 @@ clang++ --version
 ### Chapter 9 Data Serialization
 数据序列化，包括最常见的序列化数据格式，JSON和XML，创建PDF文件，所有这些都使用第三方、开源和跨平台库。
 
+- problem 73: Serializing and deserializing data to/from XML
+- problem 74: Selecting data from XML using XPath
+- problem 75: Serializing data to JSON
+- problem 76: Deserializing data from JSON
+- problem 77: Printing a list of movies to a PDF
+- problem 78: Creating a PDF from a collection of images
+
 ### Chapter 10 Archives, Images, and Databases
 存档、图像和数据库，解决使用zip存档的问题，为实际问题（如类似验证码的系统和条形码）创建PNG文件，以及在应用程序中嵌入和使用SQLite数据库。
 
