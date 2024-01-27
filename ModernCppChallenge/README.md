@@ -145,11 +145,36 @@ clang++ --version
 ### Chapter 10 Archives, Images, and Databases
 存档、图像和数据库，解决使用zip存档的问题，为实际问题（如类似验证码的系统和条形码）创建PNG文件，以及在应用程序中嵌入和使用SQLite数据库。
 
+- problem 79: Finding files in a ZIP archive
+- problem 80: Compressing and decompressing files to/from a ZIP archive
+- problem 81: Compressing and decompressing files to/from a ZIP archive with a password
+- problem 82: Creating a PNG that represents a national flag
+- problem 83: Creating verification text PNG images
+- problem 84: EAN-13 barcode generator
+- problem 85: Reading movies from an SQLite database
+- problem 86: Inserting movies into an SQLite database transactionally
+- problem 87: Handling movie images in an SQLite database
+
 ### Chapter 11 Cryptography
 密码学，主要覆盖了加密++库的用户进行数据加密和签名。要求实现自己的Base64编码和解码实用程序。
 
+- problem 88: Caesar cipher
+- problem 89: Vigenère cipher
+- problem 90: Base64 encoding and decoding
+- problem 91: Validating user credentials
+- problem 92: Computing file hashes
+- problem 93: Encrypting and decrypting files
+- problem 94: File signing
+
 ### Chapter 12 Networking and Services
 在网络和服务方面，必须实现自己的ClientServer应用程序，在TCP/IP上进行通信，需要使用各种REST服务，如比特币汇率或文本翻译API。
+
+- problem 95: Finding the IP address of a host
+- problem 96: Client-server Fizz-Buzz
+- problem 97: Bitcoin exchange rates
+- problem 98: Fetching emails using IMAP
+- problem 99: Translating text to any language
+- problem 100: Detecting faces in a picture
 
 ----------------------------------------------
 
