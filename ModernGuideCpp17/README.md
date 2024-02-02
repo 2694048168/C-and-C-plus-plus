@@ -17,6 +17,7 @@
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
+- [x] Callable object and functional and bind in Modern C++
 - [x] Windows Thread API into a ThreadBase class of Modern C++
 - [x] Memory Leak check tool for C++ Valgrind(Linux platforms)
 - [x] Global Variable in C++ Programming
