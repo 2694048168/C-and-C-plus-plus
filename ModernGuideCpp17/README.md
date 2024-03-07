@@ -17,6 +17,7 @@
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
+- [x] Precompiled Headers in C++ (Visual Studio setting and GCC setting)
 - [x] Callable object and functional and bind in Modern C++
 - [x] Windows Thread API into a ThreadBase class of Modern C++
 - [x] Memory Leak check tool for C++ Valgrind(Linux platforms)
