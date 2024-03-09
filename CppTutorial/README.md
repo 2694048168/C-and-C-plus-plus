@@ -17,5 +17,9 @@
 - tutorial 11: 现代 C++ 编程学习之函数参数的三种传递方式
 - tutorial 12: 现代 C++ 编程学习之继承
 - tutorial 13: 现代 C++ 编程学习之多态
-- tutorial 14: 现代C++编程学习之函数模板
-- tutorial 15: 现代C++编程学习之类模板
+- tutorial 14: 现代 C++ 编程学习之函数模板
+- tutorial 15: 现代 C++ 编程学习之类模板
+- tutorial 16: 现代 C++ 编程学习容器之数组
+- tutorial 17: 现代 C++ 编程学习容器之 std::vector
+- tutorial 18: 现代 C++ 编程学习容器之 std::queue 和多线程编程
+- tutorial 19: 现代 C++ 编程学习容器之 std::map
