@@ -23,3 +23,5 @@
 - tutorial 17: 现代 C++ 编程学习容器之 std::vector
 - tutorial 18: 现代 C++ 编程学习容器之 std::queue 和多线程编程
 - tutorial 19: 现代 C++ 编程学习容器之 std::map
+- tutorial 20: 现代 C++ 编程学习之 STL 提供的标准算法库
+- tutorial 21: 现代 C++ 编程学习算法逻辑重要性

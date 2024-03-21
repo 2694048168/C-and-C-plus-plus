@@ -1,7 +1,7 @@
 /**
  * @file 20_algorithms.cpp
  * @author Wei Li (weili_yzzcq@163.com)
- * @brief 现代 C++ 编程学习容器之 STL 提供的标准算法库
+ * @brief 现代 C++ 编程学习之 STL 提供的标准算法库
  * @version 0.1
  * @date 2024-03-12
  * 
