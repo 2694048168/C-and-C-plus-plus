@@ -5,6 +5,8 @@
 > [Wei Li Blog](https://2694048168.github.io/blog/)
 
 **features**
+- [x] Serialization and Deserialization via Json for C++
+- [x] Modern CMake and C++ Project Template
 - [x] External Cpp Library
 - [x] Modern C++
 - [x] Support CMake

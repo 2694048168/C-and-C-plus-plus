@@ -1,0 +1,10 @@
+{
+    "m_cameraParams": {
+        "camera_exposure": 42.0,
+        "camera_height": 3000,
+        "camera_name": "CCD pole",
+        "camera_serial_number": "AT9023873",
+        "camera_status": true,
+        "camera_width": 16384
+    }
+}

@@ -67,3 +67,48 @@ scp -r -p -v remote_username@remote_ip:remote_folder local_folder
 # scp 命令使用端口号 4588
 scp -P 4588 -r remote_username@remote_ip:remote_folder local_folder
 ```
+
+
+```shell
+.
+├── CMakeLists.txt
+├── README.md
+├── bin
+├── build
+│   ├── CMakeCache.txt
+│   └── CMakeFiles
+│       ├── 3.22.1
+│       │   ├── CMakeCXXCompiler.cmake
+│       │   ├── CMakeDetermineCompilerABI_CXX.bin
+│       │   ├── CMakeSystem.cmake
+│       │   └── CompilerIdCXX
+│       │       ├── CMakeCXXCompilerId.cpp
+│       │       ├── a.out
+│       │       └── tmp
+│       ├── CMakeOutput.log
+│       ├── CMakeTmp
+│       └── cmake.check_cache
+├── cmake_build.sh
+├── docs
+├── external
+│   └── log
+├── lib
+├── src
+│   ├── CMakeLists.txt
+│   ├── MathLib
+│   │   ├── CMakeLists.txt
+│   │   ├── Math.cpp
+│   │   └── Math.hpp
+│   ├── PrintModuleLib
+│   │   ├── CMakeLists.txt
+│   │   ├── Module.cpp
+│   │   └── Module.hpp
+│   └── main.cpp
+└── test
+    ├── test_Math
+    │   ├── CMakeLists.txt
+    │   └── test_Math.cpp
+    └── test_PrintModule
+        ├── CMakeLists.txt
+        └── test_print.cpp
+```
