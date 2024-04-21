@@ -17,6 +17,24 @@
     - 所有权模型来管理动态对象的生命周期: 智能指针和移动语义 
 
 
+### Quick Start
+```shell
+# step 1. download and install Visual Studio Code(VSCode)
+# step 2. download and install VS/GCC/Clang Toolchain
+# step 3. download and install CMake and Ninja
+# step 4. install extension in VSCode
+mkdir code && cd code
+git clone --recursive https://github.com/2694048168/C-and-C-plus-plus.git
+cd CppModernCourse
+
+# build and compile
+cmake -S . -B build -G Ninja
+cmake --build build --config Release
+
+# running the example program
+./bin/01_00_firstProgram.exe
+```
+
 ### Organization
 ```
 . CppModernCourse

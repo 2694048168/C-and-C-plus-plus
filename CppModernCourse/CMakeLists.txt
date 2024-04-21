@@ -44,3 +44,5 @@ endif()
 
 # 添加 CMake 子目录, 寻找该目录下的 CMakeLists.txt
 add_subdirectory(00_OvertureCProgrammers)
+add_subdirectory(01_UpAndRunning)
+add_subdirectory(02_Types)
