@@ -5,7 +5,7 @@
 ### Features
 - C++ 语言对比 C 语言的优势
     - constexpr 关键字指示编译器在编译时期对表达式求值
-    - overload 函数重载(本质函数签名唯一), 代码复用
+    - overload 函数重载(本质函数签名唯一), 代码复用vec_double
     - C++的引用(reference)是指针(pointer)处理的改进, 安全特性更强
     - 命名空间与结构体、联合体和枚举的隐式类型定义(typedef)
     - C and C++ 对象文件的混用, 链接阶段的调用约定和符号导出
@@ -14,7 +14,12 @@
     - lambda 函数, 提高代码的局部性
     - 模板(template)的泛型(generic)编程, 是指写一次代码就能适用于不同的类型
     - C++ 资源获取即初始化(RAII)技术管理对象生命周期
-    - 所有权模型来管理动态对象的生命周期: 智能指针和移动语义 
+    - 所有权模型来管理动态对象的生命周期: 智能指针和移动语义
+- C++ 对象生命周期    
+    - 对象的生命周期是C++对象会经历的一系列阶段
+    - 对象的存储期, 对象会分配相应的存储空间
+    - 对象生命周期与异常机制结合，以稳健、安全、优雅的方式处理错误并清理资源
+    - 移动语义和复制语义, 提供了针对对象生命周期的更细粒度的控制
 
 
 ### Quick Start
@@ -42,7 +47,13 @@ cmake --build build --config Release
 |   |—— 00_constexpr.cpp
 |   |—— 05_objectFileHybrid.cpp
 |   |—— CMakeLists.txt
-|—— 01_
+|—— 01_UpAndRunning
+|   |—— CMakeLists.txt
+|—— 02_Types
+|   |—— CMakeLists.txt
+|—— 03_ReferenceType
+|   |—— CMakeLists.txt
+|—— 04_ObjectLifeCycle
 |   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
@@ -91,4 +102,27 @@ scp -r -p -v remote_username@remote_ip:remote_folder local_folder
 # 如果远程服务器防火墙有为scp命令设置了指定的端口，需要使用 -P 参数来设置命令的端口号
 # scp 命令使用端口号 4588
 scp -P 4588 -r remote_username@remote_ip:remote_folder local_folder
+```
+
+虚拟机安装Ubuntu24-Noble
+```shell
+# 1、安装TOOLS
+sudo apt install open-vm-tools
+sudo apt install open-vm-tools-desktop
+
+# 2、安装SSH
+sudo apt install openssh-server
+
+# 3. 配置SSH
+sudo vim /etc/ssh/sshd_config
+# 找到下面内容
+PermitRootLogin yes
+PasswordAuthentication yes
+
+# 4. 设置开机自启动
+sudo systemctl enable ssh
+sudo systemctl is-enabled ssh
+
+# 5. 启动SSH服务
+sudo systemctl status ssh
 ```
