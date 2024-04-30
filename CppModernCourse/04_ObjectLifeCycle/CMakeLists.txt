@@ -31,3 +31,11 @@ add_executable(04_06_copyAssignment
 add_executable(04_07_copyConstructors
     07_copyConstructors.cpp
 )
+
+add_executable(04_08_moveSemantics
+    08_moveSemantics.cpp
+)
+
+add_executable(04_09_fullClass
+    09_fullClass.cpp
+)

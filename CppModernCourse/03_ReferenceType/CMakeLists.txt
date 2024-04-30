@@ -23,3 +23,7 @@ add_executable(03_04_const
 add_executable(03_05_memberInitializerLists
     05_memberInitializerLists.cpp
 )
+
+add_executable(03_06_genericPointer
+    06_genericPointer.cpp
+)
