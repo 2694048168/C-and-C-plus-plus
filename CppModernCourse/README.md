@@ -20,7 +20,7 @@
     - 对象的存储期, 对象会分配相应的存储空间
     - 对象生命周期与异常机制结合，以稳健、安全、优雅的方式处理错误并清理资源
     - 移动语义和复制语义, 提供了针对对象生命周期的更细粒度的控制
-    
+
 ![](images/compilerGenerates.png)
 
 ### Quick Start
@@ -55,6 +55,10 @@ cmake --build build --config Release
 |—— 03_ReferenceType
 |   |—— CMakeLists.txt
 |—— 04_ObjectLifeCycle
+|   |—— CMakeLists.txt
+|—— 05_RuntimePolymorphism
+|   |—— CMakeLists.txt
+|—— 06_CompileTimePolymorphism
 |   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
