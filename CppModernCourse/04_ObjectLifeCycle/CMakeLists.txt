@@ -19,3 +19,15 @@ add_executable(04_03_exceptions
 add_executable(04_04_simpleString
     04_simpleString.cpp
 )
+
+add_executable(04_05_copySemantics
+    05_copySemantics.cpp
+)
+
+add_executable(04_06_copyAssignment
+    06_copyAssignment.cpp
+)
+
+add_executable(04_07_copyConstructors
+    07_copyConstructors.cpp
+)
