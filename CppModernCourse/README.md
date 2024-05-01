@@ -60,6 +60,8 @@ cmake --build build --config Release
 |   |—— CMakeLists.txt
 |—— 06_CompileTimePolymorphism
 |   |—— CMakeLists.txt
+|—— 07_Expressions
+|   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
 |—— build
