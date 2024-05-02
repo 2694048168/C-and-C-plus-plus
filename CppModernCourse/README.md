@@ -62,6 +62,8 @@ cmake --build build --config Release
 |   |—— CMakeLists.txt
 |—— 07_Expressions
 |   |—— CMakeLists.txt
+|—— 08_statements
+|   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
 |—— build
