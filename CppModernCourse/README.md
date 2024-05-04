@@ -66,6 +66,10 @@ cmake --build build --config Release
 |   |—— CMakeLists.txt
 |—— 09_Functions
 |   |—— CMakeLists.txt
+|—— 10_Testing
+|   |—— CMakeLists.txt
+|—— 11_SmartPointers
+|   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
 |—— build
