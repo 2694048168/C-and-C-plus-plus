@@ -40,3 +40,4 @@ lib/*
 .vscode/*
 
 last_message.txt
+test_HAL.txt
