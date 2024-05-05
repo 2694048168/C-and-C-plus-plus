@@ -27,3 +27,7 @@ add_executable(12_05_DateTime
 add_executable(12_06_timingMeasurements
     06_timingMeasurements.cpp
 )
+
+add_executable(12_07_NumericFunctions
+    07_NumericFunctions.cpp
+)
