@@ -43,3 +43,19 @@ add_executable(13_09_bitset
 add_executable(13_10_set
     10_set.cpp
 )
+
+add_executable(13_11_multisets
+    11_multisets.cpp
+)
+
+add_executable(13_12_unorderedSets
+    12_unorderedSets.cpp
+)
+
+add_executable(13_13_map
+    13_map.cpp
+)
+
+add_executable(13_14_initializerLists
+    14_initializerLists.cpp
+)
