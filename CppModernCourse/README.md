@@ -77,6 +77,8 @@ cmake --build build --config Release
 |   |—— CMakeLists.txt
 |—— 14_Iterators
 |   |—— CMakeLists.txt
+|—— 15_Strings
+|   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
 |—— build
