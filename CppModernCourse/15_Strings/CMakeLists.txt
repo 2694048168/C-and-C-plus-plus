@@ -19,3 +19,11 @@ add_executable(15_03_searchManipulation
 add_executable(15_04_numericConversions
     04_numericConversions.cpp
 )
+
+add_executable(15_05_stringView
+    05_stringView.cpp
+)
+
+add_executable(15_06_regularExpressions
+    06_regularExpressions.cpp
+)
