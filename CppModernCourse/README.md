@@ -79,6 +79,8 @@ cmake --build build --config Release
 |   |—— CMakeLists.txt
 |—— 15_Strings
 |   |—— CMakeLists.txt
+|—— 16_Streams
+|   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
 |—— build
