@@ -83,6 +83,8 @@ cmake --build build --config Release
 |   |—— CMakeLists.txt
 |—— 17_Filesystem
 |   |—— CMakeLists.txt
+|—— 18_Algorithm
+|   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
 |—— build
