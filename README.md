@@ -20,6 +20,15 @@
         - 所有权模型来管理动态对象的生命周期: 智能指针和移动语义 
 - [x] Serialization and Deserialization via Json for C++
 - [x] Modern CMake and C++ Project Template
+    - Modern CMake 构建复杂大型项目的基本设计
+        - src 源代码文件夹
+        - bin 可执行文件文件夹
+        - lib 库管理文件夹
+        - external 第三方库管理文件夹
+        - test 测试管理文件夹
+        - build 构建管理文件夹
+    - Modern CMake 构建可执行程序文件
+    - Modern CMake 构建静态库/动态库
 - [x] External Cpp Library
 - [x] Modern C++
 - [x] Support CMake
