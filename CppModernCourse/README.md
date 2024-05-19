@@ -85,6 +85,12 @@ cmake --build build --config Release
 |   |—— CMakeLists.txt
 |—— 18_Algorithm
 |   |—— CMakeLists.txt
+|—— 19_ConcurrencyParallelism
+|   |—— CMakeLists.txt
+|—— 20_NetworkProgramming
+|   |—— CMakeLists.txt
+|—— 21_PracticalApplications
+|   |—— CMakeLists.txt
 |—— CMakeLists.txt
 |—— bin
 |—— build
