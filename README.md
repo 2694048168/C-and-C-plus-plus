@@ -16,6 +16,7 @@
     - CUDA 内存模型(全局内存, 共享内存, local memory, 寄存器, 常量内存和纹理内存)和内存管理, 缓存Cache
     - CUDA 线程束, 并行设计(kernel), SM占有率(Streaming Multiprocessor, SM)
 - [x] 现代 C++ 课程快速入门实战(CppModernCourse)
+    - C++ 语言对比 C 语言的优势
         - constexpr 关键字指示编译器在编译时期对表达式求值
         - overload 函数重载(本质函数签名唯一), 代码复用
         - C++的引用(reference)是指针(pointer)处理的改进, 安全特性更强
