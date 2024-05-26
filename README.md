@@ -5,8 +5,17 @@
 > [Wei Li Blog](https://2694048168.github.io/blog/)
 
 **features**
+- [x] Cuda-CMake-C++(CudaCourse)
+    - Cuda-CMake-C++ 开发环境快速配置
+    - CPU + GPU 异构计算(Heterogeneous Computing)
+    - [Cuda 运行时 API(runtime API) 和 驱动 API(drive-API)](https://docs.nvidia.com/cuda/cuda-runtime-api/driver-vs-runtime-api.html)
+    - kernel function and device function and host function
+    - CUDA 线程模型(thread models) 与线程模型配置(grid, block), 线程索引和全局索引计算范式
+    - [nvcc 编译流程](https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html)和 GPU计算能力与架构
+    - CUDA 编程基本框架, 错误处理机制, 宏函数展开
+    - CUDA 内存模型(全局内存, 共享内存, local memory, 寄存器, 常量内存和纹理内存)和内存管理, 缓存Cache
+    - CUDA 线程束, 并行设计(kernel), SM占有率(Streaming Multiprocessor, SM)
 - [x] 现代 C++ 课程快速入门实战(CppModernCourse)
-    - C++ 语言对比 C 语言的优势
         - constexpr 关键字指示编译器在编译时期对表达式求值
         - overload 函数重载(本质函数签名唯一), 代码复用
         - C++的引用(reference)是指针(pointer)处理的改进, 安全特性更强
