@@ -103,4 +103,5 @@ endif()
 # Add sub-cmake to root project
 add_subdirectory(00_Kickstarting_CMake)
 add_subdirectory(01_Accessing_CMake_Best_Ways)
+add_subdirectory(02_Creating_CMake_Project)
 

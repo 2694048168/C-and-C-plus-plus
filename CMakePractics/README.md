@@ -142,3 +142,70 @@ cmake --install build --config Release
 - Using CMake in Visual Studio, Visual Studio Code, and Qt Creator
 - Passing arguments to the debugged target[VSCode's settings.json]
 - always define additional kits by adding them to the user-local **cmake-tools-kits.json** file manually
+
+### 02_Creating_CMake_Project
+- **build**: The folder where the build files and binaries are placed
+- **include/project_name**: This folder contains all the header files that are publicly accessible from outside the project. Adding a subfolder that contains the project's name is helpful since includes are done with <project_name/some_file.h>, making it easier to figure out which library a header file is coming from.
+- **src**: This folder contains all the source and header files that are private
+- **CMakeLists.txt**: This is the root CMake file
+
+```
+./project_name
+├── CMakeLists.txt
+├── build
+├── docs
+├── test
+├── external or 3thParty
+├── include/project_name
+└── src
+└── sub_project
+    ├── CMakeLists.txt
+    ├── include
+    │   └── sub_project
+    └── src
+```
+
+- [the available compile features](https://cmake.org/cmake/help/latest/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html)
+- **PUBLIC**, **PRIVATE**, **INTERFACE** for source and header files
+
+> Naming libraries, using add_library(<name>), the platform, such as lib<name>.so on Linux and <name>.lib or <name>.dll on Windows.  the prefix or postfix of lib as CMake may append or prepend the appropriate string to the filename, depending on the platform.
+
+- Symbol(classes, functions, types, and more) visibility in shared libraries
+- Compilers have different ways and default behavior when specifying symbol visibility
+
+> the default visibility of the compilers; gcc and clang assume that all the symbols are visible, while Visual Studio compilers, by default, hide all the symbols unless they're explicitly exported. By setting "CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS", the default behavior of MSVC can be changed.
+
+- Changing the default visibility via "<LANG>_VISIBILITY_PRESET" property to HIDDEN
+- CMake provides **generate_export_header** macro, which is imported by the **GenerateExportHeader** module
+- sets the "VISIBILITY_INLINES_HIDDEN" property to TRUE to further reduce the export symbol table by hiding  inlined class member functions
+
+> It is good practice to put these generated files in a subfolder of the build directory so that only part of the directory is added to the include path. The include structure of the generated files should match the include structure of the rest of the library.
+
+- [Additional information about setting symbol visibility via CMake](https://cmake.org/cmake/help/latest/module/GenerateExportHeader.html)
+- Interface or header-only libraries via  **add_library(MyLibrary INTERFACE)**
+- Object libraries – for internal use only via  **add_library(MyLibrary OBJECT)**
+- Setting compiler and linker options via **target_compile_options** and **target_link_options**
+
+> GCC and Clang, options are passed with a dash (-), while the Microsoft compiler takes slashes (/) as prefixes for its options. But by using generator expressions. Generator expressions are evaluated during build system generation, the inner expression evaluates to true and someOption is passed to the compiler. Passing compiler or linker options as PRIVATE marks them as a build requirement for this target that is not needed for interfacing the library. if PRIVATE is substituted with PUBLIC, then the compile option also becomes a usage  requirement and all the targets that depend on the original targets will use the  same compiler options. Exposing compiler options to the dependent targets is  something that needs to be done with caution. If a compiler option is only needed to use a target but not to build it, then keyword INTERFACE can be used. This is mostly the case when you're building header-only libraries. 
+
+```CMake
+target_compile_options(
+  target_name
+  PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/SomeOption>
+          $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-someOption>
+)
+```
+
+- A special case of compiler options is compile definitions, which are passed to the underlying program. These are passed with the **target_compile_definitions** function
+- Debugging compiler options via **CMAKE_EXPORT_COMPILE_COMMANDS** variable to generate [**compile_commands.json**](https://clang.llvm.org/docs/JSONCompilationDatabase.html) for VSCode or CLion
+- Library aliases(MyProject::Library) for common targets libraries named utils, helpers, and similar
+
+```CMake
+add_library(Namespace::utils ALIAS utils)
+add_library(Namespace::utils ALIAS helpers)
+
+target_link_libraries(SomeLibrary PRIVATE Namespace::utils)
+target_link_libraries(SomeLibrary PRIVATE Namespace::helpers)
+```
+
+> As a good practice, always ALIAS your targets with a namespace and reference them using the namespace:: prefix.
