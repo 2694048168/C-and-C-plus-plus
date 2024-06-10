@@ -5,6 +5,17 @@
 # requirement in their CMakeLists file (e.g. require a later version of CMake)
 cmake_minimum_required(VERSION 3.25)
 
+# CMake policies
+# For the top-level CMakeLists.txt file, cmake_minimum_required must be called
+# before any call to the project as it also sets which internal policies for CMake are used to
+# build the project.
+# Policies can be disabled or enabled using the cmake_policy call.
+# Policies are used to maintain backward compatibility across multiple CMake releases
+# configured to use the OLD behavior or as NEW
+# https://cmake.org/cmake/help/latest/command/cmake_policy.html
+# cmake_policy(SET CMP0121 NEW)
+# cmake_policy(SET CMP0121 OLD)
+
 # The main-whole project
 project(
     "CMakePractices"
@@ -13,6 +24,7 @@ project(
     LANGUAGES CXX
 )
 
+# --------------------------------------------------------------------
 # The following are some additional variables regarding the projects. All of them can be
 # prefixed with CMAKE_ to the value for the root project. If they're not defined in the
 # project() directive, the strings are empty:
@@ -32,29 +44,31 @@ message(STATUS [====The minor version]${CMAKE_PROJECT_VERSION_MINOR})
 message(STATUS [====The patch version]${CMAKE_PROJECT_VERSION_PATCH})
 message(STATUS [====The tweak version]${CMAKE_PROJECT_VERSION_TWEAK})
 
-# Variables can be set using the set command and deleted using unset.
-# Variable names are case-sensitive
-set(MYVAR "WeiLi.Ithaca")
-message(STATUS "[====set]The content of MYVAR are ${MYVAR}")
-unset(MYVAR)
-message(STATUS "[====unset]The content of MYVAR are ${MYVAR}")
+# Different toolchains and build types
+# A toolchain typically consists of a series of programs that can compile and link
+# binaries, as well as creating archives and similar.
+# This toolchain is stored in the cache, so if the toolchain
+# changes, the cache must be deleted and rebuilt.
+# overwrite the C++ compiler to use by passing the respective cmake
+# variable using -D
+# -D CMAKE_CXX_COMPILER=g++-12
+# -D CMAKE_CXX_LINKER
 
-# Variables might be scoped in the following way:
-# • Function scope: Variables that are set inside a function are only visible inside
-# the function.
-# • Directory scope: Each of the subdirectories in a source tree binds variables and
-# includes any variable bindings from the parent directory.
-# • Persistent cache: Cached variables can be either system- or user-defined. These
-# persist their values over multiple runs.
-# • Passing the PARENT_SCOPE option to set() makes the variable visible in the
-# parent scope.
-# Variable references can even be nested and are evaluated inside out
-set(MANJOR 4)
-set(MINOR4 "4.6")
-message(STATUS "[====]${MINOR${MANJOR}}")
-unset(MANJOR)
-unset(MINOR4)
+# debug build that contains all debug symbols
+# and release builds that are optimized.
+# CMake natively provides four build types:
+# • Debug: This is non-optimized and contains all the debug symbols. Here, all the
+# asserts are enabled. This is the same as setting -O0 -g for GCC and Clang.
+# • Release: This is optimized for speed without debugging symbols and asserts
+# disabled. Usually, this is the build type that is shipped. This is the same as
+# -O3 -DNDEBUG.
+# • RelWithDebInfo: This provides optimized code and includes debug symbols
+# but disabled asserts, which is the same as -O2 -g -DNDEBUG.
+# • MinSizeRel: This is the same as Release but optimized for a small binary size
+# instead of speed, which would be -Os -DNDEBUG. Note that this configuration is
+# not supported for all generators on all platforms.
 
+# Maintaining good build configurations with presets
 include(CTest)
 
 # Set the default build type for single-config generators. The build type
@@ -88,3 +102,5 @@ endif()
 
 # Add sub-cmake to root project
 add_subdirectory(00_Kickstarting_CMake)
+add_subdirectory(01_Accessing_CMake_Best_Ways)
+
