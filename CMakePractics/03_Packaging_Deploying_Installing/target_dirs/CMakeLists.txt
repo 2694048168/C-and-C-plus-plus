@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.25)
+
+project(target_directory
+    VERSION 1.0
+    DESCRIPTION "TARGET install directory"
+    LANGUAGES CXX
+)
+
+# Defines the ${CMAKE_INSTALL_INCLUDEDIR} variable.
+include(GNUInstallDirs)
+
+install(DIRECTORY dir1
+    DESTINATION ${CMAKE_INSTALL_LOCALSTATEDIR}
+    FILES_MATCHING PATTERN "*.x"
+)
+install(DIRECTORY dir2
+    DESTINATION ${CMAKE_INSTALL_LOCALSTATEDIR}
+    FILES_MATCHING PATTERN "*.hpp"
+    EXCLUDE PATTERN "*"
+)
+install(DIRECTORY dir3
+    DESTINATION ${CMAKE_INSTALL_LOCALSTATEDIR}
+    PATTERN "bin" EXCLUDE
+)

@@ -49,6 +49,14 @@ cmake --install build --component component_name
 cmake --install build --config Debug
 cmake --install build --config Release
 
+# install target into specific path, 
+# and find_package via cmake folder config files
+cmake --install .\build\ --prefix ..\consume_cmake\external
+
+# Creating an installable package with CPack
+cpack --config build/CPackConfig.cmake -B build/
+
+
 ```
 
 ### Reference
@@ -209,3 +217,80 @@ target_link_libraries(SomeLibrary PRIVATE Namespace::helpers)
 ```
 
 > As a good practice, always ALIAS your targets with a namespace and reference them using the namespace:: prefix.
+
+### 03_Packaging_Deploying_Installing
+- Building a software project is only half the story. The other half is about delivering and presenting the software to your consumers
+- Remember, happy consumers will bring value to a product
+- Making CMake targets installable via **install()** command that allows you to generate build system instructions for installing targets, files, directories, and more
+- The **TARGETS** parameter denotes that install will accept a set of CMake targets to generate the installation code for.
+- **signature**: install(TARGETS <target>... [...])
+- The most common output artifacts for a target:
+  - ARCHIVE (static libraries, DLL import libraries, and linker import files):
+    - Except for targets marked as FRAMEWORK in macOS
+  - LIBRARY (shared libraries):
+    - Except for targets marked as FRAMEWORK in macOS
+    - Except for DLLs (in Windows)  
+  - RUNTIME (executables and DLLs):
+    - Except for targets marked as MACOSX_BUNDLE in macOS
+- The **GNUInstallDirs** module defines various **CMAKE_INSTALL_** paths when included default installation directories for the targets:
+
+![](images/default_install.png)
+
+- To override the built-in defaults, an additional **<TARGET_TYPE> DESTINATION** parameter is required in the install(...) command
+- Installing files and directories via **install(FILES...)** and **install(DIRECTORY...)** commands for installing any specific files or directories(images, assets, resource files, scripts, and configuration files)
+
+![](images/install_files.png)
+
+> install(DIRECTORY...) the FILES_MATCHING parameter to define criteria for file selection. FILES_MATCHING can be followed by either the PATTERN or REGEX argument. PATTERN allows you to define a global pattern, whereas REGEX allows you to define a regular expression. install() command's first parameter indicates what to install. There are additional parameters that allow us to customize the installation. such "DESTINATION", "PERMISSIONS", "CONFIGURATIONS", "OPTIONAL".
+
+- Supplying configuration information for others using your project via **find_package()** method
+- Packages can be in the form of **Config-file** packages, Find-module packages, or pkg-config packages
+- There are two types of configuration files: a package configuration file and an optional package version file
+- Package configuration files can be named **<ProjectName>Config.cmake** or **<projectname>-config.cmake**
+- Both notations will be picked by CMake on find_package(ProjectName)/find_package(projectname) calls
+- **<ProjectName>ConfigVersion.cmake** or **<projectname>-config-version**
+- find_package(...) looks while searching for packages is the **<CMAKE_PREFIX_PATH>/cmake** directory
+- Creating an installable package with CPack to generate platform-specific installations and packages
+- [available CPack generator types](https://cmake.org/cmake/help/latest/manual/cpack-generators.7.html)
+
+| Generator Name | Description                  |
+|----------------|------------------------------|
+| 7Z             | 7-zip archive                |
+| DEB            | Debian package               |
+| External       | CPack external package       |
+| IFW            | Qt Install Framework         |
+| NSIS           | Null Soft Installer          |
+| NSIS64         | Null Soft Installer(64-bit)  |
+| NuGet          | NuGet packages               |
+| RPM            | RPM packages                 |
+| STGZ           | Self-extracting TAR gzip archive |
+| TBZ2           | Tar BZip2 archive            |
+| TGZ            | Tar GZip  archive            |
+| TXZ            | Tar XZ    archive            |
+| TZ             | Tar Compress archive         |
+| TZST           | Tar Zstandard archive        |
+| ZIP            | ZIP archive                  |
+
+- CPack uses the configuration details that are present in the **CPackConfig.cmake** and **CPackSourceConfig.cmake** files to generate packages
+- CPack module allows to customize the packaging process via a large amount of CPack variables
+
+![](images/CPack_variables1.png)
+![](images/CPack_variables2.png)
+
+> NOTE: Any changes that must be made to the variables must be made before you include the CPack module. Otherwise, the defaults will be used.
+
+```shell
+cd CPack
+cmake –S . -B build
+ls build/CPack*
+
+# for single-config generator
+cmake --build build
+
+# for multi-config generator
+cmake --build build --config Release
+
+cpack --config build/CPackConfig.cmake -B build/
+```
+
+
