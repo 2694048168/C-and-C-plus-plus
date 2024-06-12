@@ -56,6 +56,15 @@ cmake --install .\build\ --prefix ..\consume_cmake\external
 # Creating an installable package with CPack
 cpack --config build/CPackConfig.cmake -B build/
 
+#< lists all available modules
+cmake --help-module-list
+
+#< prints the documentation for module <mod>
+cmake --help-module <mod> 
+
+#< lists all modules and their documentation
+cmake --help-modules 
+
 
 ```
 
@@ -66,6 +75,11 @@ cpack --config build/CPackConfig.cmake -B build/
 - [Git Download](https://www.git-scm.com/downloads)
 - [VSCode Download](https://code.visualstudio.com/Download)
 - [CMake Tool extension for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+- [Conan package management](https://conan.io/downloads)
+- [Conan library](https://conan.io/center)
+- [Vcpkg package management](https://github.com/microsoft/vcpkg)
+- [Vcpkg package management](https://vcpkg.io/en/)
+- [Vcpkg library](https://vcpkg.io/en/packages)
 
 
 ### Features
@@ -293,4 +307,58 @@ cmake --build build --config Release
 cpack --config build/CPackConfig.cmake -B build/
 ```
 
+### Integrating_ThirdParty_Libraries_Dependency_Management
+- The first how to **find** those things(**files, libraries, and programs**) in general, while the latter part how to **manage** dependencies
+- how to write **instructions** for CMake to reliably find almost any library on your system
+- use package managers such as **Conan** and **vcpkg** with CMake
+- **Finding** files, programs, and paths with CMake
+  - the search order of where to look for files
+  - add additional locations where the file might be
+  - account for the differences between different operating systems
+- There are five **find_... commands** that share very similar options and behaviors:
+  * [find_file](https://cmake.org/cmake/help/latest/command/find_file.html): This locates a single file
+  * [find_path](https://cmake.org/cmake/help/latest/command/find_path.html): This finds a directory containing a specific file
+  * [find_library](https://cmake.org/cmake/help/latest/command/find_library.html): This finds library files
+  * [find_program](https://cmake.org/cmake/help/latest/command/find_program.html): This finds executable programs
+  * [find_package](https://cmake.org/cmake/help/latest/command/find_package.html): This finds complete sets of packages
+
+![](images/serarch_order.png)
+
+- Searching for files when **cross-compiling** via **CMAKE_SYSROOT**, **CMAKE_SYSROOT_COMPILE**, and **CMAKE_SYSROOT_LINK** variables affect the search locations
+- By default CMake searches in the locations provided by any of the variables from the preceding paragraph and then continues to search the host system
+
+![](images/serarch_order2.png)
+
+> find_program command, On Windows, the .exe and .com file extensions are automatically added to the filenames provided, but not .bat or .cmd. 
+
+- As with the other find commands, find_program will set **<varname>-NOTFOUND** variable if CMake is unable to find the program
+
+> find_library, On Unix platforms, the names will be prefixed with lib, while on Windows, the.dll or .lib extensions will be added. CMake is generally aware of conventions regarding 32-bit and 64-bit search locations such as platforms using the lib32 and lib64 folders for different libraries of the same name.
+
+- **Using** third-party libraries in your CMake project\
+  - Packages provide a set of information about dependencies for CMake and the generated build systems
+  - find_package command the result is a set of imported targets and/or a set of variables containing information that is relevant to the build system
+  - by their **configuration details** (also called config-file packages), which are provided by the upstream project
+  - as so-called find **module packages**, which are usually defined somewhere that is unrelated to the package, either by CMake itself or by the project using the package
+
+> The **findPkgConfig** module, which uses find-pkg to find the relevant meta-information for a dependency, also provides indirect support for packages. the find_package command has two signatures: a basic or short signature and a full or long signature. The short form supports both the module and config packages, but the long form only supports configuration mode. Assume regular package manager such as **apt**, RPM, or similar for Linux, **chocolatey** for Windows, or **brew** for macOS.
+
+> NOTE: Unfortunately, as of version 3.21, CMake cannot query the modules for the available components. So, we have to rely on the documentation of the modules or library providers to find out which components are available. [cmake modules](https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html)
+
+```shell
+#< lists all available modules
+cmake --help-module-list
+
+#< prints the documentation for module <mod>
+cmake --help-module <mod> 
+
+#< lists all modules and their documentation
+cmake --help-modules 
+```
+
+> When run in module mode, the **find_package command** searches for files called **Find<PackageName>.cmake**; this occurs, first, in the paths specified by **CMAKE_MODULE_PATH** and then among the find modules provided by the CMake installation. When run in config mode, **find_package** searches for files called after either of the following patterns: 1. **<lowercasePackageName>-config.cmake**; 2. **<PackageName>Config.cmake**; 3. **<lowercasePackageName>-config-version.cmake** (if the version details were specified); 4. **<PackageName>ConfigVersion.cmake** (if the version details were specified). All searches will be conducted over a set of locations in a well-defined order; if needed, some of the locations can be skipped by passing the respective option to CMake. [cmake packages](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html)
+
+- Using **package managers** with CMake
+- Getting the **dependencies** as source code
+- 
 
