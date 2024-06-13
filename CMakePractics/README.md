@@ -77,6 +77,7 @@ cmake --help-modules
 - [CMake Tool extension for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
 - [Conan package management](https://conan.io/downloads)
 - [Conan library](https://conan.io/center)
+- [Conan docs](https://docs.conan.io/2/)
 - [Vcpkg package management](https://github.com/microsoft/vcpkg)
 - [Vcpkg package management](https://vcpkg.io/en/)
 - [Vcpkg library](https://vcpkg.io/en/packages)
@@ -307,7 +308,7 @@ cmake --build build --config Release
 cpack --config build/CPackConfig.cmake -B build/
 ```
 
-### Integrating_ThirdParty_Libraries_Dependency_Management
+### 04_Integrating_ThirdParty_Libraries_Dependency_Management
 - The first how to **find** those things(**files, libraries, and programs**) in general, while the latter part how to **manage** dependencies
 - how to write **instructions** for CMake to reliably find almost any library on your system
 - use package managers such as **Conan** and **vcpkg** with CMake
@@ -335,7 +336,7 @@ cpack --config build/CPackConfig.cmake -B build/
 
 > find_library, On Unix platforms, the names will be prefixed with lib, while on Windows, the.dll or .lib extensions will be added. CMake is generally aware of conventions regarding 32-bit and 64-bit search locations such as platforms using the lib32 and lib64 folders for different libraries of the same name.
 
-- **Using** third-party libraries in your CMake project\
+- **Using** third-party libraries in your CMake project
   - Packages provide a set of information about dependencies for CMake and the generated build systems
   - find_package command the result is a set of imported targets and/or a set of variables containing information that is relevant to the build system
   - by their **configuration details** (also called config-file packages), which are provided by the upstream project
@@ -358,7 +359,35 @@ cmake --help-modules
 
 > When run in module mode, the **find_package command** searches for files called **Find<PackageName>.cmake**; this occurs, first, in the paths specified by **CMAKE_MODULE_PATH** and then among the find modules provided by the CMake installation. When run in config mode, **find_package** searches for files called after either of the following patterns: 1. **<lowercasePackageName>-config.cmake**; 2. **<PackageName>Config.cmake**; 3. **<lowercasePackageName>-config-version.cmake** (if the version details were specified); 4. **<PackageName>ConfigVersion.cmake** (if the version details were specified). All searches will be conducted over a set of locations in a well-defined order; if needed, some of the locations can be skipped by passing the respective option to CMake. [cmake packages](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html)
 
+- Writing your own find module
+  - when invoking find_package in module mode, CMake searches for files called Find<PackageName>.cmake in **CMAKE_MODULE_PATH**
+
+```shell  
+├── dep <-- The folder where we locally keep dependencies
+├── cmake
+│   └── FindLibImagePipeline.cmake <-- This is what we need to write
+├── CMakeLists.txt <-- Main CmakeLists.txt
+├── src
+│   ├── *.cpp files
+
+#  add the cmake folder to the CMAKE_MODULE_PATH, which is a list
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+```  
+
 - Using **package managers** with CMake
+  - The easiest way to get dependencies is to install using **apt**, **brew**, or **Chocolatey**
+  - C++ package managers **Conan** or **vcpkg**
+  - check for the **Conan program** using **find_program** before using Conan2
+  - vcpkg run in **manifest mode**, dependencies are defined in a **vcpkg.json** file in the root of the project
+
+> If they are run in manifest mode, the packages specified in the vcpkg.json file will be automatically downloaded and installed locally. If they are run in classic mode, the packages have to be manually installed before running CMake. When passing the vcpkg toolchain file, the installed packages can be used, as usual, by using find_package and target_link_libraries. Setting the toolchain file might cause problems when cross-compiling, as CMAKE_TOOLCHAIN_FILE might point to a different file already. In this case, a second toolchain file can be passed with the VCPKG_CHAINLOAD_TOOLCHAIN_FILE variable.
+
+```shell
+cmake -S <source_dir> -D <binary_dir> -DCMAKE_TOOLCHAIN_FILE=[vcpkg root]/scripts/buildsystems/vcpkg.cmake
+
+cmake -S <source_dir> -D <binary_dir> -DCMAKE_TOOLCHAIN_ FILE=[vcpkg root]/scripts/buildsystems/vcpkg.cmake -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=/path/to/other/toolchain.cmake
+```
+
 - Getting the **dependencies** as source code
 - 
 
