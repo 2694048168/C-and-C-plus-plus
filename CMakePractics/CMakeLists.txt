@@ -104,4 +104,5 @@ endif()
 add_subdirectory(00_Kickstarting_CMake)
 add_subdirectory(01_Accessing_CMake_Best_Ways)
 add_subdirectory(02_Creating_CMake_Project)
-
+add_subdirectory(03_Packaging_Deploying_Installing)
+add_subdirectory(04_Integrating_ThirdParty_Libraries_Dependency_Management)

@@ -389,5 +389,10 @@ cmake -S <source_dir> -D <binary_dir> -DCMAKE_TOOLCHAIN_ FILE=[vcpkg root]/scrip
 ```
 
 - Getting the **dependencies** as source code
-- 
+- getting external content is the CMake **ExternalProject** and **FetchContent** module
+
+> One of the main differences between ExternalProject and FetchContent is that **FetchContent** downloads and configures external projects during configuration time, while **ExternalProject** does everything during the build step. As ExternalProject, FetchContent can download from HTTP(S), Git, SVN, Mercurial, and CVS, and the same good practices, such as specifying MD5 hashes for the downloaded content or using Git hashes, apply. 
+
+- **Git submodules** and using add_subdirectory
+- [ExternalProject](https://cmake.org/cmake/help/latest/module/ExternalProject.html)
 
