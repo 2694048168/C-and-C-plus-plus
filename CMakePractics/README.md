@@ -65,6 +65,11 @@ cmake --help-module <mod>
 #< lists all modules and their documentation
 cmake --help-modules 
 
+cpack --config  build/CPackConfig.cmake -B build/pak
+
+# generate dependency graphs
+cmake --graphviz=graphviz/project.dot build/
+dot -Tpng graphviz/project.dot -o graphviz/project.png
 
 ```
 
@@ -81,6 +86,9 @@ cmake --help-modules
 - [Vcpkg package management](https://github.com/microsoft/vcpkg)
 - [Vcpkg package management](https://vcpkg.io/en/)
 - [Vcpkg library](https://vcpkg.io/en/packages)
+- [Doxygen download](https://doxygen.nl/download.html)
+- [PlantUML download](https://plantuml.com/zh/download)
+- [Graphviz download](https://graphviz.org/download/)
 
 
 ### Features
@@ -393,6 +401,37 @@ cmake -S <source_dir> -D <binary_dir> -DCMAKE_TOOLCHAIN_ FILE=[vcpkg root]/scrip
 
 > One of the main differences between ExternalProject and FetchContent is that **FetchContent** downloads and configures external projects during configuration time, while **ExternalProject** does everything during the build step. As ExternalProject, FetchContent can download from HTTP(S), Git, SVN, Mercurial, and CVS, and the same good practices, such as specifying MD5 hashes for the downloaded content or using Git hashes, apply. 
 
-- **Git submodules** and using add_subdirectory
+- **[Git submodules](https://www.git-scm.com/book/en/v2/Git-Tools-Submodules)** and using add_subdirectory
 - [ExternalProject](https://cmake.org/cmake/help/latest/module/ExternalProject.html)
+
+### 05_Auto_Generating_Docs
+- integrating **Doxygen**, **DOT**, and **PlantUML** into CMake to speed up the documentation process
+- Generating documentation from source code
+  - Doxygen requires comments to be in a predefined set of formats
+  - [Doxygen comment formats](https://www.doxygen.nl/manual/docblocks.html), Javadoc-style comments recommended
+  - Doxygen also requires a **Doxyfile**, which CMake will generate
+  - [Doxygen config](https://www.doxygen.nl/manual/config.html)
+  - enabling PlantUML support in Doxygen
+- Packaging and distributing documentation with CPack
+
+```shell
+cd 05_Auto_Generating_Docs/doxygen_doc/
+
+cmake -S . -B build/
+cmake --build build/ --config Release # for multi-config
+cmake --build build/ # for single-config
+
+cpack --config  build/CPackConfig.cmake -B build/pak
+
+cmake --graphviz=graphviz/project.dot build/
+dot -Tpng graphviz/project.dot -o graphviz/project.png
+```
+
+- Creating dependency graphs of CMake targets
+  - need to document and **visualize** the CMake code via **--graphviz**
+  - The **DOT language** is a description language for graphs
+  - Behavior and options can be controlled by the **variables** provided in **CMakeGraphVizOptions**
+  - [CMakeGraphVizOptions](https://cmake.org/cmake/help/latest/module/CMakeGraphVizOptions.html)
+
+> DOT files can be converted to images or even Portable Document Format (PDF) files using the dot command-line utility from Graphviz, like this: **dot -Tpng filename.dot -o out.png**
 
