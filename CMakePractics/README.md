@@ -71,6 +71,11 @@ cpack --config  build/CPackConfig.cmake -B build/pak
 cmake --graphviz=graphviz/project.dot build/
 dot -Tpng graphviz/project.dot -o graphviz/project.png
 
+# test in CMake
+cmake -S . -B build -G "Ninja"
+cmake --build build 
+cmake --build build --target test
+
 ```
 
 ### Reference
@@ -89,6 +94,10 @@ dot -Tpng graphviz/project.dot -o graphviz/project.png
 - [Doxygen download](https://doxygen.nl/download.html)
 - [PlantUML download](https://plantuml.com/zh/download)
 - [Graphviz download](https://graphviz.org/download/)
+- [Catch2 CMake integration](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md)
+- [GoogleTest in CMake](https://cmake.org/cmake/help/latest/module/GoogleTest.html)
+- [OpenCppCoverage](https://github.com/OpenCppCoverage/OpenCppCoverage)
+- [OpenCppCoverage Extension for VS](https://marketplace.visualstudio.com/items?itemName=OpenCppCoverage.OpenCppCoveragePlugin)
 
 
 ### Features
@@ -434,4 +443,99 @@ dot -Tpng graphviz/project.dot -o graphviz/project.png
   - [CMakeGraphVizOptions](https://cmake.org/cmake/help/latest/module/CMakeGraphVizOptions.html)
 
 > DOT files can be converted to images or even Portable Document Format (PDF) files using the dot command-line utility from Graphviz, like this: **dot -Tpng filename.dot -o out.png**
+
+### 06_Integrate_Code_Quality_Tools
+- quality software is **testing** and ensuring that the **code quality**
+- While tests, coverage, and static code analysis help (CI/CD systems)
+- integrate various **code sanitizers and static code analyzers** to check code quality already while compiling
+- Defining, discovering, and running tests
+
+> With the CTest utility, CMake includes a built-in way to execute almost any test. Any CMake project that has set **enable_testing()** and added at least one test with **add_test()** has testing support enabled. Any call to enable_testing() will enable test discovery in the current directory and any directory below, so it is often a good idea to set it in the top-level CMakeLists.txt, before any calls to add_subdirectory. The CTest module of CMake automatically sets enable_testing if used with **include(CTest)**, unless the BUILD_TESTING option was set to OFF.
+
+> Unit tests are, in essence, small programs that run a list of assertions inside, and if any of the assertions fail, they return a non-zero return value. There are many frameworks and libraries that help with organizing tests and writing assertions, but from the outside, checking assertions and returning a corresponding value is the core functionality.
+
+```shell
+if(PROJECT_IS_TOP_LEVEL)
+  include(CTest)
+endif()
+
+#  added to any CMakeLists.txt with the add_test function
+add_test(NAME <name> COMMAND <command> [<arg>...]
+ [CONFIGURATIONS <config>...]
+ [WORKING_DIRECTORY <dir>]
+ [COMMAND_EXPAND_LISTS])
+
+# The tests are executed by running the ctest command standalone 
+# or as a special target as part of the build step of CMake.  
+ctest --test-dir <build_dir>
+cmake --build <build_dir> --target test
+ctest --build-and-test <source_dir> <build_dir> 
+
+# Catch2 for Automatically discovering tests
+find_package(Catch2)
+include(Catch)
+add_executable(Fibonacci)
+catch_discover_tests(Fibonacci)
+
+# GoogleTest for Automatically discovering tests
+include(GoogleTest)
+add_executable(Fibonacci)
+gtest_discover_tests(Fibonacci)
+
+```
+
+- Advanced ways to determine test **success or failure**
+- Handling timeouts and repeating tests via **TIMEOUT** property
+- The --repeat argument actually has three options:
+  * after-timeout: This retries the test a number of times if a timeout occurred. Generally, the --timeout option should be passed to CTest whenever repeating after timeouts.
+  * until-pass: This reruns a test until it passes or until the number of retries is reached. Setting this as a general rule in a CI environment is a bad idea, as tests should generally always pass.
+  * until-fail: Tests are rerun a number of times or until they fail. This is often used if a test fails occasionally to find out how frequently this happens. The --repeatuntil-fail argument works exactly like  --repeat:until-fail:n. 
+
+
+```shell
+# CTest accepts the --timeout argument
+set_tests_properties(timeout_test PROPERTIES TIMEOUT 10)
+
+# CTest command line accepts the --stop-time
+ctest --timeout 30 --stop-time 23:59
+```
+
+- Running tests in **parallel** and managing test resources
+- ctest --resource-spec-file command-line parameter or by setting the CTEST_RESOURCE_SPEC_FILE variable when calling CMake
+- Generating coverage reports using **Clang or GCC**
+- Creating coverage reports for **MSVC**
+
+```shell
+cmake -S <sourceDir> -B <BuildDir> -DCMAKE_CXX_FLAGS=--coverage
+
+gcovr -r <SOURCE_DIR> <BINARY_DIR> -html
+
+lcov -c -d <BINARY_DIR> -o <OUTPUT_FILE>
+genhtml -o <HTML_OUTPUT_PATH> <LCOV_OUTPUT>
+
+OpenCppCoverage.exe --export_type html:coverage.html --MyProgram.exe arg1 arg2
+OpenCppCoverage.exe --cover_children --modules <build_dir> --sources <source_dir> -- ctest.exe --build-config Debug
+```
+
+- Sanitizing your code
+- The following are the most common types of sanitizers:
+  - The **address sanitizer (ASan)** detects memory access errors such as out-of-bounds and use-after-free bugs.
+  - The **leak sanitizer (LSan)**, which is part of the ASan, can be used for detecting memory leaks. 
+  - In GCC and Clang, there are a few specialized versions of the general ASan, such as the **kernel address sanitizer (KASAN)** for detecting memory errors in the Linux kernel.
+  - On some platforms, the ASans can even be run with **hardware** assistance.
+  - The **memory sanitizer (MSan)** detects uninitialized memory reads.
+  - The **thread sanitizer (TSan)** will report data races. Because of the way the TSan works, it cannot be run together with the ASan and LSan. 
+  - The **undefined behavior sanitizer (UBSan)** detects and reports cases where the code results in undefined behavior. Using variables before initialization or ambiguity regarding operator precedence are common examples.
+
+> Today's or Modern compilers are often more than just programs to convert text to binary. They are complex software suites that have **built-in functionality to ensure code quality**. The focus on how much compilers are aware of code quality issues has drastically increased, especially with the advent of **LLVM and Clang**. These quality tools are commonly called sanitizers and are enabled by passing certain flags to the compiler and linker. The sanitizers are enabled by passing various compiler flags[-fsanitize=<sanitizer> for GCC or Clang,  /fsanitize=<sanitizer> for MSVC] that cause the compiler to add extra debugging information to the binaries.
+
+- Static code analysis using CMake
+  - Static code analysis analyzes the code without running it
+- CMake supports several tools for static code analysis that are enabled either by setting a property or a global variable
+  - **Clang-Tidy** enabled with <LANG>_CLANG_TIDY property or the CMAKE_<LANG>_CLANG_TIDY variable
+  - **Cppcheck** enabled with <LANG>_CPPCHECK property or the CMAKE_<LANG>_CPPCHECK variable
+  - **cpplint**  Google style-checker enabled with the <LANG>_CPPLINT property or the CMAKE_<LANG>_CPPLINT variable
+  - **include what you use (iwyu)** is a Python program that parses the C++ source files
+  - **link what you use (lwyu)** is a built-in feature of CMake
+- Creating custom build types for quality tools
 
