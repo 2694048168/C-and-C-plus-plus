@@ -572,3 +572,11 @@ OpenCppCoverage.exe --cover_children --modules <build_dir> --sources <source_dir
 - Using **sysroots** to isolate build environments
 
 > In a nutshell, a system root, or just sysroot, is a directory that a build system considers to be the root directory from which to locate headers and libraries.
+
+### 09_Handling_Distributed_Superbuild
+
+> A super-build is a method that can be used for decoupling the logic required for satisfying dependencies from project code, similar to how package managers work. In fact, we can call this method the poor man's package manager. Separating the dependency logic from the project code allows us to have a more flexible and maintainable project structure.
+
+- The requirements and prerequisites for a super-build
+- Building across multiple code repositories
+- Ensuring version consistency in a super-build
