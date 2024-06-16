@@ -580,3 +580,11 @@ OpenCppCoverage.exe --cover_children --modules <build_dir> --sources <source_dir
 - The requirements and prerequisites for a super-build
 - Building across multiple code repositories
 - Ensuring version consistency in a super-build
+
+### 10_Automated_Fuzzing
+
+> Fuzzing, or fuzz testing, is a testing method that feeds random, unexpected data to a software system to see how a system behaves with certain input. 
+
+- Using **libFuzzer** in your CMake project
+- Using **AFL++** in your CMake project
+
