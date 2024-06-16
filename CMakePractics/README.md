@@ -98,6 +98,7 @@ cmake --build build --target test
 - [GoogleTest in CMake](https://cmake.org/cmake/help/latest/module/GoogleTest.html)
 - [OpenCppCoverage](https://github.com/OpenCppCoverage/OpenCppCoverage)
 - [OpenCppCoverage Extension for VS](https://marketplace.visualstudio.com/items?itemName=OpenCppCoverage.OpenCppCoveragePlugin)
+- [VSCode support containers](https://code.visualstudio.com/docs/devcontainers/containers)
 
 
 ### Features
@@ -552,3 +553,22 @@ OpenCppCoverage.exe --cover_children --modules <build_dir> --sources <source_dir
 > The default behavior can be changed by setting NEWLINE_STYLE. UNIX or LF will use \n for newlines, while DOS, WIN32, and CRLF will use \r\n.
 
 - Using CMake for platform-independent commands
+
+### 08_Reproducible_Build_Environments
+- Using CMake **presets**
+  - multitude of configurations, compilers, and platforms
+  - Presets can specify the build directory, generators to use, target architecture, host toolchain, cache variables, and environment variables
+  - top-level folder of a project must contain **CMakePresets.json** or **CMakeUserPresets.json**
+  - three lists: **configurePresets**, **buildPresets**, **testPresets**, each contain a list of configurations for configuring, building, and testing the project
+  - well-known macros for Presets.json file
+    - ${sourceDir} , ${sourceParentDir},  ${sourceDirName}
+    - ${generator}
+    - ${hostSystemName}
+    - $env{<variable-name>}
+    - $vendor{<macro-name>}
+    - ${dollar}
+  - **Inheriting** from presets and Conditions for presets
+- Using build containers with CMake
+- Using **sysroots** to isolate build environments
+
+> In a nutshell, a system root, or just sysroot, is a directory that a build system considers to be the root directory from which to locate headers and libraries.
