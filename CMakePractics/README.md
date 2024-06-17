@@ -610,5 +610,19 @@ cmake  --toolchain toolchain.cmake -S <SourceDir> -B <BuildDir>
   - Point to the sysroot and possibly any staging directory if cross-compiling
   - Set hints for the search order for any find_ commands of CMake
 
-### 12
+### 12_Reusing_CMake_Code
+- coding principles: the **Don't Repeat Yourself**(DRY) principle and the **Single Responsibility Principle**(SRP)
+- essential reusability is pretty straightforward: separate CMake code into **modules** and **functions**
+- CMake basic abilities for reusability: 
+  - Ability to include other CMake files
+  - Functions/macros
+  - Portability
+
+> A [CMake module](https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html) is a logical entity that contains CMake code, functions, and macros that are put together to serve a particular purpose. A module can provide functions and macros for other CMake code and execute CMake commands when included. CMake is shipped with many pre-made modules by default. The official CMake documentation categorizes modules in the following two main categories: **Utility** modules and **Find** modules.
+
+- Creating and using a simple CMake module file is extremely simple:
+  1. Create a <module_name>.cmake file under your project.
+  2. Define any macros/functions in the <module_name>.cmake file.
+  3. Include <module_name>.cmake in the desired file. 
+- Recommendations for sharing CMake modules between projects
 
