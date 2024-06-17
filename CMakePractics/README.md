@@ -626,3 +626,21 @@ cmake  --toolchain toolchain.cmake -S <SourceDir> -B <BuildDir>
   3. Include <module_name>.cmake in the desired file. 
 - Recommendations for sharing CMake modules between projects
 
+### 13_Optimizing_Maintaining
+- technologies such as compiler cache (ccache) for caching build results or precompiled headers can further help speed up incremental builds 
+- Optimizing build times
+  - Keeping a CMake project maintainable
+  - Profiling a CMake build
+  - Optimizing build performance
+- By adding the **--profiling-output** and **--profiling-format** profiling flags, CMake will create profiling output
+
+```shell
+cmake -S <sourceDir> -B <buildDir> --profiling-output ./profiling.json --profiling-format=google-trace
+```
+
+> Most generators either support some profiling option or log the needed information. For Visual Studio generators, the [vcperf tool](https://github.com/microsoft/vcperf) will give a lot of insights. When using Ninja, the **.ninja_log** file can be converted into Google trace format using the [ninjatracing tool](https://github.com/nico/ninjatracing).
+
+- safe option to bring performance improvements is to set the **CMAKE_OPTIMIZE_DEPENDENCIES** cache variable to **true**
+- setting the **CMAKE_UNITY_BUILD** cache variable to **true**
+- **Precompiled headers** are added to a target with the **target_precompile_headers** command
+- use **ccache** with CMake, the CMAKE_<LANG>_COMPILER_LAUNCHER cache variable
