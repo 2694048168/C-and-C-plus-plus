@@ -644,3 +644,23 @@ cmake -S <sourceDir> -B <buildDir> --profiling-output ./profiling.json --profili
 - setting the **CMAKE_UNITY_BUILD** cache variable to **true**
 - **Precompiled headers** are added to a target with the **target_precompile_headers** command
 - use **ccache** with CMake, the CMAKE_<LANG>_COMPILER_LAUNCHER cache variable
+
+### 14_Migrating_CMake
+- CMake is evolving into a defacto industry standard for C++ and C projects
+- High-level migration strategies
+- Migrating small projects
+- Migrating large projects to CMake
+
+![](images/Migrating_order.png)
+
+### 15_Contributing_CMake_FurtherReadingMaterial
+- Where to find the CMake community
+- Contributing to CMake
+- Recommended books and blogs
+- [Stack Overflow](https://stackoverflow.com/)
+- [Reddit (r/cmake)](https://www.reddit.com/r/cmake/)
+- [CMake Discourse forum](https://discourse.cmake.org/)
+- [Kitware CMake GitLab repository](https://gitlab.kitware.com/cmake/cmake/-/issues)
+- [CMake official documentation](https://cmake.org/documentation/)
+- [awesome-cmake](https://github.com/onqtam/awesome-cmake)
+- [Introduction to Modern CMake](https://cliutils.gitlab.io/modern-cmake/)
