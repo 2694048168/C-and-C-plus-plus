@@ -588,3 +588,27 @@ OpenCppCoverage.exe --cover_children --modules <build_dir> --sources <source_dir
 - Using **libFuzzer** in your CMake project
 - Using **AFL++** in your CMake project
 
+### 11_Cross_Platform_Toolchains
+- compilers and linkers are of course essential tools for building software
+- some other tools, libraries, and files involved as toolchains
+- the host machine and host platform, whereas the target platform
+
+> The toolchain is a set of tools such as a compiler, linker, and archiver to produce binaries that run on the host system but produce output for the target system.
+
+- Toolchain files can be passed to CMake by setting the **CMAKE_TOOLCHAIN_FILE** variable or CMake with the **--toolchain** option
+
+```shell
+# or set in CMake presets
+cmake -DCMAKE_TOOLCHAIN_FILE=toolchain.cmake -S <SourceDir> -B <BuildDir>
+cmake  --toolchain toolchain.cmake -S <SourceDir> -B <BuildDir>
+```
+
+- Creating toolchain files
+  - Define the target system and architecture
+  - Provide paths to any tools needed to build the software for the defined platform. Often, these are just compilers
+  - Set default flags for the compiler and linkers
+  - Point to the sysroot and possibly any staging directory if cross-compiling
+  - Set hints for the search order for any find_ commands of CMake
+
+### 12
+
