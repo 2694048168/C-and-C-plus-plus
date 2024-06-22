@@ -2,6 +2,8 @@
 
 > Computer graphics is the art or science of producing graphical images with the aid of computer. The reference book is: <陆枫 计算机图形学基础(第三版) 电子工业出版社> and <Steve&Peter Fundamentals of Computer Graphics(fifth edition)>
 
+![](images/output.gif)
+
 ### Overview
 - [the basic development environment](#the-basic-development-environment)
 - [the organization of project](#the-organization-of-project)
