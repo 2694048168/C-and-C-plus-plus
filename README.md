@@ -29,6 +29,8 @@
         - C++ 资源获取即初始化(RAII)技术管理对象生命周期
         - 所有权模型来管理动态对象的生命周期: 智能指针和移动语义 
 - [x] Serialization and Deserialization via Json for C++
+    - 将结构体参数序列化存储为json配置文件 **StructParamsJsonConf**
+    - 将结构体参数序列化存储为protocol buffer协议, 多种编程语言兼容 **ProtocolBuffers**
 - [x] Modern CMake and C++ Project Template
     - Modern CMake 构建复杂大型项目的基本设计
         - src 源代码文件夹
@@ -39,6 +41,8 @@
         - build 构建管理文件夹
     - Modern CMake 构建可执行程序文件
     - Modern CMake 构建静态库/动态库
+    - Modern CMake 集成第三方库和依赖管理，单元测试和静态代码分析
+    - Modern CMake 扩平台工具链，自动打包和安装，自动生成doxygen文档说明
 - [x] External Cpp Library
 - [x] Modern C++
 - [x] Support CMake
