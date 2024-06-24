@@ -55,3 +55,4 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/lib)
 
 # -------------------------------------------
 add_executable(${PROJECT_NAME} main.cpp CameraParamsConf.cpp)
+add_executable("${PROJECT_NAME}_ini" test_main.cpp)
