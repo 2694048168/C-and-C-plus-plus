@@ -29,6 +29,7 @@
         - C++ 资源获取即初始化(RAII)技术管理对象生命周期
         - 所有权模型来管理动态对象的生命周期: 智能指针和移动语义 
 - [x] Serialization and Deserialization via Json for C++
+    - 将简单的参数配置序列化存储为ini配置文件 **StructParamsJsonConf**
     - 将结构体参数序列化存储为json配置文件 **StructParamsJsonConf**
     - 将结构体参数序列化存储为protocol buffer协议, 多种编程语言兼容 **ProtocolBuffers**
 - [x] Modern CMake and C++ Project Template
