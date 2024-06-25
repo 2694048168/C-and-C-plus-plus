@@ -4,7 +4,18 @@
 
 ![The pub/sub pattern](../images/pub_sub.png)
 
-**Usage Example**
+#### **Quick Start**
+
+```shell
+cmake -S . -B build
+cmake --build build # for single-configure
+cmake --build build --config Release # for VS multiple-conf
+
+./build/Release/PublisherSubsciber.exe
+./build/PublisherSubsciber
+```
+
+#### **Usage Example**
 
 ```C++
 #include "AppSubscriber.hpp"
