@@ -1,0 +1,11 @@
+[2024-06-26 20:18:14.332] [trace] [thread 19132] [main_test.cpp main:26] current log level is trace
+[2024-06-26 20:18:14.333] [trace] [thread 19132] [main_test.cpp main:27] this is trace log
+[2024-06-26 20:18:14.333] [debug] [thread 19132] [main_test.cpp main:28] this is debug log
+[2024-06-26 20:18:14.333] [info] [thread 19132] [main_test.cpp main:29] this is info log
+[2024-06-26 20:18:14.333] [warning] [thread 19132] [main_test.cpp main:30] this is warning log
+[2024-06-26 20:18:14.333] [error] [thread 19132] [main_test.cpp main:31] this is a error log
+[2024-06-26 20:18:14.333] [critical] [thread 19132] [main_test.cpp main:32] this is critical log
+[2024-06-26 20:18:14.334] [warning] [thread 19132] [main_test.cpp main:36] after set log level to warning
+[2024-06-26 20:18:14.334] [warning] [thread 19132] [main_test.cpp main:40] this is warning log
+[2024-06-26 20:18:14.334] [error] [thread 19132] [main_test.cpp main:41] this is a error log
+[2024-06-26 20:18:14.334] [critical] [thread 19132] [main_test.cpp main:42] this is critical log

@@ -45,6 +45,7 @@
     - Modern CMake 集成第三方库和依赖管理，单元测试和静态代码分析
     - Modern CMake 扩平台工具链，自动打包和安装，自动生成doxygen文档说明
 - [x] External Cpp Library
+    - Logger 日志库, spdlog, glog, log4cplus; 日志库的二次封装
 - [x] Modern C++
 - [x] Support CMake
 - [x] Support GCC/Clang/MSVC
