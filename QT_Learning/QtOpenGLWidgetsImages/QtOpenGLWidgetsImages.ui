@@ -30,11 +30,19 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="widget" native="true"/>
+    <widget class="WidgetGLImage" name="widget" native="true"/>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>WidgetGLImage</class>
+   <extends>QWidget</extends>
+   <header>gl_image.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="QtOpenGLWidgetsImages.qrc"/>
  </resources>

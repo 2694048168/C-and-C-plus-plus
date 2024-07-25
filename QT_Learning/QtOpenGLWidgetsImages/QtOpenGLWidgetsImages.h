@@ -3,6 +3,7 @@
 #include <QtWidgets/QWidget>
 #include "ui_QtOpenGLWidgetsImages.h"
 #include "gl_image.h"
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class QtOpenGLWidgetsImagesClass; };
@@ -21,6 +22,7 @@ private slots:
 
 private:
     Ui::QtOpenGLWidgetsImagesClass* ui;
-    GL_Image* glImage;
     QTimer timer;
+    unsigned int m_idx;
+    QImage* m_pImage;
 };
