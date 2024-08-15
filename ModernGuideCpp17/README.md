@@ -17,6 +17,8 @@
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
+- [x] Universally Unique Identifier for C++
+- [x] The Modern C++ Thread Pool Asynchronous tasks
 - [x] 发布-订阅（Publish-Subscribe）机制的C++实现
 - [x] Precompiled Headers in C++ (Visual Studio setting and GCC setting)
 - [x] Callable object and functional and bind in Modern C++
