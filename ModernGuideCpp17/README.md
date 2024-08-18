@@ -17,6 +17,9 @@
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
+- [x] C++ 头文件后缀说明, **.h**表示只有声明的单纯头文件, **.hpp**表示声明和实现一起的头文件,如模板类的头文件等
+- [x] 函数返回值类型后置 Trailing Return Type
+- [x] Version of Application Software via CMake
 - [x] Universally Unique Identifier for C++
 - [x] The Modern C++ Thread Pool Asynchronous tasks
 - [x] 发布-订阅（Publish-Subscribe）机制的C++实现

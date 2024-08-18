@@ -1,0 +1,15 @@
+#pragma once
+ 
+#define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define PROJECT_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@
+ 
+#define PROJECT_VERSION "v@PROJECT_VERSION@"
+
+
+// CMake读取配置文件获取版本号
+// 使用file命令读取配置文件信息获取版本号，
+// 配合使用提前配置的xxx.h.in文件，通过configure_file命令来生成xxx.h文件
+#include <string>
+ 
+const std::string PROGRAM_VERSION = "@PROGRAM_VERSION@";
