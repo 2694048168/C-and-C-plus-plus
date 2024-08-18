@@ -1,0 +1,12 @@
+// [START declaration]
+syntax = "proto3";
+package ModuleName;
+// [END declaration]
+
+// [START messages]
+message Address
+{
+  int32 num = 1;
+  bytes addr = 2;
+}
+// [END messages]

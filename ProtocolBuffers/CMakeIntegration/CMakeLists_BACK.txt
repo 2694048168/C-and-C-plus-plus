@@ -1,0 +1,159 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(ProtobufCMakeProject)
+
+# MinGW+Clang | Ninja | CMake | VSCode + clangd + c/c++ Snippets
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# 只启用 ISO C++ 标准的编译器标志, 而不使用特定编译器的扩展
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# 查找Protobuf包
+# find_package(Protobuf REQUIRED)：确保CMake能够找到Protobuf包
+# 可能需要设置Protobuf_DIR变量以指向你的Protobuf安装目录
+set(Protobuf_PREFIX_PATH
+    "D:/DevelopTools/Protobuf/Release/include"
+    "D:/DevelopTools/Protobuf/Release/lib"
+    "D:/DevelopTools/Protobuf/Release/bin")
+list(APPEND CMAKE_PREFIX_PATH "${Protobuf_PREFIX_PATH}")
+find_package(Protobuf REQUIRED)
+
+# -----------------------------------------------------------------------
+# 定义.proto文件的路径
+# https://oldpan.me/archives/protobuf-cmake-right-usage
+# https://chen-tao.github.io/2015/11/07/cmakeprotoprotobuf-cpp/
+# set(PROTO_FILES_PATH "config_params")
+
+# 定义.proto文件变量
+# file(GLOB PROTO_FILES "${PROTO_FILES_PATH}/*.proto")
+
+# 为每个.proto文件生成C++代码
+# protobuf_generate_cpp：这个宏会调用protoc编译器，并生成C++源文件和头文件
+# protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
+# -----------------------------------------------------------------------
+# -------------------------------------------
+# external 第三方库
+if(CMAKE_BUILD_TYPE AND(CMAKE_BUILD_TYPE STREQUAL "Debug"))
+    set(Portobuf_DIR "D:/DevelopTools/Protobuf/Debug/")
+elseif(CMAKE_BUILD_TYPE AND(CMAKE_BUILD_TYPE STREQUAL "Release"))
+    set(Portobuf_DIR "D:/DevelopTools/Protobuf/Release/")
+else()
+    set(Portobuf_DIR "D:/DevelopTools/Protobuf/Release/")
+endif()
+
+list(APPEND CMAKE_MODULE_PATH "${Portobuf_DIR}/cmake")
+message(STATUS "[==== Protobuf DIR]: ${Portobuf_DIR}")
+
+file(GLOB PROTO_FILES
+    "config_params/Address.proto"
+    "config_params/Person.proto"
+)
+message(STATUS "PROTO_FILES==" ${PROTO_FILES})
+
+# PROTO_META_BASE_DIR 为编译之后生成文件的目录
+# PROTO_FLAGS 很重要，指定编译.proto文件时的总的寻找路径，
+# .proto中的import命令根据根据这个地址去连接其他的.proto文件：
+SET(PROTO_META_BASE_DIR ${CMAKE_CURRENT_BINARY_DIR})
+LIST(APPEND PROTO_FLAGS -I${CMAKE_CURRENT_SOURCE_DIR})
+
+message(STATUS "PROTO_FLAGS==${PROTO_FLAGS}")
+
+# 设置好之后，通过FOREACH去循环之前的.proto文件，依次编译每个文件，
+# 然后将生成的.pb.cc和.pb.h移动回原始的目录，至此就可以正常工作了。
+# FOREACH(FIL ${PROTO_FILES})
+#     message(STATUS ==========${FIL})
+#     GET_FILENAME_COMPONENT(FIL_WE ${FIL} NAME_WE)
+
+#     string(REGEX REPLACE ".+/(.+)\\..*" "\\1" FILE_NAME ${FIL})
+#     string(REGEX REPLACE "(.+)\\${FILE_NAME}.*" "\\1" FILE_PATH ${FIL})
+
+#     message(STATUS ==========${FILE_NAME})
+#     message(STATUS ==========${FILE_PATH})
+#     # string(REGEX MATCH "(/mediapipe/framework.*|/mediapipe/util.*|/mediapipe/calculators/internal/)" OUT_PATH ${FILE_PATH})
+#     string(REGEX MATCH "(CMakeIntegration/config_params/.*/)" OUT_PATH ${FILE_PATH})
+
+#     set(PROTO_SRCS "${CMAKE_CURRENT_BINARY_DIR}${OUT_PATH}${FIL_WE}.pb.cc")
+#     set(PROTO_HDRS "${CMAKE_CURRENT_BINARY_DIR}${OUT_PATH}${FIL_WE}.pb.h")
+
+#     EXECUTE_PROCESS(
+#         COMMAND ${PROTOBUF_PROTOC_EXECUTABLE} ${PROTO_FLAGS} --cpp_out=${PROTO_META_BASE_DIR} ${FIL}
+#     )
+#     message("Copying " ${PROTO_SRCS} " to " ${FILE_PATH})
+
+#     file(COPY ${PROTO_SRCS} DESTINATION ${FILE_PATH})
+#     file(COPY ${PROTO_HDRS} DESTINATION ${FILE_PATH})
+# ENDFOREACH()
+
+FOREACH(proto_file ${PROTO_FILES})
+    STRING(REGEX REPLACE "[^/]proto" "" proto_file_name ${proto_file})
+    LIST(APPEND PROTO_SRCS "${proto_file_name}.pb.cc")
+	ADD_CUSTOM_COMMAND(
+		OUTPUT "${proto_file_name}.pb.h" "${proto_file_name}.pb.cc"
+		COMMAND protoc --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/config_params
+                       --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/config_params/ ${proto_file} 
+		DEPENDS ${proto_file}
+	)
+ENDFOREACH(proto_file)
+
+# 包含生成的头文件
+# include_directories：确保包含生成的头文件
+set(PROTOBUF_INCLUDE_DIR "D:/DevelopTools/Protobuf/Release/include")
+include_directories(${PROTOBUF_INCLUDE_DIR})
+
+message(STATUS "PROTO_SRCS==${PROTO_SRCS}")
+message(STATUS "PROTO_HDRS==${PROTO_HDRS}")
+
+# 添加可执行文件
+# PROTO_SRCS和PROTO_HDRS：这些变量将包含生成的.cpp和.h文件，它们需要被包含在最终的可执行文件或库中
+# add_executable(MyExecutable main.cpp ${PROTO_SRCS} ${PROTO_HDRS})
+add_executable(${PROJECT_NAME} main.cpp ${PROTO_SRCS})
+
+if(CMAKE_BUILD_TYPE AND(CMAKE_BUILD_TYPE STREQUAL "Debug"))
+    target_link_libraries(${PROJECT_NAME}
+        PUBLIC
+        ${Portobuf_DIR}/lib/libprotocd.lib
+        ${Portobuf_DIR}/lib/libprotobuf-lited.lib
+        ${Portobuf_DIR}/lib/libprotobufd.lib
+    )
+elseif(CMAKE_BUILD_TYPE AND(CMAKE_BUILD_TYPE STREQUAL "Release"))
+    target_link_libraries(${PROJECT_NAME}
+        PUBLIC
+        ${Portobuf_DIR}/lib/libprotoc.lib
+        ${Portobuf_DIR}/lib/libprotobuf-lite.lib
+        ${Portobuf_DIR}/lib/libprotobuf.lib
+    )
+else()
+    target_link_libraries(${PROJECT_NAME}
+        PUBLIC
+        ${Portobuf_DIR}/lib/libprotoc.lib
+        ${Portobuf_DIR}/lib/libprotobuf-lite.lib
+        ${Portobuf_DIR}/lib/libprotobuf.lib
+    )
+endif()
+
+# ----------------- copy dll into bin ---------------
+# 把 "D:\DevelopTools\Protobuf\bin" 指代的所有dll都拷贝到可执行文件目录下
+if(CMAKE_BUILD_TYPE AND(CMAKE_BUILD_TYPE STREQUAL "Debug"))
+    file(GLOB BRARYS_DYNAMIC
+        "${Portobuf_DIR}/bin/libprotocd.dll"
+        "${Portobuf_DIR}/bin/libprotobuf-lited.dll"
+        "${Portobuf_DIR}/bin/libprotobufd.dll"
+    )
+elseif(CMAKE_BUILD_TYPE AND(CMAKE_BUILD_TYPE STREQUAL "Release"))
+    file(GLOB BRARYS_DYNAMIC
+        "${Portobuf_DIR}/bin/libprotoc.dll"
+        "${Portobuf_DIR}/bin/libprotobuf-lite.dll"
+        "${Portobuf_DIR}/bin/libprotobuf.dll"
+    )
+else()
+    file(GLOB BRARYS_DYNAMIC
+        "${Portobuf_DIR}/bin/libprotoc.dll"
+        "${Portobuf_DIR}/bin/libprotobuf-lite.dll"
+        "${Portobuf_DIR}/bin/libprotobuf.dll"
+    )
+endif()
+
+# file(COPY ${BRARYS_DYNAMIC} DESTINATION "${EXECUTABLE_OUTPUT_PATH}")
+file(COPY ${BRARYS_DYNAMIC} DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")

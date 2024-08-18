@@ -66,6 +66,19 @@ touch src/main.cpp
 
 ```
 
+### C++ proto CMakeLists 构建
+> 在C++项目中使用Protocol Buffers时, 在CMakeLists.txt 文件中适当地配置以编译.proto文件, 并链接生成的C++代码.
+
+1. 查找并包含Protobuf编译器和库：首先，需要确保CMake能够找到Protobuf编译器（protoc）和Protobuf库
+2. 定义.proto文件变量：指定需要编译的.proto文件
+3. 使用protobuf_generate_cpp宏：这个宏会自动运行protoc编译器生成C++代码
+4. 包含生成的头文件：包含自动生成的头文件
+5. 添加可执行文件或库：使用add_executable或add_library命令添加你的可执行文件或库，并链接Protobuf库
+6. 链接Protobuf库：确保链接Protobuf编译器生成的对象文件和Protobuf库
+
+**NOTE**: [.proto 嵌套使用问题](https://oldpan.me/archives/protobuf-cmake-right-usage)
+
+
 ```C++
 // ========== 序列化 ==========
 // 头文件目录: google\protobuf\message_lite.h
