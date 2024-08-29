@@ -13,4 +13,16 @@
 - noexcept修饰函数 **07_noexcept_throw.cpp**
 
 ### 易学和易用性 Easy-Learn and User-Friendly
-- 
+- 自动类型推导 auto and decltype **08_auto_decltype.cpp**
+- 基于范围的for循环 **09_for_range.cpp**
+- 指针空值类型 [nullptr](https://subingwen.cn/linux/file-descriptor/) **10_nullptr_NULL.cpp**
+```C++
+#ifndef NULL
+    #ifdef __cplusplus
+        #define NULL 0
+    #else
+        #define NULL ((void *)0)
+    #endif
+#endif
+```
+- Lambda表达式 **11_lambda_expression.cpp**
