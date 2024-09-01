@@ -26,3 +26,6 @@
 #endif
 ```
 - Lambda表达式 **11_lambda_expression.cpp**
+
+### 通用性能的提升 Improvement in Performance
+- 常量表达式修饰符 constexpr **12_constexpr_modifier.cpp**

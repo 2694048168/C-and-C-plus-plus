@@ -17,6 +17,7 @@
 - [compile and linking](#compile--linking--loading--library)
 
 ### **Features**
+- [x] Modern C++ Tricks for Project Practice
 - [x] Modern C++ Guide and Performance and Paradigm for Beginner
 - [x] 异步学习之回调函数, std::vector 性能操作, std::map 注意事项
 - [x] C++ 头文件后缀说明, **.h**表示只有声明的单纯头文件, **.hpp**表示声明和实现一起的头文件,如模板类的头文件等
