@@ -29,3 +29,17 @@
 
 ### 通用性能的提升 Improvement in Performance
 - 常量表达式修饰符 constexpr **12_constexpr_modifier.cpp**
+- 委托构造函数和继承构造函数 **13_delegate_inheritance_constructor.cpp**
+- 右值引用 R-value reference **14_readValue_reference.cpp**
+- 转移和完美转发 move&forward **15_move_forward.cpp**
+- 列表初始化 **16_initialization.cpp**
+- using的使用 **17_using_alias.cpp**
+- 可调用对象包装器、绑定器 **18_functional_bind.cpp**
+- Plain Old Data类型 **19_POD_type.cpp**
+- 默认函数控制 =default 与 =delete **20_default_delete.cpp**
+- 扩展的 friend 语法 **21_friend.cpp**
+- 强类型枚举 **22_class_enum.cpp**
+- 非受限联合体 **23_unrestricted_union.cpp**
+
+### 安全性 safety
+
