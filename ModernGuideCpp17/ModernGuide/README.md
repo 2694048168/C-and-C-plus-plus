@@ -42,4 +42,6 @@
 - 非受限联合体 **23_unrestricted_union.cpp**
 
 ### 安全性 safety
-
+- 共享智能指针 **24_shared_pointer.cpp**
+- 独占的智能指针 **25_unique_pointer.cpp**
+- 弱引用智能指针 **26_weak_pointer.cpp**
