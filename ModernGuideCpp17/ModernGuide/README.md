@@ -45,3 +45,14 @@
 - 共享智能指针 **24_shared_pointer.cpp**
 - 独占的智能指针 **25_unique_pointer.cpp**
 - 弱引用智能指针 **26_weak_pointer.cpp**
+
+### 多线程 multi-thread
+- 处理日期和时间的chrono库 **27_chrono_time.cpp**
+- Modern C++线程类 thread **28_thread_use.cpp**
+- 线程命名空间 this_thread **29_this_thread.cpp**
+- 多线程 call_once **30_call_once.cpp**
+- 线程同步之互斥锁 mutex **31_thread_synchronization_mutex.cpp**
+- 线程同步之条件变量 **32_thread_synchronization_condition_variable.cpp**
+- 线程同步之原子变量 atomic **33_thread_synchronization_atomic.cpp**
+- 多线程异步操作 **34_thread_asynchronous.cpp**
+- 多线程异步线程池 **35_thread_asynchronous_pool.cpp**
