@@ -87,3 +87,9 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以链接到库
 add_executable("00_dev_env" 00_dev_env.cpp mainwindow.cpp mainwindow.ui)
 target_link_libraries("00_dev_env" PRIVATE Qt6::Widgets)
+
+add_executable("01_data_type" 01_data_type.cpp)
+target_link_libraries("01_data_type" PRIVATE Qt6::Widgets)
+
+add_executable("02_signal_slot" 02_signal_slot.cpp)
+target_link_libraries("02_signal_slot" PRIVATE Qt6::Widgets)
