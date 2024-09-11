@@ -81,7 +81,7 @@ set(CMAKE_AUTOUIC ON) # 开启QT-uic支持, designer设计的UI-form
 set(CMAKE_AUTORCC ON) # 开启QT-rcc支持, 图片/图标等相关资源文件
 
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以检索都头文件路径即可
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
 # =========================================
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以链接到库
@@ -91,5 +91,10 @@ target_link_libraries("00_dev_env" PRIVATE Qt6::Widgets)
 add_executable("01_data_type" 01_data_type.cpp)
 target_link_libraries("01_data_type" PRIVATE Qt6::Widgets)
 
+set_property(SOURCE 02_signal_slot.cpp PROPERTY SKIP_AUTOMOC ON)
 add_executable("02_signal_slot" 02_signal_slot.cpp)
-target_link_libraries("02_signal_slot" PRIVATE Qt6::Widgets)
+target_link_libraries("02_signal_slot" PRIVATE Qt6::Widgets Qt6::Core)
+
+set_property(SOURCE 03_timer.cpp PROPERTY SKIP_AUTOMOC ON)
+add_executable("03_timer" 03_timer.cpp)
+target_link_libraries("03_timer" PRIVATE Qt6::Widgets Qt6::Core)

@@ -34,6 +34,7 @@ windeployqt 00_dev_env.exe
 - Qt认识入门 **00_dev_env.cpp**
 - Qt中的基础数据类型 **01_data_type.cpp**
 - Qt中的信号槽 **02_signal_slot.cpp**
+- Qt定时器类QTimer **03_timer.cpp**
 
 ### Qt控件
 
