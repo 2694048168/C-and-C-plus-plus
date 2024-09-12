@@ -35,6 +35,9 @@ windeployqt 00_dev_env.exe
 - Qt中的基础数据类型 **01_data_type.cpp**
 - Qt中的信号槽 **02_signal_slot.cpp**
 - Qt定时器类QTimer **03_timer.cpp**
+- Qt中的基础窗口类 **04_fund_widget.cpp**
+- [Qt窗口布局](https://subingwen.cn/qt/qt-layout/#2-4-%E5%B8%83%E5%B1%80%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE) **05_layout_widget.cpp**
+- 在Qt窗口中添加右键菜单 **06_right_click.cpp**
 
 ### Qt控件
 

@@ -98,3 +98,12 @@ target_link_libraries("02_signal_slot" PRIVATE Qt6::Widgets Qt6::Core)
 set_property(SOURCE 03_timer.cpp PROPERTY SKIP_AUTOMOC ON)
 add_executable("03_timer" 03_timer.cpp)
 target_link_libraries("03_timer" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("04_fund_widget" 04_fund_widget.cpp)
+target_link_libraries("04_fund_widget" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("05_layout_widget" 05_layout_widget.cpp)
+target_link_libraries("05_layout_widget" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("06_right_click" 06_right_click.cpp)
+target_link_libraries("06_right_click" PRIVATE Qt6::Widgets Qt6::Core)
