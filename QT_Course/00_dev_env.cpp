@@ -69,7 +69,7 @@
  * 
  */
 
-#include "mainwindow.h" // 生成的窗口类头文件
+#include "src/mainwindow.h" // 生成的窗口类头文件
 
 #include <QApplication> // 应用程序类头文件
 

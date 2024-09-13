@@ -40,10 +40,16 @@ windeployqt 00_dev_env.exe
 - 在Qt窗口中添加右键菜单 **06_right_click.cpp**
 
 ### Qt控件
+- Qt中按钮类型的控件 **07_widget_btn.cpp**
+- Qt中容器类型的控件 **08_widget_container.cpp**
 
 ### Qt事件
+- Qt事件之事件处理器 **09_event_processor.cpp**
+- Qt事件之事件分发器 **10_event_distributor.cpp**
+- Qt事件之事件过滤器 **11_event_filter.cpp**
 
 ### 套接字通信
+- Qt中基于TCP的套接字通信 **12_socket_TCP.cpp**
 
 ### Qt线程
 

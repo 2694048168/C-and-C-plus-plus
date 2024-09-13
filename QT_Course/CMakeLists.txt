@@ -85,7 +85,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
 # =========================================
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以链接到库
-add_executable("00_dev_env" 00_dev_env.cpp mainwindow.cpp mainwindow.ui)
+add_executable("00_dev_env" 00_dev_env.cpp src/mainwindow.cpp src/mainwindow.ui)
 target_link_libraries("00_dev_env" PRIVATE Qt6::Widgets)
 
 add_executable("01_data_type" 01_data_type.cpp)
@@ -107,3 +107,18 @@ target_link_libraries("05_layout_widget" PRIVATE Qt6::Widgets Qt6::Core)
 
 add_executable("06_right_click" 06_right_click.cpp)
 target_link_libraries("06_right_click" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("07_widget_btn" 07_widget_btn.cpp)
+target_link_libraries("07_widget_btn" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("08_widget_container" 08_widget_container.cpp)
+target_link_libraries("08_widget_container" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("09_event_processor" 09_event_processor.cpp src/mainwindow_event.cpp src/mainwindow_event.ui)
+target_link_libraries("09_event_processor" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("10_event_distributor" 10_event_distributor.cpp)
+target_link_libraries("10_event_distributor" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("11_event_filter" 11_event_filter.cpp)
+target_link_libraries("11_event_filter" PRIVATE Qt6::Widgets Qt6::Core)
