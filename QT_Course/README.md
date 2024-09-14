@@ -52,6 +52,8 @@ windeployqt 00_dev_env.exe
 - Qt中基于TCP的套接字通信 **12_socket_TCP.cpp**
 
 ### Qt线程
+- Qt中多线程的使用 **13_thread_task.cpp**
+- Qt中线程池的使用 **14_thread_pool.cpp**
 
 ### 数据库
 

@@ -81,7 +81,7 @@ set(CMAKE_AUTOUIC ON) # 开启QT-uic支持, designer设计的UI-form
 set(CMAKE_AUTORCC ON) # 开启QT-rcc支持, 图片/图标等相关资源文件
 
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以检索都头文件路径即可
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network)
 
 # =========================================
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以链接到库
@@ -122,3 +122,12 @@ target_link_libraries("10_event_distributor" PRIVATE Qt6::Widgets Qt6::Core)
 
 add_executable("11_event_filter" 11_event_filter.cpp)
 target_link_libraries("11_event_filter" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("12_socket_TCP" 12_socket_TCP.cpp src/TCP_client.cpp src/TCP_server.cpp src/TCP_client.ui src/TCP_server.ui)
+target_link_libraries("12_socket_TCP" PRIVATE Qt6::Widgets Qt6::Core Qt6::Network)
+
+add_executable("13_thread_task" 13_thread_task.cpp src/custom_qthread.cpp src/Thread_test.cpp src/Thread_test.ui src/Task_test.cpp src/Task_test.ui src/custom_task.cpp)
+target_link_libraries("13_thread_task" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("14_thread_pool" 14_thread_pool.cpp)
+target_link_libraries("14_thread_pool" PRIVATE Qt6::Widgets Qt6::Core)
