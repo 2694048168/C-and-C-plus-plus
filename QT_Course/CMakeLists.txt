@@ -81,7 +81,7 @@ set(CMAKE_AUTOUIC ON) # 开启QT-uic支持, designer设计的UI-form
 set(CMAKE_AUTORCC ON) # 开启QT-rcc支持, 图片/图标等相关资源文件
 
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以检索都头文件路径即可
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network Sql)
 
 # =========================================
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以链接到库
@@ -131,3 +131,12 @@ target_link_libraries("13_thread_task" PRIVATE Qt6::Widgets Qt6::Core)
 
 add_executable("14_thread_pool" 14_thread_pool.cpp)
 target_link_libraries("14_thread_pool" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("15_sql_test" 15_sql_test.cpp)
+target_link_libraries("15_sql_test" PRIVATE Qt6::Widgets Qt6::Core Qt6::Sql)
+
+add_executable("16_database_test" 16_database_test.cpp)
+target_link_libraries("16_database_test" PRIVATE Qt6::Widgets Qt6::Core Qt6::Sql)
+
+add_executable("17_json_test" 17_json_test.cpp)
+target_link_libraries("17_json_test" PRIVATE Qt6::Widgets Qt6::Core Qt6::Sql)

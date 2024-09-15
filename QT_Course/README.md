@@ -36,7 +36,7 @@ windeployqt 00_dev_env.exe
 - Qt中的信号槽 **02_signal_slot.cpp**
 - Qt定时器类QTimer **03_timer.cpp**
 - Qt中的基础窗口类 **04_fund_widget.cpp**
-- [Qt窗口布局](https://subingwen.cn/qt/qt-layout/#2-4-%E5%B8%83%E5%B1%80%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE) **05_layout_widget.cpp**
+- [Qt窗口布局](https://subingwen.cn/qt/qt-layout/) **05_layout_widget.cpp**
 - 在Qt窗口中添加右键菜单 **06_right_click.cpp**
 
 ### Qt控件
@@ -56,6 +56,14 @@ windeployqt 00_dev_env.exe
 - Qt中线程池的使用 **14_thread_pool.cpp**
 
 ### 数据库
+- [Qt编译MySql插件](https://subingwen.cn/qt/sql-driver/) **15_sql_test.cpp**
+- Qt中的数据库操作 **16_database_test.cpp**
+- Qt中的Json操作 **17_json_test.cpp**
 
 ### 打包部署
+- Qt程序的发布和打包
 
+> 将应用程序和相关的动态库打包成安装包的工具有很多,一个是 NSIS Edit,一个是 Inno Setup(这是一个免费的) Windows 安装程序制作软件，小巧、简便、精美.
+
+- [Inno Downloads](https://jrsoftware.org/isdl.php#stable)
+- [NSIS Downloads](https://nsis.sourceforge.io/Download)
