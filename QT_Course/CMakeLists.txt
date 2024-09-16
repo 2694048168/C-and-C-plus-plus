@@ -140,3 +140,6 @@ target_link_libraries("16_database_test" PRIVATE Qt6::Widgets Qt6::Core Qt6::Sql
 
 add_executable("17_json_test" 17_json_test.cpp)
 target_link_libraries("17_json_test" PRIVATE Qt6::Widgets Qt6::Core Qt6::Sql)
+
+add_executable("18_sine_curve_drawing" 18_sine_curve_drawing.cpp src/sine_curve.cpp src/sine_curve.ui)
+target_link_libraries("18_sine_curve_drawing" PRIVATE Qt6::Widgets Qt6::Core)
