@@ -1,0 +1,5 @@
+*.exe
+*.txt
+build/*
+.vscode/*
+.cache/*
