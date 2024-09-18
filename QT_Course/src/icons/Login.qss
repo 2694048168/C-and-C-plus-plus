@@ -1,0 +1,52 @@
+QWidget#FLoginWidget {
+    background-color: azure;
+}
+
+QPushButton#CloseButton {
+    border: none;
+    image: url(":/icons/Close.png");
+}
+
+QPushButton#CloseButton:hover {
+    border: none;
+    background-color: yellowgreen;
+}
+
+QLineEdit#UsernameLineEdit,
+QLineEdit#PasswordLineEdit {
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    font-family: Arial;
+    color: white;
+    background-color: rgb(89, 80, 87);
+}
+
+QCheckBox#AuthorityCheckBox {
+    color: white;
+}
+
+QCheckBox#AuthorityCheckBox::indicator:enabled:unchecked {
+    image: url(":/icons/UncheckCircle.png");
+}
+
+QCheckBox#AuthorityCheckBox::indicator:enabled:checked {
+    image: url(":/icons/CheckCircle.png");
+}
+
+QPushButton#LoginButton {
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(0, 102, 204);
+    font-size: 20px;
+    font-family: Arial;
+    color: white;
+}
+
+QPushButton#LoginButton:hover {
+    background-color: rgb(20, 114, 208);
+}
+
+QPushButton#LoginButton:disabled {
+    background-color: rgb(27, 48, 101);
+}

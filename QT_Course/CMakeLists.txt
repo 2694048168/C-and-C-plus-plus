@@ -143,3 +143,6 @@ target_link_libraries("17_json_test" PRIVATE Qt6::Widgets Qt6::Core Qt6::Sql)
 
 add_executable("18_sine_curve_drawing" 18_sine_curve_drawing.cpp src/sine_curve.cpp src/sine_curve.ui)
 target_link_libraries("18_sine_curve_drawing" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("19_login_widget" 19_login_widget.cpp src/login_widget.cpp src/login_widget.ui src/login_widget.qrc)
+target_link_libraries("19_login_widget" PRIVATE Qt6::Widgets Qt6::Core)
