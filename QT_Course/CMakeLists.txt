@@ -81,7 +81,7 @@ set(CMAKE_AUTOUIC ON) # 开启QT-uic支持, designer设计的UI-form
 set(CMAKE_AUTORCC ON) # 开启QT-rcc支持, 图片/图标等相关资源文件
 
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以检索都头文件路径即可
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network Sql)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network Sql OpenGLWidgets OpenGL)
 
 # =========================================
 # QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以链接到库
@@ -146,3 +146,7 @@ target_link_libraries("18_sine_curve_drawing" PRIVATE Qt6::Widgets Qt6::Core)
 
 add_executable("19_login_widget" 19_login_widget.cpp src/login_widget.cpp src/login_widget.ui src/login_widget.qrc)
 target_link_libraries("19_login_widget" PRIVATE Qt6::Widgets Qt6::Core)
+
+add_executable("20_graph_render" 20_graph_render.cpp src/GraphRender.cpp src/GraphRender.ui src/GraphRenderWidget.cpp)
+target_link_libraries("20_graph_render" PRIVATE Qt6::Widgets Qt6::Core Qt6::OpenGLWidgets Qt6::OpenGL)
+target_include_directories("20_graph_render" PRIVATE src/)
