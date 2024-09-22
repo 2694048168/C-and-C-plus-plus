@@ -32,7 +32,8 @@ windeployqt 00_dev_env.exe
 ### Features
 - Qt事件介绍与正弦曲线绘制 **18_sine_curve_drawing.cpp**
 - Qt应用软件登录界面 **19_login_widget.cpp**
-- Qt联合OpenGL图像渲染 **20_graph_render.cpp**
+- Qt联合OpenGL图形渲染 **20_graph_render.cpp**
+- Qt联合OpenGL图像显示 **21_image_render.cpp**
 
 ### Qt基础
 - Qt认识入门 **00_dev_env.cpp**

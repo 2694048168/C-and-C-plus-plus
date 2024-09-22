@@ -150,3 +150,7 @@ target_link_libraries("19_login_widget" PRIVATE Qt6::Widgets Qt6::Core)
 add_executable("20_graph_render" 20_graph_render.cpp src/GraphRender.cpp src/GraphRender.ui src/GraphRenderWidget.cpp)
 target_link_libraries("20_graph_render" PRIVATE Qt6::Widgets Qt6::Core Qt6::OpenGLWidgets Qt6::OpenGL)
 target_include_directories("20_graph_render" PRIVATE src/)
+
+add_executable("21_image_render" 21_image_render.cpp src/ImageOpenGLWidget.cpp src/ImageRenderWidget.cpp src/ImageRender.ui src/ImageRender.cpp)
+target_link_libraries("21_image_render" PRIVATE Qt6::Widgets Qt6::Core Qt6::OpenGLWidgets Qt6::OpenGL)
+target_include_directories("21_image_render" PRIVATE src/)
