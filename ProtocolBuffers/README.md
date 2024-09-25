@@ -77,6 +77,20 @@ touch src/main.cpp
 6. 链接Protobuf库：确保链接Protobuf编译器生成的对象文件和Protobuf库
 
 **NOTE**: [.proto 嵌套使用问题](https://oldpan.me/archives/protobuf-cmake-right-usage)
+**NOTE**: [VS 属性配置自定义生成工具](https://blog.csdn.net/oLuoJinFanHua12/article/details/104993853)
+
+```shell
+# 修改以下属性：
+# 1. 命令行：
+$(SolutionDir)tools\protoc.exe -I .\proto %(Filename).proto --cpp_out=$(ProjectDir)protocpp
+
+# 2. 说明： 
+protoc %(Filename).proto
+# 3. 输出： 
+$(ProjectDir)protocpp%(Filename).pb.cc
+# 4. 向项类型添加输出： 
+选择 C/C++ 编译器
+```
 
 
 ```C++
