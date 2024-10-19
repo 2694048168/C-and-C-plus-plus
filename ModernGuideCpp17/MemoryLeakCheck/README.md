@@ -2,9 +2,9 @@
 
 > Memory leakage is the magic and charm of C and C++
 
-![image-pipeline]()
 
 ### Memory Leak Check
+- AddressSanitizer(ASan)是谷歌的一款C/C++ 内存错误检测器,该工具由一个编译器插桩模块(Instrumentation)和一个运行时库(Run-time library,例如替换malloc函数等)组成. **ASan_memory.cpp**
 - Valgrind 工具进行内存泄漏检测 **ValgrindTool.cpp**
 - log-message 方式进行内存泄漏检测 **MemoryLeak.cpp**
 - bpf and bpftrace 方式进行内存泄漏检测
