@@ -44,3 +44,10 @@ build/*
 log/*
 external/*
 
+**/build/*
+**/.cache/*
+**/.vscode/*
+
+**/logs/*
+**/external/*
+
