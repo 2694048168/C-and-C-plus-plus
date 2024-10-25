@@ -9,6 +9,9 @@ mkdir spd_learning && cd spd_learning
 git init
 git submodule add https://github.com/gabime/spdlog
 
+# cmake .. -G"Visual Studio 15 2017 Win64" -D CMAKE_CONFIGURATION_TYPES="Release;Debug"
+# 该命令将为Release和Debug配置生成一个构建树。然后可以使用 --config 标志来决定构建这两个中的哪一个
+
 ```
 
 ### Attention
@@ -38,3 +41,15 @@ spdlog::flush_every(duration)
     - **04_backtrace_file.cpp**
 6. Periodic flush 定期刷新日志缓冲区
     - **05_flush_file.cpp**
+7. StopWatch 计时工具
+    - **06_stop_watch.cpp**
+8. Log binary data in hex 记录二进制
+    - **07_binary_data.cpp**
+9. Logger with multi sinks - each with a different format and log level 设置日志级别
+    - **08_multi_sinks.cpp**
+10. User-defined callbacks about log events 用户定义回调
+    - **09_callback_log.cpp**
+11. Asynchronous logging 异步日志记录
+    - **10_synchrony_log.cpp**
+12. Asynchronous logger with multi sinks  带sink异步日志记录器
+    - **11_synchrony_multi_sinks.cpp**

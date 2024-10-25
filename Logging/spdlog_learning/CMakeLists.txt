@@ -110,3 +110,39 @@ target_link_libraries("05_flush_file"
     PRIVATE
     spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
 )
+
+add_executable("06_stop_watch" 06_stop_watch.cpp)
+target_link_libraries("06_stop_watch"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("07_binary_data" 07_binary_data.cpp)
+target_link_libraries("07_binary_data"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("08_multi_sinks" 08_multi_sinks.cpp)
+target_link_libraries("08_multi_sinks"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("09_callback_log" 09_callback_log.cpp)
+target_link_libraries("09_callback_log"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("10_synchrony_log" 10_synchrony_log.cpp)
+target_link_libraries("10_synchrony_log"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("11_synchrony_multi_sinks" 11_synchrony_multi_sinks.cpp)
+target_link_libraries("11_synchrony_multi_sinks"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
