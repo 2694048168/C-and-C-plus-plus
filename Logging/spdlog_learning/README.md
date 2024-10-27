@@ -12,6 +12,9 @@ git submodule add https://github.com/gabime/spdlog
 # cmake .. -G"Visual Studio 15 2017 Win64" -D CMAKE_CONFIGURATION_TYPES="Release;Debug"
 # 该命令将为Release和Debug配置生成一个构建树。然后可以使用 --config 标志来决定构建这两个中的哪一个
 
+cmake -S . -B build -G "Ninja"
+cmake --build build --config Release
+
 ```
 
 ### Attention
@@ -53,3 +56,23 @@ spdlog::flush_every(duration)
     - **10_synchrony_log.cpp**
 12. Asynchronous logger with multi sinks  带sink异步日志记录器
     - **11_synchrony_multi_sinks.cpp**
+13. User-defined types用户定义类型
+    - **12_user_type.cpp**
+14. User-defined flags in the log pattern 用户定义日志模式
+    - **13_log_pattern.cpp**
+15. Custom error handler 自定义错误处理
+    - **14_error_handler.cpp**
+16 syslog 系统日志
+    - **15_system_log.cpp**
+17. Android example
+    - **16_android_log.cpp**
+18.Load log levels from the env variable or argv
+    - **17_command_line.cpp**
+19. Log file open/close event handlers 打开和关闭事件注册回调函数
+    - **18_event_handler.cpp**
+20. Replace the Default Logger 替换默认的日志记录器
+    - **19_default_logger.cpp**
+21. Log to Qt with nice colors
+    - **20_qt_color.cpp**
+22. Mapped Diagnostic Context 附加特定的上下文信息（如用户 ID、会话 ID 等）
+    - **21_mapped_context.cpp**

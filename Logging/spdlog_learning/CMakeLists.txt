@@ -146,3 +146,81 @@ target_link_libraries("11_synchrony_multi_sinks"
     PRIVATE
     spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
 )
+
+add_executable("12_user_type" 12_user_type.cpp)
+target_link_libraries("12_user_type"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("13_log_pattern" 13_log_pattern.cpp)
+target_link_libraries("13_log_pattern"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("14_error_handler" 14_error_handler.cpp)
+target_link_libraries("14_error_handler"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    add_executable("15_system_log" 15_system_log.cpp)
+    target_link_libraries("15_system_log"
+        PRIVATE
+        spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+    )
+endif()
+
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    add_executable("16_android_log" 16_android_log.cpp)
+    target_link_libraries("16_android_log"
+        PRIVATE
+        spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+    )
+endif()
+
+add_executable("17_command_line" 17_command_line.cpp)
+target_link_libraries("17_command_line"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("18_event_handler" 18_event_handler.cpp)
+target_link_libraries("18_event_handler"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+add_executable("19_default_logger" 19_default_logger.cpp)
+target_link_libraries("19_default_logger"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
+
+# 设置系统的环境变量,或者直接设置CMake变量
+# set(CMAKE_PREFIX_PATH "D:/DevelopTools/QT/6.2.4/msvc2019_64/")
+set(CMAKE_PREFIX_PATH "D:/DevelopTools/QT/6.2.4/mingw_64/")
+
+set(CMAKE_AUTOMOC ON) # 开启QT-moc支持, 信号与槽的反射机制
+set(CMAKE_AUTOUIC ON) # 开启QT-uic支持, designer设计的UI-form
+set(CMAKE_AUTORCC ON) # 开启QT-rcc支持, 图片/图标等相关资源文件
+
+# QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以检索都头文件路径即可
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
+
+# QT6开始直接支持CMake, 根据QT6的文档直接抄过来, 保证可以链接到库
+# set_property(SOURCE 20_qt_color.cpp PROPERTY SKIP_AUTOMOC ON)
+add_executable("20_qt_color" 20_qt_color.cpp 20_mainwidget.cpp)
+target_link_libraries("20_qt_color"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+    Qt6::Core Qt6::Widgets
+)
+
+add_executable("21_mapped_context" 21_mapped_context.cpp)
+target_link_libraries("21_mapped_context"
+    PRIVATE
+    spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>
+)
