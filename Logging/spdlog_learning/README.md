@@ -76,3 +76,41 @@ spdlog::flush_every(duration)
     - **20_qt_color.cpp**
 22. Mapped Diagnostic Context 附加特定的上下文信息（如用户 ID、会话 ID 等）
     - **21_mapped_context.cpp**
+23. spdlog 支持的特殊 Logger
+    - qt_sink 可以向 QTextBrowser、QTextEdit 等控件输出日志消息
+    - msvc_sink 使用 OutputDebugStringA 向 Windows调试接收器发生日志记录
+    - dup_filter_sink 可以实现重复消息删除
+    - ringbuffer_sink 将最新的日志消息保存在内存中
+    - spdlog 提供的一个封装了 TCP/UDP 传输的 logger, 可以将日志记录通过 TCP/UDP 协议发送到指定的目标地址和端口
+    - callback_logger_mt 是一个支持设置调用回调函数的日志记录器
+    - 通过格式化字符串来包含方法名、行号和文件名的信息: spdlog::set_pattern("[%H:%M:%S] [%n] [%^---%L---%$] [%s:%#] [%!] %v");
+24. logger 管理策略
+    - Logger 注册与获取, spdlog 提供了一个全局注册和获取 logger 的方法
+    - Logger 注册: 使用 spdlog 工厂方法创建的 logger 无需手动注册即可根据名称获取, 手动创建的 logger 需要注册
+    - Logger 删除: 手动注册的全局 logger 也可以删除
+
+```C++
+#include "spdlog/sinks/stdout_color_sinks.h"
+#include <spdlog/spdlog.h>
+
+void register_logger()
+{
+  
+    auto sink = std::make_shared<spdlog::sinks::stderr_color_sink_mt>();
+    auto logger = std::make_shared<spdlog::logger>("my_logger", sink);
+    spdlog::register_logger(logger);
+}
+
+int main() 
+{
+    register_logger();
+    
+    auto logger = spdlog::get("my_logger");
+    logger->info("hello world");
+
+    spdlog::drop("my_logger");//全局注册中删除指定 logger
+    spdlog::drop_all();// 删除所有注册的 logger
+
+    return 0;
+}
+```

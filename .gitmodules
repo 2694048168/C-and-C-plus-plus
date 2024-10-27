@@ -1,3 +1,6 @@
 [submodule "Logging/spdlog_learning/spdlog"]
 	path = Logging/spdlog_learning/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Logging/ProjectLogging/spdlog"]
+	path = Logging/ProjectLogging/spdlog
+	url = https://github.com/gabime/spdlog.git
