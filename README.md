@@ -5,6 +5,7 @@
 > [Wei Li Blog](https://2694048168.github.io/blog/)
 
 **features**
+- [x] 现代 C++ 性能优化指南 **CppPerformanceOptimized**
 - [x] Cpp API interface and language(C-sharp & Python) binding
 - [x] Cuda-CMake-C++(CudaCourse)
     - Cuda-CMake-C++ 开发环境快速配置

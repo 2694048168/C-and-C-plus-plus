@@ -1,0 +1,8 @@
+*.exe
+*.txt
+build/*
+.vscode/*
+.cache/*
+external/OpenCV/include/*
+external/OpenCV/lib/*
+images/*
