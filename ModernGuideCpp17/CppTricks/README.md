@@ -6,3 +6,7 @@
 
 
 ![memory-order](https://i-blog.csdnimg.cn/blog_migrate/e84a9e16b0b605659b5b81a3110f402d.png)
+
+```shell
+cmake -S . -B build -G 
+```
