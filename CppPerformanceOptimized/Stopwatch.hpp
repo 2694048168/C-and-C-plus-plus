@@ -17,9 +17,11 @@ public:
 
     ~Stopwatch()
     {
-        auto endTime  = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - m_startTime);
+        auto endTime     = std::chrono::high_resolution_clock::now();
+        auto duration    = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - m_startTime);
+        auto duration_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - m_startTime);
         std::cout << m_name << " time cost ---> " << duration.count() << " ms\n";
+        std::cout << m_name << " time cost ---> " << duration_ns.count() << " ns\n";
     }
 
 private:

@@ -9,6 +9,7 @@
  * 
  */
 
+#include <list>
 #include <string>
 #include <vector>
 
@@ -22,7 +23,7 @@ int Sum(std::list<int> v)
     int sum = 0;
     for (auto it : v)
     {
-        sum += *it;
+        sum += it;
     }
     return sum;
 }
@@ -35,8 +36,8 @@ int main(int argc, const char *argv[])
     for (auto &filename : nameVec)
     {
         std::string config;
-        ReadFileXML(filename, config);
-        ProcessXML(config);
+        // ReadFileXML(filename, config);
+        // ProcessXML(config);
     }
 
     // ------ 在循环外创建动态变量 --------
@@ -44,8 +45,8 @@ int main(int argc, const char *argv[])
     for (auto &filename : nameVec)
     {
         config.clear();
-        ReadFileXML(filename, config);
-        ProcessXML(config);
+        // ReadFileXML(filename, config);
+        // ProcessXML(config);
     }
 
     // 延长动态分配内存的变量的生命周期可以显著提升性能
