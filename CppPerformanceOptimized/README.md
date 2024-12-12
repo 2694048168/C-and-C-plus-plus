@@ -1,5 +1,7 @@
 ## 现代 C++ 性能优化指南
 
+> Salute to all the quality books written for the development of C++, a great treasure of mankind, words carry all.
+
 > the **Modern C++** Best Practices and the Proven Techniques **Optimized for Heightened Performance**.
 
 ```shell
@@ -561,7 +563,13 @@ vector<Foo>().swap(x);
 
 - 在读写文本数据时高效地使用 C++ 流 I/O 函数: 实际上它们却是非常耗时的程序活动
 - I/O 的一个问题是在用户的程序与旋转的磁盘或是网卡之间有太多的代码, 为了使 I/O 尽可能地高效, 必须尽量减小所有这些代码的性能开销
+- C++ 流包含一个继承自 std::streambuf 的类, 用于改善从操作系统底层以更大块的数据单位读取文件时的性能
+
+### **12. 优化并发**
+
+- 2005 年,多核微处理器问世,提供了真正(并非时间切割)的并发, 改变了开发人员的观念
+- 带有大量核心的通用硬件尚未成为主流(**CUDA**), 最佳编程实践
+- 有多种机制能够为程序提供并发,其中有些基于操作系统或是硬件，不属于 C++ 的范畴
 - 
 
-
-page234
+page245
