@@ -34,7 +34,7 @@ class Derived : public Base<Derived>
 };
 ```
 
-**静态多态和动态多态对比**
+**静态多态(CRTP)和动态多态对比**
 
 | 特性       | CRTP（静态多态）          | 动态多态 |
 |  ----     | ----          |----  |
@@ -45,3 +45,7 @@ class Derived : public Base<Derived>
 | 耦合性	    | 较高，A 模块使用 B 模块中的 CRTP 实现，涉及到的符号都得对 A 模块可见	| 较低，A 模块使用 B 模块中的接口类，接口实际实现的类不需要对 A 模块暴露 |
 | 可读性	    | 很差，涉及到模版，还存在代码体积膨胀问题	| 较差 |
 
+
+**多线程处理图像**
+
+![Concurrency Parallelism](./images/ConcurrencyParallelism.png)
