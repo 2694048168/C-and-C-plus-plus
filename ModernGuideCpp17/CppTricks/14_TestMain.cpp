@@ -26,5 +26,31 @@ int main(int /* argc */, char ** /* argv */)
     std::cout << classC.getClassName() << std::endl;
     std::cout << classD.getClassName() << std::endl;
 
+    std::cout << "============================================\n\n";
+    ColorPrinter colorful;
+    BWPrinter    blackwhite;
+
+    std::cout << "彩色打印机开始工作啦：\n";
+    colorful.print();
+
+    std::cout << "\n换个打印机试试: \n";
+    blackwhite.print();
+
+    std::cout << "============================================\n\n";
+    Cat  kitty;
+    Duck donald;
+
+    std::cout << "=== 铲屎官回家啦 ===\n\n";
+    kitty.makeSound(); // 编译时就知道要调用哪个喵星人啦！
+    kitty.findFood();
+
+    std::cout << "\n=== 池塘边热闹起来啦 ===\n\n";
+    donald.makeSound(); // 鸭鸭的叫声也在编译时就确定好啦！
+    donald.findFood();
+
+    std::cout << "============================================\n\n";
+    // 像搭积木一样的链式调用
+    RobotBuilder().name("小闪电").color("星空蓝").power(100);
+
     return 0;
 }
