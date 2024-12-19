@@ -72,6 +72,66 @@ cmake --build build
 # seen in build/visual_tree.png
 ```
 
+### CMake中的 Release、Debug、MinSizeRel、RelWithDebInfo
+- CMake中编译类型(build type)是指一组预定义的编译器和链接器标志(flag),用于控制生成的可执行文件或库的特性
+- 常见的编译类型包括: Release、Debug、MinSizeRel、RelWithDebInfo
+
+> Debug 编译类型包含了**详细的调试信息**, 如符号信息(变量名、函数名等)和行号信息等, 以便于调试器(如gdb,lldb,msvc)进行单步调试、变量监视从而可以准确地定位问题; 通常该类型的可执行文件或库主要是用在**开发和调试**阶段,方便程序员定位和修复错误, Debug 编译类型通常不对代码进行优化, 以避免优化代码的**执行顺序或逻辑**(这会造成bug位置不清晰而难以追溯), 因此**执行速度较慢**, 且因为增加了额外的调试信息而**体积变大**. Debug 编译类型用在需要详细调试程序、检查逻辑错误或分析运行时行为的场景, 其典型的编译器标志如下
+
+```shell
+# GCC/Clang: -g（生成调试信息）、-O0（禁用优化）
+# MSVC: /zi（生成完整的调试信息）、/Od（禁用优化）
+```
+
+> Release 编译类型主要用于发布给最终用户,追求代码大小和**运行速度的最优**; **编译器**对代码进行**各种优化**以提高执行效率, 并且不包含调试信息, 从而减小可执行文件大小且保护源码实现细节. 因不包含调试信息, 所以不利于代码调试, 适用于代码经过反复调试和验证后准备上线发布时使用. Release 编译类型的可执行文件体积小、执行速度快,用于程序发布、性能测试或需要高效率运行的场合, 其典型的编译器标志如下
+
+```shell
+# GCC/Clang: -O3或-O2（高级别优化）、-DNDEBUG（禁用assert等调试宏）
+# MSVC: /O2（全局优化）、/DNDEBUG（禁用assert等调试宏）
+```
+
+> MinSizeRel 是Minimum Size Release, 即最小尺寸发布; 见名知意,它的目的就是用来生成尺寸最小的可执行文件或库, 适用于存储空间有限的场景(比如嵌入式环境); 该类型的目的是在保证一定性能的前提下, 最大程度减小生成文件的体积, 既然其目的是尽可能使体积减小, 因此同Release一样, 它也不包含调试信息, 但不同于Release, 它的终极目的还是追求**体积的极致**, 因此可能会**牺牲一定的性能**. MinSizeRel 编译类型通常用于嵌入式设备、移动应用或对存储空间敏感的项目中, 其典型的编译器标志如下
+
+```shell
+# GCC/Clang: -Os（优化尺寸）、-DNDEBUG（禁用assert等调试宏）
+# MSVC: /O1（最小化空间）
+```
+
+> RelWithDebInfo 是Release With Debug Info的缩写, 它是带调试信息的发布版, 兼顾了性能优化和调试能力,用于需要**在优化后的代码中进行调试**的情况. 该类型具备Release的特点, 启用了带阿米优化, 但又保留了一定的调试信息, 以便在出现问题时可以进行调试. 程序大小和性能均介于Debug和Release之间, 适合在需要优化性能的同时, 也需要调试信息的场景. RelWithDebInfo 编译类型的调试信息不如Debug丰富, 但比Release要丰富; 当需要调试仅在优化后出现的问题, 如**内存泄漏、线程竞争等，以及性能测试**时, 需要获取性能分析的数据的场景, 其典型的编译器标志如下
+
+```shell
+# GCC/Clang: -O2（优化）、-g（生成调试信息）、-DNDEBUG（禁用assert等调试宏）
+# MSVC: /zi（调试信息）、/O2（优化）
+```
+
+#### **4种编译类型从不同维度进行总结并对比**
+
+|           |           |      |
+|  ----     | ----      |----  |
+| 调试信息 Debug Info | 包含调试信息 | Debug、RelWithDebInfo |
+| 调试信息 Debug Info | 不包含调试信息 | Release、MinSizeRel |
+| 优化级别 Optimization Level | 禁用优化 | Debug |
+| 优化级别 Optimization Level | 启用优化 | 高级别性能优化: Release、RelWithDebInfo |
+| 优化级别 Optimization Level | 启用优化 | 尺寸优化: MinSizeRel |
+| 文件大小 Output Size | 较大 | Debug: 包含调试符号且未优化 |
+| 文件大小 Output Size | 较小 | Release、RelWithDebInfo: 优化后代码更紧凑 |
+| 文件大小 Output Size | 最小 | MinSizeRel: 专门优化尺寸 |
+
+**如何知道我们的项目所使用的不同编译选项的默认值是什么呢？**
+```shell
+# 在终端执行以下命令
+cmake -LAH "CMakeLists.txt文件所在路径" | grep -C1 CMAKE_CXX_FLAGS
+
+# 主CMakeLists.txt文件的末尾去打印想要了解的编译类型的默认编译器标志
+MESSAGE(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
+MESSAGE(STATUS "Library Type: " ${LIB_TYPE})
+MESSAGE(STATUS "Compiler flags:" ${CMAKE_CXX_COMPILE_FLAGS})
+MESSAGE(STATUS "Compiler cxx debug flags:" ${CMAKE_CXX_FLAGS_DEBUG})
+MESSAGE(STATUS "Compiler cxx release flags:" ${CMAKE_CXX_FLAGS_RELEASE})
+MESSAGE(STATUS "Compiler cxx min size flags:" ${CMAKE_CXX_FLAGS_MINSIZEREL})
+MESSAGE(STATUS "Compiler cxx flags:" ${CMAKE_CXX_FLAGS})
+```
+
 ### Organization of Repo.
 ```
 . CMakeTutorial
