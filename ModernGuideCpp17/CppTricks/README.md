@@ -186,3 +186,27 @@ CRTP 最适合这些场景:
 **多线程处理图像**
 
 ![Concurrency Parallelism](./images/ConcurrencyParallelism.png)
+
+**创建线程的五种类型**
+- 使用 std::thread via modern C++ since C++11
+- 使用 std::async: 基于 std::thread 的封装,不仅创建了一个线程,还返回一个 std::future 对象,可以用来获取异步操作的结果
+- 使用 POSIX 线程 pthread, 尤其是在需要更底层控制时(UNIX-like 系统中使用的标准线程库)
+- 使用 Windows 线程 CreateThread, 操作系统级别的线程创建方法
+- 使用线程池,管理一组工作线程,允许提交任务给线程池处理,而不是每次都创建和销毁线程,减少资源消耗和提高效率
+
+```C++
+#include <iostream>
+#include <pthread.h>
+
+void* hello(void*) {
+   std::cout << "Hello from pthread\n";
+   return nullptr;
+}
+
+int main() {
+   pthread_t tid;
+   pthread_create(&tid, nullptr, hello, nullptr);
+   pthread_join(tid, nullptr);
+   return 0;
+}
+```
