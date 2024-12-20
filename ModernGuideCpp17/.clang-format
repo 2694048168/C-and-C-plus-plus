@@ -94,4 +94,4 @@ SpaceAfterTemplateKeyword: false
 SpaceBeforeParens: Custom
 SpacesInContainerLiterals: false
 
-Standard:        c++17
+Standard:        c++20
