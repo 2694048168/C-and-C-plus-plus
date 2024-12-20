@@ -49,6 +49,7 @@
 - [x] External Cpp Library
     - Logger 日志库, spdlog, glog, log4cplus; 日志库的二次封装
 
+![](charsest_encoder.png)
 ![](Logging/output.gif)
 
 - [x] Modern C++
