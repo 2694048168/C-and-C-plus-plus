@@ -1,4 +1,4 @@
-## 设计模式 Design Patterns
+# 设计模式 Design Patterns
 
 > **Design patterns** are typical solutions to common problems in software design. Each pattern is like a blueprint that you can customize to solve a particular design problem in your code.
 
@@ -9,6 +9,37 @@ In software engineering, a **software design pattern** or **design pattern** is 
 Object-oriented design patterns typically show relationships and interactions between classes or objects, without specifying the final application classes or objects that are involved. Patterns that imply mutable state may be unsuited for functional programming languages. Some patterns can be rendered unnecessary in languages that have built-in support for solving the problem they are trying to solve, and object-oriented patterns are not necessarily suitable for non-object-oriented languages.
 
 Design patterns may be viewed as a structured approach to computer programming intermediate between the levels of a programming paradigm and a concrete algorithm.
+
+## **设计模式**
+- 创建型模式
+    - 简单工厂模式 Simple Factory
+    - 工厂方法模式 Factory Method
+    - 抽象工厂模式 Abstract Factory
+    - 创建者模式 Builder
+    - 原型模式 Prototype
+    - 单例模式 Singleton
+- 结构型模式
+    - [外观模式 Facade](Facade.cpp)
+    - [适配器模式 Adapter](Adapter.cpp)
+    - [代理模式 Proxy](Proxy.cpp)
+    - [组合模式 Composite](Composite.cpp)
+    - [享元模式 Flyweight](Flyweight.cpp)
+    - [装饰模式 Decorator](Decorator.cpp)
+    - [桥模式 Bridge](Bridge.cpp)
+- 行为型模式
+    - 中介者模式 Mediator
+    - [观察者模式 Observer](Observers.cpp)
+    - [观察者模式 Observer](ObserversClockTimer.cpp)
+    - [观察者模式 Observer](ObserversWeather.cpp)
+    - 命令模式 Command
+    - 迭代器模式 Iterator
+    - 模板方法模式 Template Method
+    - 策略模式 Strategy
+    - 状态模式 State
+    - 备忘录模式 Memento
+    - 解释器模式 Interpreter
+    - 职责链模式 Chain of Responsibility
+    - 访问者模式 Visitor
 
 ### 单例模式 [Singleton](https://refactoringguru.cn/design-patterns/singleton)
 
@@ -39,9 +70,56 @@ private:
 
 > 定义一系列策略(算法), 并进行封装,可以相互转换, 使得策略(算法)可独立于客户程序
 
-### 观察者模式
+### Observer 观察者模式
 
 > 定义对象间的一种一对多(变化的)的依赖关系, 当一个Object状态发生变化时, 所有依赖于其的对象都能得到通知并更新
+
+- 观察者模式是一种行为型设计模式, 又被称为"发布-订阅"模式, 它定义了对象之间的一对多的依赖关系, 当一个对象的状态发生变化时, 所有依赖于它的对象都会收到通知并自动更新
+- 观察者模式的关注点是对象之间的通信以及被观察对象的状态
+
+![](images/Observers.png)
+
+**观察者模式在现实生活中的抽象实例**
+- 报纸订阅: 报纸的内容发生变化时, 订阅了该报纸的读者们都会收到通知并阅读最新的内容
+- 股票投资: 股票的价格发生波动时, 投资者们会根据最新价格修改相应的投资决策
+- 天气预报: 当天气发生变化时, 订阅了该服务的用户们会收到通知
+- 网络论坛: 当论坛中有新的帖子或回复出现时, 论坛的用户们会收到通知并可以参与讨论
+
+#### 观察者模式的结构
+- 被观察者(Subject): 
+    - 被观察的对象,它的内部包含了观察者对象的集合, 并提供了添加、通知和删除观察者对象的统一接口
+- 观察者(Observer):
+    - 接收Subject通知的对象, 它订阅了Subject的状态, 并提供了更新操作的统一接口
+- 具体的被观察者(ConcreteSubject):
+    - 包含Subject类接口的具体实现, 维护了观察者的列表, 自身状态发生变化时通知所有的观察者
+- 具体的观察者(ConcreteObserver):
+    - 包含Observer类接口的具体实现, 提供了更新操作的具体实现细节, 一旦收到Subject的通知便进行更新操作
+
+**组件之间的工作步骤如下**
+- 被观察者维护一个观察者的列表, 并提供了管理和通知观察者的方法
+- 观察者与被观察者绑定(attach), 并将自己添加到观察者列表中
+- 当被观察者的状态发生变化时, 开始通知观察者, 通知的方式一般是遍历观察者列表, 遍历时会调用每个观察者的更新方法
+- 观察者完成具体的更新操作
+
+![](images/ObserversUML.png)
+
+#### 观察者模式的应用场景
+- 事件驱动编程: GUI界面开发时, 监听用户在界面的各种操作, 如按钮点击、窗口关闭等
+- 监控服务开发: 当系统状态发生变化时(例如磁盘空间不足),工具会收到通知
+- 消息队列开发: 基于"消费者-生产者"模式进行通信, 当消息队列中有新的消息时, 消费者会收到通知
+
+**观察者模式的优缺点**
+- 观察者模式的优点:
+    - 符合"开闭原则"的要求
+    - 支持广播的通信方式
+    - 支持事件驱动编程
+    - 可以动态添加观察者, 代码扩展性好
+- 观察者模式的缺点:
+    - 每次状态变化都要遍历所有观察者, 性能开销大
+    - 每次状态变化都要通知所有的观察者, 通信时间变长
+    - 观察者数量过多会使代码的可读性变差
+    - 当有多个客户端操作观察者的删除时, 会带来数据安全问题
+
 
 ### 责任链模式
 
@@ -237,11 +315,87 @@ private:
     - 如果存在访问共享资源的情况,代码的编写不够严谨时,相同层次的子系统和子系统之间可能会互相影响
     - 子系统和子系统之间可能包含相同的功能,导致代码冗余
 
+### Flyweight 享元模式
+- 享元模式是一种结构型设计模式,它将每个对象中各自保存一份数据的方式改为多个对象共享同一份数据,该模式可以有效减少应用程序的内存占用
+- 享元模式的核心思想是共享和复用, 通过设置共享资源来避免创建过多的实例
+- 当应用程序的内部包含大量的对象, 且对象之间包含相似的数据或状态时, 可以使用享元模式来共享这些数据或状态
+- 享元模式的内部涉及到工厂模式的使用, 因为它需要创建一个享元工厂来管理共享资源池; 这个共享资源池又称为享元池(Flyweight Pool), 里面包含多个访问共享数据的享元对象; 当客户端需要使用一个享元对象时, 享元工厂会从池中获取一个已有的享元对象, 如果对象不存在则创建一个新的享元对象
+
+#### 享元模式的结构
+- 内部状态(Intrinsic State): 对象之间容易重复的、可以共享的、且变动很少的成员变量,该变量在享元模式中被共享
+- 外部状态(Extrinsic State): 对象之间各不相同的、不能共享的、且随着不同场景而变化的成员变量,该变量被调用的客户端所设置和更改
+- 享元工厂类(Flyweight Factory): 替外部客户端管理共享资源的类
+- 抽象享元类(Flyweight): 享元模式的核心,由享元工厂进行创建和管理,里面包含了内部状态,但不包含外部状态
+- 共享的具体享元类(Concrete Flyweight): 实现了Flyweight声明的接口并访问和存储了内部状态
+
+![](images/FlyweightUML.png)
+
+#### 享元模式的工作步骤
+- 拆分类的成员变量,将成员变量拆分成以下两种: 
+    - 不变的、可能在对象之间重复使用的
+    - 变化的、随着应用场景而改动的
+- 将不变的,可重复的成员变量的属性设置为不可修改,并在构造函数中赋初始值
+- 创建享元类,并将共享的成员变量集成到享元类
+- 创建享元工厂类来管理共享的资源池,客户端与享元对象的交互借助享元工厂来实现
+- 优化共享资源池的代码实现,这可能涉及到事件驱动、回调函数或者策略模式的应用
+
+#### 享元模式的应用场景
+- 图形或图像处理:
+    - 在大型游戏或图形编辑器开发中, 同一个形状（如矩形）或颜色等状态会重复出现很多次, 基于享元模式可以降低内存开销
+- 数据库处理优化:
+    - 数据库被频繁地连接和请求时, 享元模式可以管理这些连接并复用它们, 提高处理的性能
+- UI组件开发:
+    - 在用户界面中, 当创建多个界面窗口时, 像按钮、图标等小部件会在创建界面窗口时有大量重复, 使用享元模式可以减少界面之间重复组件的数量, 提高性能
+
+**享元模式的优缺点**
+- 享元模式的优点:
+    - 增加了系统资源的可重用性, 节省了系统资源
+    - 基于共享的结构, 降低了内存消耗
+    - 系统可扩展性强, 新增对象时可直接复用共享资源
+    - 降低了对象内部的结构复杂性
+- 享元模式的缺点:
+    - 使代码结构更加复杂
+    - 当需要被共享的资源量级很小时, 该模式的性能提升并不显著
+    - 将共享变量放在构造函数中进行赋值, 额外增加了初始化的时间
+    - 引入了"共享"这种结构, 会导致潜在的线程安全问题
+    - 编写代码需要考虑保证状态的同步和一致性问题, 否则会导致bug的产生
+
+### Composite 组合模式
+- 真实世界中像企业组织、文档、图形软件界面等案例, 它们在结构上都是分层次的;
+- 将系统分层次的方式使得统一管理和添加不同子模块变得容易, 在软件开发中, 组合模式的设计思想和它们类似
+- 组合模式是一种结构型设计模式, 该模式将对象组合成**树状结构**, 以便于分层和统一管理
+- 组合模式用于为复杂的分层的系统结构定义基本的蓝图, 并对外**提供统一的接口**, 简化了系统组件的使用方法
+
+#### 组合模式的结构
+- 组件类(Component): 声明了统一的抽象接口; 它定义了Leaf类和Composite类的通用函数接口
+- 叶子节点类(Leaf): 提供了Component类的接口实现, 组合模式中的最小单元
+- 组合类(Composite): 也提供了Component类的接口实现, 其中包含多个Component对象; 它对子组件进行了封装, 使用客户端(Client)可以像操作单个组件一样使用整个组合
+
+![](images/CompositeUML.png)
+
+#### 组合模式的应用场景
+- 平面设计软件开发: 在PS等应用程序中, 形状、线条和文本等图形元素可以组合成复杂的设计
+- 文件系统: 使用组合模式来表示文件和目录, 从而形成可以统一处理和查询的分层结构
+- UI框架开发: 基于组合模式, 可以让UI组件(如按钮、标签和面板等)组合成复杂的布局或界面
+- 文档编辑器: 使用组合模式来实现文档的段落和文本等层次结构
+- 企业软件开发: 企业软件通常对组织结构进行建模, 包括部门、团队和员工; 组合模式用于实现组织单位及其内部员工的层次结构
+
+**组合模式的优缺点**
+- 组合模式的优点:
+    - 便于维护和重构, 修改单个组件的代码不会影响整个系统的功能
+    - 有树形结构的先天优势, 可以很方便地统一添加、删除或修改子节点
+    - 通过拆分子组件, 提高了模块间的独立性和可重用性
+    - 符合"单一职责原则", 组合中的每个对象只关注自己的职责, 不需要考虑整个组合中的功能配合
+- 组合模式的缺点:
+    - 性能开销大, 该模式涉及了对象的动态创建和管理, 频繁操作可能会引起性能问题
+    - 增加了代码的复杂度, 当组合的层次过深的时候, 代码的结构会很复杂
+    - 类型安全问题, 当管理多个组件对象时, 可能需要额外的类型转换编码
+
 
 
 
 ### Reference
 
-- [设计模式（全23种)](https://subingwen.cn/design-patterns/)
+- [设计模式(全23种)](https://subingwen.cn/design-patterns/)
 - [Design Patterns](https://refactoringguru.cn/design-patterns/cpp)
 - [图说设计模式](https://design-patterns.readthedocs.io/zh-cn/latest/index.html#)
