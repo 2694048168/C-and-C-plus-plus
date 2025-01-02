@@ -162,7 +162,7 @@ int main(int /* argc */, const char ** /* argv */)
     juice.getBeverage();
 
     std::cout << "================================\n";
-    Adoptee       *adoptee_   = new Adoptee();
+    Adoptee       *adoptee_  = new Adoptee();
     ObjectAdapter *adapter_1 = new ObjectAdapter(adoptee_);
     ClassAdapter  *adapter_2 = new ClassAdapter();
 
