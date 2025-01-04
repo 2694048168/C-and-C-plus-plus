@@ -70,6 +70,116 @@ cd GraphvizCMake
 cmake -B build
 cmake --build build
 # seen in build/visual_tree.png
+
+cmake -S . -B build -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE:STRING=Debug
+cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Debug
+cmake --build build --config Debug
+
+cmake -S . -B build -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE:STRING=Release
+cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Release
+cmake --build build --config Release
+
+cmake --build build --target clean
+
+# 自动以最大线程数进行并行编译
+sudo cmake --build build --target all -j12
+```
+
+### CMake snippets
+```shell
+if(WIN32)
+    # Windows 上使用特定的库
+    set(MY_LIBRARY "C:/libs/windows_lib.lib")
+    # 打印调试信息
+    message("Using library for Windows")
+elseif(APPLE)
+    # macOS 上使用其他库
+    set(MY_LIBRARY "/usr/local/lib/mac_lib.dylib")
+    message("Using library for macOS")
+else()
+    # Linux 上用另一个库
+    set(MY_LIBRARY "/usr/lib/linux_lib.so")
+    message("Using library for Linux")
+endif()
+
+# 最终链接库
+target_link_libraries(my_project ${MY_LIBRARY})
+
+# CMake 高效配置：条件判断、循环与字符串操作
+# 循环：foreach 和 while
+set(SOURCES main.cpp utils.cpp helper.cpp)
+
+foreach(SRC ${SOURCES})
+    message("Compiling source file: ${SRC}")
+    # 这里可以做更多操作，比如添加每个源文件到目标中
+    target_sources(hello PRIVATE ${SRC})
+endforeach()
+
+set(COUNT 1)
+
+while(COUNT LESS 5)
+    message("Current count: ${COUNT}")
+    math(EXPR COUNT "${COUNT} + 1")
+endwhile()
+
+# 字符串操作：拼接、分割、查找
+set(DIR "/home/user/project/")
+set(FILE_NAME "main.cpp")
+
+# 拼接字符串
+set(FULL_PATH "${DIR}${FILE_NAME}")
+
+message("Full path: ${FULL_PATH}")
+
+# 字符串分割（STRING(SUBSTRING ...)）
+set(PATH "/home/user/project/main.cpp")
+
+# 获取文件名
+string(REGEX REPLACE "^.*/" "" FILE_NAME ${PATH})
+# ^ 是一个锚点，表示匹配字符串的开始位置。 
+# .* 会匹配任意数量的字符，甚至是零个字符。它会一直匹配，直到遇到我们指定的下一个字符(/)。
+
+message("File name: ${FILE_NAME}")
+
+# 字符串查找（STRING(FIND ...)）
+set(PATH "/home/user/project/")
+
+# 查找字符串中的子串
+string(FIND ${PATH} "user" POSITION)
+
+# 如果找到了，POSITION 会返回位置，找不到则返回 -1
+if(POSITION GREATER -1)
+    message("Found 'user' in the path at position: ${POSITION}")
+else()
+    message("'user' not found in the path.")
+endif()
+
+# Step2 ============= 使用 vcpkg tool 来管理依赖 =============
+# 设置 vcpkg 的工具链文件
+set(CMAKE_TOOLCHAIN_FILE "path_to_vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+# 查找 OpenCV 库
+find_package(OpenCV REQUIRED)
+
+# 链接到你的目标
+target_link_libraries(my_target PRIVATE ${OpenCV_LIBS})
+
+# Step2 ============= 使用 conan tool 来管理依赖 =============
+# 设置 Conan 的工具链文件：加载由 Conan 生成的 conanbuildinfo.cmake 文件。
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+# 应用加载的 conanbuildinfo.cmake 文件中的配置信息，设置项目的依赖环境。
+conan_basic_setup()
+
+# 使用 Boost 库
+target_link_libraries(my_target PRIVATE Boost::Boost)
+
+# Step3 ============= 使用 Git 子模块来管理依赖 =============
+# 引入 Git 子模块
+add_subdirectory(external/boost)
+
+# 使用 boost 库
+target_link_libraries(my_target PRIVATE boost)
+
 ```
 
 ### CMake中的 Release、Debug、MinSizeRel、RelWithDebInfo
