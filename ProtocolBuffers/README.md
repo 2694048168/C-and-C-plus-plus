@@ -44,6 +44,9 @@ cmake --install build --prefix D:/DevelopTools
 - 序列化 and 反序列化 via Protobuf in C++
 - build and compile protocol buffers on Windows and Linux
 - the command-line tool: protoc
+- C++ proto 用作配置参数, 并保存成参数文件 configParam.cfg or configParam.bin
+- C++ proto 序列化与反序列化, SerializeToString & ParseFromString
+- C++ proto 用作消息传输, SerializeToString & ParseFromString
 
 ```shell
 mkdir ConfParams
