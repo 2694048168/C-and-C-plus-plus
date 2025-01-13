@@ -1,0 +1,31 @@
+## Engineering Practice for modern C++
+
+### features
+- 性能基准测试框架 benchmark
+    - [Google micro-benchmark support library ](https://github.com/google/benchmark)
+    - [nanobench - Simple, fast, accurate micro-benchmarking functionality for Modern C++](https://github.com/martinus/nanobench)
+    - [nanobench - doc](https://nanobench.ankerl.com/tutorial.html#usage)
+- 单元测试框架 unit test
+    - [GoogleTest - Google Testing and Mocking Framework](https://github.com/google/googletest)
+    - [Doc Test - The fastest feature-rich modern C++ testing framework](https://github.com/doctest/doctest)
+    - [catch2](https://github.com/catchorg/Catch2)
+- 包管理工具 package manager
+    - [CMake](https://cmake.org/)
+    - [vcpkg](https://vcpkg.io/en/)
+    - [Conan](https://conan.io/)
+- 源代码版本管理 source code version control
+    - [Git](https://git-scm.com/)
+    - [Svn](https://tortoisesvn.net/downloads.zh.html)
+- 开发环境 IDE
+    - [Visual Studio Community](https://visualstudio.microsoft.com/zh-hans/vs/)
+    - [Visual Studio Code](https://code.visualstudio.com/)
+    - [CLion](https://www.jetbrains.com/clion/)
+    - 如何通过 CMake 和 VSCode 进行 C++ 代码调试debug
+- 字符集问题 charset
+    - the source code file(*.h/*.cpp) encoder ---> UTF-8
+    - the compile encoder ---> UTF-8
+    - the execute encoder ---> UTF-8
+- 日志库 logger
+    - [spdlog](https://github.com/gabime/spdlog)
+    - [glog](https://github.com/google/glog)
+    - [log4cplus](https://github.com/log4cplus/log4cplus)
