@@ -385,3 +385,49 @@ getconf --all
 ### C++17 magic features
 - C++17 std::invoke 一个函数统治所有函数
 - C++17 std::byte, 别再用 unsigned char
+- 明智地使用智能指针, 过度使用std::shared_ptr可能会因引用计数而产生额外开销
+```C++
+std::shared_ptr<MyClass> ptr(new MyClass()); // NOT good
+
+auto auto ptr = std::make_unique<MyClass>(); // good
+```
+- 利用移动语义尽量减少复制, 复制大型对象是一种隐蔽的性能杀手
+```C++
+std::vector<MyClass> vec;
+vec.push_back(someLargeObject); // 复制对象
+
+std::vector<MyClass> vec;
+vec.push_back(std::move(someLargeObject)); // 移动对象
+```
+- 为std::vector预留内存 如果知道std::vector中大概需要多少元素,提前预留内存可以通过减少重新分配内存的次数来节省时间
+```C++
+std::vector<int> data; // NOT good
+for (int i = 0; i < n; ++i) {
+    data.push_back(i);
+}
+
+std::vector<int> data;
+data.reserve(n); // good
+for (int i = 0; i < n; ++i) {
+    data.push_back(i);
+}
+```
+- 优先使用前缀自增而非后缀自增, 当使用迭代器或简单的计数器时，使用前缀自增（++i）可能会比后缀自增（i++）稍微更高效一些，特别是对于复杂的迭代器类型来说
+```C++
+// NOT good
+for (auto it = container.begin(); it!= container.end(); it++) {
+    // 执行某些操作
+}
+
+// good, 这可能看起来有点吹毛求疵，但在紧密的循环中，每一微秒都很重要
+for (auto it = container.begin(); it!= container.end(); ++it) {
+    // 执行某些操作
+}
+```
+- 在不必要时避免使用虚函数,虚函数会因动态分派而增加开销;如果不需要多态行为,别用virtual关键字
+> 所有类的方法都加上virtual关键字“以防万一”——大错特错啊, 程序性能一落千丈
+- 谨慎使用异常处理,异常功能很强大，但如果过度使用可能成本很高，特别是在对性能要求苛刻的代码中
+> 建议使用 'ReturnStatusErrorCode' 范式进行处理异常, 而不是 try-catch
+- 利用编译时多态(CRTP技术)，模板和内联函数可以帮助实现多态，同时又不会有虚函数带来的运行时开销
+- 在优化之前先进行性能分析 这虽然不是一个直接的编码技巧，但却至关重要
+> 在做出更改之前,使用性能分析工具(优化必须要有测度)来确定瓶颈所在; gprof, Valgrind, Visual Studio Profiler
