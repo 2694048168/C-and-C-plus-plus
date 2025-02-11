@@ -65,6 +65,36 @@ windeployqt 00_dev_env.exe
 - Qt中的数据库操作 **16_database_test.cpp**
 - Qt中的Json操作 **17_json_test.cpp**
 
+### QT多语言支持和动态切换
+- Qt 语言处理工具, lupdate、lrelease、linguist
+- 利用 lupdate（Language Update）工具(*.ui/*.h/*.cpp)生成 .ts 文件, tr() function
+- 利用 lrelease（Language Release）将 .ts 文件翻译成指定语言的 .qm 文件
+- 启动 linguist.exe（语言处理专家）, 进行翻译, Qt\5.15.2\mingw81_64\bin\linguist.exe
+
+```C++
+QTranslator *qTranslator = nullptr;
+
+void Dialog::on_btnChinese_clicked() {
+    if (nullptr == qTranslator) {
+        qTranslator = new QTranslator(this);
+    }
+    qTranslator->load("ProjectName_zh_CN.qm");
+    qApp->installTranslator(qTranslator);
+    ui->retranslateUi(this);
+    ui->labelText->setText(tr("这是一个QT多语言程序（中文）。"));
+}
+
+void Dialog::on_btnEnglish_clicked() {
+    if (nullptr == qTranslator) {
+        qTranslator = new QTranslator(this);
+    }
+    qTranslator->load("ProjectName_en_US.qm");
+    qApp->installTranslator(qTranslator);
+    ui->retranslateUi(this);
+    ui->labelText->setText(tr("这是一个QT多语言程序（英文）。"));
+}
+```
+
 ### 打包部署
 - Qt程序的发布和打包
 
