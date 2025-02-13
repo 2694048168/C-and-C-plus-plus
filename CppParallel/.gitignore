@@ -1,0 +1,6 @@
+bin/*
+lib/*
+build/*
+external/*
+.vscode/*
+.cache/*
