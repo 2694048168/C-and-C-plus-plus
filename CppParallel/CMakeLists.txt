@@ -90,3 +90,4 @@ include_directories(${PROJECT_SOURCE_DIR}/src/)
 # --------------------------------------------------
 # 添加 CMake 子目录, 寻找该目录下的 CMakeLists.txt
 add_executable("00_tbb_parallel_for" src/tbb_parallel_for.cpp)
+add_executable("01_work_distribution_uneven_job_length" src/work_distribution_uneven_job_length.cpp)
