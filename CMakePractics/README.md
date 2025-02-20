@@ -101,6 +101,21 @@ cmake --build build --target test
 - [VSCode support containers](https://code.visualstudio.com/docs/devcontainers/containers)
 
 
+### Tricks
+- cmake-gui ---> Add Entry ---> CMAKE_DEBUG_POSTFIX ---> STRING ---> d
+- cmake-gui ---> select Advanced ---> CMAKE_INSTALL_PREFIX ---> set install path
+- CTK for plugin framework and event
+```shell
+CTK_ENABLE_PluginFramework
+CTK_ENABLE_Widgets
+CTK_LIB_PluginFramework
+CTK_LIB_Widgets
+CTK_PLUGIN_org.commontk.configadmin
+CTK_PLUGIN_org.commontk.eventadmin
+CTK_PLUGIN_org.commontk.log
+CTK_PLUGIN_org.commontk.metatyp
+```
+
 ### Features
 - **an industry standard** to building C++ applications
 - **software engineers first** and more practical than theoretical
