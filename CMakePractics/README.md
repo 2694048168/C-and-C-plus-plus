@@ -106,6 +106,8 @@ cmake --build build --target test
 - cmake-gui ---> select Advanced ---> CMAKE_INSTALL_PREFIX ---> set install path
 - CTK for plugin framework and event
 ```shell
+# 修改源码目录下的SuperBuild.cmake文件, 否则 INSTALL 无法copy文件到指定位置
+# 将 INSTALL_COMMAND "" 修改为 INSTALL_COMMAND ${_INSTALL_CMD}
 CTK_ENABLE_PluginFramework
 CTK_ENABLE_Widgets
 CTK_LIB_PluginFramework
