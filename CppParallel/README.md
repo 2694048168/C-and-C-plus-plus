@@ -5,6 +5,7 @@
 ### features
 - Parallel and Concurrency
     - [x] OpenMP 需要编译器(compiler)支持, TBB(Intel)需要下载运行库
+    - [x] Modern C++ thread and Modern CPU multi-core processor
 
 ### quick start
 ```shell

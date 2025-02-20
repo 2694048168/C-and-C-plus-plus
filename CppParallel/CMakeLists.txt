@@ -15,7 +15,8 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
 # 只启用 ISO C++ 标准的编译器标志, 而不使用特定编译器的扩展
-set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -91,3 +92,5 @@ include_directories(${PROJECT_SOURCE_DIR}/src/)
 # 添加 CMake 子目录, 寻找该目录下的 CMakeLists.txt
 add_executable("00_tbb_parallel_for" src/tbb_parallel_for.cpp)
 add_executable("01_work_distribution_uneven_job_length" src/work_distribution_uneven_job_length.cpp)
+add_executable("02_coarse_grained" src/coarse_grained.cpp)
+add_executable("03_fine_grained" src/fine_grained.cpp)
