@@ -7,6 +7,7 @@
     - [x] OpenMP 需要编译器(compiler)支持, TBB(Intel)需要下载运行库
     - [x] Modern C++ thread and Modern CPU multi-core processor
     - [x] Modern C++ thread and Double Buffer technology
+    - [x] Thread Concurrency and C++ lock technology
 
 ### quick start
 ```shell
