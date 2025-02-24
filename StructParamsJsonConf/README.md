@@ -3,3 +3,4 @@
 ### useful reference
 - [ini config](https://github.com/Rookfighter/inifile-cpp)
 - [json config](https://github.com/nlohmann/json)
+- [msgpack serialization](https://msgpack.org/)
