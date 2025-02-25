@@ -8,6 +8,8 @@
     - [x] Modern C++ thread and Modern CPU multi-core processor
     - [x] Modern C++ thread and Double Buffer technology
     - [x] Thread Concurrency and C++ lock technology
+    - [x] SIMD intrinsics(AVX512/AVX2/SSE2/SSE) and Vectorized Compute
+    - [x] thread affinity and CPU-core 
 
 ### quick start
 ```shell

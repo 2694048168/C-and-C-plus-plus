@@ -4,3 +4,9 @@
 [submodule "Logging/ProjectLogging/spdlog"]
 	path = Logging/ProjectLogging/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "CppParallel/benchmark"]
+	path = CppParallel/benchmark
+	url = https://github.com/google/benchmark.git
+[submodule "CppParallel/googletest"]
+	path = CppParallel/googletest
+	url = https://github.com/google/googletest.git

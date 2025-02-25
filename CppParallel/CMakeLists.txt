@@ -50,6 +50,7 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     # add_compile_options(/W4 /WX /source-charset:utf-8 /execution-charset:utf-8)
     # add_compile_options(/W4 /WX /utf-8)
     # add_compile_options(/utf-8)
+    add_compile_options(/arch:AVX)
 endif()
 
 # ---------- 条件判断 Debug & Release 模式下的编译指令 ----------
@@ -87,6 +88,16 @@ else() # Linux or Darwin(Mac OS)
     file(COPY ${DLL_FILE} DESTINATION "${EXECUTABLE_OUTPUT_PATH}")
 endif()
 
+# google test
+set(Gtest_Include "${PROJECT_SOURCE_DIR}/googletest/googletest/include")
+include_directories(${Gtest_Include})
+add_subdirectory(googletest)
+
+# google benchmark
+set(Benchmark_Include "${PROJECT_SOURCE_DIR}/benchmark/include")
+include_directories(${Benchmark_Include})
+add_subdirectory(benchmark)
+
 include_directories(${PROJECT_SOURCE_DIR}/src/)
 # --------------------------------------------------
 # 添加 CMake 子目录, 寻找该目录下的 CMakeLists.txt
@@ -113,3 +124,10 @@ add_executable("18_blocking" src/blocking.cpp)
 add_executable("19_non_blocking" src/non_blocking.cpp)
 add_executable("20_lock_free" src/lock_free.cpp)
 add_executable("21_wait_free." src/wait_free.cpp)
+add_executable("22_dot_product_baseline" src/dot_product_baseline.cpp)
+target_link_libraries("22_dot_product_baseline" benchmark::benchmark)
+add_executable("23_dot_product_simd" src/dot_product_simd.cpp)
+target_link_libraries("23_dot_product_simd" benchmark::benchmark)
+add_executable("24_dot_product_unsafe" src/dot_product_unsafe.cpp)
+add_executable("25_dot_product_simd_" src/dot_product_simd_.cpp)
+add_executable("26_thread_affinity" src/thread_affinity_os_scheduling.cpp)
