@@ -98,6 +98,9 @@ set(Benchmark_Include "${PROJECT_SOURCE_DIR}/benchmark/include")
 include_directories(${Benchmark_Include})
 add_subdirectory(benchmark)
 
+# CMake Support OpenMP
+find_package(OpenMP REQUIRED)
+
 include_directories(${PROJECT_SOURCE_DIR}/src/)
 # --------------------------------------------------
 # 添加 CMake 子目录, 寻找该目录下的 CMakeLists.txt
@@ -137,3 +140,31 @@ target_link_libraries("27_thread_affinity" benchmark::benchmark)
 add_executable("28_memory_reordering" src/memory_reordering.cpp)
 add_executable("29_memory_reordering" src/memory_reordering_hardware.cpp)
 add_executable("30_data_race" src/data_race.cpp)
+add_executable("31_openmp_baseline" src/openmp_baseline.cpp)
+target_link_libraries("31_openmp_baseline" benchmark::benchmark)
+add_executable("32_openmp_using" src/openmp_using.cpp)
+target_link_libraries("32_openmp_using"
+PUBLIC
+    benchmark::benchmark
+    OpenMP::OpenMP_CXX
+)
+include(CMakePrintHelpers)
+cmake_print_properties(
+TARGETS
+    OpenMP::OpenMP_CXX
+PROPERTIES
+    INTERFACE_COMPILE_OPTIONS
+    INTERFACE_INCLUDE_DIRECTORIES
+    INTERFACE_LINK_LIBRARIES
+)
+add_executable("33_openmp_using_modern" src/openmp_using_modern.cpp)
+target_link_libraries("33_openmp_using_modern"
+PUBLIC
+    benchmark::benchmark
+    OpenMP::OpenMP_CXX
+)
+add_executable("34_tbb_using" src/tbb_using.cpp)
+target_link_libraries("34_tbb_using"
+PUBLIC
+    benchmark::benchmark
+)
