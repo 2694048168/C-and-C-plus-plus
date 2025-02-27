@@ -168,3 +168,48 @@ target_link_libraries("34_tbb_using"
 PUBLIC
     benchmark::benchmark
 )
+add_executable("35_openmp_critical" src/openmp_critical.cpp)
+target_link_libraries("35_openmp_critical"
+PUBLIC
+    OpenMP::OpenMP_CXX
+)
+add_executable("36_openmp_atomic" src/openmp_atomic.cpp)
+target_link_libraries("36_openmp_atomic"
+PUBLIC
+    OpenMP::OpenMP_CXX
+)
+add_executable("37_openmp_reduction" src/openmp_reduction.cpp)
+target_link_libraries("37_openmp_reduction"
+PUBLIC
+    OpenMP::OpenMP_CXX
+    benchmark::benchmark
+)
+add_executable("38_openmp_barrier" src/openmp_barrier.cpp)
+target_link_libraries("38_openmp_barrier"
+PUBLIC
+    OpenMP::OpenMP_CXX
+    benchmark::benchmark
+)
+add_executable("39_openmp_nowait" src/openmp_nowait.cpp)
+target_link_libraries("39_openmp_nowait"
+PUBLIC
+    OpenMP::OpenMP_CXX
+    benchmark::benchmark
+)
+# add_executable("40_mpi_using" src/mpi_using.cpp)
+# add_executable("41_mpi_send_recv" src/mpi_send_recv.cpp)
+# add_executable("42_mpi_sum_reduction" src/mpi_sum_reduction.cpp)
+add_executable("43_gaussian_elimination" src/gaussian_elimination.cpp)
+# add_executable("44_gaussian_elimination_mpi" src/mpi_gaussian_elimination.cpp)
+# add_executable("45_gaussian_elimination" src/gaussian_elimination_.cpp)
+# add_executable("46_gaussian_elimination" src/mpi_gaussian_elimination_.cpp)
+add_executable("47_vector_addition_baseline" src/vector_addition_baseline.cpp)
+target_link_libraries("47_vector_addition_baseline"
+PUBLIC
+    OpenMP::OpenMP_CXX
+)
+add_executable("48_vector_addition_target" src/vector_addition_target.cpp)
+target_link_libraries("48_vector_addition_target"
+PUBLIC
+    OpenMP::OpenMP_CXX
+)

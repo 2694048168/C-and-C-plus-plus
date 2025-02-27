@@ -11,6 +11,8 @@
     - [x] [SIMD intrinsics](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html)(AVX512/AVX2/SSE2/SSE) and Vectorized Compute
     - [x] [thread affinity](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadaffinitymask) and CPU-core
     - [x] [memory reordering](https://aaron-ai.com/docs/memory_reordering_simple_analysis/) : 只是在实际实践的过程中往往会使用 memory reordering 的特性来保证多线程操作时的线程安全而已; 所谓 memory reordering，本质上就是编译器和 CPU 对单线程中指令执行顺序进行的优化.
+    - MPI(Message Passing Interface) via [Open-MPI](https://www.open-mpi.org/) and [MPICH](https://www.mpich.org/) 并行编程
+    
 
 ### quick start
 ```shell
