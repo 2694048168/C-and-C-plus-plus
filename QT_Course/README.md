@@ -67,9 +67,9 @@ windeployqt 00_dev_env.exe
 
 ### QT多语言支持和动态切换
 - Qt 语言处理工具, lupdate、lrelease、linguist
-- 利用 lupdate（Language Update）工具(*.ui/*.h/*.cpp)生成 .ts 文件, tr() function
-- 利用 lrelease（Language Release）将 .ts 文件翻译成指定语言的 .qm 文件
-- 启动 linguist.exe（语言处理专家）, 进行翻译, Qt\5.15.2\mingw81_64\bin\linguist.exe
+- 利用 lupdate(Language Update)工具(*.ui/*.h/*.cpp)生成 .ts 文件, tr() function
+- 利用 lrelease(Language Release)将 .ts 文件翻译成指定语言的 .qm 文件
+- 启动 linguist.exe(语言处理专家), 进行翻译, Qt\5.15.2\mingw81_64\bin\linguist.exe
 
 ```C++
 QTranslator *qTranslator = nullptr;

@@ -154,3 +154,8 @@ target_include_directories("20_graph_render" PRIVATE src/)
 add_executable("21_image_render" 21_image_render.cpp src/ImageOpenGLWidget.cpp src/ImageRenderWidget.cpp src/ImageRender.ui src/ImageRender.cpp)
 target_link_libraries("21_image_render" PRIVATE Qt6::Widgets Qt6::Core Qt6::OpenGLWidgets Qt6::OpenGL)
 target_include_directories("21_image_render" PRIVATE src/)
+
+# language switch demo
+add_executable("language_switch" LanguageSwitch/main.cpp LanguageSwitch/mainwindow.ui LanguageSwitch/mainwindow.cpp)
+target_link_libraries("language_switch" PRIVATE Qt6::Widgets Qt6::Core)
+target_include_directories("language_switch" PRIVATE LanguageSwitch/)
