@@ -29,3 +29,5 @@
     - [spdlog](https://github.com/gabime/spdlog)
     - [glog](https://github.com/google/glog)
     - [log4cplus](https://github.com/log4cplus/log4cplus)
+- 软件版本管理 Version
+    - CMake + Git 自动跟踪记录软件开发版本
