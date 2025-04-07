@@ -28,3 +28,5 @@ add_custom_target(
 )
 
 add_executable(${PROJECT_NAME} test_main.cpp)
+add_executable(${PROJECT_NAME}_1 test_datetime_main.cpp)
+add_executable(${PROJECT_NAME}_2 test_semver_main.cpp semver.cpp)

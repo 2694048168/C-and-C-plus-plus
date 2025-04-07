@@ -31,3 +31,5 @@
     - [log4cplus](https://github.com/log4cplus/log4cplus)
 - 软件版本管理 Version
     - CMake + Git 自动跟踪记录软件开发版本
+    - 每次编译发布程序都有不同的版本号, 基于编译时间生成版本号的方法
+    - [Semantic Versioning 2.0.0](https://semver.org/)
