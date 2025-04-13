@@ -33,3 +33,8 @@
     - CMake + Git 自动跟踪记录软件开发版本
     - 每次编译发布程序都有不同的版本号, 基于编译时间生成版本号的方法
     - [Semantic Versioning 2.0.0](https://semver.org/)
+- 自动生成API文档 Reference
+    - CMake + [Doxygen](https://www.doxygen.nl/manual/index.html) + HTML_Help(Microsoft) 自动根据注释生成API文档
+    - 如何为 C++ 项目中的不同文件类型编写 Doxygen 注释; 每种文件类型特定的注释细节和最佳实践
+    - 如何配置和运行 Doxygen 以生成项目文档; 查看和利用生成的 HTML 文档的技巧
+    - shell command: doxygen Doxyfile
