@@ -16,6 +16,7 @@ sudo cmake --build build --target all -- -j $(nproc)
 ```
 
 ### **Reference**
+- [Performance C++ example](https://gitee.com/marcoisajoke/performance_cpp)
 - [Kurt C++ tech-blog](http://oldhandsblog.blogspot.com/)
 - [GCC compiler](https://gcc.gnu.org/)
 - [GCC compile options](https://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html)
