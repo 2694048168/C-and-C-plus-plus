@@ -56,3 +56,4 @@
 - 线程同步之原子变量 atomic **33_thread_synchronization_atomic.cpp**
 - 多线程异步操作 **34_thread_asynchronous.cpp**
 - 多线程异步线程池 **35_thread_asynchronous_pool.cpp**
+- 委托构造 **36_Delegate_Construct.cpp**
