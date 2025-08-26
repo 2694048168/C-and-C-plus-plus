@@ -30,7 +30,7 @@ cd D:/DevelopTools/
 - [x] The user interface (UI) by Qt Designer
 - [x] Using OpenCV in QT
 - [x] Using OpenGL in QT
-- [ ] The Network module of Qt
+- [x] The Network module of Qt
 - [ ] The Thread module of Qt
 - [ ] The Event module of Qt
 - [ ] The Database module of Qt
