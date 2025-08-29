@@ -75,6 +75,7 @@ typedef enum memory_order {
  */
 
 #include <atomic>
+#include <chrono>
 #include <functional>
 #include <iostream>
 #include <mutex>

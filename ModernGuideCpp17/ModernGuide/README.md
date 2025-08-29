@@ -12,6 +12,7 @@
 - 静态断言 static_assert **06_static_assert.cpp**
 - noexcept修饰函数 **07_noexcept_throw.cpp**
 - Modern C++20 module 设计,加速构建编译时间 **38_module.cpp**
+- Modern C++17 Event事件回调机制 **39_EventCallback.cpp**
 
 ### 易学和易用性 Easy-Learn and User-Friendly
 - 自动类型推导 auto and decltype **08_auto_decltype.cpp**
