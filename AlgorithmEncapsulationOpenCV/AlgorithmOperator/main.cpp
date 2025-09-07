@@ -12,6 +12,7 @@
 #include "test/TestImageEdgeDetector.hpp"
 #include "test/TestImageEmphasize.hpp"
 #include "test/TestImageEnhancementTAGC.hpp"
+#include "test/TestImageStitch.hpp"
 
 // ------------------------------------
 int main(int argc, const char *argv[])
@@ -19,7 +20,8 @@ int main(int argc, const char *argv[])
     // Ithaca::TestImageEmphasize();
     // Ithaca::TestImageEnhancementTAGC();
     // Ithaca::TestImageEnhancementTAGCFolder();
-    Ithaca::TestImageEdgeDetector();
+    // Ithaca::TestImageEdgeDetector();
+    Ithaca::TestImageStitch();
 
     return 0;
 }
