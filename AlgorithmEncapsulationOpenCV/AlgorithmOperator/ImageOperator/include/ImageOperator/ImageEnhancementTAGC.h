@@ -11,6 +11,7 @@
  * @paper link: https://www.arxiv.org/abs/2507.19574
  * 
  */
+#pragma once
 
 #include "ImageOperator/SymbolExport.h"
 #include "opencv2/opencv.hpp"

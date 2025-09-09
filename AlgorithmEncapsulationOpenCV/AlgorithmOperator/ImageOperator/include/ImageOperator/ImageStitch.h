@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
+#pragma once
 
 #include "ImageOperator/SymbolExport.h"
 #include "opencv2/opencv.hpp"

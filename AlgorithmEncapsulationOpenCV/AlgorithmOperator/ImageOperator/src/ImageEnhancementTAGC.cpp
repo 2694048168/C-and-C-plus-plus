@@ -4,7 +4,9 @@ namespace Ithaca {
 
 bool ImageEnhancementTAGC::Run(const cv::Mat &srcImg, cv::Mat &dstImg)
 {
-    CV_Assert(srcImg.type() == CV_8UC3);
+    // CV_Assert(srcImg.type() == CV_8UC3);
+    if (CV_8UC3 != srcImg.type())
+        return false;
 
     // 转换为浮点数 并归一化到 [0, 1]
     cv::Mat srcImgFloat;
@@ -36,11 +38,15 @@ bool ImageEnhancementTAGC::Run(const cv::Mat &srcImg, cv::Mat &dstImg)
             pDstLine += 3;
         }
     }
+
+    return true;
 }
 
 bool image_enhancement_TAGC(const cv::Mat &srcImg, cv::Mat &dstImg)
 {
-    CV_Assert(srcImg.type() == CV_8UC3);
+    // CV_Assert(srcImg.type() == CV_8UC3);
+    if (CV_8UC3 != srcImg.type())
+        return false;
 
     // 转换为浮点数 并归一化到 [0, 1]
     cv::Mat srcImgFloat;
@@ -72,6 +78,8 @@ bool image_enhancement_TAGC(const cv::Mat &srcImg, cv::Mat &dstImg)
             pDstLine += 3;
         }
     }
+
+    return true;
 }
 
 } // namespace Ithaca
