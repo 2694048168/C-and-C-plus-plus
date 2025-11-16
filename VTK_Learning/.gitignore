@@ -1,0 +1,7 @@
+# git configure files
+.git/
+
+.vs/
+x64/
+**/x64/
+*/x64/

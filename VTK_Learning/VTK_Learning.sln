@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MinimalQtVTKApp", "MinimalQtVTKApp\MinimalQtVTKApp.vcxproj", "{4C4DE642-BE1B-4F95-A042-985312FC18E8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtVTKApp", "QtVTKApp\QtVTKApp.vcxproj", "{16AF07F3-DD84-448B-8F68-9B945FA7D501}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C4DE642-BE1B-4F95-A042-985312FC18E8}.Debug|x64.ActiveCfg = Debug|x64
+		{4C4DE642-BE1B-4F95-A042-985312FC18E8}.Debug|x64.Build.0 = Debug|x64
+		{4C4DE642-BE1B-4F95-A042-985312FC18E8}.Release|x64.ActiveCfg = Release|x64
+		{4C4DE642-BE1B-4F95-A042-985312FC18E8}.Release|x64.Build.0 = Release|x64
+		{16AF07F3-DD84-448B-8F68-9B945FA7D501}.Debug|x64.ActiveCfg = Debug|x64
+		{16AF07F3-DD84-448B-8F68-9B945FA7D501}.Debug|x64.Build.0 = Debug|x64
+		{16AF07F3-DD84-448B-8F68-9B945FA7D501}.Release|x64.ActiveCfg = Release|x64
+		{16AF07F3-DD84-448B-8F68-9B945FA7D501}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21C85F74-0DAB-4730-A875-48D8BDCBA5BB}
+	EndGlobalSection
+EndGlobal
