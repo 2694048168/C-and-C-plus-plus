@@ -43,6 +43,12 @@
     <ClCompile Include="DeformSphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BarChart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BorderDraw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -58,9 +64,21 @@
     <QtUic Include="DeformSphere.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="BarChart.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="BorderDraw.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DeformSphere.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="BarChart.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="BorderDraw.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

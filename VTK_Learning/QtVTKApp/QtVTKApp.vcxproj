@@ -117,15 +117,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="QtVTKApp.qrc" />
+    <QtUic Include="BarChart.ui" />
+    <QtUic Include="BorderDraw.ui" />
     <QtUic Include="DeformSphere.ui" />
     <QtUic Include="QtVTKApp.ui" />
     <QtMoc Include="QtVTKApp.h" />
+    <ClCompile Include="BarChart.cpp" />
+    <ClCompile Include="BorderDraw.cpp" />
     <ClCompile Include="DeformSphere.cpp" />
     <ClCompile Include="QtVTKApp.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DeformSphere.h" />
+    <QtMoc Include="BarChart.h" />
+    <QtMoc Include="BorderDraw.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

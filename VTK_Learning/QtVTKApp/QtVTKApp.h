@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "BarChart.h"
+#include "BorderDraw.h"
 #include "DeformSphere.h"
 #include "ui_QtVTKApp.h"
 
@@ -26,6 +28,7 @@ public:
 public slots:
     void sl_DeformSphere();
     void sl_BarChart();
+    void sl_BorderDraw();
 
 private:
     void Init();
@@ -35,9 +38,17 @@ private:
     void MessageTip(bool flag, const std::string &message);
     void RecordLog(bool flag, const std::string &message);
 
+    std::string GetVersion();
+
 private:
     Ui::QtVTKAppClass *ui;
 
     QStackedWidget       *mpStackedWidget      = nullptr;
     Ithaca::DeformSphere *mpDeformSphereWidget = nullptr;
+    Ithaca::BarChart     *mpBarChartWidget     = nullptr;
+    Ithaca::BorderDraw   *mpBorderDrawWidget   = nullptr;
+
+    int mMajor = 0;
+    int mMinor = 1;
+    int mBuild = 1;
 };
