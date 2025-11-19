@@ -63,6 +63,7 @@ void QtVTKApp::AddWidgetControl()
 
     mpBorderDrawWidget = new Ithaca::BorderDraw;
     mpStackedWidget->addWidget(mpBorderDrawWidget);
+    mpBorderDrawWidget->SetMessageCallback([this](bool flag, const std::string &msg) { this->RecordLog(flag, msg); });
 }
 
 void QtVTKApp::sl_DeformSphere()
