@@ -60,3 +60,46 @@ touch .vscode/tasks.json # for build the binary file before debugging
 # or 'Ctrl + Shift + P' and entry 'Debug: add configuration'
 # or 'Ctrl + Shift + P' and entry 'Tasks: Configure Task'
 ```
+
+### C++ 包管理工具 vcpkg 配置国内镜像源
+- 使用环境变量（推荐）设置镜像源环境变量 powershell
+```powershell
+# 设置清华镜像源
+$env:VCPKG_DOWNLOAD_MIRROR="https://mirrors.tuna.tsinghua.edu.cn/github-release/ninja-build/ninja/"
+$env:X_VCPKG_ASSET_SOURCES="x-azurl,https://mirrors.tuna.tsinghua.edu.cn/vcpkg/assets/"
+
+# 或者使用中科大镜像源
+$env:VCPKG_DOWNLOAD_MIRROR="https://mirrors.ustc.edu.cn/github-release/ninja-build/ninja/"
+$env:X_VCPKG_ASSET_SOURCES="x-azurl,https://mirrors.ustc.edu.cn/vcpkg/assets/"
+
+```
+
+- 修改 vcpkg 配置文件 在 vcpkg 根目录创建或修改 triplets\x64-windows.cmake 文件，添加：
+```cmake
+# 在文件末尾添加以下内容
+set(VCPKG_DOWNLOAD_MIRROR "https://mirrors.tuna.tsinghua.edu.cn/github-release/ninja-build/ninja/")
+set(X_VCPKG_ASSET_SOURCES "x-azurl,https://mirrors.tuna.tsinghua.edu.cn/vcpkg/assets/")
+
+```
+
+- 创建 set-mirror.ps1 脚本文件
+```powershell
+# set-mirror.ps1 - 设置vcpkg镜像源
+echo "设置vcpkg国内镜像源..."
+
+# 设置环境变量（当前会话有效）
+$env:VCPKG_DOWNLOAD_MIRROR="https://mirrors.tuna.tsinghua.edu.cn/github-release/ninja-build/ninja/"
+$env:X_VCPKG_ASSET_SOURCES="x-azurl,https://mirrors.tuna.tsinghua.edu.cn/vcpkg/assets/"
+
+# 设置HTTP代理（如果有的话，取消注释并修改）
+# $env:HTTP_PROXY="http://127.0.0.1:10809"
+# $env:HTTPS_PROXY="http://127.0.0.1:10809"
+
+echo "镜像源设置完成！"
+echo "VCPKG_DOWNLOAD_MIRROR = $env:VCPKG_DOWNLOAD_MIRROR"
+echo "X_VCPKG_ASSET_SOURCES = $env:X_VCPKG_ASSET_SOURCES"
+
+# 测试下载
+.\vcpkg.exe search opencv4
+
+```
