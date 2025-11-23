@@ -49,6 +49,12 @@
     <ClCompile Include="BorderDraw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EventQtSlotConnect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShareCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -70,6 +76,12 @@
     <QtUic Include="BorderDraw.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="EventQtSlotConnect.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ShareCamera.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DeformSphere.h">
@@ -79,6 +91,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="BorderDraw.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EventQtSlotConnect.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ShareCamera.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

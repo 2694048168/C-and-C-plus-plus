@@ -51,12 +51,16 @@ void QtVTKApp::Connects()
     connect(ui->toolButton_DeformSphere, &QToolButton::clicked, this, &QtVTKApp::sl_DeformSphere);
     connect(ui->toolButton_BarChart, &QToolButton::clicked, this, &QtVTKApp::sl_BarChart);
     connect(ui->toolButton_BorderDraw, &QToolButton::clicked, this, &QtVTKApp::sl_BorderDraw);
+    connect(ui->toolButton_EventSlot, &QToolButton::clicked, this, &QtVTKApp::sl_EventSlot);
+    connect(ui->toolButton_ShareCamera, &QToolButton::clicked, this, &QtVTKApp::sl_ShareCamera);
 }
 
 void QtVTKApp::AddWidgetControl()
 {
     mpDeformSphereWidget = new Ithaca::DeformSphere;
     mpStackedWidget->addWidget(mpDeformSphereWidget);
+    mpStackedWidget->setCurrentWidget(mpDeformSphereWidget);
+    mpDeformSphereWidget->Run();
 
     mpBarChartWidget = new Ithaca::BarChart;
     mpStackedWidget->addWidget(mpBarChartWidget);
@@ -64,6 +68,14 @@ void QtVTKApp::AddWidgetControl()
     mpBorderDrawWidget = new Ithaca::BorderDraw;
     mpStackedWidget->addWidget(mpBorderDrawWidget);
     mpBorderDrawWidget->SetMessageCallback([this](bool flag, const std::string &msg) { this->RecordLog(flag, msg); });
+
+    mpEventSlotWidget = new Ithaca::EventQtSlotConnect;
+    mpStackedWidget->addWidget(mpEventSlotWidget);
+    mpEventSlotWidget->SetMessageCallback([this](bool flag, const std::string &msg) { this->RecordLog(flag, msg); });
+
+    mpShareCameraWidget = new Ithaca::ShareCamera;
+    mpStackedWidget->addWidget(mpShareCameraWidget);
+    mpShareCameraWidget->SetMessageCallback([this](bool flag, const std::string &msg) { this->RecordLog(flag, msg); });
 }
 
 void QtVTKApp::sl_DeformSphere()
@@ -88,6 +100,22 @@ void QtVTKApp::sl_BorderDraw()
 
     mpStackedWidget->setCurrentWidget(mpBorderDrawWidget);
     mpBorderDrawWidget->Run();
+}
+
+void QtVTKApp::sl_EventSlot()
+{
+    RecordLog(true, "点击了【VTK事件】演示");
+
+    mpStackedWidget->setCurrentWidget(mpEventSlotWidget);
+    mpEventSlotWidget->Run();
+}
+
+void QtVTKApp::sl_ShareCamera()
+{
+    RecordLog(true, "点击了【共享相机】演示");
+
+    mpStackedWidget->setCurrentWidget(mpShareCameraWidget);
+    mpShareCameraWidget->Run();
 }
 
 void QtVTKApp::MessageTip(bool flag, const std::string &message)

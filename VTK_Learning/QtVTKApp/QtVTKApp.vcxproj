@@ -20,13 +20,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
@@ -116,22 +116,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ShareCamera.cpp" />
     <QtRcc Include="QtVTKApp.qrc" />
     <QtUic Include="BarChart.ui" />
     <QtUic Include="BorderDraw.ui" />
     <QtUic Include="DeformSphere.ui" />
+    <QtUic Include="EventQtSlotConnect.ui" />
     <QtUic Include="QtVTKApp.ui" />
     <QtMoc Include="QtVTKApp.h" />
     <ClCompile Include="BarChart.cpp" />
     <ClCompile Include="BorderDraw.cpp" />
     <ClCompile Include="DeformSphere.cpp" />
+    <ClCompile Include="EventQtSlotConnect.cpp" />
     <ClCompile Include="QtVTKApp.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="ShareCamera.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ShareCamera.h" />
     <QtMoc Include="DeformSphere.h" />
     <QtMoc Include="BarChart.h" />
     <QtMoc Include="BorderDraw.h" />
+    <QtMoc Include="EventQtSlotConnect.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

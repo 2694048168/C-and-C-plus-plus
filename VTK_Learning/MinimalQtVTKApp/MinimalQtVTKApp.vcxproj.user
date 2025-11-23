@@ -18,7 +18,6 @@ $(LocalDebuggerEnvironment)
     </QtTouchProperty>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <QtTouchProperty>
-    </QtTouchProperty>
+    <QtTouchProperty> </QtTouchProperty>
   </PropertyGroup>
 </Project>
