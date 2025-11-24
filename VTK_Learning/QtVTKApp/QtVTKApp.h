@@ -5,6 +5,7 @@
 #include "DeformSphere.h"
 #include "EventQtSlotConnect.h"
 #include "ShareCamera.h"
+#include "StanfordBunny.h"
 #include "ui_QtVTKApp.h"
 
 #include <QStackedWidget>
@@ -33,6 +34,7 @@ public slots:
     void sl_BorderDraw();
     void sl_EventSlot();
     void sl_ShareCamera();
+    void sl_StanfordBunny();
 
 private:
     void Init();
@@ -47,12 +49,13 @@ private:
 private:
     Ui::QtVTKAppClass *ui;
 
-    QStackedWidget             *mpStackedWidget      = nullptr;
-    Ithaca::DeformSphere       *mpDeformSphereWidget = nullptr;
-    Ithaca::BarChart           *mpBarChartWidget     = nullptr;
-    Ithaca::BorderDraw         *mpBorderDrawWidget   = nullptr;
-    Ithaca::EventQtSlotConnect *mpEventSlotWidget    = nullptr;
-    Ithaca::ShareCamera        *mpShareCameraWidget  = nullptr;
+    QStackedWidget             *mpStackedWidget       = nullptr;
+    Ithaca::DeformSphere       *mpDeformSphereWidget  = nullptr;
+    Ithaca::BarChart           *mpBarChartWidget      = nullptr;
+    Ithaca::BorderDraw         *mpBorderDrawWidget    = nullptr;
+    Ithaca::EventQtSlotConnect *mpEventSlotWidget     = nullptr;
+    Ithaca::ShareCamera        *mpShareCameraWidget   = nullptr;
+    Ithaca::StanfordBunny      *mpStanfordBunnyWidget = nullptr;
 
     int mMajor = 0;
     int mMinor = 1;

@@ -53,6 +53,7 @@ void QtVTKApp::Connects()
     connect(ui->toolButton_BorderDraw, &QToolButton::clicked, this, &QtVTKApp::sl_BorderDraw);
     connect(ui->toolButton_EventSlot, &QToolButton::clicked, this, &QtVTKApp::sl_EventSlot);
     connect(ui->toolButton_ShareCamera, &QToolButton::clicked, this, &QtVTKApp::sl_ShareCamera);
+    connect(ui->toolButton_StanfordBunny, &QToolButton::clicked, this, &QtVTKApp::sl_StanfordBunny);
 }
 
 void QtVTKApp::AddWidgetControl()
@@ -76,6 +77,11 @@ void QtVTKApp::AddWidgetControl()
     mpShareCameraWidget = new Ithaca::ShareCamera;
     mpStackedWidget->addWidget(mpShareCameraWidget);
     mpShareCameraWidget->SetMessageCallback([this](bool flag, const std::string &msg) { this->RecordLog(flag, msg); });
+
+    mpStanfordBunnyWidget = new Ithaca::StanfordBunny;
+    mpStackedWidget->addWidget(mpStanfordBunnyWidget);
+    mpStanfordBunnyWidget->SetMessageCallback([this](bool flag, const std::string &msg)
+                                              { this->RecordLog(flag, msg); });
 }
 
 void QtVTKApp::sl_DeformSphere()
@@ -116,6 +122,14 @@ void QtVTKApp::sl_ShareCamera()
 
     mpStackedWidget->setCurrentWidget(mpShareCameraWidget);
     mpShareCameraWidget->Run();
+}
+
+void QtVTKApp::sl_StanfordBunny()
+{
+    RecordLog(true, "点击了【斯坦福兔子】演示");
+
+    mpStackedWidget->setCurrentWidget(mpStanfordBunnyWidget);
+    mpStanfordBunnyWidget->Run();
 }
 
 void QtVTKApp::MessageTip(bool flag, const std::string &message)

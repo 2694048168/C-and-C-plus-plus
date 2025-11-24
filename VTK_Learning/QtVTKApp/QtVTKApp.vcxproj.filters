@@ -55,6 +55,9 @@
     <ClCompile Include="ShareCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StanfordBunny.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -82,6 +85,9 @@
     <QtUic Include="ShareCamera.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="StanfordBunny.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DeformSphere.h">
@@ -97,6 +103,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ShareCamera.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="StanfordBunny.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
