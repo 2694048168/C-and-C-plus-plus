@@ -1,5 +1,6 @@
 ﻿#include "StanfordBunny.h"
 
+#include <QVTKInteractor.h>
 #include <vtkAutoInit.h>
 #include <vtkCallbackCommand.h>
 #include <vtkCamera.h>
@@ -16,13 +17,16 @@ VTK_MODULE_INIT(vtkRenderingContextOpenGL2);
 VTK_MODULE_INIT(vtkRenderingOpenGL2);
 VTK_MODULE_INIT(vtkInteractionStyle);
 
+#include <QFileDialog>
+#include <QString>
+
 namespace Ithaca {
 
 // 键盘事件回调函数
 void KeyPressCallback(vtkObject *caller, unsigned long eventId, void *clientData, void *callData)
 {
-    vtkRenderWindowInteractor *interactor = static_cast<vtkRenderWindowInteractor *>(caller);
-    std::string                key        = interactor->GetKeySym();
+    QVTKInteractor *interactor = static_cast<QVTKInteractor *>(caller);
+    std::string     key        = interactor->GetKeySym();
 
     vtkRenderer *renderer = static_cast<vtkRenderer *>(clientData);
     vtkActor    *actor    = static_cast<vtkActor *>(renderer->GetActors()->GetLastActor());
@@ -99,7 +103,8 @@ void KeyPressCallback(vtkObject *caller, unsigned long eventId, void *clientData
 // 鼠标点击事件回调函数
 void PickCallback(vtkObject *caller, unsigned long eventId, void *clientData, void *callData)
 {
-    vtkRenderWindowInteractor *interactor = static_cast<vtkRenderWindowInteractor *>(caller);
+    //vtkRenderWindowInteractor *interactor = static_cast<vtkRenderWindowInteractor *>(caller);
+    QVTKInteractor *interactor = static_cast<QVTKInteractor *>(caller);
 
     if (interactor->GetKeyCode() == 'p' || interactor->GetKeyCode() == 'P')
     {
@@ -142,13 +147,17 @@ StanfordBunny::StanfordBunny(QWidget *parent)
     mpRenderWindow = vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New();
     mpReader       = vtkSmartPointer<vtkPLYReader>::New();
     // 请确保 bunny.ply 文件在正确路径下，或使用绝对路径
-    mFilepath = R"(D:/Development/GitRepository/C-and-C-plus-plus/VTK_Learning/models/bunny.ply)";
+    mFilepath
+        = R"(D:/Development/GitRepository/C-and-C-plus-plus/VTK_Learning/models/bunny/reconstruction/bun_zipper.ply)";
 
     // 设置字体族和字体文件, 支持中文显示 & 使用 UTF-8 编码字符串
     // 在 VTK 中可能需要设置字体大小不小于 18 才能正常显示中文
     mpTextActor->GetTextProperty()->SetFontFamily(VTK_FONT_FILE);               // 使用字体文件
     mpTextActor->GetTextProperty()->SetFontFile("C:/Windows/Fonts/simhei.ttf"); // 指定中文字体路径
     mpTextActor->GetTextProperty()->SetFontSize(20);                            // 尝试设置较大字号
+
+    ui->lineEdit_loadFilepath->setText(mFilepath.c_str());
+    QObject::connect(ui->btn_loadFilepath, &QPushButton::clicked, this, &StanfordBunny::sl_LoadModelFilepath);
 }
 
 StanfordBunny::~StanfordBunny()
@@ -199,7 +208,8 @@ void StanfordBunny::Run()
     // 4. 创建渲染器（Renderer）并添加演员
     auto pRenderer = vtkSmartPointer<vtkRenderer>::New();
     pRenderer->AddActor(pActor);
-    pRenderer->SetBackground(0.1, 0.2, 0.4); // 设置背景颜色（深蓝色）
+    //pRenderer->SetBackground(0.1, 0.2, 0.4); // 设置背景颜色（深蓝色）
+    pRenderer->SetBackground(0.8, 0.8, 0.8); // 设置背景颜色（浅灰色）
     pRenderer->ResetCamera();                // 重置相机以确保所有演员可见
 
     // 5. 创建渲染窗口（RenderWindow）
@@ -236,6 +246,31 @@ void StanfordBunny::Run()
 void StanfordBunny::SetMessageCallback(std::function<void(bool, const std::string &)> callback)
 {
     mCallbackFunc = callback;
+}
+
+void StanfordBunny::sl_LoadModelFilepath()
+{
+    // 设置文件过滤器
+    QString filter = "3D模型文件 (";
+    filter += "*.ply *.obj *.stl *.vtk *.vtp";
+    filter += ");;";
+    filter += "PLY文件 (*.ply);;";
+    filter += "OBJ文件 (*.obj);;";
+    filter += "STL文件 (*.stl);;";
+    filter += "VTK文件 (*.vtk *.vtp)";
+
+    // 打开文件选择对话框
+    QString filePath = QFileDialog::getOpenFileName(this, "选择3D模型文件", QDir::homePath(), filter);
+
+    if (filePath.isEmpty())
+    {
+        if (mCallbackFunc)
+            mCallbackFunc(false, "选择3D模型文件 路径为空");
+        return;
+    }
+
+    mFilepath = filePath.toStdString();
+    Run();
 }
 
 } // namespace Ithaca

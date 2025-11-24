@@ -54,6 +54,9 @@ public:
     //virtual void keyPressEvent(QKeyEvent *event) override;
     //virtual void mousePressEvent(QMouseEvent *event) override;
 
+public slots:
+    void sl_LoadModelFilepath();
+
 private:
     // Designer form
     Ui::StanfordBunnyForm *ui = nullptr;
