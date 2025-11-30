@@ -5,3 +5,11 @@
 x64/
 **/x64/
 */x64/
+
+models/VTK-9.5.2/
+models/dragon_recon/
+models/drill/
+models/happy_recon/
+models/lucy.ply
+models/xyzrgb_dragon.ply
+models/Armadillo.ply

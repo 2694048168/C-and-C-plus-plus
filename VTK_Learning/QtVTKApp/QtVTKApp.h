@@ -4,8 +4,10 @@
 #include "BorderDraw.h"
 #include "DeformSphere.h"
 #include "EventQtSlotConnect.h"
+#include "MedicalModel.h"
 #include "ShareCamera.h"
 #include "StanfordBunny.h"
+#include "VisualPointCould.h"
 #include "ui_QtVTKApp.h"
 
 #include <QStackedWidget>
@@ -35,6 +37,8 @@ public slots:
     void sl_EventSlot();
     void sl_ShareCamera();
     void sl_StanfordBunny();
+    void sl_MedicalModel();
+    void sl_PointCloud();
 
 private:
     void Init();
@@ -56,8 +60,10 @@ private:
     Ithaca::EventQtSlotConnect *mpEventSlotWidget     = nullptr;
     Ithaca::ShareCamera        *mpShareCameraWidget   = nullptr;
     Ithaca::StanfordBunny      *mpStanfordBunnyWidget = nullptr;
+    Ithaca::MedicalModel       *mpMedicalModelWidget  = nullptr;
+    Ithaca::VisualPointCould   *mpPointCouldWidget    = nullptr;
 
     int mMajor = 0;
-    int mMinor = 1;
+    int mMinor = 2;
     int mBuild = 1;
 };

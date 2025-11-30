@@ -54,6 +54,8 @@ void QtVTKApp::Connects()
     connect(ui->toolButton_EventSlot, &QToolButton::clicked, this, &QtVTKApp::sl_EventSlot);
     connect(ui->toolButton_ShareCamera, &QToolButton::clicked, this, &QtVTKApp::sl_ShareCamera);
     connect(ui->toolButton_StanfordBunny, &QToolButton::clicked, this, &QtVTKApp::sl_StanfordBunny);
+    connect(ui->toolButton_MedicalModel, &QToolButton::clicked, this, &QtVTKApp::sl_MedicalModel);
+    connect(ui->toolButton_PointCloud, &QToolButton::clicked, this, &QtVTKApp::sl_PointCloud);
 }
 
 void QtVTKApp::AddWidgetControl()
@@ -82,6 +84,14 @@ void QtVTKApp::AddWidgetControl()
     mpStackedWidget->addWidget(mpStanfordBunnyWidget);
     mpStanfordBunnyWidget->SetMessageCallback([this](bool flag, const std::string &msg)
                                               { this->RecordLog(flag, msg); });
+
+    mpMedicalModelWidget = new Ithaca::MedicalModel;
+    mpStackedWidget->addWidget(mpMedicalModelWidget);
+    mpMedicalModelWidget->SetMessageCallback([this](bool flag, const std::string &msg) { this->RecordLog(flag, msg); });
+
+    mpPointCouldWidget = new Ithaca::VisualPointCould;
+    mpStackedWidget->addWidget(mpPointCouldWidget);
+    mpPointCouldWidget->SetMessageCallback([this](bool flag, const std::string &msg) { this->RecordLog(flag, msg); });
 }
 
 void QtVTKApp::sl_DeformSphere()
@@ -130,6 +140,22 @@ void QtVTKApp::sl_StanfordBunny()
 
     mpStackedWidget->setCurrentWidget(mpStanfordBunnyWidget);
     mpStanfordBunnyWidget->Run();
+}
+
+void QtVTKApp::sl_MedicalModel()
+{
+    RecordLog(true, "点击了【医学图像】演示");
+
+    mpStackedWidget->setCurrentWidget(mpMedicalModelWidget);
+    mpMedicalModelWidget->Run();
+}
+
+void QtVTKApp::sl_PointCloud()
+{
+    RecordLog(true, "点击了【3D点云】演示");
+
+    mpStackedWidget->setCurrentWidget(mpPointCouldWidget);
+    mpPointCouldWidget->Run();
 }
 
 void QtVTKApp::MessageTip(bool flag, const std::string &message)

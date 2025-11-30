@@ -51,8 +51,8 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <item row="0" column="3">
-        <widget class="QToolButton" name="toolButton_BorderDraw">
+       <item row="0" column="2">
+        <widget class="QToolButton" name="toolButton_BarChart">
          <property name="minimumSize">
           <size>
            <width>100</width>
@@ -66,7 +66,7 @@
           </size>
          </property>
          <property name="text">
-          <string>绘制边框</string>
+          <string>条形图形</string>
          </property>
         </widget>
        </item>
@@ -89,8 +89,8 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="4">
-        <widget class="QToolButton" name="toolButton_EventSlot">
+       <item row="0" column="3">
+        <widget class="QToolButton" name="toolButton_BorderDraw">
          <property name="minimumSize">
           <size>
            <width>100</width>
@@ -104,12 +104,12 @@
           </size>
          </property>
          <property name="text">
-          <string>VTK事件</string>
+          <string>绘制边框</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="2">
-        <widget class="QToolButton" name="toolButton_BarChart">
+       <item row="0" column="6">
+        <widget class="QToolButton" name="toolButton_StanfordBunny">
          <property name="minimumSize">
           <size>
            <width>100</width>
@@ -123,7 +123,7 @@
           </size>
          </property>
          <property name="text">
-          <string>条形图形</string>
+          <string>斯坦福兔子</string>
          </property>
         </widget>
        </item>
@@ -146,8 +146,8 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="6">
-        <widget class="QToolButton" name="toolButton_StanfordBunny">
+       <item row="0" column="4">
+        <widget class="QToolButton" name="toolButton_EventSlot">
          <property name="minimumSize">
           <size>
            <width>100</width>
@@ -161,7 +161,45 @@
           </size>
          </property>
          <property name="text">
-          <string>斯坦福兔子</string>
+          <string>VTK事件</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <widget class="QToolButton" name="toolButton_MedicalModel">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>医学图像</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="8">
+        <widget class="QToolButton" name="toolButton_PointCloud">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>3D点云</string>
          </property>
         </widget>
        </item>

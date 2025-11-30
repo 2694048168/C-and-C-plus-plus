@@ -116,13 +116,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MedicalModel.cpp" />
     <ClCompile Include="ShareCamera.cpp" />
     <ClCompile Include="StanfordBunny.cpp" />
+    <ClCompile Include="VisualPointCould.cpp" />
     <QtRcc Include="QtVTKApp.qrc" />
     <QtUic Include="BarChart.ui" />
     <QtUic Include="BorderDraw.ui" />
     <QtUic Include="DeformSphere.ui" />
     <QtUic Include="EventQtSlotConnect.ui" />
+    <QtUic Include="MedicalModel.ui" />
     <QtUic Include="QtVTKApp.ui" />
     <QtMoc Include="QtVTKApp.h" />
     <ClCompile Include="BarChart.cpp" />
@@ -133,14 +136,17 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="ShareCamera.ui" />
     <QtUic Include="StanfordBunny.ui" />
+    <QtUic Include="VisualPointCould.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="VisualPointCould.h" />
     <QtMoc Include="StanfordBunny.h" />
     <QtMoc Include="ShareCamera.h" />
     <QtMoc Include="DeformSphere.h" />
     <QtMoc Include="BarChart.h" />
     <QtMoc Include="BorderDraw.h" />
     <QtMoc Include="EventQtSlotConnect.h" />
+    <QtMoc Include="MedicalModel.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

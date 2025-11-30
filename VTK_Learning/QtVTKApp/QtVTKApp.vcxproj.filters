@@ -58,6 +58,12 @@
     <ClCompile Include="StanfordBunny.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MedicalModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualPointCould.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -88,6 +94,12 @@
     <QtUic Include="StanfordBunny.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="MedicalModel.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="VisualPointCould.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DeformSphere.h">
@@ -106,6 +118,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="StanfordBunny.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MedicalModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="VisualPointCould.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
