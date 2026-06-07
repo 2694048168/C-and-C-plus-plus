@@ -258,4 +258,34 @@ void VisualPointCould::sl_ZeroPlaneSwitch()
     InternalRun(true);
 }
 
+bool VisualPointCould::event(QEvent *ev)
+{
+    // 确保VTK事件正确处理
+    //bool handled = mpVtkRenderWidget->event(ev);
+
+    // 处理特定事件
+    switch (ev->type())
+    {
+    case QEvent::Resize:
+        // 窗口大小变化时重新渲染
+        if (mpRenderWindow)
+        {
+            mpRenderWindow->Render();
+        }
+        break;
+    case QEvent::Show:
+        // 显示时确保渲染
+        if (mpRenderWindow)
+        {
+            mpRenderWindow->Render();
+        }
+        break;
+    default:
+        break;
+    }
+
+    //return handled;
+    return true;
+}
+
 } // namespace Ithaca

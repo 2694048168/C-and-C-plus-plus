@@ -10,6 +10,7 @@
 #include <vtkPlaneSource.h>
 #include <vtkSmartPointer.h>
 
+#include <QEvent>
 #include <QWidget>
 #include <string>
 
@@ -45,8 +46,12 @@ public:
 public slots:
     void sl_ZeroPlaneSwitch();
 
+protected:
+    // 重写事件处理，确保VTK事件正确传递
+    bool event(QEvent *ev) override;
+
 private:
-    void InternalRun(bool enableZeroPlane = false, int numPoints = 5000);
+    void InternalRun(bool enableZeroPlane = false, int numPoints = 50000);
     // 生成点云数据, 即扫描物体的真实数据
     void GenerateSamplePointCloud(int numPoints = 10000, bool enableZeroPlane = true);
     // 创建网格平面作为参考平面

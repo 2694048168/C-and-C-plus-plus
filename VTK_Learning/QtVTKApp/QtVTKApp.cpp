@@ -1,5 +1,7 @@
 #include "QtVTKApp.h"
 
+#include "InterfacePlugin.hpp"
+
 #include <vtkSmartPointer.h>
 #include <vtkVersion.h>
 

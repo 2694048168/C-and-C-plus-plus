@@ -147,6 +147,7 @@
     <QtMoc Include="BorderDraw.h" />
     <QtMoc Include="EventQtSlotConnect.h" />
     <QtMoc Include="MedicalModel.h" />
+    <ClInclude Include="InterfacePlugin.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
