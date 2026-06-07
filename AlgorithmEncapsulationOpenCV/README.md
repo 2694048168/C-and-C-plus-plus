@@ -14,10 +14,16 @@
 - 计算机图形学: 判断点是否在多边形内部
 - 三维空间中的向量与坐标系变换
 - 3D图形基础概念: 3D坐标系系统 + 矩阵变换
+- GrabCut 交互式图像分割(基于图论的图像分割算法-高斯混合模型GMM)算法实现
 
 ### Algorithm Operator
 > 采用 OpenCV 和 Modern C++ 针对 Halcon/VisionPro 算子进行实现, 提供图像处理算子 
-- 
+- **ImageOperator/ContoursDetector** 轮廓检测
+- **ImageOperator/ImageEdgeDetector** 图像边缘检测算法
+- **ImageOperator/ImageEmphasize** 图像增强算子
+- **ImageOperator/ImageEnhancementTAGC** 低照度图像增强算法-TAGC
+- **ImageOperator/ImageStitch** 多视角图像全景拼接算法
+- **ImageOperator/ImageTemplateMatch** 图像模板匹配算法
 
 ### sub-pixel 
 > 亚像素并不是实际存在的物理单元, 而是通过数学方法和图像处理算法在像素之间进行插值和估算得到的更精细的位置或度量. 从物理角度来看, 图像是对真实世界连续场景的采样和量化; 像素的大小和位置是由图像传感器的物理特性和采样频率决定的; 但真实世界中的物体特征和位置往往是连续变化的, 像素的离散性可能导致信息的丢失或精度的降低.
