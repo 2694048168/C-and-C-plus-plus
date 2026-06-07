@@ -1,0 +1,7 @@
+---
+Checks: '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*,-llvmlibc-*'
+CheckOptions: [{ key: misc-non-private-member-variables-in-classes, value: IgnoreClassesWithAllMemberVariablesBeingPublic }]
+WarningsAsErrors: '*'
+HeaderFilterRegex: ''
+Checks: "bugprone-*,modernize-*,performance-*,readability-*"
+FormatStyle: file
