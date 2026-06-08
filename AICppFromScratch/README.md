@@ -9,3 +9,5 @@
   </p>
 </div>
 
+### Robot Collision Prediction from Scratch via MLP
+### Feedforward Neural Network from Scratch via Modern Cpp
