@@ -1,0 +1,61 @@
+#--------------------------------------------------
+# 项目基本信息
+#--------------------------------------------------
+PROJECT_NAME           = "@PROJECT_NAME@"
+PROJECT_NUMBER         = "@PROJECT_VERSION@"
+PROJECT_BRIEF          = "@PROJECT_DESCRIPTION@"
+
+#--------------------------------------------------
+# 输入和输出
+#--------------------------------------------------
+INPUT                  = "@PROJECT_SOURCE_DIR@/README.md" \
+                         "@PROJECT_SOURCE_DIR@/src"
+RECURSIVE              = YES
+OUTPUT_DIRECTORY       = "@CMAKE_CURRENT_BINARY_DIR@/docs"
+
+#--------------------------------------------------
+# HTML 输出（通用配置）
+#--------------------------------------------------
+GENERATE_HTML          = YES
+SOURCE_BROWSER         = YES
+GENERATE_TREEVIEW      = YES
+
+GENERATE_LATEX         = YES
+LATEX_CMD_NAME         = pdflatex
+MAKEINDEX_CMD_NAME     = makeindex
+PDF_HYPERLINKS         = YES
+USE_PDFLATEX           = YES
+
+GENERATE_HTMLHELP      = YES
+HHC_LOCATION           = "@HHC_LOCATION@"
+CHM_FILE               = "@PROJECT_NAME@.chm"
+CHM_INDEX_ENCODING     = UTF-8
+
+#--------------------------------------------------
+# 图表和图形支持（需要安装 Graphviz）
+#--------------------------------------------------
+HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+
+#--------------------------------------------------
+# 优化选项
+#--------------------------------------------------
+CREATE_SUBDIRS         = NO  # 禁用子目录，提高生成速度
+
+#--------------------------------------------------
+# 编码与语言（解决中文乱码）
+#--------------------------------------------------
+DOXYFILE_ENCODING      = UTF-8
+INPUT_ENCODING         = UTF-8
+OUTPUT_LANGUAGE        = Chinese
+
+#--------------------------------------------------
+# 排除目录（如第三方库或构建目录）
+#--------------------------------------------------
+EXCLUDE                = "@PROJECT_SOURCE_DIR@/build" \
+                         "@PROJECT_SOURCE_DIR@/src/External"
+EXCLUDE_PATTERNS       = */build/* */External/*
