@@ -7,6 +7,12 @@ project("ModernCppProject"
     LANGUAGES CXX
 )
 
+# 获取当前时间（ISO 格式，也可自定义格式）
+string(TIMESTAMP BUILD_TIMESTAMP "%Y-%m-%d %H:%M:%S")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/version.h.in 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Version/version.h
+)
+
 # 查找 Doxygen 及其可选工具，如 dot (Graphviz)
 find_package(Doxygen REQUIRED dot)
 

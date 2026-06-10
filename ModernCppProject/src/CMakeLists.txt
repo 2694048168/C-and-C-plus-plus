@@ -20,9 +20,10 @@ set_target_properties(${PROJECT_NAME}
 )
 # 对应编译时所需要的头文件路径
 target_include_directories(${PROJECT_NAME}
-    PUBLIC
+    PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/Application/
+        ${CMAKE_CURRENT_BINARY_DIR}/version/
 )
 # 对应链接时所需要的库文件
 target_link_libraries(${PROJECT_NAME} 
