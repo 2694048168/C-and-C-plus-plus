@@ -12,6 +12,12 @@
 ## Quick Start
 
 ```bash
+mkdir external
+# 1. download GLM from https://github.com/g-truc/glm/releases/
+# 2. upzip glm into external/glm 
+# 3. download MiniFB from https://github.com/emoon/minifb/releases/
+# 4. upzip minifb into external/minifb
+
 cmake --preset windows-debug          # 配置 Debug 构建目录
 cmake --build --preset windows-debug  # 构建 Debug 版本
 
