@@ -1,0 +1,27 @@
+#pragma once
+
+#include <string>
+#include <string_view>
+
+// clang-format off
+namespace Ithaca::Version {
+constexpr inline int VERSION_MAJOR = @PROJECT_VERSION_MAJOR@;
+constexpr inline int VERSION_MINOR = @PROJECT_VERSION_MINOR@;
+constexpr inline int VERSION_PATCH = @PROJECT_VERSION_PATCH@;
+
+constexpr std::string_view VERSION_STRING = "@PROJECT_VERSION@";
+constexpr std::string_view BUILD_TIMESTAMP = "@BUILD_TIMESTAMP@";
+constexpr std::string_view VERSION_BUILD_STRING = "@PROJECT_VERSION@-@BUILD_TIMESTAMP@";
+
+inline std::string getVersionNo()
+{
+    return "V" + std::string(VERSION_STRING);
+}
+
+inline std::string getVersionBuild()
+{
+    return "V" + std::string(VERSION_BUILD_STRING);
+}
+} // namespace Ithaca::Version
+
+// clang-format on

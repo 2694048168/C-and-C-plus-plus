@@ -1,0 +1,95 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "Debug;Release"
+            }
+        },
+        {
+            "name": "windows",
+            "inherits": "base",
+            "generator": "Visual Studio 17 2022",
+            "architecture": "x64",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-debug",
+            "inherits": "windows",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "windows-release",
+            "inherits": "windows",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "macos",
+            "inherits": "base",
+            "generator": "Ninja Multi-Config",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "name": "linux",
+            "inherits": "base",
+            "generator": "Ninja Multi-Config",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-debug",
+            "configurePreset": "windows-debug",
+            "configuration": "Debug"
+        },
+        {
+            "name": "windows-release",
+            "configurePreset": "windows-release",
+            "configuration": "Release"
+        },
+        {
+            "name": "macos-debug",
+            "configurePreset": "macos",
+            "configuration": "Debug"
+        },
+        {
+            "name": "macos-release",
+            "configurePreset": "macos",
+            "configuration": "Release"
+        },
+        {
+            "name": "linux-debug",
+            "configurePreset": "linux",
+            "configuration": "Debug"
+        },
+        {
+            "name": "linux-release",
+            "configurePreset": "linux",
+            "configuration": "Release"
+        }
+    ]
+}
