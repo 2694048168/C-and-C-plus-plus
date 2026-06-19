@@ -22,16 +22,21 @@ Renderer::Renderer(const std::string_view &title, int width, int height)
 
     // clang-format off
     camera_.Initialize(
-        Vector3f(10.0f, 5.0f, 20.0f),
-        Vector3f(10.0f, 10.0f, 3.0f),
+        Vector3f(0.0f, 0.0f, 0.0f), // camera postion
+        Vector3f(0.0f, 0.0f, 1.0f), // object postion
         Vector3f(0.0f, 1.0f, 0.0f),
-        glm::radians(60.0f),
+        glm::radians(60.0f), // fov
         0.1f,
         1000.0f,
         viewportWidth_,
         viewportHeight_
     );
     // clang-format on
+
+    pSphere   = new Sphere(Vector3f(0.f, 0.f, 5.0f), 1.0f);
+    pDisk     = new Disk(Vector3f(0.f, 0.f, 3.0f), Vector3f(0.f, 0.f, 0.0f), 1.0f);
+    pTriangle = new Triangle(Vector3f(-1.f, 0.f, 0.f), Vector3f(0.f, 1.f, 0.f), Vector3f(1.f, 0.f, 0.f),
+                             MakeWorldTransform(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f));
 }
 
 void Renderer::Run()
@@ -84,11 +89,58 @@ Color Renderer::RenderPixel(int x, int y)
     // simulate a long computation 1ms
     // std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
+#if 0
     // ?Ray tracing implementation
-    Ray   ray   = camera_.GenerateRay(x, y);
-    Color color = ray.d * 0.5f + 0.5f;
+    Ray ray = camera_.GenerateRay(x, y);
+    // Color color = ray.d * 0.5f + 0.5f;
+    // return color;
 
-    return color;
+    Intersection isect;
+    // *Rendering Sphere
+    // if (pSphere->Intersect(ray, isect))
+    // *Rendering Disk(Cirle in 3D space)
+    // if (pDisk->Intersect(ray, isect))
+    // *Rendering Triangle
+    if (pTriangle->Intersect(ray, isect))
+    {
+        // return Color(1.f, 0.f, 0.f);
+
+        Color color = isect.normal * 0.5f + 0.5f;
+        return color;
+    }
+    return Color(0.f, 0.f, 0.f);
+#endif
+
+    // * SSAA algorithm
+    // constexpr int N           = 4; // sample point
+    constexpr int N           = 100; // sample point
+    Color         resultColor = Color(0.f, 0.0f, 0.0f);
+
+    for (int i = 0; i < N; ++i)
+    {
+        // (x, y) ~ (x+1, y+1) range random sample point
+        float px = x + glm::linearRand(0.0f, 1.0f);
+        float py = y + glm::linearRand(0.0f, 1.0f);
+
+        Ray   ray   = camera_.GenerateRay(px, py);
+        Color color = Color(0.f, 0.0f, 0.0f);
+
+        Intersection isect;
+        // *Rendering Sphere
+        if (pSphere->Intersect(ray, isect))
+        // *Rendering Disk(Cirle in 3D space)
+        // if (pDisk->Intersect(ray, isect))
+        // *Rendering Triangle
+        // if (pTriangle->Intersect(ray, isect))
+        {
+            color += isect.normal * 0.5f + 0.5f;
+        }
+
+        // !overflow
+        resultColor += (color / static_cast<float>(N));
+    }
+
+    return resultColor;
 }
 
 void Renderer::RunRenderThread()

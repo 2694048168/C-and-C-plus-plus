@@ -19,8 +19,8 @@ int main(int argc, const char **argv)
     Ithaca::Logger::log("\nApplication Version: " + versionStr);
 
     std::string   titleStr = "Ithaca Render Engine " + versionStr;
-    constexpr int width    = 800;
-    constexpr int height   = 600;
+    constexpr int width    = 1080; // 1920
+    constexpr int height   = 720; // 1080
 
     Ithaca::Renderer renderEngine(titleStr, width, height);
     renderEngine.Run();

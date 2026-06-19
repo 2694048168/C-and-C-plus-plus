@@ -54,4 +54,18 @@ Ray Camera::GenerateRay(int x, int y) const
     return ray;
 }
 
+Ray Camera::GenerateRay(float x, float y) const
+{
+    Ray ray;
+    ray.o = position_;
+
+    Vector4f p(x, y, 0.0f, 1.0f);
+    Vector4f wordPos = glm::normalize(invCombinedMatrix_ * p);
+    wordPos /= wordPos.w;
+
+    ray.d = glm::normalize(Vector3f(wordPos) - position_);
+
+    return ray;
+}
+
 } // namespace Ithaca

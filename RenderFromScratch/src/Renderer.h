@@ -12,6 +12,9 @@
 #pragma once
 
 #include "Camera.h"
+#include "Disk.h"
+#include "Sphere.h"
+#include "Triangle.h"
 #include "common.hpp"
 
 #include <MiniFB.h>
@@ -46,6 +49,10 @@ private:
     std::atomic<int>   currentPixelIndex_;
 
     Camera camera_;
+
+    Sphere   *pSphere   = nullptr;
+    Disk     *pDisk     = nullptr;
+    Triangle *pTriangle = nullptr;
 };
 
 } // namespace Ithaca

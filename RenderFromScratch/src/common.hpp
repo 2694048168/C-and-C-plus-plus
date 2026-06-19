@@ -95,4 +95,32 @@ inline Matrix4x4 MakeScaleMatrix(const float &scale)
     // clang-format on
 }
 
+inline Matrix4x4 MakeWorldTransform(const Vector3f &postion, const Vector3f &rotation, float s)
+{
+    Matrix4x4 T = MakeTranslateMatrix(postion);
+    Matrix4x4 R = MakeRotateMatrix(rotation);
+    Matrix4x4 S = MakeScaleMatrix(s);
+    return T * R * S;
+}
+
+inline Matrix3x3 MakeCoordinateSystem(const Vector3f &w)
+{
+    // u v
+    Vector3f u(1.0f, 0.0f, 0.0f);
+
+    // w and u vector parallele
+    if (std::abs(glm::dot(w, u)) > 0.9999f)
+    {
+        u = Vector3f(0.0f, 1.0f, 0.0f);
+    }
+
+    Vector3f v = glm::cross(w, u);
+    u          = glm::cross(v, w);
+
+    u = glm::normalize(u);
+    v = glm::normalize(v);
+
+    return Matrix3x3(u, v, w);
+}
+
 } // namespace Ithaca

@@ -25,6 +25,7 @@ public:
                     int W, int H);
 
     Ray GenerateRay(int x, int y) const;
+    Ray GenerateRay(float x, float y) const;
 
 private:
     Vector3f  position_;
