@@ -11,21 +11,19 @@
 
 #pragma once
 
-#include "Ray.h"
+#include "Primitive.h"
 
 namespace Ithaca {
 
-class Sphere
+class Sphere : public Primitive
 {
 private:
-    float     Radius_;
-    Matrix4x4 ObjectToWorld_;
-    Matrix4x4 WorldToObject_;
+    float Radius_;
 
 public:
-    Sphere(const Vector3f &center, float R);
+    Sphere(SceneObject *pSceneObject, float R);
 
-    bool Intersect(Ray ray, Intersection &isect) const;
+    virtual bool Intersect(Ray ray, Intersection &isect) const override;
 };
 
 } // namespace Ithaca

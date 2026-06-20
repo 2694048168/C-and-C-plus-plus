@@ -7,10 +7,11 @@
 #include <vector>
 
 namespace Ithaca {
-Renderer::Renderer(const std::string_view &title, int width, int height)
+Renderer::Renderer(const std::string_view &title, int width, int height, int SamplePerPixel, const char *filepath)
     : title_(title)
     , viewportWidth_(width)
     , viewportHeight_(height)
+    , SamplePerPixel_(SamplePerPixel)
     , pWindow_(nullptr)
     , pBuffer_(nullptr)
     , currentPixelIndex_(0)
@@ -20,23 +21,92 @@ Renderer::Renderer(const std::string_view &title, int width, int height)
     // Initialize buffer
     memset(pBuffer_, 0, viewportWidth_ * viewportHeight_ * 4);
 
-    // clang-format off
-    camera_.Initialize(
-        Vector3f(0.0f, 0.0f, 0.0f), // camera postion
-        Vector3f(0.0f, 0.0f, 1.0f), // object postion
-        Vector3f(0.0f, 1.0f, 0.0f),
-        glm::radians(60.0f), // fov
-        0.1f,
-        1000.0f,
-        viewportWidth_,
-        viewportHeight_
-    );
-    // clang-format on
+    pScene = Scene::LoadSceneFromXML(filepath, width, height);
 
-    pSphere   = new Sphere(Vector3f(0.f, 0.f, 5.0f), 1.0f);
-    pDisk     = new Disk(Vector3f(0.f, 0.f, 3.0f), Vector3f(0.f, 0.f, 0.0f), 1.0f);
-    pTriangle = new Triangle(Vector3f(-1.f, 0.f, 0.f), Vector3f(0.f, 1.f, 0.f), Vector3f(1.f, 0.f, 0.f),
-                             MakeWorldTransform(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f));
+    // // ----------------------------------------------------
+    // Camera camera;
+    // // clang-format off
+    // camera.Initialize(
+    //     Vector3f(0.0f, 0.0f, 0.0f), // camera postion
+    //     Vector3f(0.0f, 0.0f, 1.0f), // object postion
+    //     Vector3f(0.0f, 1.0f, 0.0f),
+    //     glm::radians(60.0f), // fov
+    //     0.1f,
+    //     1000.0f,
+    //     viewportWidth_,
+    //     viewportHeight_
+    // );
+    // // clang-format on
+
+    // pScene = new Scene();
+    // // set camera
+    // pScene->SetCamera(camera);
+    // // add object
+    // // !render via Scene
+    // SceneObject *pSceneObject = pScene->CreateSceneObject(Vector3f(0.f, 0.f, 7.f), Vector3f(0.f, 0.f, 0.f), 2.0f);
+    // pSceneObject->CreatePrimitive<Triangle>(Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, -1.f, 0.f),
+    //                                         Vector3f(1.f, 1.f, 0.f));
+    // pSceneObject->CreatePrimitive<Triangle>(Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, 1.f, 0.f),
+    //                                         Vector3f(-1.f, 1.f, 0.f));
+
+    // SceneObject *pSceneObject2 = pScene->CreateSceneObject(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f);
+    // pSceneObject2->CreatePrimitive<Sphere>(0.5f);
+    // // --------------------------------------------------
+
+    // pSphere   = new Sphere(Vector3f(0.f, 0.f, 5.0f), 1.0f);
+    // pDisk     = new Disk(Vector3f(0.f, 0.f, 3.0f), Vector3f(0.f, 0.f, 0.0f), 1.0f);
+    // pTriangle = new Triangle(Vector3f(-1.f, 0.f, 0.f), Vector3f(0.f, 1.f, 0.f), Vector3f(1.f, 0.f, 0.f),
+    //                          MakeWorldTransform(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f));
+
+    // auto pSphere   = new Sphere(Vector3f(0.f, 0.f, 5.0f), 1.0f);
+    // auto pDisk     = new Disk(Vector3f(0.f, 0.f, 3.0f), Vector3f(0.f, 0.f, 0.0f), 1.0f);
+    // auto pTriangle = new Triangle(Vector3f(-1.f, 0.f, 0.f), Vector3f(0.f, 1.f, 0.f), Vector3f(1.f, 0.f, 0.f),
+    //                               MakeWorldTransform(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f));
+    // PrimitiveVec_.emplace_back(pSphere);
+    // PrimitiveVec_.emplace_back(pDisk);
+    // PrimitiveVec_.emplace_back(pTriangle);
+
+    // *render regectangle
+    // auto pTriangle1 = new Triangle(Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, -1.f, 0.f), Vector3f(1.f, 1.f, 0.f),
+    //                                MakeWorldTransform(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f));
+
+    // auto pTriangle2 = new Triangle(Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, 1.f, 0.f), Vector3f(-1.f, 1.f, 0.f),
+    //                                MakeWorldTransform(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f));
+    // PrimitiveVec_.emplace_back(pTriangle1);
+    // PrimitiveVec_.emplace_back(pTriangle2);
+
+    // *render via Scene-Object
+    // pSceneObject_ = new SceneObject(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f);
+
+    // auto pTriangle1
+    //     = new Triangle(pSceneObject_, Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, -1.f, 0.f), Vector3f(1.f, 1.f, 0.f));
+
+    // auto pTriangle2
+    //     = new Triangle(pSceneObject_, Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, 1.f, 0.f), Vector3f(-1.f, 1.f, 0.f));
+    // pSceneObject_->AddPrimitive(pTriangle1);
+    // pSceneObject_->AddPrimitive(pTriangle2);
+
+    // !render via Scene-Object
+    // pSceneObject_ = new SceneObject(Vector3f(0.f, 0.f, 5.f), Vector3f(0.f, 0.f, 0.f), 2.0f);
+    // pSceneObject_->CreatePrimitive<Triangle>(Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, -1.f, 0.f),
+    //                                          Vector3f(1.f, 1.f, 0.f));
+    // pSceneObject_->CreatePrimitive<Triangle>(Vector3f(-1.f, -1.f, 0.f), Vector3f(1.f, 1.f, 0.f),
+    //                                          Vector3f(-1.f, 1.f, 0.f));
+}
+
+Renderer::~Renderer()
+{
+    // if (pSceneObject_)
+    // {
+    //     delete pSceneObject_;
+    //     pSceneObject_ = nullptr;
+    // }
+
+    if (pScene)
+    {
+        delete pScene;
+        pScene = nullptr;
+    }
 }
 
 void Renderer::Run()
@@ -76,71 +146,150 @@ void Renderer::Run()
     pWindow_ = NULL;
 }
 
+// Color Renderer::RenderPixel(int x, int y)
+// {
+//     // return Color(1.0f, 0.3f, 0.6f);
+
+//     // *Simple gradient effect
+//     // Color color;
+//     // color.r = x / (float)viewportWidth_;
+//     // color.g = y / (float)viewportHeight_;
+//     // color.b = 0.1f;
+
+//     // simulate a long computation 1ms
+//     // std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+// #if 0
+//     // ?Ray tracing implementation
+//     Ray ray = camera_.GenerateRay(x, y);
+//     // Color color = ray.d * 0.5f + 0.5f;
+//     // return color;
+
+//     Intersection isect;
+//     // *Rendering Sphere
+//     // if (pSphere->Intersect(ray, isect))
+//     // *Rendering Disk(Cirle in 3D space)
+//     // if (pDisk->Intersect(ray, isect))
+//     // *Rendering Triangle
+//     if (pTriangle->Intersect(ray, isect))
+//     {
+//         // return Color(1.f, 0.f, 0.f);
+
+//         Color color = isect.normal * 0.5f + 0.5f;
+//         return color;
+//     }
+//     return Color(0.f, 0.f, 0.f);
+// #endif
+
+//     // * SSAA algorithm
+//     // constexpr int N           = 4; // sample point
+//     constexpr int N           = 100; // sample point
+//     Color         resultColor = Color(0.f, 0.0f, 0.0f);
+
+//     for (int i = 0; i < N; ++i)
+//     {
+//         // (x, y) ~ (x+1, y+1) range random sample point
+//         float px = x + glm::linearRand(0.0f, 1.0f);
+//         float py = y + glm::linearRand(0.0f, 1.0f);
+
+//         Ray   ray   = camera_.GenerateRay(px, py);
+//         Color color = Color(0.f, 0.0f, 0.0f);
+
+//         Intersection isect;
+//         // *Rendering Sphere
+//         if (pSphere->Intersect(ray, isect))
+//         // *Rendering Disk(Cirle in 3D space)
+//         // if (pDisk->Intersect(ray, isect))
+//         // *Rendering Triangle
+//         // if (pTriangle->Intersect(ray, isect))
+//         {
+//             color += isect.normal * 0.5f + 0.5f;
+//         }
+
+//         // !overflow
+//         resultColor += (color / static_cast<float>(N));
+//     }
+
+//     return resultColor;
+// }
+
 Color Renderer::RenderPixel(int x, int y)
 {
-    // return Color(1.0f, 0.3f, 0.6f);
-
-    // *Simple gradient effect
-    // Color color;
-    // color.r = x / (float)viewportWidth_;
-    // color.g = y / (float)viewportHeight_;
-    // color.b = 0.1f;
-
-    // simulate a long computation 1ms
-    // std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-#if 0
-    // ?Ray tracing implementation
-    Ray ray = camera_.GenerateRay(x, y);
-    // Color color = ray.d * 0.5f + 0.5f;
-    // return color;
-
-    Intersection isect;
-    // *Rendering Sphere
-    // if (pSphere->Intersect(ray, isect))
-    // *Rendering Disk(Cirle in 3D space)
-    // if (pDisk->Intersect(ray, isect))
-    // *Rendering Triangle
-    if (pTriangle->Intersect(ray, isect))
-    {
-        // return Color(1.f, 0.f, 0.f);
-
-        Color color = isect.normal * 0.5f + 0.5f;
-        return color;
-    }
-    return Color(0.f, 0.f, 0.f);
-#endif
-
     // * SSAA algorithm
-    // constexpr int N           = 4; // sample point
-    constexpr int N           = 100; // sample point
-    Color         resultColor = Color(0.f, 0.0f, 0.0f);
-
-    for (int i = 0; i < N; ++i)
+    Color resultColor = Color(0.f, 0.0f, 0.0f);
+    for (int i = 0; i < SamplePerPixel_; ++i)
     {
         // (x, y) ~ (x+1, y+1) range random sample point
         float px = x + glm::linearRand(0.0f, 1.0f);
         float py = y + glm::linearRand(0.0f, 1.0f);
 
-        Ray   ray   = camera_.GenerateRay(px, py);
-        Color color = Color(0.f, 0.0f, 0.0f);
-
-        Intersection isect;
-        // *Rendering Sphere
-        if (pSphere->Intersect(ray, isect))
-        // *Rendering Disk(Cirle in 3D space)
-        // if (pDisk->Intersect(ray, isect))
-        // *Rendering Triangle
-        // if (pTriangle->Intersect(ray, isect))
-        {
-            color += isect.normal * 0.5f + 0.5f;
-        }
-
+        Color color = RenderSubPixel(px, py);
         // !overflow
-        resultColor += (color / static_cast<float>(N));
+        resultColor += (color / static_cast<float>(SamplePerPixel_));
     }
 
     return resultColor;
+}
+
+Color Renderer::RenderSubPixel(float x, float y)
+{
+    // Ray   ray   = camera_.GenerateRay(x, y);
+    // Color color = Color(0.f, 0.0f, 0.0f);
+
+    // Intersection isect;
+    // // *Rendering Sphere
+    // if (pSphere->Intersect(ray, isect))
+    // // *Rendering Disk(Cirle in 3D space)
+    // // if (pDisk->Intersect(ray, isect))
+    // // *Rendering Triangle
+    // // if (pTriangle->Intersect(ray, isect))
+    // {
+    //     color = isect.normal * 0.5f + 0.5f;
+    // }
+
+    // // ?primitive vector
+    // for (const auto &primitive : PrimitiveVec_)
+    // {
+    //     if (primitive->Intersect(ray, isect))
+    //     {
+    //         color = isect.normal * 0.5f + 0.5f;
+    //         break;
+    //     }
+    // }
+
+    // *primitive vector
+    // bool hitFlag = false;
+    // for (const auto &primitive : PrimitiveVec_)
+    // {
+    //     if (primitive->Intersect(ray, isect))
+    //     {
+    //         ray.max_t = isect.t;
+    //         hitFlag   = true;
+    //     }
+    // }
+    // if (hitFlag)
+    // {
+    //     color = isect.normal * 0.5f + 0.5f;
+    // }
+
+    // *render via Scene-Object
+    // if (pSceneObject_->Intersect(ray, isect))
+    // {
+    //     color = isect.normal * 0.5f + 0.5f;
+    // }
+
+    // return color;
+
+    // !Render via Scene
+    Ray   ray   = pScene->GetCamera().GenerateRay(x, y);
+    Color color = Color(0.f, 0.0f, 0.0f);
+
+    Intersection isect;
+    if (pScene->Intersect(ray, isect))
+    {
+        color = isect.normal * 0.5f + 0.5f;
+    }
+    return color;
 }
 
 void Renderer::RunRenderThread()

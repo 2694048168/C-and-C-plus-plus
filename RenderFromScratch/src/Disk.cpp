@@ -1,17 +1,18 @@
 #include "Disk.h"
 
+#include "SceneObject.h"
+
 namespace Ithaca {
-Disk::Disk(const Vector3f &center, const Vector3f &euler, float radius)
-    : Radius_(radius)
+Disk::Disk(SceneObject *pSceneObject, float radius)
+    : Primitive(pSceneObject)
+    , Radius_(radius)
 {
-    ObjectToWorld_ = MakeWorldTransform(center, euler, 1.0f);
-    WorldToObject_ = glm::inverse(ObjectToWorld_);
 }
 
 bool Disk::Intersect(Ray ray, Intersection &isect) const
 {
     // ray transform into Sphere loc-coord. space
-    Ray r = WorldToObject_ * ray;
+    Ray r = pSceneObject_->GetWorldToObject() * ray;
 
     if (std::fabs(r.d.z) < 1e-7f)
         return false;
@@ -25,8 +26,8 @@ bool Disk::Intersect(Ray ray, Intersection &isect) const
     if (glm::dot(p, p) > Radius_ * Radius_)
         return false;
 
-    isect.postion = Vector3f(ObjectToWorld_ * Vector4f(p, 1.0f));
-    isect.normal  = glm::normalize(ObjectToWorld_ * Vector4f(0.f, 0.f, 1.f, 0.0f));
+    isect.postion = Vector3f(pSceneObject_->GetObjectToWorld() * Vector4f(p, 1.0f));
+    isect.normal  = glm::normalize(pSceneObject_->GetObjectToWorld() * Vector4f(0.f, 0.f, 1.f, 0.0f));
     isect.t       = t;
 
     return true;

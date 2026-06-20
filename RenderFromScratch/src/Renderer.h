@@ -13,6 +13,9 @@
 
 #include "Camera.h"
 #include "Disk.h"
+#include "Primitive.h"
+#include "Scene.h"
+#include "SceneObject.h"
 #include "Sphere.h"
 #include "Triangle.h"
 #include "common.hpp"
@@ -22,6 +25,7 @@
 #include <atomic>
 #include <string>
 #include <string_view>
+#include <vector>
 
 namespace Ithaca {
 
@@ -29,13 +33,14 @@ class Renderer
 {
 public:
     Renderer() = default;
-    explicit Renderer(const std::string_view &title, int width, int height);
-    virtual ~Renderer() = default;
+    explicit Renderer(const std::string_view &title, int width, int height, int SamplePerPixel, const char *filepath);
+    virtual ~Renderer();
 
     void Run();
 
 protected:
     Color RenderPixel(int x, int y);
+    Color RenderSubPixel(float x, float y);
 
     void RunRenderThread();
 
@@ -43,16 +48,24 @@ private:
     std::string title_;
     int         viewportWidth_;
     int         viewportHeight_;
+    // SPP algormthm
+    int         SamplePerPixel_ = 100;
 
     struct mfb_window *pWindow_;
     uint32_t          *pBuffer_;
     std::atomic<int>   currentPixelIndex_;
 
-    Camera camera_;
+    // Camera camera_;
 
-    Sphere   *pSphere   = nullptr;
-    Disk     *pDisk     = nullptr;
-    Triangle *pTriangle = nullptr;
+    // Sphere   *pSphere   = nullptr;
+    // Disk     *pDisk     = nullptr;
+    // Triangle *pTriangle = nullptr;
+
+    // std::vector<Primitive *> PrimitiveVec_;
+
+    // SceneObject *pSceneObject_ = nullptr;
+
+    Scene *pScene = nullptr;
 };
 
 } // namespace Ithaca

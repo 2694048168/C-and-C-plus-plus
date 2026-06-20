@@ -1,17 +1,18 @@
 #include "Sphere.h"
 
+#include "SceneObject.h"
+
 namespace Ithaca {
-Sphere::Sphere(const Vector3f &center, float R)
-    : Radius_(R)
+Sphere::Sphere(SceneObject *pSceneObject, float R)
+    : Primitive(pSceneObject)
+    , Radius_(R)
 {
-    ObjectToWorld_ = MakeWorldTransform(center, Vector3f(0.f, 0.f, 0.f), 1.0f);
-    WorldToObject_ = glm::inverse(ObjectToWorld_);
 }
 
 bool Sphere::Intersect(Ray ray, Intersection &isect) const
 {
     // ray transform into Sphere loc-coord. space
-    Ray r = WorldToObject_ * ray;
+    Ray r = pSceneObject_->GetWorldToObject() * ray;
 
     float A = glm::dot(r.d, r.d);
     float B = 2.0f * glm::dot(r.d, r.o);
@@ -42,8 +43,8 @@ bool Sphere::Intersect(Ray ray, Intersection &isect) const
     Vector3f p = r.o + t * r.d;
     Vector3f n = glm::normalize(p);
 
-    isect.postion = Vector3f(ObjectToWorld_ * Vector4f(p, 1.0f));
-    isect.normal  = glm::normalize(ObjectToWorld_ * Vector4f(n, 0.0f));
+    isect.postion = Vector3f(pSceneObject_->GetObjectToWorld() * Vector4f(p, 1.0f));
+    isect.normal  = glm::normalize(pSceneObject_->GetObjectToWorld() * Vector4f(n, 0.0f));
     isect.t       = t;
 
     return true;

@@ -11,21 +11,20 @@
 
 #pragma once
 
-#include "Ray.h"
+#include "Primitive.h"
 
 namespace Ithaca {
 
-class Disk
+class Disk : public Primitive
 {
 private:
-    float     Radius_;
-    Matrix4x4 ObjectToWorld_;
-    Matrix4x4 WorldToObject_;
+    float Radius_;
 
 public:
-    Disk(const Vector3f &center, const Vector3f &euler, float radius);
+    // Disk(SceneObject *pSceneObject, const Vector3f &center, const Vector3f &euler, float radius);
+    Disk(SceneObject *pSceneObject, float radius);
 
-    bool Intersect(Ray ray, Intersection &isect) const;
+    virtual bool Intersect(Ray ray, Intersection &isect) const override;
 };
 
 } // namespace Ithaca
