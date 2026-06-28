@@ -281,15 +281,53 @@ Color Renderer::RenderSubPixel(float x, float y)
     // return color;
 
     // !Render via Scene
-    Ray   ray   = pScene->GetCamera().GenerateRay(x, y);
-    Color color = Color(0.f, 0.0f, 0.0f);
+    // Ray   ray   = pScene->GetCamera().GenerateRay(x, y);
+    // Color color = Color(0.f, 0.0f, 0.0f);
 
-    Intersection isect;
-    if (pScene->Intersect(ray, isect))
-    {
-        color = isect.normal * 0.5f + 0.5f;
-    }
+    // Intersection isect;
+    // if (pScene->Intersect(ray, isect))
+    // {
+    //     color = isect.normal * 0.5f + 0.5f;
+    // }
+    // return color;
+
+    // * Test Light via irradiance
+    Ray   ray   = pScene->GetCamera().GenerateRay(x, y);
+    Color color = GetIrradiance(ray);
     return color;
+}
+
+Color Renderer::GetIrradiance(const Ray &ray)
+{
+    // Light via irradiance
+    Intersection isect;
+    if (pScene->Intersect(ray, isect) == nullptr)
+        return Color(0.0f, 0.0f, 0.0f);
+
+    // E(p) = L1 + L2 + L3
+    Color E(0.0f, 0.0f, 0.0f);
+    for (const auto &pLight : pScene->GetLights())
+    {
+        Vector3f sourcePos;
+        Color    L = pLight->GetRadiance(isect.postion, sourcePos);
+
+        // compute shadow-ray
+        Ray shadowRay;
+        shadowRay.o     = isect.postion;
+        shadowRay.d     = glm::normalize(sourcePos - isect.postion);
+        shadowRay.min_t = 1e-4f; // 避免自相交
+        shadowRay.max_t = glm::length(sourcePos - isect.postion);
+        // shadowRay 与场景中物体相交, 则说明该点被遮挡
+        Intersection isect_shadow;
+        if (pScene->Intersect(shadowRay, isect_shadow))
+            continue;
+
+        float cosTheta = glm::dot(isect.normal, shadowRay.d);
+
+        E += L * glm::max(cosTheta, 0.0f);
+    }
+
+    return E;
 }
 
 void Renderer::RunRenderThread()

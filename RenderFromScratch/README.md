@@ -10,6 +10,7 @@
 </div>
 
 ![](./image/CornellBox.png)
+![](./image/CornellBox_Light.png)
 
 ## Quick Start
 

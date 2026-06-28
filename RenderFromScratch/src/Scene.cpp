@@ -12,6 +12,7 @@ namespace Ithaca {
 Scene::Scene()
 {
     sceneObjectVec_.clear();
+    lightVec_.clear();
 }
 
 Scene::~Scene()
@@ -25,6 +26,16 @@ Scene::~Scene()
         }
     }
     sceneObjectVec_.clear();
+
+    for (auto &light : lightVec_)
+    {
+        if (light)
+        {
+            delete light;
+            light = nullptr;
+        }
+    }
+    lightVec_.clear();
 }
 
 void Scene::SetCamera(const Camera &cam)
@@ -145,6 +156,46 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
                     pSceneObj->CreatePrimitive<Sphere>(radius);
                 }
             }
+        }
+    }
+
+    // -------------------- 解析 LightVec --------------------
+    tinyxml2::XMLElement *pLightVec = pRoot->FirstChildElement("LightVec");
+    if (pLightVec)
+    {
+        // 遍历 DirectionalLight
+        for (tinyxml2::XMLElement *pDirLight = pLightVec->FirstChildElement("DirectionalLight");
+             pDirLight != nullptr;
+             pDirLight = pDirLight->NextSiblingElement("DirectionalLight"))
+        {
+            Vector3f direction = ParseVector3f(pDirLight->FirstChildElement("Direction")->GetText());
+            Color    radiance  = ParseVector3f(pDirLight->FirstChildElement("Radiance")->GetText());
+            pScene->CreateLight<DirectionalLight>(direction, radiance);
+        }
+
+        // 遍历 PointLight
+        for (tinyxml2::XMLElement *pPointLight = pLightVec->FirstChildElement("PointLight");
+             pPointLight != nullptr;
+             pPointLight = pPointLight->NextSiblingElement("PointLight"))
+        {
+            Vector3f position     = ParseVector3f(pPointLight->FirstChildElement("Position")->GetText());
+            Color    intensity    = ParseVector3f(pPointLight->FirstChildElement("Intensity")->GetText());
+            Vector3f attenuations = ParseVector3f(pPointLight->FirstChildElement("Attenuations")->GetText());
+            pScene->CreateLight<PointLight>(position, intensity, attenuations);
+        }
+
+        // 遍历 SpotLight
+        for (tinyxml2::XMLElement *pSpotLight = pLightVec->FirstChildElement("SpotLight");
+             pSpotLight != nullptr;
+             pSpotLight = pSpotLight->NextSiblingElement("SpotLight"))
+        {
+            Vector3f position     = ParseVector3f(pSpotLight->FirstChildElement("Position")->GetText());
+            Vector3f direction    = ParseVector3f(pSpotLight->FirstChildElement("Direction")->GetText());
+            Color    intensity    = ParseVector3f(pSpotLight->FirstChildElement("Intensity")->GetText());
+            float    innerAngle   = glm::radians(pSpotLight->FirstChildElement("InnerAngle")->FloatText(15.0f));
+            float    outerAngle   = glm::radians(pSpotLight->FirstChildElement("OuterAngle")->FloatText(30.0f));
+            Vector3f attenuations = ParseVector3f(pSpotLight->FirstChildElement("Attenuations")->GetText());
+            pScene->CreateLight<SpotLight>(position, direction, intensity, innerAngle, outerAngle, attenuations);
         }
     }
 

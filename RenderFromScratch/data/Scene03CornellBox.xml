@@ -1,0 +1,312 @@
+<Scene>
+    <Camera>
+        <Postion>0, 0, 0</Postion>
+        <Target>0, 0, 4</Target>
+        <Up>0, 1, 0</Up>
+        <NearZ>0.1</NearZ>
+        <FarZ>1000</FarZ>
+        <Fov>60</Fov>
+    </Camera>
+
+    <LightVec>
+        <!-- 平行光：从右上方斜射入场景，测试方向性光照与阴影射线 -->
+        <DirectionalLight>
+            <Direction>0.3, -1, 0.2</Direction>
+            <Radiance>0.3, 0.3, 0.35</Radiance>
+        </DirectionalLight>
+
+        <!-- 点光源：位于房间天花板中心，主光源，测试漫反射光照与软阴影 -->
+        <PointLight>
+            <Position>0, 1.7, 3</Position>
+            <Intensity>0.8, 0.8, 0.75</Intensity>
+            <Attenuations>0, 0, 1</Attenuations>
+        </PointLight>
+
+        <!-- 聚光灯：从右后上方照向前下方地板，测试聚光锥角衰减与定向阴影 -->
+        <SpotLight>
+            <Position>1.5, 1.7, 4</Position>
+            <Direction>-0.8, -1, -0.4</Direction>
+            <Intensity>0.6, 0.6, 0.55</Intensity>
+            <InnerAngle>20</InnerAngle>
+            <OuterAngle>45</OuterAngle>
+            <Attenuations>0, 0, 1</Attenuations>
+        </SpotLight>
+    </LightVec>
+
+    <SceneObjectVec>
+        <!-- ========== 后墙 (z=6, normal=-Z) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>0, 0, 6</Position>
+                <Rotation>0, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <!-- ========== 左墙 (x=-2, normal=+X) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>-2, 0, 4</Position>
+                <Rotation>0, -1.5708, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <!-- ========== 右墙 (x=2, normal=-X) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>2, 0, 4</Position>
+                <Rotation>0, 1.5708, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <!-- ========== 地板 (y=-2, normal=+Y) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>0, -2, 4</Position>
+                <Rotation>1.5708, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <!-- ========== 天花板 (y=2, normal=-Y) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>0, 2, 4</Position>
+                <Rotation>-1.5708, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <!-- ========== 高方块 (右侧, 1x1x1) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>1.0, -1.5, 4.5</Position>
+                <Rotation>0, 0.25, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <!-- 前面 (z=+0.5, normal=+Z) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <!-- 后面 (z=-0.5, normal=-Z) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>-0.5, 0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, -0.5</Vertex>
+                </Triangle>
+                <!-- 左面 (x=-0.5, normal=-X) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                    <Vertex>-0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <!-- 右面 (x=+0.5, normal=+X) -->
+                <Triangle>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <!-- 顶面 (y=+0.5, normal=+Y) -->
+                <Triangle>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                    <Vertex>-0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <!-- 底面 (y=-0.5, normal=-Y) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <!-- ========== 矮方块 (左侧, 0.7x0.7x0.7) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>-1.0, -1.65, 3.5</Position>
+                <Rotation>0, -0.25, 0</Rotation>
+                <Scale>0.7</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <!-- 前面 (z=+0.5, normal=+Z) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <!-- 后面 (z=-0.5, normal=-Z) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>-0.5, 0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, -0.5</Vertex>
+                </Triangle>
+                <!-- 左面 (x=-0.5, normal=-X) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                    <Vertex>-0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <!-- 右面 (x=+0.5, normal=+X) -->
+                <Triangle>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                </Triangle>
+                <!-- 顶面 (y=+0.5, normal=+Y) -->
+                <Triangle>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, 0.5, 0.5</Vertex>
+                    <Vertex>0.5, 0.5, -0.5</Vertex>
+                    <Vertex>-0.5, 0.5, -0.5</Vertex>
+                </Triangle>
+                <!-- 底面 (y=-0.5, normal=-Y) -->
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-0.5, -0.5, -0.5</Vertex>
+                    <Vertex>0.5, -0.5, 0.5</Vertex>
+                    <Vertex>-0.5, -0.5, 0.5</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <!-- ========== 球体 (房间中央) ========== -->
+        <SceneObject>
+            <Transform>
+                <Position>0, -0.5, 4.0</Position>
+                <Rotation>0, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <PrimitiveVec>
+                <Sphere>
+                    <Radius>0.6</Radius>
+                </Sphere>
+            </PrimitiveVec>
+        </SceneObject>
+
+    </SceneObjectVec>
+
+</Scene>
