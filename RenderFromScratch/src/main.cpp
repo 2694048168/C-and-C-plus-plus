@@ -24,7 +24,8 @@ int main(int argc, const char **argv)
     constexpr int samplePerPixel = 100;  // SPP
     // const char   *filepath       = "data/Scene01.xml";
     // const char   *filepath       = "data/Scene02CornellBox.xml";
-    const char   *filepath       = "data/Scene03CornellBox.xml";
+    // const char   *filepath       = "data/Scene03CornellBox.xml";
+    const char   *filepath       = "data/Scene04CornellBox.xml";
 
     Ithaca::Renderer renderEngine(titleStr, width, height, samplePerPixel, filepath);
     renderEngine.Run();

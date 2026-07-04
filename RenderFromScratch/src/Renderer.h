@@ -42,6 +42,7 @@ protected:
     Color RenderPixel(int x, int y);
     Color RenderSubPixel(float x, float y);
     Color GetIrradiance(const Ray &ray);
+    Color GetRadiance(const Ray &ray);
 
     void RunRenderThread();
 

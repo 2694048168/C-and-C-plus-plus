@@ -33,6 +33,16 @@ Matrix4x4 SceneObject::GetWorldToObject() const
     return WorldToObject_;
 }
 
+void SceneObject::SetMaterial(Material *pMaterial)
+{
+    mpMaterial = pMaterial;
+}
+
+Material *SceneObject::GetMaterial() const
+{
+    return mpMaterial;
+}
+
 bool SceneObject::Intersect(Ray ray, Intersection &isect) const
 {
     bool hitFlag = false;

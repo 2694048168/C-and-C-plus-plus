@@ -15,6 +15,8 @@
 #include "Light.h"
 #include "SceneObject.h"
 
+#include <map>
+
 namespace Ithaca {
 
 class Scene
@@ -23,6 +25,8 @@ private:
     Camera                     camera_;
     std::vector<SceneObject *> sceneObjectVec_;
     std::vector<Light *>       lightVec_;
+
+    std::map<std::string, Material *> mMaterialMap;
 
 public:
     static Scene *LoadSceneFromXML(const char *filepath, int W, int H);
@@ -46,6 +50,16 @@ public:
     {
         return lightVec_;
     }
+
+    template<typename T, typename... Args>
+    T *CreateMaterial(const std::string &nameID, Args &&...args)
+    {
+        T *material = new T(std::forward<Args>(args)...);
+        mMaterialMap.insert({nameID, material});
+        return material;
+    }
+
+    Material *GetMaterial(const std::string &name) const;
 
 public:
     Scene();

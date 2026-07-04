@@ -1,5 +1,6 @@
 #include "Scene.h"
 
+#include "Material.h"
 #include "Sphere.h"
 #include "Triangle.h"
 #include "tinyxml2.h"
@@ -36,6 +37,16 @@ Scene::~Scene()
         }
     }
     lightVec_.clear();
+
+    for (auto &material : mMaterialMap)
+    {
+        if (material.second)
+        {
+            delete material.second;
+            material.second = nullptr;
+        }
+    }
+    mMaterialMap.clear();
 }
 
 void Scene::SetCamera(const Camera &cam)
@@ -67,6 +78,14 @@ SceneObject *Scene::Intersect(Ray ray, Intersection &isect) const
         }
     }
     return pHitObject;
+}
+
+Material *Scene::GetMaterial(const std::string &name) const
+{
+    auto it = mMaterialMap.find(name);
+    if (it != mMaterialMap.end())
+        return it->second;
+    return nullptr;
 }
 
 // 解析 "x, y, z" 格式的字符串为 Vector3f
@@ -110,6 +129,35 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
         pScene->SetCamera(cam);
     }
 
+    // -------------------- 解析 MaterialMap --------------------
+    tinyxml2::XMLElement *pMaterialMap = pRoot->FirstChildElement("MaterialMap");
+    if (pMaterialMap)
+    {
+        for (tinyxml2::XMLElement *pMaterial = pMaterialMap->FirstChildElement("Material");
+             pMaterial != nullptr;
+             pMaterial = pMaterial->NextSiblingElement("Material"))
+        {
+            tinyxml2::XMLElement *pName = pMaterial->FirstChildElement("Name");
+            tinyxml2::XMLElement *pType = pMaterial->FirstChildElement("Type");
+            if (!pName || !pType)
+                continue;
+
+            const char *name = pName->GetText();
+            const char *type = pType->GetText();
+            if (!name || !type)
+                continue;
+
+            if (strcmp(type, "Lambert") == 0)
+            {
+                tinyxml2::XMLElement *pAlbedo = pMaterial->FirstChildElement("Albedo");
+                if (!pAlbedo)
+                    continue;
+                Color albedo = ParseVector3f(pAlbedo->GetText());
+                pScene->CreateMaterial<LambertMaterial>(name, albedo);
+            }
+        }
+    }
+
     // -------------------- 解析 SceneObjectVec --------------------
     tinyxml2::XMLElement *pSceneObjectVec = pRoot->FirstChildElement("SceneObjectVec");
     if (pSceneObjectVec)
@@ -128,6 +176,18 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
             float    scale    = pScale->FloatText(1.0f);
 
             SceneObject *pSceneObj = pScene->CreateSceneObject(position, rotation, scale);
+
+            // --- 解析 Material ---
+            tinyxml2::XMLElement *pMaterial = pObj->FirstChildElement("Material");
+            if (pMaterial)
+            {
+                const char *materialName = pMaterial->GetText();
+                Material *  pMat         = pScene->GetMaterial(materialName);
+                if (pMat)
+                {
+                    pSceneObj->SetMaterial(pMat);
+                }
+            }
 
             // --- 解析 PrimitiveVec ---
             tinyxml2::XMLElement *pPrimitiveVec = pObj->FirstChildElement("PrimitiveVec");
@@ -164,9 +224,8 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
     if (pLightVec)
     {
         // 遍历 DirectionalLight
-        for (tinyxml2::XMLElement *pDirLight = pLightVec->FirstChildElement("DirectionalLight");
-             pDirLight != nullptr;
-             pDirLight = pDirLight->NextSiblingElement("DirectionalLight"))
+        for (tinyxml2::XMLElement *pDirLight = pLightVec->FirstChildElement("DirectionalLight"); pDirLight != nullptr;
+             pDirLight                       = pDirLight->NextSiblingElement("DirectionalLight"))
         {
             Vector3f direction = ParseVector3f(pDirLight->FirstChildElement("Direction")->GetText());
             Color    radiance  = ParseVector3f(pDirLight->FirstChildElement("Radiance")->GetText());
@@ -174,9 +233,8 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
         }
 
         // 遍历 PointLight
-        for (tinyxml2::XMLElement *pPointLight = pLightVec->FirstChildElement("PointLight");
-             pPointLight != nullptr;
-             pPointLight = pPointLight->NextSiblingElement("PointLight"))
+        for (tinyxml2::XMLElement *pPointLight = pLightVec->FirstChildElement("PointLight"); pPointLight != nullptr;
+             pPointLight                       = pPointLight->NextSiblingElement("PointLight"))
         {
             Vector3f position     = ParseVector3f(pPointLight->FirstChildElement("Position")->GetText());
             Color    intensity    = ParseVector3f(pPointLight->FirstChildElement("Intensity")->GetText());
@@ -185,9 +243,8 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
         }
 
         // 遍历 SpotLight
-        for (tinyxml2::XMLElement *pSpotLight = pLightVec->FirstChildElement("SpotLight");
-             pSpotLight != nullptr;
-             pSpotLight = pSpotLight->NextSiblingElement("SpotLight"))
+        for (tinyxml2::XMLElement *pSpotLight = pLightVec->FirstChildElement("SpotLight"); pSpotLight != nullptr;
+             pSpotLight                       = pSpotLight->NextSiblingElement("SpotLight"))
         {
             Vector3f position     = ParseVector3f(pSpotLight->FirstChildElement("Position")->GetText());
             Vector3f direction    = ParseVector3f(pSpotLight->FirstChildElement("Direction")->GetText());

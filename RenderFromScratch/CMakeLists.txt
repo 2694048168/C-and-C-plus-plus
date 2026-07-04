@@ -108,3 +108,10 @@ target_include_directories(RenderScratch
     ${CMAKE_CURRENT_SOURCE_DIR}/external/minifb/include
     ${CMAKE_CURRENT_SOURCE_DIR}/external/glm
 )
+
+add_custom_command(TARGET RenderScratch POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/data
+    $<TARGET_FILE_DIR:RenderScratch>/data
+    COMMENT "Copying data directory to build output..."
+)

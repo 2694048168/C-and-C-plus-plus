@@ -1,5 +1,6 @@
 #include "Renderer.h"
 
+#include "Material.h"
 #include "logger.hpp"
 
 #include <chrono>
@@ -292,8 +293,13 @@ Color Renderer::RenderSubPixel(float x, float y)
     // return color;
 
     // * Test Light via irradiance
+    // Ray   ray   = pScene->GetCamera().GenerateRay(x, y);
+    // Color color = GetIrradiance(ray);
+    // return color;
+
+    // * Test Light via irradiance
     Ray   ray   = pScene->GetCamera().GenerateRay(x, y);
-    Color color = GetIrradiance(ray);
+    Color color = GetRadiance(ray);
     return color;
 }
 
@@ -328,6 +334,57 @@ Color Renderer::GetIrradiance(const Ray &ray)
     }
 
     return E;
+}
+
+Color Renderer::GetRadiance(const Ray &ray)
+{
+    // Light via Rradiance
+    Intersection isect;
+    auto         pObj = pScene->Intersect(ray, isect);
+    if (pObj == nullptr)
+        return Color(0.0f, 0.0f, 0.0f);
+
+    if (glm::length(isect.normal) < 1e-6f)
+        return Color(0.0f, 0.0f, 0.0f);
+
+    Material *pMaterial    = pObj->GetMaterial();
+    if (pMaterial == nullptr)
+        return Color(0.0f, 0.0f, 0.0f);
+
+    Matrix3x3 localToWorld = MakeCoordinateSystem(isect.normal);
+    Matrix3x3 worldToLocal = glm::transpose(localToWorld); //glm::inverse
+    Vector3f  wo           = worldToLocal * (-ray.d);
+
+    // L(p) = L1 + L2 + L3
+    Color Lo(0.0f, 0.0f, 0.0f);
+    for (const auto &pLight : pScene->GetLights())
+    {
+        Vector3f sourcePos;
+        Color    L = pLight->GetRadiance(isect.postion, sourcePos);
+
+        // compute shadow-ray
+        Vector3f lightDir = sourcePos - isect.postion;
+        float    dist     = glm::length(lightDir);
+        if (dist < 1e-6f)
+            continue;
+
+        Ray shadowRay;
+        shadowRay.o     = isect.postion;
+        shadowRay.d     = lightDir / dist;
+        shadowRay.min_t = 1e-4f; // 避免自相交
+        shadowRay.max_t = dist;
+        // shadowRay 与场景中物体相交, 则说明该点被遮挡
+        Intersection isect_shadow;
+        if (pScene->Intersect(shadowRay, isect_shadow))
+            continue;
+
+        Vector3f wi       = worldToLocal * shadowRay.d; // 入射方向,转换到局部坐标系
+        float    cosTheta = glm::dot(isect.normal, shadowRay.d);
+        Color    brdf     = pMaterial->BRDF(wo, wi);
+        Lo += brdf * L * glm::max(cosTheta, 0.0f);
+    }
+
+    return Lo;
 }
 
 void Renderer::RunRenderThread()

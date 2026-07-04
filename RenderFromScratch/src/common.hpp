@@ -30,7 +30,8 @@ using Vector4i = glm::ivec4;
 using Matrix3x3 = glm::mat3;
 using Matrix4x4 = glm::mat4;
 
-const float PI = glm::pi<float>();
+const float PI     = glm::pi<float>();
+const float INV_PI = 1.0f / PI;
 
 using Color = glm::vec3;
 

@@ -17,6 +17,8 @@
 
 namespace Ithaca {
 
+class Material;
+
 class SceneObject
 {
 private:
@@ -25,9 +27,14 @@ private:
 
     std::vector<Primitive *> PrimitiveVec_;
 
+    Material *mpMaterial = nullptr;
+
 public:
     Matrix4x4 GetObjectToWorld() const;
     Matrix4x4 GetWorldToObject() const;
+
+    void      SetMaterial(Material *pMaterial);
+    Material *GetMaterial() const;
 
     // void AddPrimitive(Primitive *primitive);
     // Modern C++ RILL Tech.
