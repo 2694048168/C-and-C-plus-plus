@@ -22,12 +22,15 @@ int main(int argc, const char **argv)
     constexpr int width          = 1080; // 1920 & 1080
     constexpr int height         = 720;  // 1080 & 720
     constexpr int samplePerPixel = 100;  // SPP
+    constexpr int maxDepth       = 10;
+    constexpr int minDepth       = 3;
     // const char   *filepath       = "data/Scene01.xml";
     // const char   *filepath       = "data/Scene02CornellBox.xml";
     // const char   *filepath       = "data/Scene03CornellBox.xml";
-    const char   *filepath       = "data/Scene04CornellBox.xml";
+    // const char   *filepath = "data/Scene04CornellBox.xml";
+    const char   *filepath = "data/Scene05CornellBox.xml";
 
-    Ithaca::Renderer renderEngine(titleStr, width, height, samplePerPixel, filepath);
+    Ithaca::Renderer renderEngine(titleStr, width, height, minDepth, maxDepth, samplePerPixel, filepath);
     renderEngine.Run();
 
     return 0;

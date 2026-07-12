@@ -33,7 +33,8 @@ class Renderer
 {
 public:
     Renderer() = default;
-    explicit Renderer(const std::string_view &title, int width, int height, int SamplePerPixel, const char *filepath);
+    explicit Renderer(const std::string_view &title, int width, int height, int minDepth, int maxDepth,
+                      int SamplePerPixel, const char *filepath);
     virtual ~Renderer();
 
     void Run();
@@ -42,7 +43,7 @@ protected:
     Color RenderPixel(int x, int y);
     Color RenderSubPixel(float x, float y);
     Color GetIrradiance(const Ray &ray);
-    Color GetRadiance(const Ray &ray);
+    Color GetRadiance(const Ray &ray, int depth);
 
     void RunRenderThread();
 
@@ -52,6 +53,8 @@ private:
     int         viewportHeight_;
     // SPP algormthm
     int         SamplePerPixel_ = 100;
+    int         mMaxDepth       = 10;
+    int         mMinDepth       = 3;
 
     struct mfb_window *pWindow_;
     uint32_t          *pBuffer_;

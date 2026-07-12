@@ -8,11 +8,14 @@
 #include <vector>
 
 namespace Ithaca {
-Renderer::Renderer(const std::string_view &title, int width, int height, int SamplePerPixel, const char *filepath)
+Renderer::Renderer(const std::string_view &title, int width, int height, int minDepth, int maxDepth, int SamplePerPixel,
+                   const char *filepath)
     : title_(title)
     , viewportWidth_(width)
     , viewportHeight_(height)
     , SamplePerPixel_(SamplePerPixel)
+    , mMinDepth(minDepth)
+    , mMaxDepth(maxDepth)
     , pWindow_(nullptr)
     , pBuffer_(nullptr)
     , currentPixelIndex_(0)
@@ -299,7 +302,7 @@ Color Renderer::RenderSubPixel(float x, float y)
 
     // * Test Light via irradiance
     Ray   ray   = pScene->GetCamera().GenerateRay(x, y);
-    Color color = GetRadiance(ray);
+    Color color = GetRadiance(ray, 0);
     return color;
 }
 
@@ -336,8 +339,24 @@ Color Renderer::GetIrradiance(const Ray &ray)
     return E;
 }
 
-Color Renderer::GetRadiance(const Ray &ray)
+Color Renderer::GetRadiance(const Ray &ray, int depth)
 {
+    if (depth > mMaxDepth)
+        return Color(0, 0, 0);
+
+    // 俄罗斯轮盘算法
+    static const float SurvivalProbability = 0.8f;
+    float              RewardFactor        = 1.0f;
+    if (depth >= mMinDepth)
+    {
+        float K = Random01();
+        if (K > SurvivalProbability)
+        {
+            return Color(0, 0, 0);
+        }
+        RewardFactor = 1.0f / SurvivalProbability;
+    }
+
     // Light via Rradiance
     Intersection isect;
     auto         pObj = pScene->Intersect(ray, isect);
@@ -347,7 +366,7 @@ Color Renderer::GetRadiance(const Ray &ray)
     if (glm::length(isect.normal) < 1e-6f)
         return Color(0.0f, 0.0f, 0.0f);
 
-    Material *pMaterial    = pObj->GetMaterial();
+    Material *pMaterial = pObj->GetMaterial();
     if (pMaterial == nullptr)
         return Color(0.0f, 0.0f, 0.0f);
 
@@ -356,7 +375,10 @@ Color Renderer::GetRadiance(const Ray &ray)
     Vector3f  wo           = worldToLocal * (-ray.d);
 
     // L(p) = L1 + L2 + L3
+    // 全局光照 = 直接光照 + 间接光照
     Color Lo(0.0f, 0.0f, 0.0f);
+
+    // 直接光照
     for (const auto &pLight : pScene->GetLights())
     {
         Vector3f sourcePos;
@@ -384,7 +406,51 @@ Color Renderer::GetRadiance(const Ray &ray)
         Lo += brdf * L * glm::max(cosTheta, 0.0f);
     }
 
-    return Lo;
+    // 间接光照
+    /*{
+        Color     sum;
+        // N 为 1 即为 路径追踪
+        const int N = 1;
+        for (int i = 0; i < N; ++i)
+        {
+            const float    theta = Random(0.0f, PI * 0.5f);
+            const float    phi   = Random(0.0f, PI * 2.0f);
+            const Vector3f wi    = GetSphericalCoordinate(theta, phi);
+
+            Color brdf = pMaterial->BRDF(wo, wi);
+            Ray   r;
+            r.d     = localToWorld * wi;
+            r.o     = isect.postion;
+            r.min_t = 1e-3f;
+
+            // depth 相当于 光线反弹的次数
+            Color Li = GetRadiance(r, depth + 1);
+            Color fx = brdf * Li * cos(theta) * sin(theta);
+            // sum += fx / N;
+            sum += fx;
+        }
+
+        Lo += sum * PI * PI / (float)N;
+    }*/
+
+    {
+        // N 为 1 即为 路径追踪
+        const float    theta = Random(0.0f, PI * 0.5f);
+        const float    phi   = Random(0.0f, PI * 2.0f);
+        const Vector3f wi    = GetSphericalCoordinate(theta, phi);
+
+        Color brdf = pMaterial->BRDF(wo, wi);
+        Ray   r;
+        r.d     = localToWorld * wi;
+        r.o     = isect.postion;
+        r.min_t = 1e-3f;
+
+        // depth 相当于 光线反弹的次数
+        Color Li = GetRadiance(r, depth + 1);
+        Lo += brdf * Li * cos(theta) * sin(theta) * PI * PI;
+    }
+
+    return Lo * RewardFactor;
 }
 
 void Renderer::RunRenderThread()
