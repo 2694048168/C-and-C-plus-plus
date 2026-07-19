@@ -19,6 +19,11 @@ class Material
 {
 public:
     virtual Color BRDF(const Vector3f &wo, const Vector3f &wi) const = 0;
+
+    virtual bool IsSpecular() const
+    {
+        return false;
+    }
 };
 
 class LambertMaterial : public Material
@@ -30,6 +35,29 @@ public:
 
 private:
     Color mAlbedo;
+};
+
+class ConductorSpecularMaterial : public Material
+{
+public:
+    ConductorSpecularMaterial(const Color &eta, const Color &absorptionCoef, const Color &refectionColor)
+        : mEta(eta)
+        , mAbsorptionCoef(absorptionCoef)
+        , mRefectionColor(refectionColor)
+    {
+    }
+
+    bool IsSpecular() const override
+    {
+        return true;
+    }
+
+    Color BRDF(const Vector3f &wo, const Vector3f &wi) const override;
+
+private:
+    Color mEta;
+    Color mAbsorptionCoef;
+    Color mRefectionColor;
 };
 
 } // namespace Ithaca

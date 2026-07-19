@@ -379,31 +379,34 @@ Color Renderer::GetRadiance(const Ray &ray, int depth)
     Color Lo(0.0f, 0.0f, 0.0f);
 
     // 直接光照
-    for (const auto &pLight : pScene->GetLights())
+    if (!pMaterial->IsSpecular())
     {
-        Vector3f sourcePos;
-        Color    L = pLight->GetRadiance(isect.postion, sourcePos);
+        for (const auto &pLight : pScene->GetLights())
+        {
+            Vector3f sourcePos;
+            Color    L = pLight->GetRadiance(isect.postion, sourcePos);
 
-        // compute shadow-ray
-        Vector3f lightDir = sourcePos - isect.postion;
-        float    dist     = glm::length(lightDir);
-        if (dist < 1e-6f)
-            continue;
+            // compute shadow-ray
+            Vector3f lightDir = sourcePos - isect.postion;
+            float    dist     = glm::length(lightDir);
+            if (dist < 1e-6f)
+                continue;
 
-        Ray shadowRay;
-        shadowRay.o     = isect.postion;
-        shadowRay.d     = lightDir / dist;
-        shadowRay.min_t = 1e-4f; // 避免自相交
-        shadowRay.max_t = dist;
-        // shadowRay 与场景中物体相交, 则说明该点被遮挡
-        Intersection isect_shadow;
-        if (pScene->Intersect(shadowRay, isect_shadow))
-            continue;
+            Ray shadowRay;
+            shadowRay.o     = isect.postion;
+            shadowRay.d     = lightDir / dist;
+            shadowRay.min_t = 1e-4f; // 避免自相交
+            shadowRay.max_t = dist;
+            // shadowRay 与场景中物体相交, 则说明该点被遮挡
+            Intersection isect_shadow;
+            if (pScene->Intersect(shadowRay, isect_shadow))
+                continue;
 
-        Vector3f wi       = worldToLocal * shadowRay.d; // 入射方向,转换到局部坐标系
-        float    cosTheta = glm::dot(isect.normal, shadowRay.d);
-        Color    brdf     = pMaterial->BRDF(wo, wi);
-        Lo += brdf * L * glm::max(cosTheta, 0.0f);
+            Vector3f wi       = worldToLocal * shadowRay.d; // 入射方向,转换到局部坐标系
+            float    cosTheta = glm::dot(isect.normal, shadowRay.d);
+            Color    brdf     = pMaterial->BRDF(wo, wi);
+            Lo += brdf * L * glm::max(cosTheta, 0.0f);
+        }
     }
 
     // 间接光照
@@ -433,6 +436,20 @@ Color Renderer::GetRadiance(const Ray &ray, int depth)
         Lo += sum * PI * PI / (float)N;
     }*/
 
+    if (pMaterial->IsSpecular())
+    {
+        Vector3f wi(-wo.x, -wo.y, wo.z);
+        Color    brdf = pMaterial->BRDF(wo, wi);
+
+        Ray r;
+        r.d      = localToWorld * wi;
+        r.o      = isect.postion;
+        r.min_t  = 1e-3f;
+        Color Li = GetRadiance(r, depth + 1);
+
+        Lo += brdf * Li * glm::max(0.0f, wi.z);
+    }
+    else
     {
         // N 为 1 即为 路径追踪
         const float    theta = Random(0.0f, PI * 0.5f);

@@ -133,9 +133,8 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
     tinyxml2::XMLElement *pMaterialMap = pRoot->FirstChildElement("MaterialMap");
     if (pMaterialMap)
     {
-        for (tinyxml2::XMLElement *pMaterial = pMaterialMap->FirstChildElement("Material");
-             pMaterial != nullptr;
-             pMaterial = pMaterial->NextSiblingElement("Material"))
+        for (tinyxml2::XMLElement *pMaterial = pMaterialMap->FirstChildElement("Material"); pMaterial != nullptr;
+             pMaterial                       = pMaterial->NextSiblingElement("Material"))
         {
             tinyxml2::XMLElement *pName = pMaterial->FirstChildElement("Name");
             tinyxml2::XMLElement *pType = pMaterial->FirstChildElement("Type");
@@ -154,6 +153,13 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
                     continue;
                 Color albedo = ParseVector3f(pAlbedo->GetText());
                 pScene->CreateMaterial<LambertMaterial>(name, albedo);
+            }
+            else if (strcmp(type, "ConductorSpecular") == 0)
+            {
+                Color eta            = ParseVector3f(pMaterial->FirstChildElement("Eta")->GetText());
+                Color absorptionCoef = ParseVector3f(pMaterial->FirstChildElement("AbsorptionCoef")->GetText());
+                Color refectionColor = ParseVector3f(pMaterial->FirstChildElement("RefectionColor")->GetText());
+                pScene->CreateMaterial<ConductorSpecularMaterial>(name, eta, absorptionCoef, refectionColor);
             }
         }
     }
@@ -182,7 +188,7 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
             if (pMaterial)
             {
                 const char *materialName = pMaterial->GetText();
-                Material *  pMat         = pScene->GetMaterial(materialName);
+                Material   *pMat         = pScene->GetMaterial(materialName);
                 if (pMat)
                 {
                     pSceneObj->SetMaterial(pMat);

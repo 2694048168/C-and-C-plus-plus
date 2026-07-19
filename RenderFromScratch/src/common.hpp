@@ -67,8 +67,8 @@ inline Matrix4x4 MakeRotateMatrix(const Vector3f &ruler)
     // clang-format off
     Matrix4x4 rx(
         1.0f, 0.0f, 0.0f, 0.0f, 
-        0.0f, cx,   sx,   0.0f, 
-        0.0f, -sx,  cx,   0.0f, 
+        0.0f, cx,   -sx,  0.0f, 
+        0.0f, sx,   cx,   0.0f, 
         0.0f, 0.0f, 0.0f, 1.0f);
 
     Matrix4x4 ry(
@@ -78,8 +78,8 @@ inline Matrix4x4 MakeRotateMatrix(const Vector3f &ruler)
         0.0f, 0.0f, 0.0f, 1.0f);
 
     Matrix4x4 rz(
-        cz,   sz,   0.0f, 0.0f, 
-        -sz,  cz,   0.0f, 0.0f, 
+        cz,   -sz,  0.0f, 0.0f, 
+        sz,   cz,   0.0f, 0.0f, 
         0.0f, 0.0f, 1.0f, 0.0f, 
         0.0f, 0.0f, 0.0f, 1.0f);
     // clang-format on

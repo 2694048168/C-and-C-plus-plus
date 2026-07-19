@@ -1,0 +1,227 @@
+<Scene>
+    <Camera>
+        <Postion>0, 0, 0</Postion>
+        <Target>0, 0, 4</Target>
+        <Up>0, 1, 0</Up>
+        <NearZ>0.1</NearZ>
+        <FarZ>1000</FarZ>
+        <Fov>60</Fov>
+    </Camera>
+
+    <MaterialMap>
+        <Material>
+            <Name>M_Lambert_Red</Name>
+            <Type>Lambert</Type>
+            <Albedo>0.7, 0.2, 0.15</Albedo>
+        </Material>
+        <Material>
+            <Name>M_Lambert_Blue</Name>
+            <Type>Lambert</Type>
+            <Albedo>0.15, 0.2, 0.75</Albedo>
+        </Material>
+        <Material>
+            <Name>M_Lambert_White</Name>
+            <Type>Lambert</Type>
+            <Albedo>0.85, 0.85, 0.85</Albedo>
+        </Material>
+        <Material>
+            <Name>M_Conductor_Silver</Name>
+            <Type>ConductorSpecular</Type>
+            <Eta>0.15, 0.15, 0.15</Eta>
+            <AbsorptionCoef>5.0, 5.0, 5.0</AbsorptionCoef>
+            <RefectionColor>0.95, 0.95, 0.95</RefectionColor>
+        </Material>
+        <Material>
+            <Name>M_Conductor_Copper</Name>
+            <Type>ConductorSpecular</Type>
+            <Eta>0.3, 0.25, 0.2</Eta>
+            <AbsorptionCoef>3.5, 2.5, 2.0</AbsorptionCoef>
+            <RefectionColor>0.95, 0.65, 0.4</RefectionColor>
+        </Material>
+    </MaterialMap>
+
+    <LightVec>
+        <PointLight>
+            <Position>-0.6, 1.9, 3.4</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>0.0, 1.9, 3.4</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>0.6, 1.9, 3.4</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>-0.6, 1.9, 4.0</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>0.0, 1.9, 4.0</Position>
+            <Intensity>1.5, 1.5, 1.3</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>0.6, 1.9, 4.0</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>-0.6, 1.9, 4.6</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>0.0, 1.9, 4.6</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+        <PointLight>
+            <Position>0.6, 1.9, 4.6</Position>
+            <Intensity>1.2, 1.2, 1.0</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+    </LightVec>
+
+    <SceneObjectVec>
+        <SceneObject>
+            <Transform>
+                <Position>0, 0, 6</Position>
+                <Rotation>0, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <Material>M_Lambert_White</Material>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <SceneObject>
+            <Transform>
+                <Position>-2, 0, 4</Position>
+                <Rotation>0, -1.5708, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <Material>M_Lambert_Red</Material>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <SceneObject>
+            <Transform>
+                <Position>2, 0, 4</Position>
+                <Rotation>0, 1.5708, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <Material>M_Lambert_Blue</Material>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <SceneObject>
+            <Transform>
+                <Position>0, -2, 4</Position>
+                <Rotation>-1.5708, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <Material>M_Lambert_White</Material>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <SceneObject>
+            <Transform>
+                <Position>0, 2, 4</Position>
+                <Rotation>1.5708, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <Material>M_Lambert_White</Material>
+            <PrimitiveVec>
+                <Triangle>
+                    <Vertex>2, -2, 0</Vertex>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+                <Triangle>
+                    <Vertex>-2, -2, 0</Vertex>
+                    <Vertex>-2, 2, 0</Vertex>
+                    <Vertex>2, 2, 0</Vertex>
+                </Triangle>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <SceneObject>
+            <Transform>
+                <Position>-0.8, -1.0, 3.8</Position>
+                <Rotation>0, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <Material>M_Conductor_Silver</Material>
+            <PrimitiveVec>
+                <Sphere>
+                    <Radius>1.0</Radius>
+                </Sphere>
+            </PrimitiveVec>
+        </SceneObject>
+
+        <SceneObject>
+            <Transform>
+                <Position>0.9, -1.0, 4.2</Position>
+                <Rotation>0, 0, 0</Rotation>
+                <Scale>1.0</Scale>
+            </Transform>
+            <Material>M_Conductor_Copper</Material>
+            <PrimitiveVec>
+                <Sphere>
+                    <Radius>1.0</Radius>
+                </Sphere>
+            </PrimitiveVec>
+        </SceneObject>
+
+    </SceneObjectVec>
+
+</Scene>
