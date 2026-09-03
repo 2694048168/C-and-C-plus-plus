@@ -1,0 +1,187 @@
+<Scene>
+	<Camera>
+		<Postion>0, 0.6, -2.58</Postion>
+		<Target>0, 0.61, 3</Target>
+		<Up>0, 1, 0</Up>
+		<NearZ>0.1</NearZ>
+		<FarZ>1000</FarZ>
+		<Fov>45</Fov>
+	</Camera>
+
+	<MaterialMap>
+        <Material>
+            <Name>M_Lambert_Red</Name>
+            <Type>Lambert</Type>
+            <Albedo>0.6, 0.2, 0.2</Albedo>
+        </Material>
+        <Material>
+            <Name>M_Lambert_Blue</Name>
+            <Type>Lambert</Type>
+            <Albedo>0.2, 0.2, 0.6</Albedo>
+        </Material>
+        <Material>
+            <Name>M_Lambert_Gray</Name>
+            <Type>Lambert</Type>
+            <Albedo>0.5, 0.5, 0.5</Albedo>
+        </Material>
+        <Material>
+            <Name>M_Dielectric_Glass</Name>
+            <Type>DielectricSpecular</Type>
+            <Eta>1.5</Eta>
+            <TransmissionColor>0.95, 0.95, 0.95</TransmissionColor>
+        </Material>
+    </MaterialMap>
+
+	<SceneObjectVec>
+		<SceneObject>
+			<Transform>
+				<Position>-0.4, 0.3, 0.3</Position>
+				<Rotation>0, 0, 0</Rotation>
+				<Scale>1</Scale>
+			</Transform>
+			<Material>M_Lambert_Gray</Material>
+			<PrimitiveVec>
+				<Sphere>
+					<Radius>0.3</Radius>
+				</Sphere>
+			</PrimitiveVec>
+		</SceneObject>
+
+		<SceneObject>
+			<Transform>
+				<Position>0.4, 0.3, -0.3</Position>
+				<Rotation>0, 0, 0</Rotation>
+				<Scale>1</Scale>
+			</Transform>
+			<Material>M_Dielectric_Glass</Material>
+			<PrimitiveVec>
+				<Sphere>
+					<Radius>0.3</Radius>
+				</Sphere>
+			</PrimitiveVec>
+		</SceneObject>
+
+		<SceneObject>
+			<Transform>
+				<Position>0, 0, 0</Position>
+				<Rotation>1.5708, 0, 0</Rotation>
+				<Scale>1</Scale>
+			</Transform>
+			<Material>M_Lambert_Gray</Material>
+			<PrimitiveVec>
+				<Triangle>
+					<Vertex>-1, -1, 0</Vertex>
+					<Vertex>1, -1, 0</Vertex>
+					<Vertex>1, 1, 0</Vertex>
+				</Triangle>
+				<Triangle>
+					<Vertex>-1, -1, 0</Vertex>
+					<Vertex>1, 1, 0</Vertex>
+					<Vertex>-1, 1, 0</Vertex>
+				</Triangle>
+			</PrimitiveVec>
+		</SceneObject>
+
+		<SceneObject>
+			<Transform>
+				<Position>0, 1.5, 0</Position>
+				<Rotation>-1.5708, 0, 0</Rotation>
+				<Scale>1</Scale>
+			</Transform>
+			<Material>M_Lambert_Gray</Material>
+			<PrimitiveVec>
+				<Triangle>
+					<Vertex>-1, -1, 0</Vertex>
+					<Vertex>1, -1, 0</Vertex>
+					<Vertex>1, 1, 0</Vertex>
+				</Triangle>
+				<Triangle>
+					<Vertex>-1, -1, 0</Vertex>
+					<Vertex>1, 1, 0</Vertex>
+					<Vertex>-1, 1, 0</Vertex>
+				</Triangle>
+			</PrimitiveVec>
+		</SceneObject>
+
+		<SceneObject>
+			<Transform>
+				<Position>-1, 0.75, 0</Position>
+				<Rotation>0, 1.5708, 0</Rotation>
+				<Scale>1</Scale>
+			</Transform>
+			<Material>M_Lambert_Red</Material>
+			<PrimitiveVec>
+				<Triangle>
+					<Vertex>-1, -0.75, 0</Vertex>
+					<Vertex>1, -0.75, 0</Vertex>
+					<Vertex>1, 0.75, 0</Vertex>
+				</Triangle>
+				<Triangle>
+					<Vertex>-1, -0.75, 0</Vertex>
+					<Vertex>1, 0.75, 0</Vertex>
+					<Vertex>-1, 0.75, 0</Vertex>
+				</Triangle>
+			</PrimitiveVec>
+		</SceneObject>
+
+		<SceneObject>
+			<Transform>
+				<Position>1, 0.75, 0</Position>
+				<Rotation>0, -1.5708, 0</Rotation>
+				<Scale>1</Scale>
+			</Transform>
+			<Material>M_Lambert_Blue</Material>
+			<PrimitiveVec>
+				<Triangle>
+					<Vertex>-1, -0.75, 0</Vertex>
+					<Vertex>1, -0.75, 0</Vertex>
+					<Vertex>1, 0.75, 0</Vertex>
+				</Triangle>
+				<Triangle>
+					<Vertex>-1, -0.75, 0</Vertex>
+					<Vertex>1, 0.75, 0</Vertex>
+					<Vertex>-1, 0.75, 0</Vertex>
+				</Triangle>
+			</PrimitiveVec>
+		</SceneObject>
+
+        <SceneObject>
+			<Transform>
+				<Position>0, 0.75, 1</Position>
+				<Rotation>3.14159, 0, 0</Rotation>
+				<Scale>1</Scale>
+			</Transform>
+			<Material>M_Lambert_Gray</Material>
+			<PrimitiveVec>
+				<Triangle>
+					<Vertex>-1, -0.75, 0</Vertex>
+					<Vertex>1, -0.75, 0</Vertex>
+					<Vertex>1, 0.75, 0</Vertex>
+				</Triangle>
+				<Triangle>
+					<Vertex>-1, -0.75, 0</Vertex>
+					<Vertex>1, 0.75, 0</Vertex>
+					<Vertex>-1, 0.75, 0</Vertex>
+				</Triangle>
+			</PrimitiveVec>
+		</SceneObject>
+
+	</SceneObjectVec>
+
+	 <LightVec>
+        <PointLight>
+			<Position>0, 1, 0</Position>
+			<Intensity>2, 2, 2</Intensity>
+            <Attenuations>1, 0, 0</Attenuations>
+        </PointLight>
+
+        <SpotLight>
+			<Position>-0.8, 0.9, 0</Position>
+			<Direction>0.8944, -0.4472, 0</Direction>
+            <Intensity>2, 2, 2</Intensity>
+            <InnerAngle>10</InnerAngle>
+            <OuterAngle>60</OuterAngle>
+            <Attenuations>1, 0, 0</Attenuations>
+        </SpotLight>
+	 </LightVec>
+</Scene>

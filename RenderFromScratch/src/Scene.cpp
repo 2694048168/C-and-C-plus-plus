@@ -161,6 +161,17 @@ Scene *Scene::LoadSceneFromXML(const char *filepath, int W, int H)
                 Color refectionColor = ParseVector3f(pMaterial->FirstChildElement("RefectionColor")->GetText());
                 pScene->CreateMaterial<ConductorSpecularMaterial>(name, eta, absorptionCoef, refectionColor);
             }
+            else if (strcmp(type, "DielectricSpecular") == 0)
+            {
+                tinyxml2::XMLElement *pEta = pMaterial->FirstChildElement("Eta");
+                tinyxml2::XMLElement *pTransmissionColor = pMaterial->FirstChildElement("TransmissionColor");
+                if (!pEta || !pTransmissionColor)
+                    continue;
+
+                float eta = pEta->FloatText(1.5f);
+                Color transmissionColor = ParseVector3f(pTransmissionColor->GetText());
+                pScene->CreateMaterial<DielectricSpecularMaterial>(name, eta, transmissionColor);
+            }
         }
     }
 

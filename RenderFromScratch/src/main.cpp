@@ -29,7 +29,8 @@ int main(int argc, const char **argv)
     // const char   *filepath       = "data/Scene03CornellBox.xml";
     // const char   *filepath = "data/Scene04CornellBox.xml";
     // const char   *filepath = "data/Scene05CornellBox.xml";
-    const char   *filepath = "data/Scene06CornellBox.xml";
+    // const char   *filepath = "data/Scene06CornellBox.xml";
+    const char   *filepath = "data/Scene08.xml";
 
     Ithaca::Renderer renderEngine(titleStr, width, height, minDepth, maxDepth, samplePerPixel, filepath);
     renderEngine.Run();

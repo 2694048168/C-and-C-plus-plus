@@ -438,16 +438,37 @@ Color Renderer::GetRadiance(const Ray &ray, int depth)
 
     if (pMaterial->IsSpecular())
     {
-        Vector3f wi(-wo.x, -wo.y, wo.z);
-        Color    brdf = pMaterial->BRDF(wo, wi);
+        // 反射
+        {
+            Vector3f wi(-wo.x, -wo.y, wo.z);
+            Color    brdf = pMaterial->BRDF(wo, wi);
 
-        Ray r;
-        r.d      = localToWorld * wi;
-        r.o      = isect.postion;
-        r.min_t  = 1e-3f;
-        Color Li = GetRadiance(r, depth + 1);
+            Ray r;
+            r.d      = localToWorld * wi;
+            r.o      = isect.postion;
+            r.min_t  = 1e-3f;
+            Color Li = GetRadiance(r, depth + 1);
 
-        Lo += brdf * Li * glm::max(0.0f, wi.z);
+            // Lo += brdf * Li * glm::max(0.0f, wi.z);
+            Lo += brdf * Li * fabs(wi.z);
+        }
+
+        // 折射
+        {
+            Vector3f wi;
+            if (pMaterial->SampleWt(wo, wi))
+            {
+                Color btdf = pMaterial->BTDF(wo, wi);
+
+                Ray r;
+                r.d      = localToWorld * wi;
+                r.o      = isect.postion;
+                r.min_t  = 1e-3f;
+                Color Li = GetRadiance(r, depth + 1);
+                // Lo += btdf * Li * glm::max(0.0f, wi.z);
+                Lo += btdf * Li * fabs(wi.z);
+            }
+        }
     }
     else
     {

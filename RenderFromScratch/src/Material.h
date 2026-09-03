@@ -20,6 +20,16 @@ class Material
 public:
     virtual Color BRDF(const Vector3f &wo, const Vector3f &wi) const = 0;
 
+    virtual Color BTDF(const Vector3f &wt, const Vector3f &wi) const
+    {
+        return Color(0);
+    }
+
+    virtual bool SampleWt(const Vector3f &wi, Vector3f &wt) const
+    {
+        return false;
+    }
+
     virtual bool IsSpecular() const
     {
         return false;
@@ -58,6 +68,36 @@ private:
     Color mEta;
     Color mAbsorptionCoef;
     Color mRefectionColor;
+};
+
+// 绝缘体 镜面材质
+class DielectricSpecularMaterial : public Material
+{
+public:
+    DielectricSpecularMaterial(const float &eta, const Color &transmissionColor)
+        : mEta(eta)
+        , mTransmissionColor(transmissionColor)
+    {
+    }
+
+    bool IsSpecular() const override
+    {
+        return true;
+    }
+
+    // 反射
+    Color BRDF(const Vector3f &wo, const Vector3f &wi) const override;
+    // 折射
+    Color BTDF(const Vector3f &wt, const Vector3f &wi) const override;
+
+    bool SampleWt(const Vector3f &wi, Vector3f &wt) const override;
+
+private:
+    static float Fresnel(float eta_i, float eta_t, float cos_i, float cos_t);
+
+private:
+    float mEta;
+    Color mTransmissionColor;
 };
 
 } // namespace Ithaca

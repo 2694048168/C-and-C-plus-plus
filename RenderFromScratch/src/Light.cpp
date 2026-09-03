@@ -20,7 +20,7 @@ Color PointLight::GetRadiance(const Vector3f &p, Vector3f &sourcePos) const
 
     const float EPS   = 1e-6f;                // 与光源尺寸相关的极小值
     denom             = std::max(denom, EPS); // 保证至少为 EPS
-    float attenuation = 1.0f / denom;
+    float attenuation = 1.0f / glm::max(1e-5f, denom);
 
     // float attenuation = (denom < 1e-6f) ? 1.0f : (1.0f / denom);
 
@@ -36,7 +36,7 @@ Color SpotLight::GetRadiance(const Vector3f &p, Vector3f &sourcePos) const
     float       denom = Attenuations_.z + Attenuations_.y * R + Attenuations_.x * R * R;
     const float EPS   = 1e-6f;                // 与光源尺寸相关的极小值
     denom             = std::max(denom, EPS); // 保证至少为 EPS
-    float K1          = 1.0f / denom;
+    float K1          = 1.0f / glm::max(1e-5f, denom);
 
     // 角度衰减
     Vector3f L        = glm::normalize(p - Position_);

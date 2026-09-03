@@ -144,4 +144,26 @@ inline Vector3f GetSphericalCoordinate(float theta, float phi)
     return Vector3f(sinf(theta) * cosf(phi), sinf(theta) * sinf(phi), cosf(theta));
 }
 
+// 折射定律
+inline bool ComputeRefractVector(const Vector3f wi, float eta_i, float eta_t, Vector3f &wt)
+{
+    float cos_i = wi.z;
+    float sin_i = sqrtf(glm::max(1e-5f, 1.0f - cos_i * cos_i));
+    float sin_t = sin_i * eta_i / eta_t;
+
+    // 全反射
+    if (sin_t >= 1.0f)
+    {
+        return false;
+    }
+
+    float cos_t = sqrtf(glm::max(1e-5f, 1.0f - sin_t * sin_t));
+    wt.z        = wi.z > 0 ? -cos_t : cos_t;
+    wt.x        = -wi.x * sin_t / glm::max(1e-5f, sin_i);
+    wt.y        = -wi.y * sin_t / glm::max(1e-5f, sin_i);
+
+    wt = glm::normalize(wt);
+    return true;
+}
+
 } // namespace Ithaca
