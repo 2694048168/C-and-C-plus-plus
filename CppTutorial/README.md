@@ -27,3 +27,4 @@
 - tutorial 21: 现代 C++ 编程学习算法逻辑重要性
 - tutorial 22: 现代 C++ 编程之函数指针
 - tutorial 23: 现代 C++ 编程之Scratch
+- tutorial 25: 现代 C++ 编程之extern "C" 特性
