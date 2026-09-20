@@ -28,3 +28,4 @@
 - tutorial 22: 现代 C++ 编程之函数指针
 - tutorial 23: 现代 C++ 编程之Scratch
 - tutorial 25: 现代 C++ 编程之extern "C" 特性
+- tutorial 26: 现代 C++ 编程之智能指针与内存管理
