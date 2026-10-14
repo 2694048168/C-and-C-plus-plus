@@ -30,3 +30,6 @@
 - tutorial 25: 现代 C++ 编程之extern "C" 特性
 - tutorial 26: 现代 C++ 编程之智能指针与内存管理
 - tutorial 27: 现代 C++ 编程之文件系统
+- tutorial 28: 现代 C++ 编程之正则表达式
+- tutorial 29: 现代 C++ 编程之语言可用性的强化
+- tutorial 30: 现代 C++ 编程之语言运行期的强化
