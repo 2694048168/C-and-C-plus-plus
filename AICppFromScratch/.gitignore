@@ -1,0 +1,6 @@
+.vscode/*
+/build/*
+
+/external/*
+# 唯独不要忽略 external 目录下的 .gitkeep 占位文件
+!/external/.gitkeep
