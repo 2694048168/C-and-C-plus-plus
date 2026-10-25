@@ -15,3 +15,4 @@ set_target_properties(${PROJECT_NAME}
 
 # =========================================
 add_subdirectory(tutorial_json)
+add_subdirectory(tutorial_http)

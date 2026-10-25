@@ -74,6 +74,25 @@ set(HTTPLIB_VERSION "v0.63.0")
 
 # -------------------------------------------
 # external 第三方库
+
+# ---- 本地 OpenSSL 配置（必须在 httplib 之前）----
+# OpenSLL on Windows download link:
+# https://slproweb.com/products/Win32OpenSSL.html
+set(OPENSSL_ROOT_DIR    "D:/DevelopTools/OpenSSL-Win64")
+set(OPENSSL_INCLUDE_DIR "D:/DevelopTools/OpenSSL-Win64/include")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(OPENSSL_SSL_LIBRARY    "D:/DevelopTools/OpenSSL-Win64/lib/VC/x64/MDd/libssl.lib")
+    set(OPENSSL_CRYPTO_LIBRARY "D:/DevelopTools/OpenSSL-Win64/lib/VC/x64/MDd/libcrypto.lib")
+else()
+    set(OPENSSL_SSL_LIBRARY    "D:/DevelopTools/OpenSSL-Win64/lib/VC/x64/MD/libssl.lib")
+    set(OPENSSL_CRYPTO_LIBRARY "D:/DevelopTools/OpenSSL-Win64/lib/VC/x64/MD/libcrypto.lib")
+endif()
+find_package(OpenSSL 4.0 REQUIRED)
+
+set(HTTPLIB_REQUIRE_OPENSSL          ON CACHE BOOL "" FORCE)
+set(HTTPLIB_USE_OPENSSL_IF_AVAILABLE ON CACHE BOOL "" FORCE)
+
+# ======================================
 include(FetchContent)
 
 # 拉取 nlohmann/json
@@ -101,7 +120,6 @@ FetchContent_Declare(
     SOURCE_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/external/httplib/src"
     SUBBUILD_DIR   "${CMAKE_CURRENT_SOURCE_DIR}/external/httplib/subbuild"
 )
-
 # 下载并使其可用
 FetchContent_MakeAvailable(nlohmann_json)
 FetchContent_MakeAvailable(httplib)
