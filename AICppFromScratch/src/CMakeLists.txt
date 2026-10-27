@@ -16,3 +16,7 @@ set_target_properties(${PROJECT_NAME}
 # =========================================
 add_subdirectory(tutorial_json)
 add_subdirectory(tutorial_http)
+add_subdirectory(tutorial_OpenAI_API)
+add_subdirectory(project1)
+add_subdirectory(project2)
+add_subdirectory(project3)

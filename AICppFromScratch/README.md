@@ -27,3 +27,10 @@ cmake --build --preset windows-release # 构建 Release 版本
 - Fundation: JSON and HTTP
 - Integration: AI Services
 - Application: Progressive Projects
+
+## Ollama Models
+- [Download](https://ollama.com/download) and install Ollama
+- Explore models: [ollama.com/library](https://ollama.com/library) Doc: [docs.ollama](https://docs.ollama.com/)
+- **Chat Models** Conversations, text generation, Q&A, such **llama3.2:3b**
+- **Reasoning Models** Show step-by-step thinking process, such **deepseek-r1:1.5b**
+- **Embedding Models** Text-to-vector conversion for search & RAG, such **nomic-embed-text**
