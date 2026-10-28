@@ -27,6 +27,7 @@ cmake --build --preset windows-release # 构建 Release 版本
 - Fundation: JSON and HTTP
 - Integration: AI Services
 - Application: Progressive Projects
+- **RAG**: Retrieval-Augmented Generation
 
 ## Ollama Models
 - [Download](https://ollama.com/download) and install Ollama
